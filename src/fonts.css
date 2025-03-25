@@ -1,0 +1,35 @@
+@font-face {
+  font-family: 'Bayside';
+  src: url('/fonts/BaysideFont-Regular-Demo.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Futura Medium';
+  src: url('/fonts/FUTURAMEDIUM.TTF') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'The Glorious';
+  src: url('/fonts/The Glorious-Regular.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+.font-bayside {
+  font-family: 'Bayside', sans-serif;
+}
+
+.font-futura {
+  font-family: 'Futura Medium', sans-serif;
+}
+
+.font-glorious {
+  font-family: 'The Glorious', serif;
+}

@@ -1,0 +1,92 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import './fonts.css';
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+
+    --primary: 180 100% 15%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 14 85% 51%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
+
+    --radius: 0.5rem;
+    
+    font-synthesis-weight: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "ss01", "ss02", "cv01", "cv02", "cv03";
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-bold tracking-tight;
+  }
+  
+  body {
+    overflow-x: hidden;
+  }
+}
+
+@layer utilities {
+  .glass-morph {
+    @apply backdrop-blur-md bg-white/10 border border-white/20;
+  }
+  
+  .text-balance {
+    text-wrap: balance;
+  }
+  
+  .hover-arrow span {
+    @apply transition-transform duration-300;
+  }
+  
+  .hover-arrow:hover span {
+    @apply animate-slide-right;
+  }
+  
+  .image-hover {
+    @apply overflow-hidden;
+  }
+  
+  .image-hover img {
+    @apply transition-transform duration-500;
+  }
+  
+  .image-hover:hover img {
+    @apply animate-image-zoom;
+  }
+}
