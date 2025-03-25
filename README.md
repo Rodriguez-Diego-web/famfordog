@@ -1,69 +1,70 @@
-# Welcome to your Lovable project
+# Famfordogs
 
-## Project info
+## About the Project
 
-**URL**: https://lovable.dev/projects/fe986711-d27a-4a9e-93ec-0d4fda4bf6ae
+Famfordogs (FAM for Dogs e.V.) is a website for a dog rescue organization dedicated to rescuing and rehoming dogs in need. The website features information about the organization's mission, adoption process, and available dogs.
 
-## How can I edit this code?
+## Features
 
-There are several ways of editing your application.
+- Mobile-responsive design optimized for all devices
+- Multilingual support (German)
+- Detailed information about the rescue mission
+- Adoption process explanation
+- Featured dogs for adoption
+- Volunteer opportunities
+- Donation information
 
-**Use Lovable**
+## Technology Stack
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/fe986711-d27a-4a9e-93ec-0d4fda4bf6ae) and start prompting.
+This project is built with:
 
-Changes made via Lovable will be committed automatically to this repo.
+- React
+- TypeScript
+- Tailwind CSS
+- Vite
 
-**Use your preferred IDE**
+## Getting Started
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+### Prerequisites
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+- Node.js (v14 or higher)
+- npm or yarn
 
-Follow these steps:
+### Installation
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+1. Clone the repository
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+```bash
+git clone https://github.com/Kadirdiegp/famfordog.git
+cd famfordog
 ```
 
-**Edit a file directly in GitHub**
+2. Install dependencies
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+```bash
+npm install
+# or
+yarn install
+```
 
-**Use GitHub Codespaces**
+3. Start the development server
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+```bash
+npm run dev
+# or
+yarn dev
+```
 
-## What technologies are used for this project?
+4. Open your browser and navigate to `http://localhost:5173`
 
-This project is built with .
+## Deployment
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+The website is currently deployed on Netlify. Any changes pushed to the main branch will be automatically deployed.
 
-## How can I deploy this project?
+## Contact
 
-Simply open [Lovable](https://lovable.dev/projects/fe986711-d27a-4a9e-93ec-0d4fda4bf6ae) and click on Share -> Publish.
+For any questions or inquiries, please reach out to us through the contact form on the website.
 
-## I want to use a custom domain - is that possible?
+## License
 
-We don't support custom domains (yet). If you want to deploy your project under your own domain then we recommend using Netlify. Visit our docs for more details: [Custom domains](https://docs.lovable.dev/tips-tricks/custom-domain/)
+This project is private and proprietary.
