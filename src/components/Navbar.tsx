@@ -66,8 +66,8 @@ const Navbar = () => {
     <header 
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled 
-          ? 'bg-accent-blue/95 backdrop-blur-lg py-3' 
-          : 'bg-transparent py-5'
+          ? 'bg-accent-blue/95 backdrop-blur-lg py-2' 
+          : 'bg-transparent py-3'
       }`}
     >
       <div className="container mx-auto px-6 flex justify-between items-center">
@@ -75,7 +75,7 @@ const Navbar = () => {
           <img 
             src="/images/logo.png" 
             alt="FAM for Dogs e.V. Logo" 
-            className="h-20 md:h-20"
+            className="h-14 md:h-16"
           />
         </Link>
         
