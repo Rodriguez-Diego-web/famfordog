@@ -4,15 +4,9 @@ import { Link } from 'react-router-dom';
 const WhoWeAreSection = () => {
   const teamMembers = [
     {
-      name: "Mieke",
-      role: "Vorsitzende",
-      bio: "Gründerin von \"Dogs of Lombok e.V.\", der nun zu FAM for dogs e.V. wird. Macht Tierschutz seit 2019.",
-      image: "/images/team/WhatsApp Image 2025-03-24 at 18.11.30.jpeg"
-    },
-    {
-      name: "Fiona",
-      role: "Vorsitzende",
-      bio: "Macht Tierschutz seit 2019 zusammen mit Mieke. Gemeinsam leiten sie den Verein.",
+      name: "Fiona & Mieke",
+      role: "Gründerinnen & Vorsitzende",
+      bio: "Gemeinsam gründeten sie \"Dogs of Lombok e.V.\", der nun zu FAM for dogs e.V. wird. Seit 2019 im Tierschutz aktiv.",
       image: "/images/team/WhatsApp Image 2025-03-24 at 18.11.30.jpeg"
     },
     {
@@ -20,6 +14,12 @@ const WhoWeAreSection = () => {
       role: "Beisitzerin",
       bio: "Unterstützt den Vorstand als Beisitzerin und trägt zum Erfolg des Projekts bei.",
       image: "/images/team/WhatsApp Image 2025-03-24 at 18.11.30.jpeg"
+    },
+    {
+      name: "Chrissy",
+      role: "Beisitzerin",
+      bio: "Engagiert sich im Vorstand und bringt ihre Expertise in die Tierschutzprojekte ein.",
+      image: "/images/team/WhatsApp Image 2025-03-25 at 23.49.01.jpeg"
     }
   ];
 

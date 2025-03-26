@@ -65,7 +65,7 @@ const Mission = () => {
             
             <div className="mb-8 sm:mb-12">
               <div className="flex items-center mb-4">
-                <Map size={24} className="text-secondary mr-3" />
+                <Map size={24} className="text-accent-blue mr-3" />
                 <h3 className="text-xl sm:text-2xl font-bold text-primary font-glorious">Lombok</h3>
               </div>
               <div className="pl-4 sm:pl-10">
@@ -117,7 +117,7 @@ const Mission = () => {
             
             <div>
               <div className="flex items-center mb-4">
-                <Map size={24} className="text-secondary mr-3" />
+                <Map size={24} className="text-accent-blue mr-3" />
                 <h3 className="text-xl sm:text-2xl font-bold text-primary font-glorious">Rumänien</h3>
               </div>
               <div className="pl-4 sm:pl-10">
@@ -150,7 +150,7 @@ const Mission = () => {
           <div className="mb-12 sm:mb-16">
             <div className="text-center mb-6 sm:mb-10">
               <h2 className="text-2xl sm:text-3xl font-bold text-primary mb-3 sm:mb-4 font-glorious">Unsere Arbeit vor Ort</h2>
-              <div className="w-16 sm:w-20 h-1 bg-secondary mx-auto mb-4 sm:mb-6"></div>
+              <div className="w-16 sm:w-20 h-1 bg-primary mx-auto mb-4 sm:mb-6"></div>
               <p className="text-gray-700 max-w-3xl mx-auto font-futura mb-6 sm:mb-8 text-sm sm:text-base">
                 Erleben Sie einen Einblick in unsere tägliche Arbeit mit den Hunden vor Ort.
                 Dieses Video zeigt, mit wie viel Liebe und Hingabe sich unser Team um die Tiere kümmert.
@@ -181,7 +181,7 @@ const Mission = () => {
           <div className="mb-12 sm:mb-16">
             <div className="text-center mb-6 sm:mb-10">
               <h2 className="text-2xl sm:text-3xl font-bold text-primary mb-3 sm:mb-4 font-glorious">Unsere Arbeit in Lombok</h2>
-              <div className="w-16 sm:w-20 h-1 bg-secondary mx-auto mb-4 sm:mb-6"></div>
+              <div className="w-16 sm:w-20 h-1 bg-primary mx-auto mb-4 sm:mb-6"></div>
               <p className="text-gray-700 max-w-3xl mx-auto font-futura text-sm sm:text-base">
                 Seit 2019 setzen wir uns auf Lombok für bessere Lebensbedingungen der Straßenhunde ein. 
                 Hier bekommen Sie einen Einblick in unsere tägliche Arbeit.
@@ -222,7 +222,7 @@ const Mission = () => {
           <div className="mb-12 sm:mb-16">
             <div className="text-center mb-6 sm:mb-10">
               <h2 className="text-2xl sm:text-3xl font-bold text-primary mb-3 sm:mb-4 font-glorious">Unsere Arbeit in Rumänien</h2>
-              <div className="w-16 sm:w-20 h-1 bg-secondary mx-auto mb-4 sm:mb-6"></div>
+              <div className="w-16 sm:w-20 h-1 bg-primary mx-auto mb-4 sm:mb-6"></div>
               <p className="text-gray-700 max-w-3xl mx-auto font-futura text-sm sm:text-base">
                 In Rumänien unterstützen wir lokale Tierheime und führen Kastrationsprojekte durch, 
                 um langfristig die Lebensbedingungen für Straßenhunde zu verbessern.
@@ -261,7 +261,7 @@ const Mission = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-12 items-center">
               <div className="order-2 md:order-1">
                 <h2 className="text-2xl sm:text-3xl font-bold text-primary mb-4 sm:mb-6 font-glorious">Werde Teil unseres Teams</h2>
-                <div className="w-16 sm:w-20 h-1 bg-secondary mb-4 sm:mb-6"></div>
+                <div className="w-16 sm:w-20 h-1 bg-primary mb-4 sm:mb-6"></div>
                 <p className="text-gray-700 mb-6 sm:mb-8 font-futura text-sm sm:text-base">
                   Wir suchen immer nach engagierten Menschen, die unsere Leidenschaft für Tierschutz teilen. 
                   Ob als Spender, Helfer vor Ort oder Unterstützer von zu Hause aus – jeder kann einen Beitrag leisten.
@@ -270,7 +270,7 @@ const Mission = () => {
                   <a href="/volunteer" className="bg-primary hover:bg-primary/90 text-white px-6 sm:px-8 py-2 sm:py-3 rounded-full font-medium transition-all duration-300 hover:shadow-lg font-futura text-center text-sm sm:text-base">
                     Mitmachen
                   </a>
-                  <a href="/donate" className="bg-secondary hover:bg-secondary/90 text-white px-6 sm:px-8 py-2 sm:py-3 rounded-full font-medium transition-all duration-300 hover:shadow-lg font-futura text-center text-sm sm:text-base">
+                  <a href="/donate" className="bg-primary hover:bg-primary/90 text-white px-6 sm:px-8 py-2 sm:py-3 rounded-full font-medium transition-all duration-300 hover:shadow-lg font-futura text-center text-sm sm:text-base">
                     Spenden
                   </a>
                 </div>
@@ -298,7 +298,7 @@ const Mission = () => {
                 onClick={(e) => e.stopPropagation()}
               >
                 <button 
-                  className="absolute -top-10 right-0 text-white hover:text-secondary"
+                  className="absolute -top-10 right-0 text-white hover:text-accent-blue"
                   onClick={() => setSelectedImage(null)}
                 >
                   <span className="text-xl sm:text-2xl">✕</span>
@@ -323,7 +323,7 @@ const Mission = () => {
                 onClick={(e) => e.stopPropagation()}
               >
                 <button 
-                  className="absolute -top-8 sm:-top-10 right-0 text-white hover:text-secondary"
+                  className="absolute -top-8 sm:-top-10 right-0 text-white hover:text-accent-blue"
                   onClick={() => setIsVideoPlaying(false)}
                 >
                   <span className="text-xl sm:text-2xl">✕</span>

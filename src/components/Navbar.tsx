@@ -49,7 +49,7 @@ const Navbar = () => {
     { name: 'Über Uns', path: '/about' },
     { name: 'Mission', path: '/mission' },
     { name: 'Team', path: '/team' },
-    { name: 'Volunteer', path: '/volunteer' },
+    { name: 'Fördermitglieder', path: '/volunteer' },
   ];
 
   const adoptionItems = [
@@ -66,7 +66,7 @@ const Navbar = () => {
     <header 
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled 
-          ? 'bg-black/90 backdrop-blur-lg py-3' 
+          ? 'bg-accent-blue/95 backdrop-blur-lg py-3' 
           : 'bg-transparent py-5'
       }`}
     >
@@ -87,22 +87,23 @@ const Navbar = () => {
               to={item.path}
               className={`text-sm font-medium tracking-wide transition-colors duration-200 font-futura ${
                 location.pathname === item.path
-                  ? 'text-secondary'
-                  : 'text-white hover:text-secondary'
+                  ? 'text-white font-bold'
+                  : 'text-white/90 hover:text-white'
               }`}
             >
               {item.name}
             </Link>
           ))}
           
-          {/* Adoption Dropdown */}
+          {/* Adoption Dropdown - Hidden but code preserved */}
+          {/* 
           <div className="relative">
             <button 
               onClick={toggleAdoptionDropdown}
               className={`flex items-center text-sm font-medium tracking-wide transition-colors duration-200 font-futura ${
                 isAdoptionPage
-                  ? 'text-secondary'
-                  : 'text-white hover:text-secondary'
+                  ? 'text-accent-blue'
+                  : 'text-white hover:text-accent-blue'
               }`}
             >
               Adoption
@@ -117,8 +118,8 @@ const Navbar = () => {
                     to={item.path}
                     className={`block px-4 py-2 text-sm font-futura ${
                       location.pathname === item.path
-                        ? 'text-secondary'
-                        : 'text-white hover:text-secondary'
+                        ? 'text-accent-blue'
+                        : 'text-white hover:text-accent-blue'
                     }`}
                     onClick={() => setAdoptionDropdownOpen(false)}
                   >
@@ -128,10 +129,11 @@ const Navbar = () => {
               </div>
             )}
           </div>
+          */}
           
           <Link
             to="/donate"
-            className="bg-secondary hover:bg-secondary/90 text-white px-5 py-2 rounded-full text-sm font-medium transition-all duration-200 hover:shadow-lg font-futura"
+            className="bg-accent-red hover:bg-accent-red/90 text-white px-5 py-2 rounded-full text-sm font-medium transition-all duration-200 hover:shadow-lg font-futura"
           >
             Spenden
           </Link>
@@ -149,15 +151,15 @@ const Navbar = () => {
       
       {/* Mobile Menu */}
       {mobileMenuOpen && (
-        <div className="md:hidden bg-black/95 backdrop-blur-lg absolute top-full left-0 right-0 flex flex-col p-6 animate-fade-in">
+        <div className="md:hidden bg-accent-blue/95 backdrop-blur-lg absolute top-full left-0 right-0 flex flex-col p-6 animate-fade-in">
           {navItems.map((item) => (
             <Link
               key={item.name}
               to={item.path}
               className={`text-sm font-medium py-3 font-futura ${
                 location.pathname === item.path
-                  ? 'text-secondary'
-                  : 'text-white hover:text-secondary'
+                  ? 'text-white font-bold'
+                  : 'text-white/90 hover:text-white'
               }`}
               onClick={() => setMobileMenuOpen(false)}
             >
@@ -165,14 +167,15 @@ const Navbar = () => {
             </Link>
           ))}
           
-          {/* Mobile Adoption Menu */}
+          {/* Mobile Adoption Menu - Hidden but code preserved */}
+          {/*
           <div className="py-3">
             <button 
               onClick={() => setAdoptionDropdownOpen(!adoptionDropdownOpen)}
               className={`flex items-center text-sm font-medium font-futura ${
                 isAdoptionPage
-                  ? 'text-secondary'
-                  : 'text-white hover:text-secondary'
+                  ? 'text-accent-blue'
+                  : 'text-white hover:text-accent-blue'
               }`}
             >
               Adoption
@@ -187,8 +190,8 @@ const Navbar = () => {
                     to={item.path}
                     className={`block py-2 text-sm font-futura ${
                       location.pathname === item.path
-                        ? 'text-secondary'
-                        : 'text-white hover:text-secondary'
+                        ? 'text-accent-blue'
+                        : 'text-white hover:text-accent-blue'
                     }`}
                     onClick={() => setMobileMenuOpen(false)}
                   >
@@ -198,10 +201,11 @@ const Navbar = () => {
               </div>
             )}
           </div>
+          */}
           
           <Link
             to="/donate"
-            className="bg-secondary hover:bg-secondary/90 text-white px-5 py-2 mt-3 rounded-full text-sm font-medium text-center font-futura"
+            className="bg-accent-red hover:bg-accent-red/90 text-white px-5 py-3 rounded-full text-sm font-medium mt-4 flex items-center justify-center transition-all duration-200 font-futura"
             onClick={() => setMobileMenuOpen(false)}
           >
             Spenden

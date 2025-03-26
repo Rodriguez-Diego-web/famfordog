@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+import tailwindAnimate from "tailwindcss-animate";
 
 export default {
   darkMode: ["class"],
@@ -12,10 +13,10 @@ export default {
   theme: {
     container: {
       center: true,
-      padding: '2rem',
+      padding: "2rem",
       screens: {
-        '2xl': '1400px'
-      }
+        "2xl": "1400px",
+      },
     },
     extend: {
       colors: {
@@ -29,13 +30,15 @@ export default {
           foreground: '#ffffff',
         },
         secondary: {
-          DEFAULT: '#EB552D', // Orange
-          foreground: '#ffffff',
+          DEFAULT: '#d3e173', // Yellow (war zuvor Orange #EB552D)
+          foreground: '#000000', // Textfarbe auf Gelb geändert zu schwarz für bessere Lesbarkeit
         },
         accent: {
-          green: '#d3e173', // Yellow
+          yellow: '#d3e173', // Yellow
           pink: '#f6b7d3', // Pink
+          red: '#e74c3c',  // Rot
           blue: '#b1d6df', // Blue
+          orange: '#EB552D', // Orange (verschoben von secondary zu accent)
           foreground: '#000000',
         },
         destructive: {
@@ -111,5 +114,5 @@ export default {
       }
     }
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [tailwindAnimate],
 } satisfies Config;

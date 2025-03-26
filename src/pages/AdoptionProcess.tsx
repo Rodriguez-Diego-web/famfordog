@@ -45,13 +45,13 @@ const AdoptionProcess = () => {
                 </div>
                 <div>
                   <h3 className="text-xl font-semibold text-primary mb-3 font-futura flex items-center">
-                    <Search className="mr-3 text-secondary" size={22} />
+                    <Search className="mr-3 text-accent-blue" size={22} />
                     Finde deinen Traumhund
                   </h3>
                   <p className="text-gray-600 mb-4 font-futura">
                     Stöbere durch unsere verfügbaren Hunde und finde einen Vierbeiner, der zu dir und deinem Lebensstil passt. Schau dir die Profile genau an und lies die Beschreibungen sorgfältig durch, um mehr über die Persönlichkeit, Verhalten und besonderen Bedürfnisse der Hunde zu erfahren.
                   </p>
-                  <Link to="/about" className="text-primary font-medium inline-flex items-center hover:text-secondary transition-colors font-futura">
+                  <Link to="/about" className="text-primary font-medium inline-flex items-center hover:text-accent-blue transition-colors font-futura">
                     Verfügbare Hunde ansehen
                     <ArrowRight size={16} className="ml-2" />
                   </Link>
@@ -65,13 +65,13 @@ const AdoptionProcess = () => {
                 </div>
                 <div>
                   <h3 className="text-xl font-semibold text-primary mb-3 font-futura flex items-center">
-                    <FileText className="mr-3 text-secondary" size={22} />
+                    <FileText className="mr-3 text-accent-blue" size={22} />
                     Bewerbungsformular ausfüllen
                   </h3>
                   <p className="text-gray-600 mb-4 font-futura">
                     Fülle unser Adoptionsbewerbungsformular aus. Je mehr Informationen du uns über dich, deinen Haushalt und deinen Lebensstil gibst, desto besser können wir einschätzen, ob der Hund zu dir passt. Denke daran, ehrlich zu sein – wir wollen sicherstellen, dass sowohl du als auch der Hund glücklich sein werden.
                   </p>
-                  <Link to="/adoption-how-to" className="text-primary font-medium inline-flex items-center hover:text-secondary transition-colors font-futura">
+                  <Link to="/adoption-how-to" className="text-primary font-medium inline-flex items-center hover:text-accent-blue transition-colors font-futura">
                     Mehr zum Bewerbungsprozess
                     <ArrowRight size={16} className="ml-2" />
                   </Link>
@@ -85,7 +85,7 @@ const AdoptionProcess = () => {
                 </div>
                 <div>
                   <h3 className="text-xl font-semibold text-primary mb-3 font-futura flex items-center">
-                    <Heart className="mr-3 text-secondary" size={22} />
+                    <Heart className="mr-3 text-accent-blue" size={22} />
                     Kennenlernen
                   </h3>
                   <p className="text-gray-600 mb-4 font-futura">
@@ -101,13 +101,13 @@ const AdoptionProcess = () => {
                 </div>
                 <div>
                   <h3 className="text-xl font-semibold text-primary mb-3 font-futura flex items-center">
-                    <Home className="mr-3 text-secondary" size={22} />
+                    <Home className="mr-3 text-accent-blue" size={22} />
                     Hausbesuch & finale Genehmigung
                   </h3>
                   <p className="text-gray-600 mb-4 font-futura">
                     Ein Mitglied unseres Teams wird einen Hausbesuch durchführen, um sicherzustellen, dass dein Zuhause sicher und geeignet für den Hund ist. Nach erfolgreichem Hausbesuch und finaler Genehmigung durch unser Adoptionsteam kannst du den Adoptionsvertrag unterzeichnen und die Adoptionsgebühr bezahlen.
                   </p>
-                  <Link to="/adoption-fees" className="text-primary font-medium inline-flex items-center hover:text-secondary transition-colors font-futura">
+                  <Link to="/adoption-fees" className="text-primary font-medium inline-flex items-center hover:text-accent-blue transition-colors font-futura">
                     Informationen zu Gebühren
                     <ArrowRight size={16} className="ml-2" />
                   </Link>
@@ -121,13 +121,13 @@ const AdoptionProcess = () => {
                 </div>
                 <div>
                   <h3 className="text-xl font-semibold text-primary mb-3 font-futura flex items-center">
-                    <PawPrint className="mr-3 text-secondary" size={22} />
+                    <PawPrint className="mr-3 text-accent-blue" size={22} />
                     Willkommen in deinem neuen Zuhause!
                   </h3>
                   <p className="text-gray-600 mb-4 font-futura">
                     Jetzt ist es endlich soweit! Der Hund zieht bei dir ein. Bei Hunden aus dem Ausland organisieren wir den Transport nach Deutschland. Unser Team bleibt auch nach der Adoption für dich ansprechbar und unterstützt dich in der Eingewöhnungsphase mit Rat und Tat.
                   </p>
-                  <Link to="/success-stories" className="text-primary font-medium inline-flex items-center hover:text-secondary transition-colors font-futura">
+                  <Link to="/success-stories" className="text-primary font-medium inline-flex items-center hover:text-accent-blue transition-colors font-futura">
                     Erfolgsgeschichten lesen
                     <ArrowRight size={16} className="ml-2" />
                   </Link>

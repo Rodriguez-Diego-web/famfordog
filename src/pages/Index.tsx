@@ -1,10 +1,10 @@
-
 import { useEffect } from 'react';
 import Hero from '@/components/Hero';
 import FeaturedDogs from '@/components/FeaturedDogs';
 import VideoSection from '@/components/VideoSection';
 import MissionSection from '@/components/MissionSection';
 import WhoWeAreSection from '@/components/WhoWeAreSection';
+import JoinTeamSection from '@/components/JoinTeamSection';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 
@@ -23,6 +23,7 @@ const Index = () => {
         <WhoWeAreSection />
         <VideoSection />
         <FeaturedDogs />
+        <JoinTeamSection />
       </main>
       <Footer />
     </div>

@@ -113,30 +113,24 @@ const Hero = () => {
 
   const slide = heroSlides[currentSlide];
 
-  // Colors for each shape (using our brand colors)
-  const colorShapes = [
-    { color: '#004a4a', style: 'absolute top-0 left-0 w-1/2 h-screen transform -skew-x-12 origin-top-right' }, // Green
-    { color: '#d3e173', style: 'absolute top-0 right-0 w-3/5 h-screen transform skew-x-12 origin-top-left' }, // Yellow
-    { color: '#f6b7d3', style: 'absolute bottom-0 right-0 w-1/2 h-3/5 transform skew-x-12 origin-bottom-right' }, // Pink
-    { color: '#b1d6df', style: 'absolute top-1/3 left-1/4 w-1/3 h-1/3 rounded-full blur-xl opacity-40' }, // Blue blur
-    { color: '#EB552D', style: 'absolute bottom-1/4 left-10 w-64 h-64 rounded-full blur-xl opacity-30' }, // Orange blur
-  ];
-
   return (
     <div className="min-h-screen flex items-center relative overflow-hidden">
-      {/* Colorful geometric background */}
+      {/* Farbenfroher Hintergrund */}
       <div className="absolute inset-0 z-0">
-        {/* Color shapes */}
-        {colorShapes.map((shape, i) => (
-          <div 
-            key={i} 
-            className={shape.style}
-            style={{ backgroundColor: shape.color }}
-          ></div>
-        ))}
+        {/* Hauptfarben-Blöcke */}
+        <div className="absolute top-0 left-0 w-1/3 h-full bg-primary"></div> {/* Grün links */}
+        <div className="absolute top-0 right-0 w-1/3 h-1/2 bg-secondary"></div> {/* Gelb oben rechts */}
+        <div className="absolute bottom-0 right-0 w-1/3 h-1/2 bg-accent-pink"></div> {/* Pink unten rechts */}
+        <div className="absolute top-0 left-1/3 w-1/3 h-1/2 bg-accent-blue"></div> {/* Blau Mitte oben */}
+        <div className="absolute bottom-0 left-1/3 w-1/3 h-1/2 bg-accent-red"></div> {/* Rot Mitte unten */}
         
-        {/* Optional overlay for better text readability */}
-        <div className="absolute inset-0 bg-black/10 backdrop-blur-sm z-10"></div>
+        {/* Dekorative Elemente */}
+        <div className="absolute top-1/4 left-1/4 w-24 h-24 rounded-full bg-accent-yellow opacity-70 blur-md"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-32 h-32 rounded-full bg-primary opacity-50 blur-lg"></div>
+        <div className="absolute top-3/4 left-2/3 w-16 h-16 rounded-full bg-accent-pink opacity-60 blur-sm"></div>
+        
+        {/* Overlay für bessere Lesbarkeit */}
+        <div className="absolute inset-0 bg-black/20 backdrop-blur-sm"></div>
       </div>
       
       <div className="container mx-auto px-6 pt-20 z-20 relative">
@@ -155,7 +149,7 @@ const Hero = () => {
               <span>Unsere Mission</span>
             </Link>
             
-            <a href="/donate" className="bg-transparent border border-white text-white px-8 py-3 rounded-full font-medium hover:bg-white/10 transition-all duration-300 text-center font-futura">
+            <a href="/donate" className="bg-secondary border-none text-primary px-8 py-3 rounded-full font-medium hover:bg-secondary/90 transition-all duration-300 text-center font-futura hover:shadow-lg">
               Spenden
             </a>
           </div>
@@ -170,7 +164,7 @@ const Hero = () => {
             onClick={() => goToSlide(index)}
             className={`w-16 h-16 flex items-center justify-center text-white font-semibold transition-all duration-300 ${
               index === currentSlide 
-                ? 'bg-secondary' 
+                ? 'bg-secondary text-primary' 
                 : 'bg-black/50 backdrop-blur-sm hover:bg-black/70'
             }`}
             aria-label={`Go to slide ${index + 1}`}

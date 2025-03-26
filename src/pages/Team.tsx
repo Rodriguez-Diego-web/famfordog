@@ -11,15 +11,9 @@ const Team = () => {
 
   const teamMembers = [
     {
-      name: "Mieke",
-      role: "Vorsitzende",
-      bio: "Mieke hat den Verein \"Dogs of Lombok e.V.\" gegründet, der nun zu FAM for dogs e.V. wird. Sie macht seit 2019 Tierschutz und setzt sich leidenschaftlich für das Wohl der Straßenhunde ein.",
-      image: "/images/team/WhatsApp Image 2025-03-24 at 18.11.30.jpeg"
-    },
-    {
-      name: "Fiona",
-      role: "Vorsitzende",
-      bio: "Fiona macht seit 2019 Tierschutz zusammen mit Mieke. Gemeinsam leiten sie als Vorsitzende den Verein und entwickeln Strategien für einen nachhaltigen Tierschutz.",
+      name: "Fiona & Mieke",
+      role: "Gründerinnen & Vorsitzende",
+      bio: "Fiona und Mieke machen seit 2019 gemeinsam Tierschutz. Sie haben den Verein \"Dogs of Lombok e.V.\" gegründet, der nun zu FAM for dogs e.V. wird. Als Vorsitzende leiten sie den Verein und entwickeln Strategien für einen nachhaltigen Tierschutz.",
       image: "/images/team/WhatsApp Image 2025-03-24 at 18.11.30.jpeg"
     },
     {
@@ -32,7 +26,7 @@ const Team = () => {
       name: "Chrissy",
       role: "Beisitzerin",
       bio: "Chrissy engagiert sich als Beisitzerin im Vorstand und trägt mit ihrer Expertise zur Weiterentwicklung der Tierschutzprojekte bei.",
-      image: "/images/team/WhatsApp Image 2025-03-24 at 18.11.30.jpeg"
+      image: "/images/team/WhatsApp Image 2025-03-25 at 23.49.01.jpeg"
     },
     {
       name: "Lara",
@@ -75,14 +69,14 @@ const Team = () => {
                   <div className="flex space-x-3">
                     <a 
                       href="#" 
-                      className="text-primary hover:text-secondary transition-colors"
+                      className="text-primary hover:text-accent-blue transition-colors"
                       aria-label={`Email ${member.name}`}
                     >
                       <Mail size={18} />
                     </a>
                     <a 
                       href="#" 
-                      className="text-primary hover:text-secondary transition-colors"
+                      className="text-primary hover:text-accent-blue transition-colors"
                       aria-label={`Instagram-Profil von ${member.name}`}
                     >
                       <Instagram size={18} />
@@ -110,7 +104,7 @@ const Team = () => {
               </div>
               <div className="h-full">
                 <img 
-                  src="/images/lombok/WhatsApp Image 2025-03-24 at 18.13.23 (9).jpeg" 
+                  src="/images/HeroImage.png" 
                   alt="Team im Einsatz mit Hunden" 
                   className="w-full h-full object-cover"
                 />
