@@ -30,7 +30,7 @@ const Footer = () => {
               <img 
                 src="/images/logo.png" 
                 alt="FAM for Dogs e.V. Logo" 
-                className="h-16 bg-white/90 p-1 rounded" 
+                className="h-24 bg-white/90 p-2 rounded" 
               />
             </Link>
             <p className="text-white/80 mb-6 font-futura">
