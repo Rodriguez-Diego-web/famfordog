@@ -196,23 +196,31 @@ const Navbar = () => {
           
           {/* Mobile About Dropdown */}
           <div className="py-3">
-            <button 
-              onClick={() => {
-                navigate('/about');
-                setMobileMenuOpen(false);
-              }}
-              className={`flex items-center text-sm font-medium font-futura ${
-                isAboutPage
-                  ? 'text-white font-bold'
-                  : 'text-white/90 hover:text-white'
-              }`}
-            >
-              Über Uns
-              <ChevronDown size={16} className={`ml-1 transition-transform ${aboutDropdownOpen ? 'rotate-180' : ''}`} onClick={(e) => {
-                e.stopPropagation();
-                setAboutDropdownOpen(!aboutDropdownOpen);
-              }} />
-            </button>
+            <div className="flex items-center justify-between">
+              <button 
+                onClick={() => {
+                  navigate('/about');
+                  setMobileMenuOpen(false);
+                }}
+                className={`flex items-center text-sm font-medium font-futura ${
+                  isAboutPage
+                    ? 'text-white font-bold'
+                    : 'text-white/90 hover:text-white'
+                }`}
+              >
+                Über Uns
+              </button>
+              <button 
+                onClick={() => setAboutDropdownOpen(!aboutDropdownOpen)}
+                className="ml-2 p-2" 
+                aria-label="Toggle about dropdown"
+              >
+                <ChevronDown 
+                  size={16} 
+                  className={`transition-transform ${aboutDropdownOpen ? 'rotate-180' : ''}`} 
+                />
+              </button>
+            </div>
             
             {aboutDropdownOpen && (
               <div className="pl-4 mt-2 space-y-2">
