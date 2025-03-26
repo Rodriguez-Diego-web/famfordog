@@ -24,7 +24,7 @@ const WhoWeAreSection = () => {
   ];
 
   return (
-    <section className="py-16 bg-white">
+    <section className="py-16 bg-accent-pink/15">
       <div className="container mx-auto px-6">
         <div className="text-center mb-12">
           <h2 className="text-4xl md:text-5xl font-bold text-primary mb-4 font-glorious">Unsere FAMily</h2>
@@ -39,7 +39,7 @@ const WhoWeAreSection = () => {
           {teamMembers.map((member, index) => (
             <div 
               key={index} 
-              className="bg-gray-50 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2"
+              className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2"
             >
               <div className="h-56 overflow-hidden">
                 {member.image ? (
@@ -47,6 +47,11 @@ const WhoWeAreSection = () => {
                     src={member.image} 
                     alt={member.name} 
                     className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+                    style={
+                      member.name === "Kira" ? { objectPosition: "center 20%" } : 
+                      member.name === "Fiona & Mieke" ? { objectPosition: "center 20%" } : 
+                      {}
+                    }
                   />
                 ) : (
                   <div className="w-full h-full bg-accent-blue flex items-center justify-center">

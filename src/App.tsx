@@ -15,6 +15,13 @@ import AdoptionHowTo from "./pages/AdoptionHowTo";
 import AdoptionFAQ from "./pages/AdoptionFAQ";
 import AdoptionFees from "./pages/AdoptionFees";
 import SuccessStories from "./pages/SuccessStories";
+import OurDogs from "./pages/OurDogs";
+import JoinFamily from "./pages/JoinFamily";
+import Imprint from "./pages/Imprint";
+import Privacy from "./pages/Privacy";
+import CookiePolicy from "./pages/CookiePolicy";
+import EmergencyReport from "./pages/EmergencyReport";
+import CookieConsent from "./components/CookieConsent";
 
 const queryClient = new QueryClient();
 
@@ -27,10 +34,16 @@ const App = () => (
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/about" element={<About />} />
-          <Route path="/mission" element={<Mission />} />
-          <Route path="/team" element={<Team />} />
+          <Route path="/mission" element={<About />} />
+          <Route path="/team" element={<About />} />
           <Route path="/donate" element={<Donate />} />
           <Route path="/volunteer" element={<Volunteer />} />
+          <Route path="/our-dogs" element={<OurDogs />} />
+          <Route path="/join-family" element={<JoinFamily />} />
+          <Route path="/emergency-report" element={<EmergencyReport />} />
+          <Route path="/imprint" element={<Imprint />} />
+          <Route path="/privacy" element={<Privacy />} />
+          <Route path="/cookie-policy" element={<CookiePolicy />} />
           <Route path="/adoption-process" element={<AdoptionProcess />} />
           <Route path="/adoption-how-to" element={<AdoptionHowTo />} />
           <Route path="/adoption-faq" element={<AdoptionFAQ />} />
@@ -39,6 +52,7 @@ const App = () => (
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
+        <CookieConsent />
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>

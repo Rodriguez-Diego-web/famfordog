@@ -17,7 +17,7 @@ const VideoSection = () => {
   };
 
   return (
-    <section id="video" className="py-24 bg-gradient-to-b from-white to-gray-50 relative overflow-hidden">
+    <section id="video" className="py-24 bg-accent-green/15 relative overflow-hidden">
       {/* Decorative elements */}
       <div className="absolute top-0 right-0 w-64 h-64 rounded-full bg-accent-blue/10 blur-3xl"></div>
       <div className="absolute bottom-0 left-0 w-80 h-80 rounded-full bg-accent-pink/10 blur-3xl"></div>

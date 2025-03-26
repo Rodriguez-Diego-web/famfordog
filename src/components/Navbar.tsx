@@ -1,12 +1,14 @@
-import { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { useState, useEffect, useRef } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Menu, X, ChevronDown } from 'lucide-react';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [adoptionDropdownOpen, setAdoptionDropdownOpen] = useState(false);
+  const [aboutDropdownOpen, setAboutDropdownOpen] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
+  const aboutDropdownRef = useRef(null);
   
   // Check if we're on the homepage
   const isHomePage = location.pathname === '/';
@@ -36,31 +38,43 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, [isHomePage]);
 
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (aboutDropdownRef.current && !aboutDropdownRef.current.contains(event.target)) {
+        setAboutDropdownOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
+
   const toggleMobileMenu = () => {
     setMobileMenuOpen(!mobileMenuOpen);
   };
 
-  const toggleAdoptionDropdown = () => {
-    setAdoptionDropdownOpen(!adoptionDropdownOpen);
+  const toggleAboutDropdown = () => {
+    setAboutDropdownOpen(!aboutDropdownOpen);
   };
+
+  const aboutItems = [
+    { name: 'Unsere Mission', path: '/about', fragment: 'mission' },
+    { name: 'Unsere Standorte', path: '/about', fragment: 'locations' },
+    { name: 'Unsere Geschichte', path: '/about', fragment: 'history' },
+    { name: 'Unsere FAMily', path: '/about', fragment: 'family' }
+  ];
 
   const navItems = [
     { name: 'Home', path: '/' },
-    { name: 'Über Uns', path: '/about' },
-    { name: 'Mission', path: '/mission' },
-    { name: 'Team', path: '/team' },
-    { name: 'Fördermitglieder', path: '/volunteer' },
+    { name: 'Unsere Hunde', path: '/our-dogs' },
+    { name: 'Sei Teil der FAMily!', path: '/join-family' },
+    { name: 'TIERNOTFALL MELDEN', path: '/emergency-report', highlight: true },
   ];
 
-  const adoptionItems = [
-    { name: 'Adoptionsprozess', path: '/adoption-process' },
-    { name: 'Wie man adoptiert', path: '/adoption-how-to' },
-    { name: 'FAQ', path: '/adoption-faq' },
-    { name: 'Gebühren', path: '/adoption-fees' },
-    { name: 'Erfolgsgeschichten', path: '/success-stories' },
-  ];
-
-  const isAdoptionPage = adoptionItems.some(item => location.pathname === item.path);
+  const isAboutPage = location.pathname === '/about';
 
   return (
     <header 
@@ -81,47 +95,43 @@ const Navbar = () => {
         
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center space-x-8">
-          {navItems.map((item) => (
-            <Link
-              key={item.name}
-              to={item.path}
-              className={`text-sm font-medium tracking-wide transition-colors duration-200 font-futura ${
-                location.pathname === item.path
+          <Link
+            to="/"
+            className={`text-sm font-medium tracking-wide transition-colors duration-200 font-futura ${
+              location.pathname === '/'
+                ? 'text-white font-bold'
+                : 'text-white/90 hover:text-white'
+            }`}
+          >
+            Home
+          </Link>
+          
+          {/* About Us Dropdown */}
+          <div className="relative" ref={aboutDropdownRef}>
+            <button 
+              onClick={() => navigate('/about')}
+              onMouseEnter={() => setAboutDropdownOpen(true)}
+              className={`flex items-center text-sm font-medium tracking-wide transition-colors duration-200 font-futura ${
+                isAboutPage
                   ? 'text-white font-bold'
                   : 'text-white/90 hover:text-white'
               }`}
             >
-              {item.name}
-            </Link>
-          ))}
-          
-          {/* Adoption Dropdown - Hidden but code preserved */}
-          {/* 
-          <div className="relative">
-            <button 
-              onClick={toggleAdoptionDropdown}
-              className={`flex items-center text-sm font-medium tracking-wide transition-colors duration-200 font-futura ${
-                isAdoptionPage
-                  ? 'text-accent-blue'
-                  : 'text-white hover:text-accent-blue'
-              }`}
-            >
-              Adoption
-              <ChevronDown size={16} className="ml-1" />
+              Über Uns
+              <ChevronDown size={16} className={`ml-1 transition-transform ${aboutDropdownOpen ? 'rotate-180' : ''}`} />
             </button>
             
-            {adoptionDropdownOpen && (
-              <div className="absolute top-full left-0 mt-2 w-56 bg-black/95 backdrop-blur-lg rounded-md shadow-lg py-2 z-50">
-                {adoptionItems.map((item) => (
+            {aboutDropdownOpen && (
+              <div 
+                className="absolute top-full left-0 mt-2 w-56 bg-accent-blue/95 backdrop-blur-lg rounded-md shadow-lg py-2 z-50"
+                onMouseLeave={() => setAboutDropdownOpen(false)}
+              >
+                {aboutItems.map((item) => (
                   <Link
                     key={item.name}
-                    to={item.path}
-                    className={`block px-4 py-2 text-sm font-futura ${
-                      location.pathname === item.path
-                        ? 'text-accent-blue'
-                        : 'text-white hover:text-accent-blue'
-                    }`}
-                    onClick={() => setAdoptionDropdownOpen(false)}
+                    to={`${item.path}#${item.fragment}`}
+                    className="block px-4 py-2 text-sm font-futura text-white/90 hover:text-white hover:bg-accent-blue/80"
+                    onClick={() => setAboutDropdownOpen(false)}
                   >
                     {item.name}
                   </Link>
@@ -129,7 +139,27 @@ const Navbar = () => {
               </div>
             )}
           </div>
-          */}
+          
+          {/* Other Nav Items */}
+          {navItems.map((item) => (
+            item.name !== 'Home' && (
+              <Link
+                key={item.name}
+                to={item.path}
+                className={`text-sm font-medium tracking-wide transition-colors duration-200 font-futura ${
+                  location.pathname === item.path
+                    ? 'text-white font-bold'
+                    : 'text-white/90 hover:text-white'
+                } ${
+                  item.highlight 
+                    ? "bg-red-600 text-white hover:bg-red-700 rounded-full px-4 py-2 font-bold" 
+                    : ""
+                }`}
+              >
+                {item.name}
+              </Link>
+            )
+          ))}
           
           <Link
             to="/donate"
@@ -152,48 +182,49 @@ const Navbar = () => {
       {/* Mobile Menu */}
       {mobileMenuOpen && (
         <div className="md:hidden bg-accent-blue/95 backdrop-blur-lg absolute top-full left-0 right-0 flex flex-col p-6 animate-fade-in">
-          {navItems.map((item) => (
-            <Link
-              key={item.name}
-              to={item.path}
-              className={`text-sm font-medium py-3 font-futura ${
-                location.pathname === item.path
+          <Link
+            to="/"
+            className={`text-sm font-medium py-3 font-futura ${
+              location.pathname === '/'
+                ? 'text-white font-bold'
+                : 'text-white/90 hover:text-white'
+            }`}
+            onClick={() => setMobileMenuOpen(false)}
+          >
+            Home
+          </Link>
+          
+          {/* Mobile About Dropdown */}
+          <div className="py-3">
+            <button 
+              onClick={() => {
+                navigate('/about');
+                setMobileMenuOpen(false);
+              }}
+              className={`flex items-center text-sm font-medium font-futura ${
+                isAboutPage
                   ? 'text-white font-bold'
                   : 'text-white/90 hover:text-white'
               }`}
-              onClick={() => setMobileMenuOpen(false)}
             >
-              {item.name}
-            </Link>
-          ))}
-          
-          {/* Mobile Adoption Menu - Hidden but code preserved */}
-          {/*
-          <div className="py-3">
-            <button 
-              onClick={() => setAdoptionDropdownOpen(!adoptionDropdownOpen)}
-              className={`flex items-center text-sm font-medium font-futura ${
-                isAdoptionPage
-                  ? 'text-accent-blue'
-                  : 'text-white hover:text-accent-blue'
-              }`}
-            >
-              Adoption
-              <ChevronDown size={16} className={`ml-1 transition-transform ${adoptionDropdownOpen ? 'rotate-180' : ''}`} />
+              Über Uns
+              <ChevronDown size={16} className={`ml-1 transition-transform ${aboutDropdownOpen ? 'rotate-180' : ''}`} onClick={(e) => {
+                e.stopPropagation();
+                setAboutDropdownOpen(!aboutDropdownOpen);
+              }} />
             </button>
             
-            {adoptionDropdownOpen && (
+            {aboutDropdownOpen && (
               <div className="pl-4 mt-2 space-y-2">
-                {adoptionItems.map((item) => (
+                {aboutItems.map((item) => (
                   <Link
                     key={item.name}
-                    to={item.path}
-                    className={`block py-2 text-sm font-futura ${
-                      location.pathname === item.path
-                        ? 'text-accent-blue'
-                        : 'text-white hover:text-accent-blue'
-                    }`}
-                    onClick={() => setMobileMenuOpen(false)}
+                    to={`${item.path}#${item.fragment}`}
+                    className="block py-2 text-sm font-futura text-white/90 hover:text-white"
+                    onClick={() => {
+                      setAboutDropdownOpen(false);
+                      setMobileMenuOpen(false);
+                    }}
                   >
                     {item.name}
                   </Link>
@@ -201,11 +232,32 @@ const Navbar = () => {
               </div>
             )}
           </div>
-          */}
+          
+          {/* Other Mobile Nav Items */}
+          {navItems.map((item) => (
+            item.name !== 'Home' && (
+              <Link
+                key={item.name}
+                to={item.path}
+                className={`text-sm font-medium py-3 font-futura ${
+                  location.pathname === item.path
+                    ? 'text-white font-bold'
+                    : 'text-white/90 hover:text-white'
+                } ${
+                  item.highlight 
+                    ? "bg-red-600 text-white hover:bg-red-700 rounded-full px-4 py-2 font-bold my-2" 
+                    : ""
+                }`}
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                {item.name}
+              </Link>
+            )
+          ))}
           
           <Link
             to="/donate"
-            className="bg-accent-red hover:bg-accent-red/90 text-white px-5 py-3 rounded-full text-sm font-medium mt-4 flex items-center justify-center transition-all duration-200 font-futura"
+            className="bg-accent-red hover:bg-accent-red/90 text-white px-5 py-2 rounded-full text-sm font-medium my-3 inline-block w-fit font-futura"
             onClick={() => setMobileMenuOpen(false)}
           >
             Spenden

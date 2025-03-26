@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 
 const JoinTeamSection = () => {
   return (
-    <section className="py-16 bg-white">
+    <section className="py-16 bg-secondary/10">
       <div className="container mx-auto px-6">
         <div className="bg-primary rounded-2xl overflow-hidden shadow-xl">
           <div className="grid grid-cols-1 md:grid-cols-2">

@@ -163,13 +163,22 @@ const Footer = () => {
             </p>
           </div>
           
-          <div className="mt-4 md:mt-0 flex space-x-6">
-            <Link to="/privacy-policy" className="text-white/60 hover:text-accent-yellow text-sm transition-colors font-futura">
+          <div className="mt-4 md:mt-0 flex flex-wrap gap-4 justify-center">
+            <Link to="/imprint" className="text-white/60 hover:text-accent-yellow text-sm transition-colors font-futura">
+              Impressum
+            </Link>
+            <Link to="/privacy" className="text-white/60 hover:text-accent-blue text-sm transition-colors font-futura">
               Datenschutz
             </Link>
-            <Link to="/terms-of-service" className="text-white/60 hover:text-accent-blue text-sm transition-colors font-futura">
-              Nutzungsbedingungen
+            <Link to="/cookie-policy" className="text-white/60 hover:text-accent-pink text-sm transition-colors font-futura">
+              Cookie-Richtlinie
             </Link>
+            <button 
+              onClick={() => window.openCookieSettings && window.openCookieSettings()}
+              className="text-white/60 hover:text-accent-green text-sm transition-colors font-futura cursor-pointer"
+            >
+              Cookie-Einstellungen
+            </button>
           </div>
         </div>
       </div>

@@ -117,12 +117,12 @@ const Hero = () => {
     <div className="min-h-screen flex items-center relative overflow-hidden">
       {/* Farbenfroher Hintergrund */}
       <div className="absolute inset-0 z-0">
-        {/* Hauptfarben-Blöcke */}
-        <div className="absolute top-0 left-0 w-1/3 h-full bg-primary"></div> {/* Grün links */}
-        <div className="absolute top-0 right-0 w-1/3 h-1/2 bg-secondary"></div> {/* Gelb oben rechts */}
-        <div className="absolute bottom-0 right-0 w-1/3 h-1/2 bg-accent-pink"></div> {/* Pink unten rechts */}
-        <div className="absolute top-0 left-1/3 w-1/3 h-1/2 bg-accent-blue"></div> {/* Blau Mitte oben */}
-        <div className="absolute bottom-0 left-1/3 w-1/3 h-1/2 bg-accent-red"></div> {/* Rot Mitte unten */}
+        {/* Hauptfarben-Blöcke mit leichter Transparenz für bessere Lesbarkeit */}
+        <div className="absolute top-0 left-0 w-1/3 h-full bg-primary/90"></div> {/* Grün links */}
+        <div className="absolute top-0 right-0 w-1/3 h-1/2 bg-secondary/90"></div> {/* Gelb oben rechts */}
+        <div className="absolute bottom-0 right-0 w-1/3 h-1/2 bg-accent-pink/90"></div> {/* Pink unten rechts */}
+        <div className="absolute top-0 left-1/3 w-1/3 h-1/2 bg-accent-blue/90"></div> {/* Blau Mitte oben */}
+        <div className="absolute bottom-0 left-1/3 w-1/3 h-1/2 bg-accent-green/90"></div> {/* Grün Mitte unten (statt Rot) */}
         
         {/* Dekorative Elemente */}
         <div className="absolute top-1/4 left-1/4 w-24 h-24 rounded-full bg-accent-yellow opacity-70 blur-md"></div>
@@ -130,7 +130,7 @@ const Hero = () => {
         <div className="absolute top-3/4 left-2/3 w-16 h-16 rounded-full bg-accent-pink opacity-60 blur-sm"></div>
         
         {/* Overlay für bessere Lesbarkeit */}
-        <div className="absolute inset-0 bg-black/20 backdrop-blur-sm"></div>
+        <div className="absolute inset-0 bg-black/30 backdrop-blur-sm"></div>
       </div>
       
       <div className="container mx-auto px-6 pt-20 z-20 relative">

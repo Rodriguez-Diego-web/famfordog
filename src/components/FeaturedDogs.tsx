@@ -6,30 +6,30 @@ import { Link } from 'react-router-dom';
 const featuredDogs = [
   {
     id: 1,
-    name: 'Bella',
-    age: '2 Jahre',
-    breed: 'Golden Retriever Mix',
-    description: 'Freundlich und verspielt, liebt Outdoor-Aktivitäten und Kinder.',
-    image: '/images/lombok/dog1.jpg',
-    tags: ['Freundlich', 'Trainiert', 'Aktiv']
+    name: 'Max',
+    age: '5 Jahre',
+    breed: 'Schäferhund-Mix',
+    description: 'Max wurde in einem Tierheim in Rumänien gefunden. Er ist ruhig und anhänglich.',
+    image: '/images/Rumanien/WhatsApp Image 2025-03-24 at 18.13.23 (3).jpeg',
+    tags: ['Ruhig', 'Anhänglich', 'Spezielle Pflege']
   },
   {
     id: 2,
-    name: 'Max',
-    age: '3 Jahre',
-    breed: 'Schäferhund Mix',
-    description: 'Intelligent und loyal, großartig mit Familien und anderen Haustieren.',
-    image: '/images/lombok/dog2.jpg',
-    tags: ['Beschützend', 'Intelligent', 'Loyal']
+    name: 'Bella',
+    age: '2 Jahre',
+    breed: 'Terrier-Mix',
+    description: 'Bella wurde als Welpe ausgesetzt. Sie ist energiegeladen und liebt Menschen.',
+    image: '/images/Rumanien/WhatsApp Image 2025-03-24 at 18.13.23 (5).jpeg',
+    tags: ['Energiegeladen', 'Freundlich', 'Training']
   },
   {
     id: 3,
-    name: 'Charlie',
-    age: '1 Jahr',
-    breed: 'Labrador Mix',
-    description: 'Energetisch und liebevoll, braucht einen aktiven Haushalt.',
-    image: '/images/lombok/dog3.jpg',
-    tags: ['Verspielt', 'Jung', 'Energiegeladen']
+    name: 'Daze',
+    age: '4 Jahre',
+    breed: 'Mischling',
+    description: 'Daze wurde in einem verlassenen Gebäude gefunden. Er ist freundlich und liebevoll.',
+    image: '/Hunde:Daze/WhatsApp Image 2025-03-26 at 15.08.17.jpeg',
+    tags: ['Freundlich', 'Liebevoll', 'Besondere Aufmerksamkeit']
   }
 ];
 
@@ -45,7 +45,7 @@ const FeaturedDogs = () => {
   };
 
   return (
-    <section className="py-20 bg-gray-50 relative overflow-hidden">
+    <section className="py-20 bg-accent-blue/15 relative overflow-hidden">
       {/* Decorative elements */}
       <div className="absolute -top-16 -right-16 opacity-5">
         <PawPrint size={200} className="text-primary" />
@@ -117,8 +117,8 @@ const FeaturedDogs = () => {
         
         <div className="mt-14 text-center">
           <Link 
-            to="/about" 
-            className="inline-block bg-secondary hover:bg-secondary/90 text-white px-8 py-3 rounded-full font-medium transition-all duration-300 hover:shadow-lg font-futura"
+            to="/our-dogs" 
+            className="inline-block bg-secondary hover:bg-secondary/90 text-primary px-8 py-3 rounded-full font-medium transition-all duration-300 hover:shadow-lg font-futura"
           >
             Alle Hunde ansehen
           </Link>
