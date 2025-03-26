@@ -5,28 +5,24 @@ import { Link } from 'react-router-dom';
 const heroSlides = [
   {
     id: 1,
-    image: '/images/HeroImage.png',
     title: 'FAM',
     subtitle: 'for Dogs e.V.',
     description: 'Fight and Movement for Dogs. Wir setzen uns für nachhaltigen Tierschutz ein – mit Fokus auf die Verbesserung der Lebensbedingungen für Straßenhunde.'
   },
   {
     id: 2,
-    image: '/images/HeroImage.png', // Using the same image as a fallback until HeroImage2.png is added
     title: 'Hilfe',
     subtitle: 'für Straßenhunde',
     description: 'Wir helfen Hunden in Not und geben ihnen eine zweite Chance auf ein glückliches Leben in einem liebevollen Zuhause.'
   },
   {
     id: 3,
-    image: '/images/HeroImage.png', // Using the same image as a fallback until HeroImage3.png is added
     title: 'Liebe',
     subtitle: 'in Aktion',
     description: 'Unsere Freiwilligen arbeiten unermüdlich daran, vernachlässigten und misshandelten Hunden eine bessere Zukunft zu ermöglichen.'
   },
   {
     id: 4,
-    image: '/images/HeroImage.png', // Using the same image as a fallback until HeroImage4.png is added
     title: 'Zuhause',
     subtitle: 'für immer',
     description: 'Durch Adoption und Pflege finden unsere Hunde das liebevolle Zuhause, das sie verdienen – für den Rest ihres Lebens.'
@@ -117,26 +113,33 @@ const Hero = () => {
 
   const slide = heroSlides[currentSlide];
 
+  // Colors for each shape (using our brand colors)
+  const colorShapes = [
+    { color: '#004a4a', style: 'absolute top-0 left-0 w-1/2 h-screen transform -skew-x-12 origin-top-right' }, // Green
+    { color: '#d3e173', style: 'absolute top-0 right-0 w-3/5 h-screen transform skew-x-12 origin-top-left' }, // Yellow
+    { color: '#f6b7d3', style: 'absolute bottom-0 right-0 w-1/2 h-3/5 transform skew-x-12 origin-bottom-right' }, // Pink
+    { color: '#b1d6df', style: 'absolute top-1/3 left-1/4 w-1/3 h-1/3 rounded-full blur-xl opacity-40' }, // Blue blur
+    { color: '#EB552D', style: 'absolute bottom-1/4 left-10 w-64 h-64 rounded-full blur-xl opacity-30' }, // Orange blur
+  ];
+
   return (
-    <div className="min-h-screen bg-black flex items-center relative overflow-hidden">
-      {/* Background image with overlay */}
+    <div className="min-h-screen flex items-center relative overflow-hidden">
+      {/* Colorful geometric background */}
       <div className="absolute inset-0 z-0">
-        <div className="absolute inset-0 bg-gradient-to-r from-black/80 to-black/50 z-10"></div>
-        
-        {/* Hero images with transition effect */}
-        {heroSlides.map((slide, index) => (
-          <img 
-            key={slide.id}
-            src={slide.image} 
-            alt={`Slide ${slide.id}`}
-            className={`absolute inset-0 object-cover w-full h-full object-right transition-opacity duration-1000 ${
-              index === currentSlide ? 'opacity-100' : 'opacity-0'
-            }`}
-          />
+        {/* Color shapes */}
+        {colorShapes.map((shape, i) => (
+          <div 
+            key={i} 
+            className={shape.style}
+            style={{ backgroundColor: shape.color }}
+          ></div>
         ))}
+        
+        {/* Optional overlay for better text readability */}
+        <div className="absolute inset-0 bg-black/10 backdrop-blur-sm z-10"></div>
       </div>
       
-      <div className="container mx-auto px-6 pt-20 z-10 relative">
+      <div className="container mx-auto px-6 pt-20 z-20 relative">
         <div className="max-w-2xl">
           <h1 ref={headingRef} className="text-5xl sm:text-6xl md:text-7xl font-bold mb-6">
             <span className="text-white font-glorious">{slide.title}</span><br />
