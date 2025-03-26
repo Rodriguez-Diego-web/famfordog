@@ -71,11 +71,11 @@ const Navbar = () => {
       }`}
     >
       <div className="container mx-auto px-6 flex justify-between items-center">
-        <Link to="/" className="flex items-center">
+        <Link to="/" className="flex items-center -ml-4 md:-ml-4">
           <img 
             src="/images/logo.png" 
             alt="FAM for Dogs e.V. Logo" 
-            className="h-16 md:h-20"
+            className="h-20 md:h-20"
           />
         </Link>
         
