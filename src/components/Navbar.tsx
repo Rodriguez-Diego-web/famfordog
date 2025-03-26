@@ -6,6 +6,7 @@ const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [aboutDropdownOpen, setAboutDropdownOpen] = useState(false);
+  const [mobileDropdownOpen, setMobileDropdownOpen] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
   const aboutDropdownRef = useRef(null);
@@ -58,6 +59,10 @@ const Navbar = () => {
 
   const toggleAboutDropdown = () => {
     setAboutDropdownOpen(!aboutDropdownOpen);
+  };
+
+  const toggleMobileDropdown = () => {
+    setMobileDropdownOpen(!mobileDropdownOpen);
   };
 
   const aboutItems = [
@@ -196,41 +201,43 @@ const Navbar = () => {
           
           {/* Mobile About Dropdown */}
           <div className="py-3">
-            <div className="flex items-center justify-between">
-              <button 
-                onClick={() => {
-                  navigate('/about');
-                  setMobileMenuOpen(false);
-                }}
-                className={`flex items-center text-sm font-medium font-futura ${
-                  isAboutPage
-                    ? 'text-white font-bold'
-                    : 'text-white/90 hover:text-white'
-                }`}
-              >
-                Über Uns
-              </button>
-              <button 
-                onClick={() => setAboutDropdownOpen(!aboutDropdownOpen)}
-                className="ml-2 p-2" 
-                aria-label="Toggle about dropdown"
-              >
-                <ChevronDown 
-                  size={16} 
-                  className={`transition-transform ${aboutDropdownOpen ? 'rotate-180' : ''}`} 
-                />
-              </button>
+            <div className="flex flex-col w-full">
+              <div className="flex justify-between items-center w-full">
+                <button 
+                  onClick={() => {
+                    navigate('/about');
+                    setMobileMenuOpen(false);
+                  }}
+                  className={`flex-1 text-left text-sm font-medium py-2 font-futura ${
+                    isAboutPage
+                      ? 'text-white font-bold'
+                      : 'text-white/90 hover:text-white'
+                  }`}
+                >
+                  Über Uns
+                </button>
+                <button 
+                  onClick={toggleMobileDropdown}
+                  className="p-3 ml-2" 
+                  aria-label="Toggle about dropdown"
+                >
+                  <ChevronDown 
+                    size={24} 
+                    className={`transition-transform ${mobileDropdownOpen ? 'rotate-180' : ''}`} 
+                  />
+                </button>
+              </div>
             </div>
             
-            {aboutDropdownOpen && (
-              <div className="pl-4 mt-2 space-y-2">
+            {mobileDropdownOpen && (
+              <div className="pl-4 mt-2 space-y-1 border-l border-white/20">
                 {aboutItems.map((item) => (
                   <Link
                     key={item.name}
                     to={`${item.path}#${item.fragment}`}
-                    className="block py-2 text-sm font-futura text-white/90 hover:text-white"
+                    className="block py-3 text-sm font-futura text-white/90 hover:text-white"
                     onClick={() => {
-                      setAboutDropdownOpen(false);
+                      setMobileDropdownOpen(false);
                       setMobileMenuOpen(false);
                     }}
                   >
