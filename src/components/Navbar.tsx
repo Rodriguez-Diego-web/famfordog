@@ -7,9 +7,12 @@ const Navbar = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [aboutDropdownOpen, setAboutDropdownOpen] = useState(false);
   const [mobileDropdownOpen, setMobileDropdownOpen] = useState(false);
+  const [projectsDropdownOpen, setProjectsDropdownOpen] = useState(false);
+  const [mobileProjectsDropdownOpen, setMobileProjectsDropdownOpen] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
   const aboutDropdownRef = useRef(null);
+  const projectsDropdownRef = useRef(null);
   
   // Check if we're on the homepage
   const isHomePage = location.pathname === '/';
@@ -45,6 +48,9 @@ const Navbar = () => {
       if (aboutDropdownRef.current && !aboutDropdownRef.current.contains(event.target)) {
         setAboutDropdownOpen(false);
       }
+      if (projectsDropdownRef.current && !projectsDropdownRef.current.contains(event.target)) {
+        setProjectsDropdownOpen(false);
+      }
     };
 
     document.addEventListener('mousedown', handleClickOutside);
@@ -65,11 +71,28 @@ const Navbar = () => {
     setMobileDropdownOpen(!mobileDropdownOpen);
   };
 
+  const toggleProjectsDropdown = () => {
+    setProjectsDropdownOpen(!projectsDropdownOpen);
+  };
+
+  const toggleMobileProjectsDropdown = () => {
+    setMobileProjectsDropdownOpen(!mobileProjectsDropdownOpen);
+  };
+
   const aboutItems = [
     { name: 'Unsere Mission', path: '/about', fragment: 'mission' },
     { name: 'Unsere Standorte', path: '/about', fragment: 'locations' },
     { name: 'Unsere Geschichte', path: '/about', fragment: 'history' },
     { name: 'Unsere FAMily', path: '/about', fragment: 'family' }
+  ];
+
+  const projectItems = [
+    { name: 'Kastrationsprojekte', path: '/projects/kastrationsprojekte' },
+    { name: 'Wounded Program', path: '/projects/wounded-program' },
+    { name: 'Fütterungstouren', path: '/projects/fuetterungstouren' },
+    { name: 'Shelter Lombok', path: '/projects/shelter-lombok' },
+    { name: 'Public Shelter Rumänien', path: '/projects/public-shelter-rumaenien' },
+    { name: 'Tierrettungen', path: '/projects/tierrettungen' }
   ];
 
   const navItems = [
@@ -137,6 +160,40 @@ const Navbar = () => {
                     to={`${item.path}#${item.fragment}`}
                     className="block px-4 py-2 text-sm font-futura text-white/90 hover:text-white hover:bg-accent-blue/80"
                     onClick={() => setAboutDropdownOpen(false)}
+                  >
+                    {item.name}
+                  </Link>
+                ))}
+              </div>
+            )}
+          </div>
+          
+          {/* Projects Dropdown */}
+          <div className="relative" ref={projectsDropdownRef}>
+            <button 
+              onClick={() => navigate('/projects')}
+              onMouseEnter={() => setProjectsDropdownOpen(true)}
+              className={`flex items-center text-sm font-medium tracking-wide transition-colors duration-200 font-futura ${
+                location.pathname.startsWith('/projects')
+                  ? 'text-white font-bold'
+                  : 'text-white/90 hover:text-white'
+              }`}
+            >
+              Projekte
+              <ChevronDown size={16} className={`ml-1 transition-transform ${projectsDropdownOpen ? 'rotate-180' : ''}`} />
+            </button>
+            
+            {projectsDropdownOpen && (
+              <div 
+                className="absolute top-full left-0 mt-2 w-56 bg-accent-blue/95 backdrop-blur-lg rounded-md shadow-lg py-2 z-50"
+                onMouseLeave={() => setProjectsDropdownOpen(false)}
+              >
+                {projectItems.map((item) => (
+                  <Link
+                    key={item.name}
+                    to={item.path}
+                    className="block px-4 py-2 text-sm font-futura text-white/90 hover:text-white hover:bg-accent-blue/80"
+                    onClick={() => setProjectsDropdownOpen(false)}
                   >
                     {item.name}
                   </Link>
@@ -238,6 +295,55 @@ const Navbar = () => {
                     className="block py-3 text-sm font-futura text-white/90 hover:text-white"
                     onClick={() => {
                       setMobileDropdownOpen(false);
+                      setMobileMenuOpen(false);
+                    }}
+                  >
+                    {item.name}
+                  </Link>
+                ))}
+              </div>
+            )}
+          </div>
+          
+          {/* Mobile Projects Dropdown */}
+          <div className="py-3">
+            <div className="flex flex-col w-full">
+              <div className="flex justify-between items-center w-full">
+                <button 
+                  onClick={() => {
+                    navigate('/projects');
+                    setMobileMenuOpen(false);
+                  }}
+                  className={`flex-1 text-left text-sm font-medium py-2 font-futura ${
+                    location.pathname.startsWith('/projects')
+                      ? 'text-white font-bold'
+                      : 'text-white/90 hover:text-white'
+                  }`}
+                >
+                  Projekte
+                </button>
+                <button 
+                  onClick={toggleMobileProjectsDropdown}
+                  className="p-3 ml-2" 
+                  aria-label="Toggle projects dropdown"
+                >
+                  <ChevronDown 
+                    size={24} 
+                    className={`transition-transform ${mobileProjectsDropdownOpen ? 'rotate-180' : ''}`} 
+                  />
+                </button>
+              </div>
+            </div>
+            
+            {mobileProjectsDropdownOpen && (
+              <div className="pl-4 mt-2 space-y-1 border-l border-white/20">
+                {projectItems.map((item) => (
+                  <Link
+                    key={item.name}
+                    to={item.path}
+                    className="block py-3 text-sm font-futura text-white/90 hover:text-white"
+                    onClick={() => {
+                      setMobileProjectsDropdownOpen(false);
                       setMobileMenuOpen(false);
                     }}
                   >

@@ -11,22 +11,22 @@ const Team = () => {
 
   const boardMembers = [
     {
-      name: "Mieke & Fiona",
+      name: "Fiona & Mieke",
       role: "Gründerinnen & Vorsitzende",
-      bio: "Mieke und Fiona bilden gemeinsam die Doppelspitze des Vereins FAM for Dogs e.V. Beide engagieren sich schon seit vielen Jahren im Tierschutz – seit 2019 setzen sie sich als Team aktiv für Hunde in Not ein. Der Auslöser für ihr gemeinsames Engagement war eine Reise nach Rumänien – ein prägendes Erlebnis für die beiden, das den Wunsch noch mehr zu helfen verstärkt hat. Mieke, von Beruf Rechsanwältin, gründete zunächst den Verein Dogs of Lombok e.V. während eines mehrmonatigen beruflichen Aufenthalts in Indonesien im Jahr 2023. Heute wird der Verein unter dem Namen FAM for Dogs e.V. weitergeführt. Fiona ist Hundephysiotherapeutin und bringt ihre fachliche Expertise in die Betreuung geretteter Hunde ein. Auch ihre eigenen Hunde spiegeln ihre Tierschutzmission wider: Miekes Hund Jack lebte früher auf den Straßen Kuwaits, während Fiona drei Hunde aus Rumänien adoptiert hat – darunter einen mit Handicap. Darüber hinaus haben beide über die Jahre hinweg zahlreiche Pflegehunde bei sich aufgenommen, versorgt und auf ein neues Leben vorbereitet.",
+      bio: "Mieke und Fiona bilden gemeinsam die Doppelspitze des Vereins FAM for Dogs e.V. Beide engagieren sich schon seit vielen Jahren im Tierschutz – seit 2019 setzen sie sich als Team aktiv für Hunde in Not ein. Der Auslöser für ihr gemeinsames Engagement war eine Reise nach Rumänien – ein prägendes Erlebnis für die beiden, das den Wunsch noch mehr zu helfen verstärkt hat. Mieke, von Beruf Rechsanwältin, gründete zunächst den Verein Dogs of Lombok e.V. während eines mehrmonatigen beruflichen Aufenthalts in Indonesien im Jahr 2023. Heute wird der Verein unter dem Namen FAM for Dogs e.V. weitergeführt. Fiona ist Hundephysiotherapeutin und bringt ihre fachliche Expertise in die Betreuung geretteter Hunde ein.",
       image: "/images/team/WhatsApp Image 2025-03-24 at 18.11.30.jpeg"
-    },
-    {
-      name: "Kira",
-      role: "Vorstandsmitglied",
-      bio: "Kira ist neben ihrer Arbeit als Autorin, Dozentin und Podcast-Host auch leidenschaftliche Hundemama ihres rumänischen Rüden Homie. Als er 2020 Teil ihrer Familie wurde, war das der ausschlaggebende Punkt, sich mehr im Tierschutz zu engagieren. Erst als stille Spenderin und jetzt als Vorstandsmitglied beim FAM for Dogs e.V.. Kira ist unsere Orga-Queen und kümmert sich unter anderem um unsere Mitglieder und Sponsor:innen.",
-      image: "/images/team/Kira.jpeg"
     },
     {
       name: "Chrissy",
       role: "Beisitzerin",
       bio: "Chrissy engagiert sich als Beisitzerin im Vorstand und trägt mit ihrer Expertise zur Weiterentwicklung der Tierschutzprojekte bei.",
       image: "/images/team/WhatsApp Image 2025-03-25 at 23.49.01.jpeg"
+    },
+    {
+      name: "Kira",
+      role: "Vorstandsmitglied",
+      bio: "Kira ist neben ihrer Arbeit als Autorin, Dozentin und Podcast-Host auch leidenschaftliche Hundemama ihres rumänischen Rüden Homie. Als er 2020 Teil ihrer Familie wurde, war das der ausschlaggebende Punkt, sich mehr im Tierschutz zu engagieren. Erst als stille Spenderin und jetzt als Vorstandsmitglied beim FAM for Dogs e.V.. Kira ist unsere Orga-Queen und kümmert sich unter anderem um unsere Mitglieder und Sponsor:innen.",
+      image: "/images/team/Kira.jpeg"
     },
     {
       name: "Lara",
@@ -36,20 +36,71 @@ const Team = () => {
     }
   ];
 
-  const designerMembers = [
+  const activeMembers = [
     {
-      name: "Hanna",
-      role: "Designer",
-      bio: "Mit langjähriger Erfahrung in der Werbebranche sorgt Hanna für die visuelle Identität von FAM for Dogs. Ihr Auge fürs Detail und Gespür für Gestaltung trägt unsere Botschaft und die wichtige Arbeit für den Tierschutz in die Welt.",
+      name: "Daze",
+      role: "Aktives Mitglied",
+      bio: "Daze unterstützt den Verein mit großem Engagement und ist ein wichtiger Teil unseres Teams.",
+      image: "/images/team/WhatsApp Image 2025-03-24 at 18.11.30.jpeg"
+    },
+    {
+      name: "Hannah",
+      role: "Designerin",
+      bio: "Mit langjähriger Erfahrung in der Werbebranche sorgt Hannah für die visuelle Identität von FAM for Dogs. Ihr Auge fürs Detail und Gespür für Gestaltung trägt unsere Botschaft und die wichtige Arbeit für den Tierschutz in die Welt.",
       image: "/images/team/Hanna.jpeg"
-    }
-  ];
-
-  const developerMembers = [
+    },
     {
       name: "Diego",
       role: "Developer",
-      bio: "Als leidenschaftlicher Programmierer und Hundeliebhaber vereint Diego seine technischen Fähigkeiten mit seiner Liebe zu Vierbeinern. Er sorgt dafür, dass unsere digitale Präsenz reibungslos funktioniert und unsere Botschaft effektiv in die Online-Welt getragen wird. In seiner Freizeit verbringt er gerne Zeit mit Hunden und engagiert sich für ihre Rechte und ihr Wohlbefinden.",
+      bio: "Als leidenschaftlicher Programmierer und Hundeliebhaber vereint Diego seine technischen Fähigkeiten mit seiner Liebe zu Vierbeinern. Er sorgt dafür, dass unsere digitale Präsenz reibungslos funktioniert und unsere Botschaft effektiv in die Online-Welt getragen wird.",
+      image: "/images/team/WhatsApp Image 2025-03-24 at 18.11.30.jpeg"
+    }
+  ];
+
+  const lombokTeam = [
+    {
+      name: "Dani",
+      role: "Team Lombok",
+      bio: "Dani ist ein wichtiger Teil unseres Teams auf Lombok und setzt sich täglich für die Straßenhunde vor Ort ein.",
+      image: "/Dani/WhatsApp Image 2025-03-27 at 23.41.16.jpeg"
+    },
+    {
+      name: "Riani",
+      role: "Team Lombok",
+      bio: "Riani unterstützt unsere Arbeit auf Lombok und hilft bei der Betreuung und Versorgung der Straßenhunde.",
+      image: "/images/team/WhatsApp Image 2025-03-24 at 18.11.30.jpeg"
+    },
+    {
+      name: "Rita",
+      role: "Team Lombok",
+      bio: "Rita ist Teil unseres Teams auf Lombok und engagiert sich für das Wohl der Straßenhunde.",
+      image: "/images/team/WhatsApp Image 2025-03-24 at 18.11.30.jpeg"
+    },
+    {
+      name: "Rey",
+      role: "Team Lombok",
+      bio: "Rey unterstützt unsere Projekte auf Lombok und ist ein wichtiger Teil unseres lokalen Teams.",
+      image: "/images/team/WhatsApp Image 2025-03-24 at 18.11.30.jpeg"
+    },
+    {
+      name: "Vito",
+      role: "Team Lombok",
+      bio: "Vito setzt sich auf Lombok für die Straßenhunde ein und unterstützt unsere Projekte vor Ort.",
+      image: "/vito/WhatsApp Image 2025-03-27 at 23.43.56.jpeg"
+    },
+    {
+      name: "Aris",
+      role: "Team Lombok",
+      bio: "Aris ist Teil unseres Teams auf Lombok und hilft bei der Umsetzung unserer Tierschutzprojekte.",
+      image: "/Aris/WhatsApp Image 2025-03-27 at 23.54.21.jpeg"
+    }
+  ];
+
+  const romaniaTeam = [
+    {
+      name: "Team Rumänien",
+      role: "Wird ergänzt",
+      bio: "Unser Team in Rumänien wird bald hier vorgestellt.",
       image: "/images/team/WhatsApp Image 2025-03-24 at 18.11.30.jpeg"
     }
   ];
@@ -64,6 +115,10 @@ const Team = () => {
                 src={member.image} 
                 alt={member.name} 
                 className="w-full h-64 object-cover transition-transform duration-500 hover:scale-105"
+                onError={(e) => {
+                  const target = e.target as HTMLImageElement;
+                  target.src = '/images/placeholder.jpg'; // Fallback image
+                }}
               />
               <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4">
                 <h3 className="text-white text-xl font-semibold font-futura">{member.name}</h3>
@@ -112,11 +167,14 @@ const Team = () => {
           <h2 className="text-3xl font-bold text-primary mb-6 font-glorious">Vorstand</h2>
           {renderTeamMembers(boardMembers)}
           
-          <h2 className="text-3xl font-bold text-primary mb-6 font-glorious">Designer</h2>
-          {renderTeamMembers(designerMembers)}
+          <h2 className="text-3xl font-bold text-primary mb-6 font-glorious">Aktive Mitglieder</h2>
+          {renderTeamMembers(activeMembers)}
           
-          <h2 className="text-3xl font-bold text-primary mb-6 font-glorious">Developer</h2>
-          {renderTeamMembers(developerMembers)}
+          <h2 className="text-3xl font-bold text-primary mb-6 font-glorious">Unser Team vor Ort auf Lombok</h2>
+          {renderTeamMembers(lombokTeam)}
+          
+          <h2 className="text-3xl font-bold text-primary mb-6 font-glorious">Unser Team vor Ort in Rumänien</h2>
+          {renderTeamMembers(romaniaTeam)}
           
           <div className="bg-primary rounded-2xl overflow-hidden shadow-xl mb-16">
             <div className="grid grid-cols-1 md:grid-cols-2">
@@ -136,13 +194,6 @@ const Team = () => {
               <div className="bg-cover bg-center h-full min-h-[300px]" style={{ backgroundImage: 'url("/images/HeroImage.png")' }}></div>
             </div>
           </div>
-          
-          <h2 className="text-3xl font-bold text-primary mb-6 font-glorious">Ehrenamtliche Helfer</h2>
-          <p className="text-lg text-gray-700 mb-12 max-w-3xl font-futura">
-            Neben unserem Kernteam unterstützen uns viele ehrenamtliche Helfer bei unserer Arbeit. 
-            Ohne ihr Engagement wäre unsere Arbeit nicht möglich. Wir sind dankbar für jeden, der 
-            sich für unsere Mission einsetzt.
-          </p>
         </div>
       </main>
       <Footer />

@@ -87,21 +87,72 @@ const About = () => {
     }
   ];
 
-  const designerMembers = [
+  const activeMembers = [
+    {
+      name: "Daze",
+      role: "Aktives Mitglied",
+      bio: "Mehr als 40 Rettungsfälle, mehr als 160 Hunde in unserem Shelter, unzählige Hunde in unserer Feeding-Runde und dir fehlt ein Name? Frag Daze! Sie hat sie alle auf dem Schirm. Jeder Hund, der noch kastriert werden muss, der verletzt ist, der plötzlich sein Futter verweigert, der plötzlich nicht auftaucht – sie bemerkt ihn und organisiert die nötige Hilfe. Ohne sie wären wir verloren. Außerdem zaubert sie aus den schlechtesten Videos, die wir aus Indonesien bekommen beeindruckende Instagram-Stories. Sie ist unersetzlich wenn es darum geht, die Hunde sichtbar zu machen.",
+      image: "/Daze/WhatsApp Image 2025-03-26 at 15.08.17.jpeg"
+    },
     {
       name: "Hanna",
-      role: "Designer",
+      role: "Designerin",
       bio: "Mit langjähriger Erfahrung in der Werbebranche sorgt Hanna für die visuelle Identität von FAM for Dogs. Ihr Auge fürs Detail und Gespür für Gestaltung trägt unsere Botschaft und die wichtige Arbeit für den Tierschutz in die Welt.",
       image: "/images/team/Hanna.jpeg"
-    }
-  ];
-
-  const developerMembers = [
+    },
     {
       name: "Diego",
       role: "Developer",
       bio: "Als leidenschaftlicher Programmierer und Hundeliebhaber vereint Diego seine technischen Fähigkeiten mit seiner Liebe zu Vierbeinern. Er sorgt dafür, dass unsere digitale Präsenz reibungslos funktioniert und unsere Botschaft effektiv in die Online-Welt getragen wird. In seiner Freizeit verbringt er gerne Zeit mit seinem Hund Lucky und engagiert sich für die Rechte und das Wohlbefinden von Hunden.",
       image: "/Diego/Diego:Lucky.jpg"
+    }
+  ];
+
+  const lombokTeam = [
+    {
+      name: "Dani",
+      role: "Team Lombok",
+      bio: "Unser Engel von Lombok. Dani lebt für die Tiere und setzt sich mit unermüdlicher Hingabe für deren Wohl ein. Als der alte Shelter auf Lombok aufgrund von Drohungen aus der Nachbarschaft schließen musste, zögerte sie nicht: Kurzerhand wurde ihr eigenes Zuhause zum neuen Shelter. Wohnzimmer, Garten, Küche, Schlafzimmer, Wintergarten, alle Räume werden nun von Hunden und Katzen und auch von Dani bewohnt. 160 Hunde werden von Dani und ihrer Freundin Rey täglich versorgt. Ob Dani jemals schläft, weiß niemand. Denn jeder Notfall, jede Rettung, jeder Tierarztbesuch, jeder Kastrationstag wird von Dani persönlich organisiert. Sie ist nicht nur eine Tierschützerin, sondern ein wahrer Engel auf Erden.",
+      image: "/Dani/WhatsApp Image 2025-03-27 at 23.41.16.jpeg"
+    },
+    {
+      name: "Riani",
+      role: "Team Lombok",
+      bio: "Riani unterstützt unser Team auf Lombok und hilft bei der Versorgung und Betreuung der Straßenhunde.",
+      image: "/images/team/WhatsApp Image 2025-03-24 at 18.11.30.jpeg"
+    },
+    {
+      name: "Rita",
+      role: "Team Lombok",
+      bio: "Rita ist Teil unseres Teams auf Lombok und engagiert sich für das Wohl der Straßenhunde.",
+      image: "/images/team/WhatsApp Image 2025-03-24 at 18.11.30.jpeg"
+    },
+    {
+      name: "Rey",
+      role: "Team Lombok",
+      bio: "Rey unterstützt unser Team auf Lombok und trägt zur Verbesserung der Lebensbedingungen der Straßenhunde bei.",
+      image: "/images/team/WhatsApp Image 2025-03-24 at 18.11.30.jpeg"
+    },
+    {
+      name: "Vito",
+      role: "Team Lombok",
+      bio: "Vito ist der Sohn der Hausherrin Dani und wuchs umgeben von Tieren auf. Tief beeinflusst von der selbstlosen Liebe seiner Mutter zu allen Lebewesen, entwickelte er selbst ein großes Herz für Tiere. Im Laufe der Jahre hat er schon mehreren Hunden ein liebevolles Zuhause gegeben und kümmert sich mit großer Hingabe um die Hunde und Katzen in Shelter. Vito ist außerdem unser zuverlässiger Fahrer und derjenige, der unsere komplizierten Hunde-Rettungen durchführt.",
+      image: "/vito/WhatsApp Image 2025-03-27 at 23.43.56.jpeg"
+    },
+    {
+      name: "Aris",
+      role: "Indonesiens Allround-Talent",
+      bio: "Aris ist ein Mann mit vielen Talenten. Hunde sind für ihn nicht nur Haustiere, sondern treue Begleiter, die seine Kindheit bereicherten und auch heute noch eine wichtige Rolle in seinem Leben spielen. Sie waren immer Teil seiner Familie und standen als Beschützer an seiner Seite, vor allem für seine Tochter. Aris lebt mit seiner Familie in Lombok, stammt aber ursprünglich aus Flores.",
+      image: "/Aris/WhatsApp Image 2025-03-27 at 23.54.21.jpeg"
+    }
+  ];
+
+  const romaniaTeam = [
+    {
+      name: "Team Rumänien",
+      role: "Wird bald ergänzt",
+      bio: "Unser Team in Rumänien wird in Kürze hier vorgestellt.",
+      image: "/images/team/WhatsApp Image 2025-03-24 at 18.11.30.jpeg"
     }
   ];
 
@@ -358,11 +409,14 @@ const About = () => {
             <h3 className="text-xl font-bold text-primary mb-4 font-glorious">Vorstand</h3>
             {renderTeamMembers(boardMembers)}
             
-            <h3 className="text-xl font-bold text-primary mb-4 font-glorious">Designer</h3>
-            {renderTeamMembers(designerMembers)}
+            <h3 className="text-xl font-bold text-primary mb-4 font-glorious">Aktive Mitglieder</h3>
+            {renderTeamMembers(activeMembers)}
             
-            <h3 className="text-xl font-bold text-primary mb-4 font-glorious">Developer</h3>
-            {renderTeamMembers(developerMembers)}
+            <h3 className="text-xl font-bold text-primary mb-4 font-glorious">Unser Team vor Ort auf Lombok</h3>
+            {renderTeamMembers(lombokTeam)}
+            
+            <h3 className="text-xl font-bold text-primary mb-4 font-glorious">Unser Team vor Ort in Rumänien</h3>
+            {renderTeamMembers(romaniaTeam)}
             
             <div className="bg-white rounded-2xl overflow-hidden shadow-xl mb-16">
               <div className="grid grid-cols-1 md:grid-cols-2">

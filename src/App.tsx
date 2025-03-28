@@ -21,6 +21,13 @@ import Imprint from "./pages/Imprint";
 import Privacy from "./pages/Privacy";
 import CookiePolicy from "./pages/CookiePolicy";
 import EmergencyReport from "./pages/EmergencyReport";
+import Projects from "./pages/Projects";
+import KastrationsprojektePage from "./pages/projects/KastrationsprojektePage";
+import WoundedProgramPage from "./pages/projects/WoundedProgramPage";
+import FuetterungstourenPage from "./pages/projects/FuetterungstourenPage";
+import ShelterLombokPage from "./pages/projects/ShelterLombokPage";
+import PublicShelterRumaenienPage from "./pages/projects/PublicShelterRumaenienPage";
+import TierrettungenPage from "./pages/projects/TierrettungenPage";
 import CookieConsent from "./components/CookieConsent";
 
 const queryClient = new QueryClient();
@@ -35,7 +42,7 @@ const App = () => (
           <Route path="/" element={<Index />} />
           <Route path="/about" element={<About />} />
           <Route path="/mission" element={<About />} />
-          <Route path="/team" element={<About />} />
+          <Route path="/team" element={<Team />} />
           <Route path="/donate" element={<Donate />} />
           <Route path="/volunteer" element={<Volunteer />} />
           <Route path="/our-dogs" element={<OurDogs />} />
@@ -49,6 +56,13 @@ const App = () => (
           <Route path="/adoption-faq" element={<AdoptionFAQ />} />
           <Route path="/adoption-fees" element={<AdoptionFees />} />
           <Route path="/success-stories" element={<SuccessStories />} />
+          <Route path="/projects" element={<Projects />} />
+          <Route path="/projects/kastrationsprojekte" element={<KastrationsprojektePage />} />
+          <Route path="/projects/wounded-program" element={<WoundedProgramPage />} />
+          <Route path="/projects/fuetterungstouren" element={<FuetterungstourenPage />} />
+          <Route path="/projects/shelter-lombok" element={<ShelterLombokPage />} />
+          <Route path="/projects/public-shelter-rumaenien" element={<PublicShelterRumaenienPage />} />
+          <Route path="/projects/tierrettungen" element={<TierrettungenPage />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
