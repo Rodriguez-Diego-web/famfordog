@@ -79,7 +79,6 @@ const EmergencyReport = () => {
               <h2 className="text-2xl font-bold text-accent-green mb-4 font-futura">Notfall gemeldet!</h2>
               <p className="font-futura text-gray-700">
                 Vielen Dank für Ihre Meldung. Unser Team wurde informiert und wird sich schnellstmöglich um den Notfall kümmern.
-                Bei dringenden Fällen kontaktieren Sie uns bitte zusätzlich telefonisch unter <span className="font-bold">+49 123 456789</span>.
               </p>
               <button 
                 onClick={() => setIsSubmitted(false)} 
@@ -97,7 +96,6 @@ const EmergencyReport = () => {
                 <h1 className="text-4xl sm:text-5xl font-bold text-primary mb-6 sm:mb-8 font-glorious">Tiernotfall melden</h1>
                 <p className="text-base sm:text-lg text-gray-700 mb-6 sm:mb-8 font-futura max-w-3xl mx-auto">
                   Haben Sie ein Tier in Not gefunden? Bitte füllen Sie das Formular aus, um uns schnellstmöglich zu informieren.
-                  Bei lebensbedrohlichen Notfällen rufen Sie bitte zusätzlich unsere Notfallnummer an: <span className="font-bold">+49 123 456789</span>
                 </p>
               </div>
               

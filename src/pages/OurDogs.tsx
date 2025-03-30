@@ -64,15 +64,6 @@ const OurDogs = () => {
       image: '/images/Rumanien/WhatsApp Image 2025-03-24 at 18.13.23 (7).jpeg',
       needs: 'Medizinische Versorgung, Spezialfutter'
     },
-    {
-      id: 5,
-      name: 'Daze',
-      age: '4 Jahre',
-      breed: 'Mischling',
-      description: 'Daze wurde in einem verlassenen Gebäude gefunden. Er ist freundlich und liebevoll, benötigt aber besondere Aufmerksamkeit und Pflege.',
-      image: '/Hunde:Daze/WhatsApp Image 2025-03-26 at 15.08.17.jpeg',
-      needs: 'Medizinische Versorgung, Training'
-    }
   ];
 
   return (
@@ -88,24 +79,10 @@ const OurDogs = () => {
           {/* Navigation Buttons */}
           <div className="flex flex-wrap justify-center mb-8 sm:mb-12 gap-4">
             <button 
-              className={`px-6 py-3 font-medium text-sm sm:text-base transition-all duration-300 rounded-full ${
-                activeSection === 'sponsorships' 
-                  ? 'bg-secondary text-primary border-2 border-secondary' 
-                  : 'bg-transparent text-primary border-2 border-secondary hover:bg-secondary/10'
-              }`}
+              className="px-6 py-3 font-medium text-sm sm:text-base transition-all duration-300 rounded-full bg-secondary text-primary border-2 border-secondary"
               onClick={() => scrollToSection('sponsorships')}
             >
               Patenschaften
-            </button>
-            <button 
-              className={`px-6 py-3 font-medium text-sm sm:text-base transition-all duration-300 rounded-full ${
-                activeSection === 'adoptions' 
-                  ? 'bg-accent-pink text-white border-2 border-accent-pink' 
-                  : 'bg-transparent text-accent-pink border-2 border-accent-pink hover:bg-accent-pink/10'
-              }`}
-              onClick={() => scrollToSection('adoptions')}
-            >
-              Adoptionen
             </button>
           </div>
           
@@ -197,17 +174,6 @@ const OurDogs = () => {
                 </div>
               </div>
             </div>
-            
-            {/* Scroll down indicator */}
-            <div className="flex justify-center mt-8">
-              <button 
-                onClick={() => scrollToSection('adoptions')}
-                className="flex flex-col items-center text-accent-pink hover:text-accent-pink/70 transition-colors duration-300"
-              >
-                <span className="text-sm mb-2 font-medium">Weiter zu Adoptionen</span>
-                <ChevronDown size={24} className="animate-bounce" />
-              </button>
-            </div>
           </section>
           
           {/* Adoptions Section */}
@@ -222,13 +188,10 @@ const OurDogs = () => {
                   <div>
                     <h3 className="text-lg font-semibold text-primary mb-2 font-futura">Adoptionen bald verfügbar</h3>
                     <p className="text-gray-700 font-futura text-sm sm:text-base">
-                      Wir arbeiten derzeit daran, unseren Adoptionsprozess zu verbessern und sicherzustellen, 
-                      dass wir die bestmögliche Vermittlung für unsere Hunde gewährleisten können. 
-                      Bald werden hier Hunde zur Adoption angeboten werden.
+                      Wir arbeiten derzeit daran, einen Adoptionsprozess einzurichten, um zukünftig die bestmögliche Vermittlung für unsere Hunde zu gewährleisten. Bald wird es hier die Möglichkeit zur Adoption geben.Wir arbeiten derzeit daran, einen Adoptionsprozess einzurichten, um zukünftig die bestmögliche Vermittlung für unsere Hunde zu gewährleisten. Bald wird es hier die Möglichkeit zur Adoption geben.
                     </p>
                     <p className="text-gray-700 mt-4 font-futura text-sm sm:text-base">
-                      In der Zwischenzeit können Sie gerne eine Patenschaft übernehmen oder uns kontaktieren, 
-                      wenn Sie Interesse an einer zukünftigen Adoption haben.
+                      In der Zwischenzeit können Sie gerne eine Patenschaft übernehmen oder uns kontaktieren, wenn Sie Interesse an einer zukünftigen Adoption haben.
                     </p>
                     <div className="mt-6 flex flex-wrap gap-4">
                       <button 
@@ -239,7 +202,7 @@ const OurDogs = () => {
                         Patenschaften ansehen
                       </button>
                       <a 
-                        href="/join-family" 
+                        href="/contact" 
                         className="bg-accent-blue hover:bg-accent-blue/90 text-white px-6 py-2 rounded-full font-medium transition-all duration-300 text-sm flex items-center"
                       >
                         <Home size={16} className="mr-2" />
@@ -249,17 +212,6 @@ const OurDogs = () => {
                   </div>
                 </div>
               </div>
-            </div>
-            
-            {/* Scroll up indicator */}
-            <div className="flex justify-center mt-8">
-              <button 
-                onClick={() => scrollToSection('sponsorships')}
-                className="flex flex-col items-center text-secondary hover:text-secondary/70 transition-colors duration-300"
-              >
-                <span className="text-sm mb-2 font-medium">Zurück zu Patenschaften</span>
-                <ChevronDown size={24} className="rotate-180" />
-              </button>
             </div>
           </section>
         </div>

@@ -5,6 +5,7 @@ import VideoSection from '@/components/VideoSection';
 import MissionSection from '@/components/MissionSection';
 import WhoWeAreSection from '@/components/WhoWeAreSection';
 import JoinTeamSection from '@/components/JoinTeamSection';
+import DonateSection from '@/components/DonateSection';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 
@@ -23,6 +24,7 @@ const Index = () => {
         <WhoWeAreSection />
         <VideoSection />
         <FeaturedDogs />
+        <DonateSection />
         <JoinTeamSection />
       </main>
       <Footer />

@@ -164,51 +164,6 @@ const PublicShelterRumaenienPage = () => {
               </div>
             </div>
 
-            {/* How We Help Section */}
-            <div className="bg-gradient-to-r from-primary/20 to-secondary/30 rounded-3xl p-8 md:p-12 mb-16 relative overflow-hidden">
-              <div className="absolute -top-10 -right-10 opacity-10">
-                <Heart size={150} className="text-primary" />
-              </div>
-              <div className="absolute -bottom-10 -left-10 opacity-10">
-                <PawPrint size={150} className="text-secondary" />
-              </div>
-              
-              <div className="text-center mb-8 relative z-10">
-                <h2 className="text-3xl font-bold text-primary mb-4 font-futura">Wie wir helfen</h2>
-                <div className="w-32 h-1 mx-auto bg-gradient-to-r from-primary to-secondary"></div>
-              </div>
-              
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 relative z-10">
-                <div className="bg-white p-6 rounded-xl shadow-md hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-1 border-t-4 border-primary">
-                  <div className="h-16 w-16 rounded-full bg-gradient-to-r from-primary to-secondary flex items-center justify-center mb-4 mx-auto">
-                    <Gift size={28} className="text-white" />
-                  </div>
-                  <h3 className="text-xl font-semibold text-primary mb-3 font-futura text-center">Ressourcen</h3>
-                  <p className="text-gray-700 font-futura">
-                    Wir stellen Futter, Medikamente und andere notwendige Ressourcen zur Verfügung, um die grundlegende Versorgung der Tiere zu sichern.
-                  </p>
-                </div>
-                <div className="bg-white p-6 rounded-xl shadow-md hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-1 border-t-4 border-secondary">
-                  <div className="h-16 w-16 rounded-full bg-gradient-to-r from-secondary to-primary flex items-center justify-center mb-4 mx-auto">
-                    <Shield size={28} className="text-white" />
-                  </div>
-                  <h3 className="text-xl font-semibold text-primary mb-3 font-futura text-center">Expertise</h3>
-                  <p className="text-gray-700 font-futura">
-                    Wir bringen unsere Erfahrung und Fachkenntnisse ein, um die Abläufe im Tierheim zu optimieren und die Betreuung der Tiere zu verbessern.
-                  </p>
-                </div>
-                <div className="bg-white p-6 rounded-xl shadow-md hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-1 border-t-4 border-primary">
-                  <div className="h-16 w-16 rounded-full bg-gradient-to-r from-primary to-secondary flex items-center justify-center mb-4 mx-auto">
-                    <Leaf size={28} className="text-white" />
-                  </div>
-                  <h3 className="text-xl font-semibold text-primary mb-3 font-futura text-center">Langfristige Unterstützung</h3>
-                  <p className="text-gray-700 font-futura">
-                    Wir entwickeln nachhaltige Konzepte, um die Situation im Tierheim langfristig zu verbessern und den Tieren bessere Zukunftsperspektiven zu bieten.
-                  </p>
-                </div>
-              </div>
-            </div>
-
             {/* Call to Action */}
             <div className="text-center mb-16 bg-gradient-to-r from-primary/10 to-secondary/30 py-12 px-6 rounded-3xl relative overflow-hidden">
               <div className="absolute top-0 left-0 w-full h-full">

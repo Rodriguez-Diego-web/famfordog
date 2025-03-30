@@ -136,7 +136,7 @@ const Projects = () => {
                 to="/join-family" 
                 className="bg-secondary text-primary hover:bg-secondary/90 px-8 py-3 rounded-full font-medium transition-all duration-300 font-futura"
               >
-                Mitglied werden
+                FAMily werden
               </Link>
             </div>
           </div>

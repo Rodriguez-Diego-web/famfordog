@@ -7,25 +7,19 @@ const heroSlides = [
     id: 1,
     title: 'FAM',
     subtitle: 'for Dogs e.V.',
-    description: 'Fight and Movement for Dogs. Wir setzen uns für nachhaltigen Tierschutz ein – mit Fokus auf die Verbesserung der Lebensbedingungen für Straßenhunde.'
+    description: 'Fight and Movement for Dogs. Wir setzen uns für nachhaltigen Tierschutz vor Ort ein.'
   },
   {
     id: 2,
     title: 'Hilfe',
-    subtitle: 'für Straßenhunde',
-    description: 'Wir helfen Hunden in Not und geben ihnen eine zweite Chance auf ein glückliches Leben in einem liebevollen Zuhause.'
+    subtitle: 'vor Ort',
+    description: 'Direkt vor Ort helfen wir Hunden in Not – durch Kastrationen, medizinische Versorgung und langfristige Unterstützung.'
   },
   {
     id: 3,
-    title: 'Liebe',
-    subtitle: 'in Aktion',
-    description: 'Unsere Freiwilligen arbeiten unermüdlich daran, vernachlässigten und misshandelten Hunden eine bessere Zukunft zu ermöglichen.'
-  },
-  {
-    id: 4,
-    title: 'Zuhause',
-    subtitle: 'für immer',
-    description: 'Durch Adoption und Pflege finden unsere Hunde das liebevolle Zuhause, das sie verdienen – für den Rest ihres Lebens.'
+    title: 'Kastrations',
+    subtitle: 'projekte',
+    description: 'Präventive Kastrationen sind ein zentraler Bestandteil unserer Arbeit, um das Wohl der Tiere zu sichern und das Wachstum der Straßenpopulation zu verhindern.'
   }
 ];
 

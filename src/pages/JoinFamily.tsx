@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { Download, Mail, Heart, Users, PawPrint, Calendar, Star } from 'lucide-react';
+import emailjs from 'emailjs-com';
 
 const JoinFamily = () => {
   useEffect(() => {
@@ -9,8 +10,8 @@ const JoinFamily = () => {
     window.scrollTo(0, 0);
   }, []);
 
-  // State for form
-  const [formData, setFormData] = useState({
+  // States für verschiedene Formulare
+  const [volunteerFormData, setVolunteerFormData] = useState({
     name: '',
     email: '',
     phone: '',
@@ -18,28 +19,101 @@ const JoinFamily = () => {
     interest: 'general' // general, fostering, events, fundraising, other
   });
 
-  const handleChange = (e) => {
+  const [membershipFormData, setMembershipFormData] = useState({
+    firstName: '',
+    lastName: '',
+    street: '',
+    postalCode: '',
+    city: '',
+    email: '',
+    phone: '',
+    birthDate: '',
+    contributionAmount: 5, // Mindestbeitrag in Euro
+    paymentInterval: 'monthly', // monthly, yearly
+    paymentMethod: 'sepa', // sepa, transfer
+    iban: '',
+    bic: '',
+    accountOwner: '',
+    agreeToTerms: false,
+    agreeToPrivacy: false
+  });
+
+  const [showMembershipForm, setShowMembershipForm] = useState(false);
+  const [membershipSubmitted, setMembershipSubmitted] = useState(false);
+
+  const handleVolunteerChange = (e) => {
     const { name, value } = e.target;
-    setFormData(prevState => ({
+    setVolunteerFormData(prevState => ({
       ...prevState,
       [name]: value
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleMembershipChange = (e) => {
+    const { name, value, type, checked } = e.target;
+    setMembershipFormData(prevState => ({
+      ...prevState,
+      [name]: type === 'checkbox' ? checked : value
+    }));
+  };
+
+  const handleVolunteerSubmit = (e) => {
     e.preventDefault();
     // In a real application, you would send this data to a server
-    console.log('Form submitted:', formData);
+    console.log('Volunteer Form submitted:', volunteerFormData);
     alert('Vielen Dank für dein Interesse! Wir werden uns bald bei dir melden.');
     
     // Reset form
-    setFormData({
+    setVolunteerFormData({
       name: '',
       email: '',
       phone: '',
       message: '',
       interest: 'general'
     });
+  };
+
+  const handleMembershipSubmit = (e) => {
+    e.preventDefault();
+    
+    // Formatiere die Daten für eine bessere E-Mail-Darstellung
+    const templateParams = {
+      firstName: membershipFormData.firstName,
+      lastName: membershipFormData.lastName,
+      street: membershipFormData.street,
+      postalCode: membershipFormData.postalCode,
+      city: membershipFormData.city,
+      email: membershipFormData.email,
+      phone: membershipFormData.phone,
+      birthDate: membershipFormData.birthDate,
+      contributionAmount: membershipFormData.contributionAmount,
+      paymentInterval: membershipFormData.paymentInterval,
+      paymentMethod: membershipFormData.paymentMethod,
+      iban: membershipFormData.paymentMethod === 'sepa' ? membershipFormData.iban : 'Nicht angegeben',
+      bic: membershipFormData.paymentMethod === 'sepa' ? membershipFormData.bic : 'Nicht angegeben',
+      accountOwner: membershipFormData.paymentMethod === 'sepa' ? membershipFormData.accountOwner : 'Nicht angegeben',
+      formType: 'Fördermitgliedschaft',
+      timestamp: new Date().toLocaleString('de-DE')
+    };
+
+    // Ersetzen Sie diese Werte mit Ihren eigenen EmailJS-Anmeldeinformationen
+    const serviceID = 'YOUR_SERVICE_ID'; // Ändern Sie dies nach der Einrichtung
+    const templateID = 'YOUR_TEMPLATE_ID'; // Ändern Sie dies nach der Einrichtung
+    const userID = 'YOUR_USER_ID'; // Ändern Sie dies nach der Einrichtung
+
+    emailjs.send(serviceID, templateID, templateParams, userID)
+      .then((response) => {
+        console.log('Email erfolgreich gesendet!', response.status, response.text);
+        setMembershipSubmitted(true);
+      }, (error) => {
+        console.error('Fehler beim Senden der E-Mail:', error);
+        alert('Es gab ein Problem bei der Übermittlung des Formulars. Bitte versuche es später noch einmal.');
+      });
+  };
+
+  const toggleMembershipForm = () => {
+    setShowMembershipForm(!showMembershipForm);
+    setMembershipSubmitted(false);
   };
 
   return (
@@ -49,7 +123,7 @@ const JoinFamily = () => {
         <div className="container mx-auto px-4 sm:px-6 py-8 sm:py-16">
           {/* Hero Section */}
           <div className="text-center mb-12 sm:mb-16">
-            <h1 className="text-4xl sm:text-5xl font-bold text-primary mb-6 sm:mb-8 font-glorious">Sei Teil der FAMily!</h1>
+            <h1 className="text-4xl sm:text-5xl font-bold text-primary mb-6 sm:mb-8 font-glorious">SEI TEIL DER FAMily</h1>
             <p className="text-base sm:text-lg text-gray-700 mb-6 sm:mb-8 font-futura max-w-3xl mx-auto">
               Es gibt viele Möglichkeiten, wie du uns unterstützen und Teil unserer Mission werden kannst. 
               Ob als Fördermitglied oder Volunteer – jede Hilfe zählt und macht einen Unterschied im Leben der Hunde.
@@ -74,30 +148,345 @@ const JoinFamily = () => {
                   <ul className="space-y-2 text-white/90 font-futura">
                     <li className="flex items-start">
                       <span className="mr-2 mt-1">•</span>
-                      Regelmäßige Updates über unsere Projekte
+                      regelmäßige Updates
                     </li>
                     <li className="flex items-start">
                       <span className="mr-2 mt-1">•</span>
-                      Einladungen zu exklusiven Veranstaltungen
+                      Einladung zu exklusiven Veranstaltungen
                     </li>
                     <li className="flex items-start">
                       <span className="mr-2 mt-1">•</span>
-                      Mitbestimmung bei der Jahreshauptversammlung
+                      Teilnahme an der Jahreshauptversammlung
                     </li>
                     <li className="flex items-start">
                       <span className="mr-2 mt-1">•</span>
-                      Steuerlich absetzbare Spendenbescheinigung
+                      steuerlich absetzbare Spendenbescheinigung
                     </li>
                   </ul>
                 </div>
-                <a 
-                  href="/documents/foerdermitgliedschaft-antrag.pdf" 
-                  download
-                  className="inline-flex items-center bg-white hover:bg-gray-100 text-primary px-6 py-3 rounded-full font-medium transition-all duration-300 hover:shadow-lg"
-                >
-                  <Download size={18} className="mr-2" />
-                  Antrag herunterladen
-                </a>
+                
+                {!showMembershipForm && !membershipSubmitted && (
+                  <button 
+                    onClick={toggleMembershipForm}
+                    className="inline-flex items-center bg-white hover:bg-gray-100 text-primary px-6 py-3 rounded-full font-medium transition-all duration-300 hover:shadow-lg"
+                  >
+                    <Heart size={18} className="mr-2" />
+                    Jetzt Fördermitglied werden
+                  </button>
+                )}
+                
+                {showMembershipForm && !membershipSubmitted && (
+                  <div className="bg-white/10 rounded-xl p-6 mb-6">
+                    <h3 className="text-xl font-bold text-white mb-4 font-futura">Online-Antrag zur Fördermitgliedschaft</h3>
+                    <form onSubmit={handleMembershipSubmit} className="space-y-4">
+                      {/* Persönliche Daten */}
+                      <div className="mb-6">
+                        <h4 className="text-lg font-semibold text-white mb-2 font-futura">Persönliche Daten</h4>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                          <div>
+                            <label htmlFor="firstName" className="block text-white text-sm font-medium mb-1 font-futura">Vorname*</label>
+                            <input 
+                              type="text" 
+                              id="firstName" 
+                              name="firstName" 
+                              value={membershipFormData.firstName}
+                              onChange={handleMembershipChange}
+                              required
+                              className="w-full px-4 py-2 rounded-lg bg-white/20 border border-white/30 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white/50"
+                              placeholder="Dein Vorname"
+                            />
+                          </div>
+                          <div>
+                            <label htmlFor="lastName" className="block text-white text-sm font-medium mb-1 font-futura">Nachname*</label>
+                            <input 
+                              type="text" 
+                              id="lastName" 
+                              name="lastName" 
+                              value={membershipFormData.lastName}
+                              onChange={handleMembershipChange}
+                              required
+                              className="w-full px-4 py-2 rounded-lg bg-white/20 border border-white/30 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white/50"
+                              placeholder="Dein Nachname"
+                            />
+                          </div>
+                        </div>
+                        <div className="mt-3">
+                          <label htmlFor="street" className="block text-white text-sm font-medium mb-1 font-futura">Straße und Hausnummer*</label>
+                          <input 
+                            type="text" 
+                            id="street" 
+                            name="street" 
+                            value={membershipFormData.street}
+                            onChange={handleMembershipChange}
+                            required
+                            className="w-full px-4 py-2 rounded-lg bg-white/20 border border-white/30 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white/50"
+                            placeholder="Deine Straße und Hausnummer"
+                          />
+                        </div>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-3">
+                          <div>
+                            <label htmlFor="postalCode" className="block text-white text-sm font-medium mb-1 font-futura">PLZ*</label>
+                            <input 
+                              type="text" 
+                              id="postalCode" 
+                              name="postalCode" 
+                              value={membershipFormData.postalCode}
+                              onChange={handleMembershipChange}
+                              required
+                              className="w-full px-4 py-2 rounded-lg bg-white/20 border border-white/30 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white/50"
+                              placeholder="PLZ"
+                            />
+                          </div>
+                          <div>
+                            <label htmlFor="city" className="block text-white text-sm font-medium mb-1 font-futura">Ort*</label>
+                            <input 
+                              type="text" 
+                              id="city" 
+                              name="city" 
+                              value={membershipFormData.city}
+                              onChange={handleMembershipChange}
+                              required
+                              className="w-full px-4 py-2 rounded-lg bg-white/20 border border-white/30 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white/50"
+                              placeholder="Dein Wohnort"
+                            />
+                          </div>
+                        </div>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-3">
+                          <div>
+                            <label htmlFor="email" className="block text-white text-sm font-medium mb-1 font-futura">E-Mail*</label>
+                            <input 
+                              type="email" 
+                              id="email" 
+                              name="email" 
+                              value={membershipFormData.email}
+                              onChange={handleMembershipChange}
+                              required
+                              className="w-full px-4 py-2 rounded-lg bg-white/20 border border-white/30 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white/50"
+                              placeholder="deine@email.de"
+                            />
+                          </div>
+                          <div>
+                            <label htmlFor="phone" className="block text-white text-sm font-medium mb-1 font-futura">Telefon</label>
+                            <input 
+                              type="tel" 
+                              id="phone" 
+                              name="phone" 
+                              value={membershipFormData.phone}
+                              onChange={handleMembershipChange}
+                              className="w-full px-4 py-2 rounded-lg bg-white/20 border border-white/30 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white/50"
+                              placeholder="Deine Telefonnummer"
+                            />
+                          </div>
+                        </div>
+                        <div className="mt-3">
+                          <label htmlFor="birthDate" className="block text-white text-sm font-medium mb-1 font-futura">Geburtsdatum*</label>
+                          <input 
+                            type="date" 
+                            id="birthDate" 
+                            name="birthDate" 
+                            value={membershipFormData.birthDate}
+                            onChange={handleMembershipChange}
+                            required
+                            className="w-full px-4 py-2 rounded-lg bg-white/20 border border-white/30 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white/50"
+                          />
+                        </div>
+                      </div>
+                      
+                      {/* Beitrag und Zahlweise */}
+                      <div className="mb-6">
+                        <h4 className="text-lg font-semibold text-white mb-2 font-futura">Beitrag und Zahlweise</h4>
+                        <div>
+                          <label htmlFor="contributionAmount" className="block text-white text-sm font-medium mb-1 font-futura">Monatlicher Beitrag (min. 5€)*</label>
+                          <div className="flex items-center">
+                            <input 
+                              type="number" 
+                              id="contributionAmount" 
+                              name="contributionAmount" 
+                              value={membershipFormData.contributionAmount}
+                              onChange={handleMembershipChange}
+                              min="5"
+                              required
+                              className="w-full px-4 py-2 rounded-lg bg-white/20 border border-white/30 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white/50"
+                            />
+                            <span className="ml-2 text-white font-futura">€</span>
+                          </div>
+                        </div>
+                        <div className="mt-3">
+                          <label className="block text-white text-sm font-medium mb-1 font-futura">Zahlungsintervall*</label>
+                          <div className="flex items-center space-x-4">
+                            <label className="inline-flex items-center text-white">
+                              <input 
+                                type="radio" 
+                                name="paymentInterval" 
+                                value="monthly" 
+                                checked={membershipFormData.paymentInterval === 'monthly'}
+                                onChange={handleMembershipChange}
+                                className="mr-2"
+                              />
+                              Monatlich
+                            </label>
+                            <label className="inline-flex items-center text-white">
+                              <input 
+                                type="radio" 
+                                name="paymentInterval" 
+                                value="yearly" 
+                                checked={membershipFormData.paymentInterval === 'yearly'}
+                                onChange={handleMembershipChange}
+                                className="mr-2"
+                              />
+                              Jährlich
+                            </label>
+                          </div>
+                        </div>
+                        <div className="mt-3">
+                          <label className="block text-white text-sm font-medium mb-1 font-futura">Zahlungsmethode*</label>
+                          <div className="flex items-center space-x-4">
+                            <label className="inline-flex items-center text-white">
+                              <input 
+                                type="radio" 
+                                name="paymentMethod" 
+                                value="sepa" 
+                                checked={membershipFormData.paymentMethod === 'sepa'}
+                                onChange={handleMembershipChange}
+                                className="mr-2"
+                              />
+                              SEPA-Lastschrift
+                            </label>
+                            <label className="inline-flex items-center text-white">
+                              <input 
+                                type="radio" 
+                                name="paymentMethod" 
+                                value="transfer" 
+                                checked={membershipFormData.paymentMethod === 'transfer'}
+                                onChange={handleMembershipChange}
+                                className="mr-2"
+                              />
+                              Überweisung
+                            </label>
+                          </div>
+                        </div>
+                      </div>
+                      
+                      {/* SEPA-Lastschrift */}
+                      {membershipFormData.paymentMethod === 'sepa' && (
+                        <div className="mb-6">
+                          <h4 className="text-lg font-semibold text-white mb-2 font-futura">SEPA-Lastschriftmandat</h4>
+                          <div>
+                            <label htmlFor="accountOwner" className="block text-white text-sm font-medium mb-1 font-futura">Kontoinhaber*</label>
+                            <input 
+                              type="text" 
+                              id="accountOwner" 
+                              name="accountOwner" 
+                              value={membershipFormData.accountOwner}
+                              onChange={handleMembershipChange}
+                              required
+                              className="w-full px-4 py-2 rounded-lg bg-white/20 border border-white/30 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white/50"
+                              placeholder="Name des Kontoinhabers"
+                            />
+                          </div>
+                          <div className="mt-3">
+                            <label htmlFor="iban" className="block text-white text-sm font-medium mb-1 font-futura">IBAN*</label>
+                            <input 
+                              type="text" 
+                              id="iban" 
+                              name="iban" 
+                              value={membershipFormData.iban}
+                              onChange={handleMembershipChange}
+                              required
+                              className="w-full px-4 py-2 rounded-lg bg-white/20 border border-white/30 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white/50"
+                              placeholder="DE12 3456 7890 1234 5678 90"
+                            />
+                          </div>
+                          <div className="mt-3">
+                            <label htmlFor="bic" className="block text-white text-sm font-medium mb-1 font-futura">BIC (optional)</label>
+                            <input 
+                              type="text" 
+                              id="bic" 
+                              name="bic" 
+                              value={membershipFormData.bic}
+                              onChange={handleMembershipChange}
+                              className="w-full px-4 py-2 rounded-lg bg-white/20 border border-white/30 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white/50"
+                              placeholder="ABCDEFGHIJK"
+                            />
+                          </div>
+                          <p className="text-white/80 mt-2 text-sm font-futura">
+                            Ich ermächtige FAM for Dogs e.V., Zahlungen von meinem Konto mittels Lastschrift einzuziehen. Zugleich weise ich mein Kreditinstitut an, die von FAM for Dogs e.V. auf mein Konto gezogenen Lastschriften einzulösen.
+                          </p>
+                        </div>
+                      )}
+                      
+                      {/* Zustimmungen */}
+                      <div className="mb-6">
+                        <div className="flex items-start mb-3">
+                          <input 
+                            type="checkbox" 
+                            id="agreeToTerms" 
+                            name="agreeToTerms" 
+                            checked={membershipFormData.agreeToTerms}
+                            onChange={handleMembershipChange}
+                            required
+                            className="mt-1 mr-2"
+                          />
+                          <label htmlFor="agreeToTerms" className="text-white text-sm font-futura">
+                            Ich habe die <a href="/satzung" className="underline hover:text-white/80">Satzung</a> gelesen und stimme dieser zu.*
+                          </label>
+                        </div>
+                        <div className="flex items-start">
+                          <input 
+                            type="checkbox" 
+                            id="agreeToPrivacy" 
+                            name="agreeToPrivacy" 
+                            checked={membershipFormData.agreeToPrivacy}
+                            onChange={handleMembershipChange}
+                            required
+                            className="mt-1 mr-2"
+                          />
+                          <label htmlFor="agreeToPrivacy" className="text-white text-sm font-futura">
+                            Ich habe die <a href="/datenschutz" className="underline hover:text-white/80">Datenschutzerklärung</a> gelesen und stimme der Verarbeitung meiner Daten zu.*
+                          </label>
+                        </div>
+                      </div>
+                      
+                      {/* Submit Button */}
+                      <div className="flex justify-between">
+                        <button 
+                          type="button" 
+                          onClick={toggleMembershipForm}
+                          className="px-6 py-2 bg-white/20 hover:bg-white/30 text-white rounded-full font-medium transition-all duration-300"
+                        >
+                          Abbrechen
+                        </button>
+                        <button 
+                          type="submit" 
+                          className="px-6 py-2 bg-white hover:bg-gray-100 text-primary rounded-full font-medium transition-all duration-300"
+                        >
+                          Antrag absenden
+                        </button>
+                      </div>
+                    </form>
+                  </div>
+                )}
+                
+                {membershipSubmitted && (
+                  <div className="bg-white/10 rounded-xl p-6">
+                    <div className="text-center">
+                      <div className="h-16 w-16 mx-auto rounded-full bg-white/20 flex items-center justify-center mb-4">
+                        <Heart size={32} className="text-white" />
+                      </div>
+                      <h3 className="text-xl font-bold text-white mb-2 font-futura">Vielen Dank für deinen Antrag!</h3>
+                      <p className="text-white/90 mb-4 font-futura">
+                        Wir haben deinen Antrag erhalten und werden ihn so schnell wie möglich bearbeiten.
+                        Du erhältst in Kürze eine Bestätigungs-E-Mail von uns.
+                      </p>
+                      <button 
+                        onClick={toggleMembershipForm}
+                        className="inline-flex items-center bg-white hover:bg-gray-100 text-primary px-6 py-2 rounded-full font-medium transition-all duration-300 mt-2"
+                      >
+                        Neuen Antrag stellen
+                      </button>
+                    </div>
+                  </div>
+                )}
               </div>
             </div>
             
@@ -210,7 +599,7 @@ const JoinFamily = () => {
                 Fülle das Formular aus, um uns mitzuteilen, wie du helfen möchtest. Wir werden uns so schnell wie möglich bei dir melden.
               </p>
               
-              <form onSubmit={handleSubmit} className="max-w-2xl mx-auto bg-white/10 backdrop-blur-sm rounded-xl p-6 sm:p-8">
+              <form onSubmit={handleVolunteerSubmit} className="max-w-2xl mx-auto bg-white/10 backdrop-blur-sm rounded-xl p-6 sm:p-8">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
                   <div>
                     <label htmlFor="name" className="block text-white font-medium mb-2 font-futura">Name</label>
@@ -218,8 +607,8 @@ const JoinFamily = () => {
                       type="text" 
                       id="name" 
                       name="name" 
-                      value={formData.name}
-                      onChange={handleChange}
+                      value={volunteerFormData.name}
+                      onChange={handleVolunteerChange}
                       required
                       className="w-full px-4 py-2 rounded-lg bg-white/20 border border-white/30 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white/50"
                       placeholder="Dein Name"
@@ -231,8 +620,8 @@ const JoinFamily = () => {
                       type="email" 
                       id="email" 
                       name="email" 
-                      value={formData.email}
-                      onChange={handleChange}
+                      value={volunteerFormData.email}
+                      onChange={handleVolunteerChange}
                       required
                       className="w-full px-4 py-2 rounded-lg bg-white/20 border border-white/30 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white/50"
                       placeholder="deine@email.de"
@@ -246,8 +635,8 @@ const JoinFamily = () => {
                     type="tel" 
                     id="phone" 
                     name="phone" 
-                    value={formData.phone}
-                    onChange={handleChange}
+                    value={volunteerFormData.phone}
+                    onChange={handleVolunteerChange}
                     className="w-full px-4 py-2 rounded-lg bg-white/20 border border-white/30 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white/50"
                     placeholder="Deine Telefonnummer"
                   />
@@ -258,8 +647,8 @@ const JoinFamily = () => {
                   <select 
                     id="interest" 
                     name="interest" 
-                    value={formData.interest}
-                    onChange={handleChange}
+                    value={volunteerFormData.interest}
+                    onChange={handleVolunteerChange}
                     className="w-full px-4 py-2 rounded-lg bg-white/20 border border-white/30 text-white focus:outline-none focus:ring-2 focus:ring-white/50"
                   >
                     <option value="general" className="text-gray-800">Allgemeine Unterstützung</option>
@@ -275,8 +664,8 @@ const JoinFamily = () => {
                   <textarea 
                     id="message" 
                     name="message" 
-                    value={formData.message}
-                    onChange={handleChange}
+                    value={volunteerFormData.message}
+                    onChange={handleVolunteerChange}
                     rows={5}
                     required
                     className="w-full px-4 py-2 rounded-lg bg-white/20 border border-white/30 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white/50"
@@ -294,60 +683,6 @@ const JoinFamily = () => {
                   </button>
                 </div>
               </form>
-            </div>
-          </div>
-          
-          {/* Testimonials */}
-          <div className="mb-16">
-            <h2 className="text-2xl sm:text-3xl font-bold text-primary mb-8 text-center font-glorious">Das sagen unsere Volunteers</h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <div className="bg-gray-50 rounded-xl p-6 shadow-md">
-                <div className="flex items-center mb-4">
-                  <div className="h-12 w-12 rounded-full bg-accent-green flex items-center justify-center mr-4">
-                    <span className="text-white font-bold">S</span>
-                  </div>
-                  <div>
-                    <h3 className="font-bold text-primary font-futura">Sarah</h3>
-                    <p className="text-gray-600 text-sm">Volunteer seit 2022</p>
-                  </div>
-                </div>
-                <p className="text-gray-700 font-futura text-sm">
-                  "Die Arbeit mit FAM for Dogs hat mein Leben verändert. Es ist unglaublich erfüllend zu sehen, 
-                  wie man mit kleinen Taten einen großen Unterschied im Leben der Hunde machen kann."
-                </p>
-              </div>
-              
-              <div className="bg-gray-50 rounded-xl p-6 shadow-md">
-                <div className="flex items-center mb-4">
-                  <div className="h-12 w-12 rounded-full bg-accent-pink flex items-center justify-center mr-4">
-                    <span className="text-white font-bold">M</span>
-                  </div>
-                  <div>
-                    <h3 className="font-bold text-primary font-futura">Michael</h3>
-                    <p className="text-gray-600 text-sm">Fördermitglied seit 2021</p>
-                  </div>
-                </div>
-                <p className="text-gray-700 font-futura text-sm">
-                  "Als Fördermitglied fühle ich mich als wichtiger Teil des Teams. Die regelmäßigen Updates 
-                  zeigen mir genau, wie meine Unterstützung hilft und was damit erreicht wird."
-                </p>
-              </div>
-              
-              <div className="bg-gray-50 rounded-xl p-6 shadow-md">
-                <div className="flex items-center mb-4">
-                  <div className="h-12 w-12 rounded-full bg-accent-blue flex items-center justify-center mr-4">
-                    <span className="text-white font-bold">L</span>
-                  </div>
-                  <div>
-                    <h3 className="font-bold text-primary font-futura">Lisa</h3>
-                    <p className="text-gray-600 text-sm">Pflegestelle seit 2023</p>
-                  </div>
-                </div>
-                <p className="text-gray-700 font-futura text-sm">
-                  "Als Pflegestelle habe ich schon mehreren Hunden geholfen, sich auf ihr neues Leben vorzubereiten. 
-                  Es ist zwar manchmal schwer, sie gehen zu lassen, aber zu wissen, dass sie ein liebevolles Zuhause gefunden haben, ist unbezahlbar."
-                </p>
-              </div>
             </div>
           </div>
         </div>

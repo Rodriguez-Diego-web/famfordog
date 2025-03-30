@@ -1,5 +1,5 @@
 import { useRef, useState } from 'react';
-import { Play, Pause, PawPrint } from 'lucide-react';
+import { Play, Pause } from 'lucide-react';
 
 const VideoSection = () => {
   const [isPlaying, setIsPlaying] = useState(false);
@@ -67,42 +67,14 @@ const VideoSection = () => {
               <h2 className="text-4xl md:text-5xl font-bold text-primary mb-6 font-glorious">Hilfe vor Ort</h2>
               <div className="w-16 h-1 bg-accent-blue mb-6"></div>
               <p className="text-gray-700 text-lg leading-relaxed font-futura mb-8">
-                Unser Fokus liegt auf nachhaltigen Lösungen vor Ort statt kurzfristiger Maßnahmen. 
-                Wir führen Kastrationsprogramme durch, bieten medizinische Versorgung für 
-                verletzte Straßenhunde und arbeiten an der Verbesserung von Tierheimen in Lombok und Rumänien.
+                Unser Fokus liegt auf nachhaltigen Lösungen vor Ort statt kurzfristiger Maßnahmen. Wir glauben, dass nur durch eine dauerhafte Präsenz und lokale Zusammenarbeit echte Veränderungen möglich sind.
               </p>
-            </div>
-            
-            <div className="grid grid-cols-1 gap-4">
-              <div className="bg-white p-4 rounded-lg shadow-md border-l-4 border-accent-pink flex items-start">
-                <div className="bg-accent-pink/20 rounded-full p-2 mr-4">
-                  <PawPrint size={20} className="text-accent-pink" />
-                </div>
-                <div>
-                  <h3 className="text-primary text-lg font-bold mb-1 font-futura">Kastrationen</h3>
-                  <p className="text-gray-600 font-futura">Bereits über 1500 Kastrationen durchgeführt, um das Leid langfristig zu reduzieren.</p>
-                </div>
-              </div>
-              
-              <div className="bg-white p-4 rounded-lg shadow-md border-l-4 border-accent-blue flex items-start">
-                <div className="bg-accent-blue/20 rounded-full p-2 mr-4">
-                  <PawPrint size={20} className="text-accent-blue" />
-                </div>
-                <div>
-                  <h3 className="text-primary text-lg font-bold mb-1 font-futura">Wounded-Programm</h3>
-                  <p className="text-gray-600 font-futura">Medizinische Versorgung für verletzte und kranke Straßenhunde.</p>
-                </div>
-              </div>
-              
-              <div className="bg-white p-4 rounded-lg shadow-md border-l-4 border-accent-yellow flex items-start">
-                <div className="bg-accent-yellow/20 rounded-full p-2 mr-4">
-                  <PawPrint size={20} className="text-accent-yellow" />
-                </div>
-                <div>
-                  <h3 className="text-primary text-lg font-bold mb-1 font-futura">Fütterungstouren</h3>
-                  <p className="text-gray-600 font-futura">Regelmäßige Versorgung von Straßenhunden mit Nahrung vor Ort.</p>
-                </div>
-              </div>
+              <p className="text-gray-700 text-lg leading-relaxed font-futura mb-8">
+                In Lombok und Rumänien arbeiten wir eng mit lokalen Helfern zusammen, um die Lebensbedingungen der Straßenhunde langfristig zu verbessern. Unsere Programme sind darauf ausgerichtet, nicht nur akute Probleme zu lösen, sondern nachhaltige Strukturen zu schaffen.
+              </p>
+              <p className="text-gray-700 text-lg leading-relaxed font-futura">
+                Das Video gibt einen Einblick in unsere tägliche Arbeit vor Ort und zeigt, mit wie viel Engagement unser Team die verschiedenen Projekte betreut.
+              </p>
             </div>
           </div>
         </div>

@@ -6,7 +6,6 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import About from "./pages/About";
 import Mission from "./pages/Mission";
-import Team from "./pages/Team";
 import Donate from "./pages/Donate";
 import NotFound from "./pages/NotFound";
 import Volunteer from "./pages/Volunteer";
@@ -42,7 +41,6 @@ const App = () => (
           <Route path="/" element={<Index />} />
           <Route path="/about" element={<About />} />
           <Route path="/mission" element={<About />} />
-          <Route path="/team" element={<Team />} />
           <Route path="/donate" element={<Donate />} />
           <Route path="/volunteer" element={<Volunteer />} />
           <Route path="/our-dogs" element={<OurDogs />} />
@@ -51,11 +49,8 @@ const App = () => (
           <Route path="/imprint" element={<Imprint />} />
           <Route path="/privacy" element={<Privacy />} />
           <Route path="/cookie-policy" element={<CookiePolicy />} />
-          <Route path="/adoption-process" element={<AdoptionProcess />} />
-          <Route path="/adoption-how-to" element={<AdoptionHowTo />} />
-          <Route path="/adoption-faq" element={<AdoptionFAQ />} />
-          <Route path="/adoption-fees" element={<AdoptionFees />} />
-          <Route path="/success-stories" element={<SuccessStories />} />
+          
+          {/* Project Routes */}
           <Route path="/projects" element={<Projects />} />
           <Route path="/projects/kastrationsprojekte" element={<KastrationsprojektePage />} />
           <Route path="/projects/wounded-program" element={<WoundedProgramPage />} />
@@ -63,7 +58,15 @@ const App = () => (
           <Route path="/projects/shelter-lombok" element={<ShelterLombokPage />} />
           <Route path="/projects/public-shelter-rumaenien" element={<PublicShelterRumaenienPage />} />
           <Route path="/projects/tierrettungen" element={<TierrettungenPage />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+          
+          {/* Adoption Routes */}
+          <Route path="/adoption/process" element={<AdoptionProcess />} />
+          <Route path="/adoption/how-to" element={<AdoptionHowTo />} />
+          <Route path="/adoption/faq" element={<AdoptionFAQ />} />
+          <Route path="/adoption/fees" element={<AdoptionFees />} />
+          <Route path="/adoption/success-stories" element={<SuccessStories />} />
+          
+          {/* Fallback route */}
           <Route path="*" element={<NotFound />} />
         </Routes>
         <CookieConsent />

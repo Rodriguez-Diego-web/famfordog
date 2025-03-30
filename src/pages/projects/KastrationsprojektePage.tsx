@@ -42,8 +42,10 @@ const KastrationsprojektePage = () => {
               </h1>
               <div className="w-20 h-1 bg-gradient-to-r from-primary to-secondary mb-8"></div>
               <p className="text-gray-700 text-lg md:text-xl mb-8 font-futura">
-                <span className="font-bold">KASTRATIONSPROJEKT – „Make it pawsible!"</span><br />
-                Nachhaltiger Tierschutz beginnt mit Kastration
+                <span className="font-bold">KASTRATIONSPROJEKTE</span><br />
+                Nachhaltiger Tierschutz beginnt mit Kastration: Mit unserem Programm haben wir bereits 
+                über 1.500 Straßenhunde auf Lombok kastriert und damit rechnerisch rund 18 Millionen
+                ungewollte Nachkommen verhindert.
               </p>
             </div>
           </div>

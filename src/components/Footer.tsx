@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Instagram, Facebook, Twitter, Mail, Phone, MapPin, PawPrint } from 'lucide-react';
+import { Instagram, Facebook, Twitter, Mail, Phone, MapPin } from 'lucide-react';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -7,14 +7,14 @@ const Footer = () => {
   return (
     <footer className="bg-gradient-to-br from-primary via-primary to-[#003a3a] py-16 relative overflow-hidden">
       {/* Decorative elements */}
-      <div className="absolute top-10 right-10 opacity-10">
-        <PawPrint size={180} className="text-accent-pink" />
+      <div className="absolute top-10 right-10 opacity-30">
+        <img src="/images/Lifeline/LifeLine_Limitless.png" alt="Lifeline Limitless" className="w-40" />
       </div>
-      <div className="absolute bottom-20 left-10 opacity-10">
-        <PawPrint size={120} className="text-accent-yellow" />
+      <div className="absolute bottom-20 left-10 opacity-30">
+        <img src="/images/Lifeline/LifeLine_Rebirth.png" alt="Lifeline Rebirth" className="w-36" />
       </div>
-      <div className="absolute bottom-40 right-1/4 opacity-10">
-        <PawPrint size={100} className="text-accent-blue" />
+      <div className="absolute bottom-40 right-1/4 opacity-30">
+        <img src="/images/Lifeline/LifeLine_Limitless.png" alt="Lifeline Limitless" className="w-28 rotate-180" />
       </div>
       
       {/* Bunte Dekorationen */}
@@ -30,11 +30,11 @@ const Footer = () => {
               <img 
                 src="/images/logo.png" 
                 alt="FAM for Dogs e.V. Logo" 
-                className="h-24 bg-white/90 p-2 rounded" 
+                className="h-16" 
               />
             </Link>
             <p className="text-white/80 mb-6 font-futura">
-              Wir widmen uns der Vermittlung liebevoller Zuhause für bedürftige Hunde, der Förderung des Tierschutzes und der Aufklärung der Öffentlichkeit über verantwortungsvolle Haustierhaltung.
+              Wir von FAM for Dogs e.V. setzen uns für nachhaltigen Tierschutz ein – mit Fokus auf die Verbesserung der Lebensbedingungen vor Ort für Straßenhunde. Denn für uns kennt Tierschutz keine Grenzen!
             </p>
             <div className="flex space-x-4">
               <a 
@@ -69,31 +69,31 @@ const Footer = () => {
           
           <div className="relative">
             <div className="absolute -top-4 -left-2 w-8 h-8 bg-accent-yellow opacity-20 rounded-full"></div>
-            <h3 className="text-white font-semibold text-lg mb-4 font-futura">Schnelllinks</h3>
+            <h3 className="text-white font-semibold text-lg mb-4 font-futura">Über uns</h3>
             <ul className="space-y-3">
               <li>
-                <Link to="/about" className="text-white/80 hover:text-accent-yellow transition-colors font-futura">
-                  Verfügbare Hunde
-                </Link>
-              </li>
-              <li>
-                <Link to="/mission" className="text-white/80 hover:text-accent-pink transition-colors font-futura">
+                <Link to="/mission" className="text-white/80 hover:text-accent-yellow transition-colors font-futura">
                   Unsere Mission
                 </Link>
               </li>
               <li>
-                <Link to="/team" className="text-white/80 hover:text-accent-blue transition-colors font-futura">
+                <Link to="/about#family" className="text-white/80 hover:text-accent-pink transition-colors font-futura">
                   Unser Team
                 </Link>
               </li>
               <li>
-                <Link to="/donate" className="text-white/80 hover:text-accent-yellow transition-colors font-futura">
-                  Uns unterstützen
+                <Link to="/our-dogs" className="text-white/80 hover:text-accent-blue transition-colors font-futura">
+                  Unsere Hunde
                 </Link>
               </li>
               <li>
-                <Link to="/volunteer" className="text-white/80 hover:text-accent-pink transition-colors font-futura">
-                  Ehrenamtlich helfen
+                <Link to="/join" className="text-white/80 hover:text-accent-yellow transition-colors font-futura">
+                  Werde FAMily
+                </Link>
+              </li>
+              <li>
+                <Link to="/donate" className="text-white/80 hover:text-accent-pink transition-colors font-futura">
+                  Spenden
                 </Link>
               </li>
             </ul>
@@ -101,26 +101,21 @@ const Footer = () => {
           
           <div className="relative">
             <div className="absolute -top-4 -left-2 w-8 h-8 bg-accent-pink opacity-20 rounded-full"></div>
-            <h3 className="text-white font-semibold text-lg mb-4 font-futura">Über Uns</h3>
+            <h3 className="text-white font-semibold text-lg mb-4 font-futura">Gesetzliche Informationen</h3>
             <ul className="space-y-3">
               <li>
-                <Link to="/about" className="text-white/80 hover:text-accent-blue transition-colors font-futura">
-                  Wer wir sind
+                <Link to="/imprint" className="text-white/80 hover:text-accent-blue transition-colors font-futura">
+                  Impressum
                 </Link>
               </li>
               <li>
-                <Link to="/mission" className="text-white/80 hover:text-accent-yellow transition-colors font-futura">
-                  Unsere Projekte
+                <Link to="/privacy" className="text-white/80 hover:text-accent-yellow transition-colors font-futura">
+                  Datenschutzerklärung
                 </Link>
               </li>
               <li>
-                <Link to="/team" className="text-white/80 hover:text-accent-pink transition-colors font-futura">
-                  Team kennenlernen
-                </Link>
-              </li>
-              <li>
-                <Link to="/faq" className="text-white/80 hover:text-accent-blue transition-colors font-futura">
-                  Häufige Fragen
+                <Link to="/cookie-policy" className="text-white/80 hover:text-accent-pink transition-colors font-futura">
+                  Cookie Richtlinien
                 </Link>
               </li>
             </ul>
@@ -133,20 +128,20 @@ const Footer = () => {
               <li className="flex items-start">
                 <MapPin size={18} className="text-secondary mr-3 mt-1 flex-shrink-0" />
                 <span className="text-white/80 font-futura">
-                  Sternhagenweg 13<br />
-                  Hamburg, 22303
+                  Baakenallee 8<br />
+                  20457 Hamburg
                 </span>
               </li>
               <li className="flex items-center">
                 <Phone size={18} className="text-accent-pink mr-3 flex-shrink-0" />
-                <a href="tel:+4940123456789" className="text-white/80 hover:text-accent-pink transition-colors font-futura">
-                  040 / 123 456 789
+                <a href="tel:+4915679624274" className="text-white/80 hover:text-accent-pink transition-colors font-futura">
+                  015679 624 274
                 </a>
               </li>
               <li className="flex items-center">
                 <Mail size={18} className="text-accent-blue mr-3 flex-shrink-0" />
-                <a href="mailto:info@famfordogs.de" className="text-white/80 hover:text-accent-blue transition-colors font-futura">
-                  info@famfordogs.de
+                <a href="mailto:info@famfordogs.com" className="text-white/80 hover:text-accent-blue transition-colors font-futura">
+                  info@famfordogs.com
                 </a>
               </li>
             </ul>

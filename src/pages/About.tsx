@@ -2,7 +2,7 @@ import { useEffect, useState, useRef } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import { PawPrint, Map, Heart, Scissors, Utensils, Stethoscope, Play, Instagram, Linkedin, Mail, X } from 'lucide-react';
+import { PawPrint, Map, Heart, Scissors, Utensils, Stethoscope, Play, Instagram, Linkedin, Mail, X, ChevronLeft, ChevronRight } from 'lucide-react';
 
 const About = () => {
   const location = useLocation();
@@ -42,16 +42,27 @@ const About = () => {
 
   // Romanian dog images
   const romaniaImages = [
-    "/images/Rumanien/WhatsApp Image 2025-03-24 at 18.13.22.jpeg",
-    "/images/Rumanien/WhatsApp Image 2025-03-24 at 18.13.23 (1).jpeg",
-    "/images/Rumanien/WhatsApp Image 2025-03-24 at 18.13.23 (3).jpeg",
-    "/images/Rumanien/WhatsApp Image 2025-03-24 at 18.13.23 (5).jpeg",
-    "/images/Rumanien/WhatsApp Image 2025-03-24 at 18.13.23 (7).jpeg",
-    "/images/Rumanien/WhatsApp Image 2025-03-24 at 18.13.23 (10).jpeg"
+    "images/rumaenien/_V9A3209.jpeg",
+    "images/rumaenien/_V9A4231.jpeg",
+    "images/rumaenien/_V9A4779.jpeg",
+    "images/rumaenien/_V9A4884.jpeg",
+    "images/rumaenien/_V9A7678.jpeg",
+    "images/rumaenien/_V9A9058.jpeg",
+    "images/rumaenien/IMG_0146.jpeg",
+    "images/rumaenien/IMG_0653.jpeg",
+    "images/rumaenien/IMG_8208.jpeg",
+    "images/rumaenien/IMG_8222.jpeg"
   ];
 
-  // Placeholder for Lombok images
-  const lombokPlaceholder = Array(6).fill("/images/HeroImage.png");
+  // Lombok dog images
+  const lombokImages = [
+    "images/lombook/WhatsApp Image 2025-03-24 at 18.13.22.jpeg",
+    "images/lombook/WhatsApp Image 2025-03-24 at 18.13.23 (1).jpeg",
+    "images/lombook/WhatsApp Image 2025-03-24 at 18.13.23 (3).jpeg",
+    "images/lombook/WhatsApp Image 2025-03-24 at 18.13.23 (5).jpeg",
+    "images/lombook/WhatsApp Image 2025-03-24 at 18.13.23 (7).jpeg",
+    "images/lombook/WhatsApp Image 2025-03-24 at 18.13.23 (10).jpeg"
+  ];
 
   // For the image lightbox/modal
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
@@ -65,25 +76,25 @@ const About = () => {
       name: "Mieke & Fiona",
       role: "Gründerinnen & Vorsitzende",
       bio: "Mieke und Fiona bilden gemeinsam die Doppelspitze des Vereins FAM for Dogs e.V. Beide engagieren sich schon seit vielen Jahren im Tierschutz – seit 2019 setzen sie sich als Team aktiv für Hunde in Not ein. Der Auslöser für ihr gemeinsames Engagement war eine Reise nach Rumänien – ein prägendes Erlebnis für die beiden, das den Wunsch noch mehr zu helfen verstärkt hat. Mieke, von Beruf Rechsanwältin, gründete zunächst den Verein Dogs of Lombok e.V. während eines mehrmonatigen beruflichen Aufenthalts in Indonesien im Jahr 2023. Heute wird der Verein unter dem Namen FAM for Dogs e.V. weitergeführt. Fiona ist Hundephysiotherapeutin und bringt ihre fachliche Expertise in die Betreuung geretteter Hunde ein. Auch ihre eigenen Hunde spiegeln ihre Tierschutzmission wider: Miekes Hund Jack lebte früher auf den Straßen Kuwaits, während Fiona drei Hunde aus Rumänien adoptiert hat – darunter einen mit Handicap. Darüber hinaus haben beide über die Jahre hinweg zahlreiche Pflegehunde bei sich aufgenommen, versorgt und auf ein neues Leben vorbereitet.",
-      image: "/images/team/WhatsApp Image 2025-03-24 at 18.11.30.jpeg"
+      image: "images/team/WhatsApp Image 2025-03-24 at 18.11.30.jpeg"
     },
     {
       name: "Kira",
       role: "Vorstandsmitglied",
       bio: "Kira ist neben ihrer Arbeit als Autorin, Dozentin und Podcast-Host auch leidenschaftliche Hundemama ihres rumänischen Rüden Homie. Als er 2020 Teil ihrer Familie wurde, war das der ausschlaggebende Punkt, sich mehr im Tierschutz zu engagieren. Erst als stille Spenderin und jetzt als Vorstandsmitglied beim FAM for Dogs e.V.. Kira ist unsere Orga-Queen und kümmert sich unter anderem um unsere Mitglieder und Sponsor:innen.",
-      image: "/images/team/Kira.jpeg"
+      image: "images/team/Kira.jpeg"
     },
     {
       name: "Chrissy",
       role: "Beisitzerin",
-      bio: "Chrissy engagiert sich als Beisitzerin im Vorstand und trägt mit ihrer Expertise zur Weiterentwicklung der Tierschutzprojekte bei.",
-      image: "/images/team/WhatsApp Image 2025-03-25 at 23.49.01.jpeg"
+      bio: "Chrissy bringt mit ihrem Organisationstalent Struktur in jedes Projekt – ohne sie läuft einfach nichts. Sie ist vielseitig einsetzbar und engagiert sich in den Bereichen, in denen Unterstützung gebraucht wird. Dabei bleibt sie stets ruhig und findet immer Lösungen. Gute Planung und Empathie sind für sie selbstverständlich. Schon von klein auf liebt Chrissy Tiere und setzt sich mit großer Leidenschaft für sie ein. Ob es um Fundtiere in Deutschland oder Straßenhunde im Ausland geht, ihr Engagement kennt keine Grenzen. Nach dem plötzlichen Verlust ihres Hundes verließ sie Frankfurt für eine Asienreise. Dort erschütterte sie das Tierleid, besonders auf Lombok, zutiefst. Diese Erfahrungen stärkten ihren unermüdlichen Einsatz für hilfsbedürftige Tiere",
+      image: "images/team/WhatsApp Image 2025-03-25 at 23.49.01.jpeg"
     },
     {
       name: "Lara",
       role: "Schatzmeisterin",
-      bio: "Lara ist unsere Schatzmeisterin und Head of Finance. Sie hat zwar nicht direkt mit Hunden zu tun, ist aber als beste Freundin von Mieke ein unverzichtbarer Teil des Teams.",
-      image: "/images/team/WhatsApp Image 2025-03-24 at 18.11.30.jpeg"
+      bio: "Lara ist Vorstandsmitglied bei FAM for Dogs e.V. und übernimmt als Schatzmeisterin und Head of Finance die finanzielle Verwaltung des Vereins. Mit ihrem organisatorischen Geschick und einem ausgeprägten Sinn für Zahlen sorgt sie dafür, dass alle Projekte solide finanziert und nachhaltig umgesetzt werden können. Durch ihre enge Freundschaft mit Fiona hat sie seit Jahren Berührungspunkte mit dem Tierschutz, auch wenn Hunde selbst bisher nicht ihre größte Leidenschaft waren. Gerade dieser Außenblick macht sie zu einer wertvollen Ergänzung im Team: Sie behält den Überblick über die Finanzen, sorgt für Struktur und stellt sicher, dass die Mittel gezielt dort ankommen, wo sie gebraucht werden – für den Schutz und die Versorgung von Straßentieren in Indonesien und Rumänien.",
+      image: "images/team/WhatsApp Image 2025-03-24 at 18.11.30.jpeg"
     }
   ];
 
@@ -92,19 +103,19 @@ const About = () => {
       name: "Daze",
       role: "Aktives Mitglied",
       bio: "Mehr als 40 Rettungsfälle, mehr als 160 Hunde in unserem Shelter, unzählige Hunde in unserer Feeding-Runde und dir fehlt ein Name? Frag Daze! Sie hat sie alle auf dem Schirm. Jeder Hund, der noch kastriert werden muss, der verletzt ist, der plötzlich sein Futter verweigert, der plötzlich nicht auftaucht – sie bemerkt ihn und organisiert die nötige Hilfe. Ohne sie wären wir verloren. Außerdem zaubert sie aus den schlechtesten Videos, die wir aus Indonesien bekommen beeindruckende Instagram-Stories. Sie ist unersetzlich wenn es darum geht, die Hunde sichtbar zu machen.",
-      image: "/Daze/WhatsApp Image 2025-03-26 at 15.08.17.jpeg"
+      image: "Daze/WhatsApp Image 2025-03-26 at 15.08.17.jpeg"
     },
     {
       name: "Hanna",
       role: "Designerin",
       bio: "Mit langjähriger Erfahrung in der Werbebranche sorgt Hanna für die visuelle Identität von FAM for Dogs. Ihr Auge fürs Detail und Gespür für Gestaltung trägt unsere Botschaft und die wichtige Arbeit für den Tierschutz in die Welt.",
-      image: "/images/team/Hanna.jpeg"
+      image: "images/team/Hanna.jpeg"
     },
     {
       name: "Diego",
       role: "Developer",
       bio: "Als leidenschaftlicher Programmierer und Hundeliebhaber vereint Diego seine technischen Fähigkeiten mit seiner Liebe zu Vierbeinern. Er sorgt dafür, dass unsere digitale Präsenz reibungslos funktioniert und unsere Botschaft effektiv in die Online-Welt getragen wird. In seiner Freizeit verbringt er gerne Zeit mit seinem Hund Lucky und engagiert sich für die Rechte und das Wohlbefinden von Hunden.",
-      image: "/Diego/Diego:Lucky.jpg"
+      image: "Diego/Diego:Lucky.jpg"
     }
   ];
 
@@ -113,48 +124,73 @@ const About = () => {
       name: "Dani",
       role: "Team Lombok",
       bio: "Unser Engel von Lombok. Dani lebt für die Tiere und setzt sich mit unermüdlicher Hingabe für deren Wohl ein. Als der alte Shelter auf Lombok aufgrund von Drohungen aus der Nachbarschaft schließen musste, zögerte sie nicht: Kurzerhand wurde ihr eigenes Zuhause zum neuen Shelter. Wohnzimmer, Garten, Küche, Schlafzimmer, Wintergarten, alle Räume werden nun von Hunden und Katzen und auch von Dani bewohnt. 160 Hunde werden von Dani und ihrer Freundin Rey täglich versorgt. Ob Dani jemals schläft, weiß niemand. Denn jeder Notfall, jede Rettung, jeder Tierarztbesuch, jeder Kastrationstag wird von Dani persönlich organisiert. Sie ist nicht nur eine Tierschützerin, sondern ein wahrer Engel auf Erden.",
-      image: "/Dani/WhatsApp Image 2025-03-27 at 23.41.16.jpeg"
+      image: "Dani/WhatsApp Image 2025-03-27 at 23.41.16.jpeg"
     },
     {
       name: "Riani",
       role: "Team Lombok",
-      bio: "Riani unterstützt unser Team auf Lombok und hilft bei der Versorgung und Betreuung der Straßenhunde.",
-      image: "/images/team/WhatsApp Image 2025-03-24 at 18.11.30.jpeg"
+      bio: "Riani ist die Frau, die sich mit voller Hingabe und Herzblut für die Straßenhunde auf Lombok engagiert. Jeden Tag sorgt sie für die Fütterungsrunden und fährt mit ihrem Roller zu all den Orten, an denen die Hunde bereits gespannt auf sie warten. Im Laufe der Zeit hat sie jedes Tier gut kennengelernt, doch ständig kommen neue Hunde hinzu. Sie kümmert sich auch um verletzte Tiere, die dringend Hilfe benötigen. Riani versorgt sie mit Medikamenten, oder bringt sie zum Tierarzt. Ihre unermüdliche Fürsorge und ihr Engagement für diese Hunde ist wirklich bewundernswert.",
+      image: "images/team/WhatsApp Image 2025-03-24 at 18.11.30.jpeg"
     },
     {
       name: "Rita",
       role: "Team Lombok",
-      bio: "Rita ist Teil unseres Teams auf Lombok und engagiert sich für das Wohl der Straßenhunde.",
-      image: "/images/team/WhatsApp Image 2025-03-24 at 18.11.30.jpeg"
+      bio: "Rita, unsere Katzenlady, betreut mit viel Liebe ihre 100 Katzen und unterstützt bei unserem Kastrationsprogramm. Zudem versorgt sie die Straßenhunde mit Futter und hilft bei deren medizinischer Erstversorgung. Sie ist fester Bestand der Popi Foundation und hat stets das Wohl der Tiere und der Menschen in ihrem Umfeld im Blick und sorgt dafür, dass es ihnen an nichts fehlt.",
+      image: "images/team/WhatsApp Image 2025-03-24 at 18.11.30.jpeg"
     },
     {
       name: "Rey",
       role: "Team Lombok",
-      bio: "Rey unterstützt unser Team auf Lombok und trägt zur Verbesserung der Lebensbedingungen der Straßenhunde bei.",
-      image: "/images/team/WhatsApp Image 2025-03-24 at 18.11.30.jpeg"
+      bio: "Rey ist das Herzstück des Shelters – eine wahre Hundeflüsterin. Gemeinsam mit Dani lebt sie direkt vor Ort und kümmert sich mit unermüdlichem Einsatz um das Wohl der Tiere. Sie kocht täglich für die Hunde, füttert sie, pflegt sie liebevoll und ist rund um die Uhr an ihrer Seite. Mit feinem Gespür erkennt sie sofort, wenn ein Tier krank oder verstört ist, und begleitet es mit großem Einfühlungsvermögen auf dem Weg der Genesung.\n\nIm Shelter leben die Hunde in kleinen Rudeln – versorgt, geborgen und vor allem geliebt. Rey schenkt ihnen nicht nur körperliche Pflege, sondern auch seelische Heilung. Mit selbst entwickelten Kräutertinkturen und Ölen unterstützt sie die Tiere ganzheitlich und gibt ihnen das, was sie oft lange entbehren mussten: Nähe, Vertrauen und Sicherheit. Für viele traumatisierte Hunde ist sie der erste Mensch, der ihnen zeigt, dass Zuwendung möglich ist – und dass nicht jeder Mensch Schmerz bedeutet.",
+      image: "images/team/WhatsApp Image 2025-03-24 at 18.11.30.jpeg"
     },
     {
       name: "Vito",
       role: "Team Lombok",
       bio: "Vito ist der Sohn der Hausherrin Dani und wuchs umgeben von Tieren auf. Tief beeinflusst von der selbstlosen Liebe seiner Mutter zu allen Lebewesen, entwickelte er selbst ein großes Herz für Tiere. Im Laufe der Jahre hat er schon mehreren Hunden ein liebevolles Zuhause gegeben und kümmert sich mit großer Hingabe um die Hunde und Katzen in Shelter. Vito ist außerdem unser zuverlässiger Fahrer und derjenige, der unsere komplizierten Hunde-Rettungen durchführt.",
-      image: "/vito/WhatsApp Image 2025-03-27 at 23.43.56.jpeg"
+      image: "vito/WhatsApp Image 2025-03-27 at 23.43.56.jpeg"
     },
     {
       name: "Aris",
       role: "Indonesiens Allround-Talent",
-      bio: "Aris ist ein Mann mit vielen Talenten. Hunde sind für ihn nicht nur Haustiere, sondern treue Begleiter, die seine Kindheit bereicherten und auch heute noch eine wichtige Rolle in seinem Leben spielen. Sie waren immer Teil seiner Familie und standen als Beschützer an seiner Seite, vor allem für seine Tochter. Aris lebt mit seiner Familie in Lombok, stammt aber ursprünglich aus Flores.",
-      image: "/Aris/WhatsApp Image 2025-03-27 at 23.54.21.jpeg"
+      bio: "Aris ist ein Mann mit vielen Talenten. Hunde sind für ihn nicht nur Haustiere, sondern treue Begleiter, die seine Kindheit bereicherten und auch heute noch eine wichtige Rolle in seinem Leben spielen. Sie waren immer Teil seiner Familie und standen als Beschützer an seiner Seite, vor allem für seine Tochter. Aris lebt mit seiner Familie auf Lombok, stammt aber ursprünglich aus Flores.",
+      image: "Aris/WhatsApp Image 2025-03-27 at 23.54.21.jpeg"
     }
   ];
 
-  const romaniaTeam = [
+  const vetTeam = [
     {
-      name: "Team Rumänien",
-      role: "Wird bald ergänzt",
-      bio: "Unser Team in Rumänien wird in Kürze hier vorgestellt.",
-      image: "/images/team/WhatsApp Image 2025-03-24 at 18.11.30.jpeg"
+      name: "Tierärzte-Team auf Lombok",
+      role: "Veterinärmedizinisches Team",
+      bio: "Unser engagiertes Tierärzteteam auf Lombok besteht aus Vet Diah, Vet Made, Vet Ori und Vet Fitrah. Mit viel Herzblut und Fachwissen führen sie regelmäßig Kastrationen für uns durch und kümmern sich um unsere Rescue-Cases – verletzte, kranke oder vernachlässigte Tiere, die dringend Hilfe brauchen. Sie betreuen außerdem die Hunde im Shelter der POPI Foundation, versorgen sie medizinisch, begleiten ihre Genesung und sorgen dafür, dass es unseren Schützlingen Tag für Tag besser geht. Dank ihres Einsatzes können wir nachhaltige Tierschutzarbeit direkt vor Ort leisten.",
+      images: [
+        "images/aerzte/WhatsApp Image 2025-03-27 at 23.56.08 (1).jpeg",
+        "images/aerzte/WhatsApp Image 2025-03-27 at 23.56.08.jpeg",
+        "images/aerzte/WhatsApp Image 2025-03-27 at 23.56.09 (1).jpeg",
+        "images/aerzte/WhatsApp Image 2025-03-27 at 23.56.09 (2).jpeg",
+        "images/aerzte/WhatsApp Image 2025-03-27 at 23.56.09.jpeg",
+        "images/aerzte/WhatsApp Image 2025-03-27 at 23.56.10 (1).jpeg",
+        "images/aerzte/WhatsApp Image 2025-03-27 at 23.56.10 (2).jpeg",
+        "images/aerzte/WhatsApp Image 2025-03-27 at 23.56.10 (4).jpeg",
+        "images/aerzte/WhatsApp Image 2025-03-27 at 23.56.10 (5).jpeg",
+        "images/aerzte/WhatsApp Image 2025-03-27 at 23.56.11 (2).jpeg",
+        "images/aerzte/WhatsApp Image 2025-03-27 at 23.56.11 (3).jpeg"
+      ]
     }
   ];
+
+  // State für Slideshow der Tierärztebilder
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  // Nächstes Bild in der Slideshow anzeigen
+  const nextSlide = (imageArray) => {
+    setCurrentSlide((prev) => (prev === imageArray.length - 1 ? 0 : prev + 1));
+  };
+
+  // Vorheriges Bild in der Slideshow anzeigen
+  const prevSlide = (imageArray) => {
+    setCurrentSlide((prev) => (prev === 0 ? imageArray.length - 1 : prev - 1));
+  };
 
   // Function to render team members
   const renderTeamMembers = (members) => {
@@ -212,9 +248,16 @@ const About = () => {
       <main className="flex-grow pt-24">
         <div className="container mx-auto px-4 sm:px-6 py-8 sm:py-16">
           <h1 className="text-4xl sm:text-5xl font-bold text-primary mb-6 sm:mb-8 font-glorious">Über Uns</h1>
-          <p className="text-base sm:text-lg text-gray-700 mb-6 sm:mb-8 font-futura">
-            FAM for Dogs e.V. setzt sich für die Rettung und Vermittlung von Hunden in Not ein. Wir glauben, dass jeder Hund ein liebevolles Zuhause verdient.
-          </p>
+          <div className="flex flex-col md:flex-row items-center gap-8 mb-8">
+            <div className="md:w-2/3">
+              <p className="text-base sm:text-lg text-gray-700 mb-6 sm:mb-8 font-futura">
+                Wir von FAM for Dogs e.V. (Fight and Movement for Dogs) setzen uns für nachhaltigen Tierschutz ein – mit Fokus auf die Verbesserung der Lebensbedingungen vor Ort für Straßenhunde. Denn für uns kennt Tierschutz keine Grenzen!
+              </p>
+            </div>
+            <div className="md:w-1/3 flex justify-center">
+              <img src="images/FAM_Logo_Fortitude.png" alt="FAM Logo" className="max-h-48" />
+            </div>
+          </div>
           
           {/* Unsere Mission */}
           <div ref={missionRef} className="mb-12 sm:mb-16 py-12 bg-primary/10 rounded-3xl px-6 sm:px-10">
@@ -222,7 +265,7 @@ const About = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-12 mb-12 sm:mb-16">
               <div className="max-h-[400px] sm:max-h-none">
                 <img 
-                  src="/images/Rumanien/WhatsApp Image 2025-03-24 at 18.13.23.jpeg" 
+                  src="images/rumaenien/IMG_0146.jpeg" 
                   alt="Hunde im Shelter" 
                   className="rounded-2xl w-full h-full object-cover shadow-lg max-h-[400px] sm:max-h-none"
                 />
@@ -248,7 +291,7 @@ const About = () => {
           <div ref={locationsRef} className="mb-12 sm:mb-16 py-12 bg-accent-blue/15 rounded-3xl px-6 sm:px-10">
             <h2 className="text-2xl sm:text-3xl font-bold text-primary mb-4 sm:mb-6 font-glorious">Unsere Standorte</h2>
             <p className="text-gray-700 mb-8 font-futura text-sm sm:text-base">
-              Wir sind an verschiedenen Standorten aktiv, um Hunden in Not zu helfen. Unsere Hauptprojekte befinden sich in Lombok (Indonesien) und Rumänien, wo wir eng mit lokalen Partnern zusammenarbeiten.
+              Wir sind an verschiedenen Standorten aktiv, um Hunden in Not zu helfen. Unsere Hauptprojekte befinden sich auf Lombok (Indonesien) und Rumänien, wo wir eng mit lokalen Partnern zusammenarbeiten.
             </p>
             
             {/* Lombok Section */}
@@ -295,11 +338,82 @@ const About = () => {
                     <div className="h-10 w-10 sm:h-12 sm:w-12 rounded-full bg-[#dce169] flex items-center justify-center mb-3 sm:mb-4">
                       <PawPrint size={20} className="text-primary" />
                     </div>
-                    <h4 className="text-lg sm:text-xl font-semibold text-primary mb-2 sm:mb-3 font-futura">Bildungsarbeit</h4>
+                    <h4 className="text-lg sm:text-xl font-semibold text-primary mb-2 sm:mb-3 font-futura">SHELTER LOMBOK</h4>
                     <p className="text-gray-600 font-futura text-sm sm:text-base">
-                      Aufklärung der lokalen Bevölkerung über verantwortungsvolle Tierhaltung und den respektvollen Umgang mit Straßenhunden.
+                      Wir unterstützen ein Shelter auf Lombok, das rund 160 geretteten Hunden ein neues Zuhause bietet, die zuvor ausgesetzt, misshandelt oder schwer verletzt wurden.
                     </p>
                   </div>
+                </div>
+              </div>
+              
+              {/* Lombok Shelter Bilder */}
+              <div className="mt-8 mb-8">
+                <h4 className="text-lg font-semibold text-primary mb-4 font-futura text-center">Eindrücke aus dem Tierheim</h4>
+                <div className="grid grid-cols-2 md:grid-cols-3 gap-3 sm:gap-4">
+                  {lombokImages.map((image, index) => (
+                    <div 
+                      key={index}
+                      className="aspect-square overflow-hidden rounded-lg shadow-md cursor-pointer transition-transform duration-300 hover:scale-105"
+                      onClick={() => setSelectedImage(image)}
+                    >
+                      <img 
+                        src={image} 
+                        alt={`Lombok Shelter Bild ${index + 1}`} 
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+            
+            {/* Video Section - Unsere Arbeit auf Lombok */}
+            <div className="mb-12 sm:mb-16">
+              <div className="text-center mb-6 sm:mb-10">
+                <h3 className="text-xl sm:text-2xl font-bold text-primary mb-3 sm:mb-4 font-glorious">Unsere Arbeit auf Lombok</h3>
+                <div className="w-16 sm:w-20 h-1 bg-primary mx-auto mb-4 sm:mb-6"></div>
+              </div>
+              
+              <div className="flex justify-center">
+                <div 
+                  className="relative w-full max-w-4xl h-[250px] sm:h-[400px] md:h-[500px] rounded-xl overflow-hidden shadow-xl cursor-pointer"
+                  onClick={() => setIsVideoPlaying(true)}
+                >
+                  <div className="absolute inset-0 bg-black/20 flex items-center justify-center z-10 hover:bg-black/30 transition-colors duration-300">
+                    <div className="bg-white/20 backdrop-blur-sm p-3 sm:p-5 rounded-full">
+                      <Play className="text-white h-8 w-8 sm:h-10 sm:w-10 fill-white" />
+                    </div>
+                  </div>
+                  {/* Video thumbnail */}
+                  <img 
+                    src="images/lombook/WhatsApp Image 2025-03-24 at 18.13.22.jpeg" 
+                    alt="Video Thumbnail" 
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+              </div>
+            </div>
+            
+            {/* Lara Quote Section */}
+            <div className="mb-12 sm:mb-16 bg-white p-8 sm:p-12 rounded-2xl shadow-xl">
+              <div className="flex flex-col md:flex-row items-center gap-8">
+                <div className="md:w-1/3">
+                  <img 
+                    src="images/team/WhatsApp Image 2025-03-24 at 18.11.30.jpeg" 
+                    alt="Lara" 
+                    className="rounded-xl shadow-lg w-full aspect-square object-cover"
+                  />
+                </div>
+                <div className="md:w-2/3">
+                  <blockquote className="text-gray-700 italic mb-4 font-futura text-lg relative">
+                    <span className="text-6xl font-serif text-primary/20 absolute top-0 left-0 -translate-x-6 -translate-y-6">"</span>
+                    Lara ist Vorstandsmitglied bei FAM for Dogs e.V. und übernimmt als Schatzmeisterin und Head of Finance die finanzielle Verwaltung des Vereins. Mit ihrem organisatorischen Geschick und einem ausgeprägten Sinn für Zahlen sorgt sie dafür, dass alle Projekte solide finanziert und nachhaltig umgesetzt werden können.
+                    <br/><br/>
+                    Durch ihre enge Freundschaft mit Fiona hat sie seit Jahren Berührungspunkte mit dem Tierschutz, auch wenn Hunde selbst bisher nicht ihre größte Leidenschaft waren. Gerade dieser Außenblick macht sie zu einer wertvollen Ergänzung im Team: Sie behält den Überblick über die Finanzen, sorgt für Struktur und stellt sicher, dass die Mittel gezielt dort ankommen, wo sie gebraucht werden – für den Schutz und die Versorgung von Straßentieren in Indonesien und Rumänien.
+                    <span className="text-6xl font-serif text-primary/20 absolute bottom-0 right-0 translate-x-6 translate-y-6">"</span>
+                  </blockquote>
+                  <p className="text-primary font-bold font-futura">Lara</p>
+                  <p className="text-gray-600 font-futura">Schatzmeisterin & Head of Finance</p>
                 </div>
               </div>
             </div>
@@ -333,59 +447,59 @@ const About = () => {
                   </div>
                 </div>
               </div>
-            </div>
-            
-            {/* Photo Gallery */}
-            <div className="mb-12 sm:mb-16">
-              <div className="text-center mb-6 sm:mb-10">
-                <h3 className="text-xl sm:text-2xl font-bold text-primary mb-3 sm:mb-4 font-glorious">Unsere Arbeit in Rumänien</h3>
-                <div className="w-16 sm:w-20 h-1 bg-primary mx-auto mb-4 sm:mb-6"></div>
+              
+              {/* Photo Gallery */}
+              <div className="mb-12 sm:mb-16">
+                <div className="text-center mb-6 sm:mb-10">
+                  <h3 className="text-xl sm:text-2xl font-bold text-primary mb-3 sm:mb-4 font-glorious">Unsere Arbeit in Rumänien</h3>
+                  <div className="w-16 sm:w-20 h-1 bg-primary mx-auto mb-4 sm:mb-6"></div>
+                </div>
+                
+                <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 sm:gap-4">
+                  {romaniaImages.map((image, index) => (
+                    <div 
+                      key={index} 
+                      className="aspect-square rounded-lg overflow-hidden cursor-pointer hover:shadow-lg transition-all duration-300 hover:scale-[1.02]"
+                      onClick={() => setSelectedImage(image)}
+                    >
+                      <img 
+                        src={image} 
+                        alt={`Rumänien Projekt Bild ${index + 1}`} 
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                  ))}
+                </div>
               </div>
               
-              <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 sm:gap-4">
-                {romaniaImages.map((image, index) => (
+              {/* Video Section */}
+              <div className="mb-12 sm:mb-16">
+                <div className="text-center mb-6 sm:mb-10">
+                  <h3 className="text-xl sm:text-2xl font-bold text-primary mb-3 sm:mb-4 font-glorious">Unsere Arbeit vor Ort</h3>
+                  <div className="w-16 sm:w-20 h-1 bg-primary mx-auto mb-4 sm:mb-6"></div>
+                  <p className="text-gray-700 max-w-3xl mx-auto font-futura mb-6 sm:mb-8 text-sm sm:text-base">
+                    Erleben Sie einen Einblick in unsere tägliche Arbeit mit den Hunden vor Ort.
+                    Dieses Video zeigt, mit wie viel Liebe und Hingabe sich unser Team um die Tiere kümmert.
+                  </p>
+                </div>
+                
+                <div className="flex justify-center">
                   <div 
-                    key={index} 
-                    className="aspect-square rounded-lg overflow-hidden cursor-pointer hover:shadow-lg transition-all duration-300 hover:scale-[1.02]"
-                    onClick={() => setSelectedImage(image)}
+                    className="relative w-full max-w-4xl h-[250px] sm:h-[400px] md:h-[500px] rounded-xl overflow-hidden shadow-xl cursor-pointer"
+                    onClick={() => setIsVideoPlaying(true)}
                   >
+                    <div className="absolute inset-0 bg-black/20 flex items-center justify-center z-10 hover:bg-black/30 transition-colors duration-300">
+                      <div className="bg-white/20 backdrop-blur-sm p-3 sm:p-5 rounded-full">
+                        <Play className="text-white h-8 w-8 sm:h-10 sm:w-10 fill-white" />
+                      </div>
+                    </div>
+                    {/* Video thumbnail */}
                     <img 
-                      src={image} 
-                      alt={`Rumänien Projekt Bild ${index + 1}`} 
+                      src="images/rumaenien/_V9A9058.jpeg" 
+                      alt="Video Thumbnail" 
                       className="w-full h-full object-cover"
                     />
                   </div>
-                ))}
-              </div>
-            </div>
-            
-            {/* Video Section */}
-            <div className="mb-12 sm:mb-16">
-              <div className="text-center mb-6 sm:mb-10">
-                <h3 className="text-xl sm:text-2xl font-bold text-primary mb-3 sm:mb-4 font-glorious">Unsere Arbeit vor Ort</h3>
-                <div className="w-16 sm:w-20 h-1 bg-primary mx-auto mb-4 sm:mb-6"></div>
-                <p className="text-gray-700 max-w-3xl mx-auto font-futura mb-6 sm:mb-8 text-sm sm:text-base">
-                  Erleben Sie einen Einblick in unsere tägliche Arbeit mit den Hunden vor Ort.
-                  Dieses Video zeigt, mit wie viel Liebe und Hingabe sich unser Team um die Tiere kümmert.
-                </p>
-              </div>
-              
-              <div className="flex justify-center">
-                <div 
-                  className="relative w-full max-w-4xl h-[250px] sm:h-[400px] md:h-[500px] rounded-xl overflow-hidden shadow-xl cursor-pointer"
-                  onClick={() => setIsVideoPlaying(true)}
-                >
-                  <div className="absolute inset-0 bg-black/20 flex items-center justify-center z-10 hover:bg-black/30 transition-colors duration-300">
-                    <div className="bg-white/20 backdrop-blur-sm p-3 sm:p-5 rounded-full">
-                      <Play className="text-white h-8 w-8 sm:h-10 sm:w-10 fill-white" />
-                    </div>
-                  </div>
-                  {/* Video thumbnail */}
-                  <img 
-                    src="/images/Rumanien/WhatsApp Image 2025-03-24 at 18.13.23 (2).jpeg" 
-                    alt="Video Thumbnail" 
-                    className="w-full h-full object-cover"
-                  />
                 </div>
               </div>
             </div>
@@ -415,8 +529,64 @@ const About = () => {
             <h3 className="text-xl font-bold text-primary mb-4 font-glorious">Unser Team vor Ort auf Lombok</h3>
             {renderTeamMembers(lombokTeam)}
             
-            <h3 className="text-xl font-bold text-primary mb-4 font-glorious">Unser Team vor Ort in Rumänien</h3>
-            {renderTeamMembers(romaniaTeam)}
+            {/* Tierärzte Team auf Lombok */}
+            <div className="mb-8 sm:mb-12">
+              <h3 className="text-lg sm:text-xl font-semibold text-primary mb-4 sm:mb-6 font-glorious">Unser Tierärzte-Team auf Lombok</h3>
+              <div className="bg-white rounded-lg shadow-lg overflow-hidden">
+                <div className="relative">
+                  <div className="aspect-video overflow-hidden">
+                    {/* Header mit Overlay für den Text */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent z-10 flex flex-col justify-end p-6">
+                      <h4 className="text-xl font-bold text-white mb-2 font-futura">Tierärzte-Team auf Lombok</h4>
+                      <p className="text-white/80 text-sm">Vet Diah, Vet Made, Vet Ori und Vet Fitrah</p>
+                    </div>
+                    
+                    {/* Slideshow der Bilder */}
+                    <img 
+                      src={vetTeam[0].images[currentSlide]} 
+                      alt={`Tierarzt ${currentSlide + 1}`} 
+                      className="w-full h-full object-cover"
+                    />
+                    
+                    {/* Navigation Controls */}
+                    <button 
+                      className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/70 hover:bg-white p-2 rounded-full shadow-md z-10"
+                      onClick={() => prevSlide(vetTeam[0].images)}
+                      aria-label="Vorheriges Bild"
+                    >
+                      <ChevronLeft className="w-6 h-6 text-primary" />
+                    </button>
+                    <button 
+                      className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/70 hover:bg-white p-2 rounded-full shadow-md z-10"
+                      onClick={() => nextSlide(vetTeam[0].images)}
+                      aria-label="Nächstes Bild"
+                    >
+                      <ChevronRight className="w-6 h-6 text-primary" />
+                    </button>
+                    
+                    {/* Indicator Dots */}
+                    <div className="absolute bottom-4 left-0 right-0 flex justify-center space-x-2 z-20">
+                      {vetTeam[0].images.map((_, dotIndex) => (
+                        <button
+                          key={dotIndex}
+                          className={`w-3 h-3 rounded-full ${
+                            dotIndex === currentSlide ? 'bg-white' : 'bg-white/50'
+                          }`}
+                          onClick={() => setCurrentSlide(dotIndex)}
+                          aria-label={`Zu Bild ${dotIndex + 1} wechseln`}
+                        />
+                      ))}
+                    </div>
+                  </div>
+                </div>
+                
+                <div className="p-6">
+                  <p className="text-gray-700 font-futura text-sm sm:text-base">
+                    Unser engagiertes Tierärzteteam auf Lombok besteht aus Vet Diah, Vet Made, Vet Ori und Vet Fitrah. Mit viel Herzblut und Fachwissen führen sie regelmäßig Kastrationen für uns durch und kümmern sich um unsere Rescue-Cases – verletzte, kranke oder vernachlässigte Tiere, die dringend Hilfe brauchen. Sie betreuen außerdem die Hunde im Shelter der POPI Foundation, versorgen sie medizinisch, begleiten ihre Genesung und sorgen dafür, dass es unseren Schützlingen Tag für Tag besser geht. Dank ihres Einsatzes können wir nachhaltige Tierschutzarbeit direkt vor Ort leisten.
+                  </p>
+                </div>
+              </div>
+            </div>
             
             <div className="bg-white rounded-2xl overflow-hidden shadow-xl mb-16">
               <div className="grid grid-cols-1 md:grid-cols-2">
@@ -433,7 +603,7 @@ const About = () => {
                     Mitmachen
                   </a>
                 </div>
-                <div className="bg-cover bg-center h-full min-h-[300px]" style={{ backgroundImage: 'url("/images/HeroImage.png")' }}></div>
+                <div className="bg-cover bg-center h-full min-h-[300px]" style={{ backgroundImage: 'url("images/HeroImage.png")' }}></div>
               </div>
             </div>
             
@@ -487,13 +657,14 @@ const About = () => {
               <X size={24} />
             </button>
             <div className="aspect-video w-full" onClick={(e) => e.stopPropagation()}>
-              <iframe 
-                src="https://www.youtube.com/embed/dQw4w9WgXcQ" // Platzhalter-URL, bitte durch die tatsächliche Video-URL ersetzen
-                title="FAM for Dogs Video"
+              <video 
+                src="/videos/lombok_video.mp4" 
+                controls 
+                autoPlay 
                 className="w-full h-full rounded-lg"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              ></iframe>
+              >
+                Ihr Browser unterstützt kein Video-Tag.
+              </video>
             </div>
           </div>
         </div>

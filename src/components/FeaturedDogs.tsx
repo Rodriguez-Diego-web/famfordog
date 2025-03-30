@@ -24,12 +24,12 @@ const featuredDogs = [
   },
   {
     id: 3,
-    name: 'Daze',
-    age: '4 Jahre',
+    name: 'Rocky',
+    age: '3 Jahre',
     breed: 'Mischling',
-    description: 'Daze wurde in einem verlassenen Gebäude gefunden. Er ist freundlich und liebevoll.',
-    image: '/Hunde:Daze/WhatsApp Image 2025-03-26 at 15.08.17.jpeg',
-    tags: ['Freundlich', 'Liebevoll', 'Besondere Aufmerksamkeit']
+    description: 'Rocky wurde auf der Straße gefunden. Er ist verspielt und liebt lange Spaziergänge.',
+    image: '/images/rumaenien/_V9A3209.jpeg',
+    tags: ['Verspielt', 'Aktiv', 'Freundlich']
   }
 ];
 
@@ -58,8 +58,11 @@ const FeaturedDogs = () => {
         <div className="text-center mb-12">
           <h2 className="text-4xl md:text-5xl font-bold text-primary mb-4 font-glorious">Unsere Hunde</h2>
           <div className="w-20 h-1 bg-secondary mx-auto mb-6"></div>
+          <p className="text-gray-700 max-w-3xl mx-auto font-futura mb-4">
+            Unsere Hunde im Shelter auf Lombok suchen Patenschaften, um weiterhin gut versorgt zu werden. Jeder von ihnen hat eine einzigartige Persönlichkeit und individuelle Bedürfnisse.
+          </p>
           <p className="text-gray-700 max-w-3xl mx-auto font-futura">
-            Diese liebevollen Begleiter warten auf ihr Für-immer-Zuhause. Jeder von ihnen hat seine eigene Persönlichkeit und Bedürfnisse.
+            Unterstütze sie jetzt mit einer Futterpatenschaft und schenke ihnen eine bessere Zukunft.
           </p>
         </div>
         
@@ -107,7 +110,7 @@ const FeaturedDogs = () => {
                   to={`/dogs/${dog.id}`} 
                   className="flex items-center justify-center w-full bg-primary hover:bg-primary/90 text-white text-center py-3 rounded-lg transition-colors group font-futura"
                 >
-                  <span>Lerne {dog.name} kennen</span>
+                  <span>Patenschaft für {dog.name}</span>
                   <ArrowRight size={16} className="ml-2 transition-transform group-hover:translate-x-1" />
                 </Link>
               </div>
