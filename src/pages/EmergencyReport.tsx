@@ -1,7 +1,8 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { MapPin, AlertTriangle, Upload, Send } from 'lucide-react';
+import emailjs from '@emailjs/browser';
 
 const EmergencyReport = () => {
   const [formData, setFormData] = useState({
@@ -16,6 +17,10 @@ const EmergencyReport = () => {
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isDragging, setIsDragging] = useState(false);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  const fileInputRef = useRef<HTMLInputElement>(null);
+  const formRef = useRef<HTMLFormElement>(null);
 
   useEffect(() => {
     // Scroll to top on component mount
@@ -33,23 +38,91 @@ const EmergencyReport = () => {
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
       const file = e.target.files[0];
-      setSelectedImage(file);
-      
-      // Create preview URL
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setPreviewUrl(reader.result as string);
-      };
-      reader.readAsDataURL(file);
+      processImageFile(file);
+    }
+  };
+
+  const processImageFile = (file: File) => {
+    // Check file size (max 10MB)
+    if (file.size > 10 * 1024 * 1024) {
+      alert('Die Datei ist zu groß. Maximale Dateigröße beträgt 10MB.');
+      return;
+    }
+
+    // Check file type
+    if (!file.type.match('image.*')) {
+      alert('Nur Bildformate werden unterstützt (JPG, PNG, GIF).');
+      return;
+    }
+
+    setSelectedImage(file);
+    
+    // Create preview URL
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      setPreviewUrl(reader.result as string);
+    };
+    reader.readAsDataURL(file);
+  };
+
+  const handleDragEnter = (e: React.DragEvent<HTMLDivElement>) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setIsDragging(true);
+  };
+
+  const handleDragLeave = (e: React.DragEvent<HTMLDivElement>) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setIsDragging(false);
+  };
+
+  const handleDragOver = (e: React.DragEvent<HTMLDivElement>) => {
+    e.preventDefault();
+    e.stopPropagation();
+  };
+
+  const handleDrop = (e: React.DragEvent<HTMLDivElement>) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setIsDragging(false);
+    
+    if (e.dataTransfer.files && e.dataTransfer.files[0]) {
+      processImageFile(e.dataTransfer.files[0]);
     }
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setErrorMessage(null);
     
-    // Simulate form submission
-    setTimeout(() => {
+    // Prepare form data for email
+    const templateParams = {
+      user_name: formData.name,
+      user_email: formData.email,
+      user_phone: formData.phone,
+      location: formData.location,
+      description: formData.description,
+      image_included: selectedImage ? 'Ja' : 'Nein'
+    };
+
+    try {
+      // Send email using EmailJS
+      // Replace 'YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', and 'YOUR_PUBLIC_KEY' with your EmailJS credentials
+      await emailjs.send(
+        'service_famfordogs', // EmailJS service ID
+        'template_emergency', // EmailJS template ID
+        templateParams,
+        'jqpuZ0AXPmQVvLGIp' // EmailJS public key
+      );
+
+      // If the message contains an image, handle it separately
+      // This can be done in various ways - one option is to convert to base64 and attach
+      // Another is to upload to a service like Cloudinary or Firebase Storage
+      // For simplicity, we'll just note that an image was included in the email
+      
+      // Once email is sent successfully
       setIsSubmitting(false);
       setIsSubmitted(true);
       
@@ -66,7 +139,11 @@ const EmergencyReport = () => {
       
       // Scroll to top to show success message
       window.scrollTo(0, 0);
-    }, 1500);
+    } catch (error) {
+      console.error('Failed to send email:', error);
+      setIsSubmitting(false);
+      setErrorMessage('Es gab einen Fehler beim Senden Ihres Berichts. Bitte versuchen Sie es später erneut oder kontaktieren Sie uns direkt.');
+    }
   };
 
   return (
@@ -99,7 +176,14 @@ const EmergencyReport = () => {
                 </p>
               </div>
               
-              <form onSubmit={handleSubmit} className="max-w-3xl mx-auto bg-white rounded-lg shadow-md p-6 sm:p-8">
+              {errorMessage && (
+                <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-6 max-w-3xl mx-auto" role="alert">
+                  <strong className="font-bold">Fehler: </strong>
+                  <span className="block sm:inline">{errorMessage}</span>
+                </div>
+              )}
+              
+              <form ref={formRef} onSubmit={handleSubmit} className="max-w-3xl mx-auto bg-white rounded-lg shadow-md p-6 sm:p-8">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="col-span-1">
                     <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1 font-futura">
@@ -186,7 +270,18 @@ const EmergencyReport = () => {
                     <label className="block text-sm font-medium text-gray-700 mb-1 font-futura">
                       Foto hochladen
                     </label>
-                    <div className="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md">
+                    <div 
+                      className={`mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-dashed rounded-md transition-colors ${
+                        isDragging 
+                          ? 'border-primary bg-primary/10' 
+                          : 'border-gray-300 hover:border-primary/60'
+                      }`}
+                      onDragEnter={handleDragEnter}
+                      onDragOver={handleDragOver}
+                      onDragLeave={handleDragLeave}
+                      onDrop={handleDrop}
+                      onClick={() => fileInputRef.current?.click()}
+                    >
                       <div className="space-y-1 text-center">
                         {previewUrl ? (
                           <div>
@@ -197,7 +292,8 @@ const EmergencyReport = () => {
                             />
                             <button
                               type="button"
-                              onClick={() => {
+                              onClick={(e) => {
+                                e.stopPropagation(); // Prevent triggering parent div's onClick
                                 setSelectedImage(null);
                                 setPreviewUrl(null);
                               }}
@@ -220,6 +316,7 @@ const EmergencyReport = () => {
                                   name="file-upload"
                                   type="file"
                                   className="sr-only"
+                                  ref={fileInputRef}
                                   accept="image/*"
                                   onChange={handleImageChange}
                                 />

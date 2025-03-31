@@ -144,6 +144,14 @@ const Footer = () => {
                   info@famfordogs.com
                 </a>
               </li>
+              <li className="mt-4">
+                <Link 
+                  to="/emergency-report" 
+                  className="inline-block bg-accent-yellow text-primary font-medium py-2 px-4 rounded-lg shadow-md hover:bg-accent-yellow/90 transition-colors font-futura"
+                >
+                  Zum Kontaktformular
+                </Link>
+              </li>
             </ul>
           </div>
         </div>

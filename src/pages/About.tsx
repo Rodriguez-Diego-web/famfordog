@@ -508,11 +508,33 @@ const About = () => {
           {/* Unsere Geschichte */}
           <div ref={historyRef} className="mb-12 sm:mb-16 py-12 bg-accent-green/15 rounded-3xl px-6 sm:px-10">
             <h2 className="text-2xl sm:text-3xl font-bold text-primary mb-4 sm:mb-6 font-glorious">Unsere Geschichte</h2>
+            
+            <h3 className="text-lg font-bold text-primary mb-2 font-glorious">Gründung von Dogs of Lombok e.V.</h3>
             <p className="text-gray-700 mb-4 font-futura text-sm sm:text-base">
-              FAM for Dogs e.V. wurde 2018 von einer Gruppe leidenschaftlicher Tierliebhaber gegründet, die die Notwendigkeit einer engagierten Tierschutzorganisation in unserer Gemeinschaft erkannten. Was als kleine Initiative mit nur wenigen Freiwilligen begann, ist zu einer florierenden Organisation mit über 50 aktiven Freiwilligen und Hunderten erfolgreicher Vermittlungen pro Jahr gewachsen.
+              Manchmal bringt das Schicksal genau die richtigen Menschen zusammen. So auch auf der indonesischen Insel Lombok: Mieke reiste für drei Monate beruflich nach Indonesien – und begegnete dort dem Leid unzähliger Straßenhunde. Als sie einem verletzten Hund begegnete, war für sie klar: Sie möchte aktiv helfen.
+            </p>
+            <p className="text-gray-700 mb-4 font-futura text-sm sm:text-base">
+              Aus dieser Erfahrung entstand der Verein Dogs of Lombok e.V. – mit dem Ziel, nachhaltigen Tierschutz vor Ort zu ermöglichen. Durch eine glückliche Fügung lernte Mieke die indonesische Tierschützerin Dani kennen. Aus dieser Begegnung wurde nicht nur eine Freundschaft, sondern auch eine enge Kooperation mit der Popi Foundation. Gemeinsam wurde ein Fütterungs- und Wundversorgungsprogramm sowie ein Kastrationsprojekt aufgebaut und der bereits bestehende Shelter finanziell unterstützt.
+            </p>
+            <p className="text-gray-700 mb-6 font-futura text-sm sm:text-base">
+              In Deutschland bekam das Team starke Unterstützung: Chrissy und Daze stiegen tatkräftig ein, übernahmen das Social Media und die Mitorganisation der Projekte vor Ort. Gemeinsam mit Mieke führten sie nun zu dritt den Verein Dogs of Lombok e.V.
+            </p>
+            
+            <h3 className="text-lg font-bold text-primary mb-2 font-glorious">Aus Dogs of Lombok e.V. wird FAM for Dogs e.V.</h3>
+            <p className="text-gray-700 mb-4 font-futura text-sm sm:text-base">
+              Während Mieke sich in Indonesien für Straßenhunde einsetzte, war Fiona seit Jahren in Rumänien im aktiven Tierschutz tätig. Beide erlebten hautnah die Herausforderungen vor Ort und erkannten, wie wichtig es ist, Synergien zu nutzen, um nachhaltige Veränderungen zu bewirken. Aus dieser gemeinsamen Überzeugung entstand die Idee, ihre Kräfte zu bündeln und den Tierschutz auf ein neues Level zu heben.
+            </p>
+            <p className="text-gray-700 mb-4 font-futura text-sm sm:text-base">
+              Gemeinsam entschieden sie sich die Freundinnen den Verein neu auszurichten. Fiona, Hundephysiotherapeutin mit Tierschutzherz, Kira, deren Hund Homie aus Rumänien stammt, sowie Lara, die Expertin für Organisation und Finanzen, traten als neue Vorstandsmitglieder dazu. Auch Chrissy wurde zum neuen Vorstandsmitglied gewählt.
+            </p>
+            <p className="text-gray-700 mb-4 font-futura text-sm sm:text-base">
+              In dieser neuen Konstellation entschieden sie sich, den Verein umzugestalten, die Satzung anzupassen und einen neuen Namen zu wählen, der ihre gemeinsame Vision widerspiegelt. Aus Dogs of Lombok e.V. wurde FAM for Dogs e.V. – Fight and Movement for Dogs. Der neue Name steht für den Kampf und die Bewegung, die wir für die Straßentiere weltweit anstoßen wollen.
+            </p>
+            <p className="text-gray-700 mb-4 font-futura text-sm sm:text-base">
+              Heute ist FAM for Dogs e.V. in Indonesien und Rumänien aktiv. Wir setzen uns für nachhaltigen Tierschutz ein: durch Kastrationen, Versorgung verletzter Tiere, Aufklärungsarbeit und langfristige Strukturen vor Ort.
             </p>
             <p className="text-gray-700 font-futura text-sm sm:text-base">
-              Unsere Reise war voller Herausforderungen, aber die Freude, einen Hund sein Für-immer-Zuhause finden zu sehen, macht alles lohnenswert. Wir erweitern kontinuierlich unsere Programme und Dienstleistungen, um mehr Hunden in Not zu helfen und die Öffentlichkeit über verantwortungsvolle Tierhaltung aufzuklären.
+              FAM for Dogs e.V. steht für Einsatz, Herzblut und den festen Glauben daran, dass Bewegung Veränderung schafft – für jedes einzelne Tier.
             </p>
           </div>
           
