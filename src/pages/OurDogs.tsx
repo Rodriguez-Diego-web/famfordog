@@ -2,11 +2,17 @@ import { useEffect, useState, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import { Heart, PawPrint, Home, ChevronDown } from 'lucide-react';
+import { Heart, PawPrint, Home, ChevronDown, Download } from 'lucide-react';
 
 const OurDogs = () => {
   const location = useLocation();
   const [activeSection, setActiveSection] = useState('sponsorships');
+  
+  // PDF-Download-Funktion
+  const openPatronageForm = () => {
+    // Öffne PDF in einem neuen Fenster
+    window.open('/patenschaftsantrag.pdf', '_blank');
+  };
   
   // Refs für die Scroll-Animation
   const sponsorshipsRef = useRef(null);
@@ -129,8 +135,8 @@ const OurDogs = () => {
                       </div>
                       
                       <a 
-                        href="#" 
-                        className="inline-block bg-secondary hover:bg-secondary/90 text-primary px-6 py-2 rounded-full font-medium transition-all duration-300 text-sm"
+                        onClick={openPatronageForm}
+                        className="inline-block bg-secondary hover:bg-secondary/90 text-primary px-6 py-2 rounded-full font-medium transition-all duration-300 text-sm cursor-pointer"
                       >
                         Pate werden
                       </a>
