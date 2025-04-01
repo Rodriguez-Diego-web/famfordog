@@ -1,8 +1,9 @@
 import { useRef, useState } from 'react';
-import { Play, Pause } from 'lucide-react';
+import { Play, Pause, Volume2, VolumeX } from 'lucide-react';
 
 const VideoSection = () => {
   const [isPlaying, setIsPlaying] = useState(false);
+  const [isMuted, setIsMuted] = useState(true);
   const videoRef = useRef<HTMLVideoElement>(null);
 
   const togglePlay = () => {
@@ -13,6 +14,14 @@ const VideoSection = () => {
         videoRef.current.play();
       }
       setIsPlaying(!isPlaying);
+    }
+  };
+
+  const toggleMute = (e: React.MouseEvent) => {
+    e.stopPropagation(); // Verhindert, dass der Play/Pause-Button ausgelöst wird
+    if (videoRef.current) {
+      videoRef.current.muted = !isMuted;
+      setIsMuted(!isMuted);
     }
   };
 
@@ -34,7 +43,7 @@ const VideoSection = () => {
                   ref={videoRef}
                   className="w-full h-full object-cover"
                   autoPlay
-                  muted
+                  muted={isMuted}
                   loop
                   playsInline
                   poster="/images/lombok/shelter.jpg"
@@ -57,6 +66,19 @@ const VideoSection = () => {
                       <Play className="text-white ml-1" size={34} />
                     )}
                   </div>
+                </button>
+                
+                {/* Mute/Unmute Button */}
+                <button
+                  onClick={toggleMute}
+                  className="absolute bottom-4 right-4 w-12 h-12 rounded-full flex items-center justify-center bg-white/20 hover:bg-white/30 backdrop-blur-sm transition-colors shadow-lg"
+                  aria-label={isMuted ? "Ton einschalten" : "Ton ausschalten"}
+                >
+                  {isMuted ? (
+                    <VolumeX className="text-white" size={20} />
+                  ) : (
+                    <Volume2 className="text-white" size={20} />
+                  )}
                 </button>
               </div>
             </div>
