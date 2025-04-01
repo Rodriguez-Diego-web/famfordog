@@ -680,7 +680,7 @@ const About = () => {
             </button>
             <div className="aspect-video w-full" onClick={(e) => e.stopPropagation()}>
               <video 
-                src="/videos/lombok_video.mp4" 
+                src="/videos/ImageVideo.mp4" 
                 controls 
                 autoPlay 
                 className="w-full h-full rounded-lg"

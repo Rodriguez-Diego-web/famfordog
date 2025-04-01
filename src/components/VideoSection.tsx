@@ -33,10 +33,14 @@ const VideoSection = () => {
                 <video
                   ref={videoRef}
                   className="w-full h-full object-cover"
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
                   poster="/images/lombok/shelter.jpg"
                   onEnded={() => setIsPlaying(false)}
                 >
-                  <source src="/videos/lombok_video.mp4" type="video/mp4" />
+                  <source src="/videos/ImageVideo.mp4" type="video/mp4" />
                   Dein Browser unterstützt das Video-Tag nicht.
                 </video>
                 
