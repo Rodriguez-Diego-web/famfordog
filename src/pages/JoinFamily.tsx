@@ -9,7 +9,7 @@ const JoinFamily = () => {
   const downloadPDF = () => {
     // Erstellung eines unsichtbaren Link-Elements
     const link = document.createElement('a');
-    link.href = '/Anträge/foerderantrag.pdf';
+    link.href = '/foerderantrag.pdf';
     link.download = 'Fördermitgliedsantrag.pdf';
     document.body.appendChild(link);
     link.click();
