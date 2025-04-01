@@ -15,6 +15,7 @@ import AdoptionFAQ from "./pages/AdoptionFAQ";
 import AdoptionFees from "./pages/AdoptionFees";
 import SuccessStories from "./pages/SuccessStories";
 import OurDogs from "./pages/OurDogs";
+import DogDetail from "./pages/DogDetail";
 import JoinFamily from "./pages/JoinFamily";
 import Imprint from "./pages/Imprint";
 import Privacy from "./pages/Privacy";
@@ -44,6 +45,7 @@ const App = () => (
           <Route path="/donate" element={<Donate />} />
           <Route path="/volunteer" element={<Volunteer />} />
           <Route path="/our-dogs" element={<OurDogs />} />
+          <Route path="/dogs/:id" element={<DogDetail />} />
           <Route path="/join-family" element={<JoinFamily />} />
           <Route path="/emergency-report" element={<EmergencyReport />} />
           <Route path="/imprint" element={<Imprint />} />

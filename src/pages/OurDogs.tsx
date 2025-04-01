@@ -1,5 +1,5 @@
 import { useEffect, useState, useRef } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { Heart, PawPrint, Home, ChevronDown, Download, Phone } from 'lucide-react';
@@ -7,6 +7,7 @@ import { Heart, PawPrint, Home, ChevronDown, Download, Phone } from 'lucide-reac
 const OurDogs = () => {
   const location = useLocation();
   const [activeSection, setActiveSection] = useState('sponsorships');
+  const navigate = useNavigate();
   
   // PDF-Download-Funktion
   const openPatronageForm = () => {
@@ -107,7 +108,7 @@ const OurDogs = () => {
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {sponsorshipDogs.map((dog) => (
                   <div key={dog.id} className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300">
-                    <div className="relative h-64">
+                    <div className="relative h-64 cursor-pointer" onClick={() => navigate(`/dogs/${dog.id}`)}>
                       <img 
                         src={dog.image} 
                         alt={dog.name} 
@@ -119,7 +120,7 @@ const OurDogs = () => {
                     </div>
                     
                     <div className="p-6">
-                      <h3 className="text-xl font-bold text-primary mb-2 font-futura">{dog.name}</h3>
+                      <h3 className="text-xl font-bold text-primary mb-2 font-futura cursor-pointer hover:text-primary/80 transition-colors" onClick={() => navigate(`/dogs/${dog.id}`)}>{dog.name}</h3>
                       <div className="flex items-center text-gray-600 mb-2 text-sm">
                         <span className="mr-4">{dog.age}</span>
                         <span>{dog.breed}</span>
@@ -134,12 +135,20 @@ const OurDogs = () => {
                         </div>
                       </div>
                       
-                      <a 
-                        onClick={openPatronageForm}
-                        className="inline-block bg-secondary hover:bg-secondary/90 text-primary px-6 py-2 rounded-full font-medium transition-all duration-300 text-sm cursor-pointer"
-                      >
-                        Pate werden
-                      </a>
+                      <div className="flex space-x-2">
+                        <a 
+                          onClick={openPatronageForm}
+                          className="inline-block bg-secondary hover:bg-secondary/90 text-primary px-4 py-2 rounded-full font-medium transition-all duration-300 text-sm cursor-pointer"
+                        >
+                          Pate werden
+                        </a>
+                        <a 
+                          onClick={() => navigate(`/dogs/${dog.id}`)}
+                          className="inline-block bg-primary/10 hover:bg-primary/20 text-primary px-4 py-2 rounded-full font-medium transition-all duration-300 text-sm cursor-pointer"
+                        >
+                          Mehr erfahren
+                        </a>
+                      </div>
                     </div>
                   </div>
                 ))}
