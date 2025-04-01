@@ -5,6 +5,17 @@ import { Download, Mail, Heart, Users, PawPrint, Calendar, Star } from 'lucide-r
 import emailjs from 'emailjs-com';
 
 const JoinFamily = () => {
+  // PDF-Download-Funktion
+  const downloadPDF = () => {
+    // Erstellung eines unsichtbaren Link-Elements
+    const link = document.createElement('a');
+    link.href = '/Anträge/Fördermitgliedsantrag .pdf';
+    link.download = 'Fördermitgliedsantrag.pdf';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   useEffect(() => {
     // Scroll to top on component mount
     window.scrollTo(0, 0);
@@ -165,14 +176,13 @@ const JoinFamily = () => {
                   </ul>
                 </div>
                 
-                <a 
-                  href="/Anträge/Fördermitgliedsantrag%20.pdf" 
-                  download
+                <button 
+                  onClick={downloadPDF}
                   className="inline-flex items-center bg-white hover:bg-gray-100 text-primary px-6 py-3 rounded-full font-medium transition-all duration-300 hover:shadow-lg"
                 >
                   <Download size={18} className="mr-2" />
                   Fördermitgliedsantrag herunterladen
-                </a>
+                </button>
                 
               </div>
             </div>
