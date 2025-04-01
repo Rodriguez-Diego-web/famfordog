@@ -7,13 +7,8 @@ import emailjs from 'emailjs-com';
 const JoinFamily = () => {
   // PDF-Download-Funktion
   const downloadPDF = () => {
-    // Erstellung eines unsichtbaren Link-Elements
-    const link = document.createElement('a');
-    link.href = '/foerderantrag.pdf';
-    link.download = 'Fördermitgliedsantrag.pdf';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+    // Öffne PDF in einem neuen Fenster
+    window.open('/foerderantrag.pdf', '_blank');
   };
 
   useEffect(() => {
