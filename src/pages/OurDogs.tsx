@@ -2,7 +2,7 @@ import { useEffect, useState, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import { Heart, PawPrint, Home, ChevronDown, Download } from 'lucide-react';
+import { Heart, PawPrint, Home, ChevronDown, Download, Phone } from 'lucide-react';
 
 const OurDogs = () => {
   const location = useLocation();
@@ -208,11 +208,11 @@ const OurDogs = () => {
                         Patenschaften ansehen
                       </button>
                       <a 
-                        href="/contact" 
+                        href="tel:015679624274" 
                         className="bg-accent-blue hover:bg-accent-blue/90 text-white px-6 py-2 rounded-full font-medium transition-all duration-300 text-sm flex items-center"
                       >
-                        <Home size={16} className="mr-2" />
-                        Kontakt aufnehmen
+                        <Phone size={16} className="mr-2" />
+                        015679 624 274
                       </a>
                     </div>
                   </div>
