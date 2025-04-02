@@ -99,7 +99,7 @@ const FeaturedDogs = () => {
                   {dog.tags.map((tag, index) => (
                     <span 
                       key={index} 
-                      className="text-xs px-3 py-1 rounded-full bg-accent-blue text-primary font-medium font-futura"
+                      className="text-xs px-3 py-1 rounded-full bg-accent-blue text-primary font-medium font-futura whitespace-nowrap"
                     >
                       {tag}
                     </span>
