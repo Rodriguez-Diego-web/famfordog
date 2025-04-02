@@ -2,34 +2,34 @@ import { useState } from 'react';
 import { Heart, ArrowRight, PawPrint } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
-// Sample data for featured dogs
+// Aktualisierte Daten für die angezeigten Hunde, übernommen aus OurDogs.tsx
 const featuredDogs = [
   {
     id: 1,
-    name: 'Max',
-    age: '5 Jahre',
-    breed: 'Schäferhund-Mix',
-    description: 'Max wurde in einem Tierheim in Rumänien gefunden. Er ist ruhig und anhänglich.',
-    image: '/images/Rumanien/WhatsApp Image 2025-03-24 at 18.13.23 (3).jpeg',
-    tags: ['Ruhig', 'Anhänglich', 'Spezielle Pflege']
-  },
-  {
-    id: 2,
-    name: 'Bella',
-    age: '2 Jahre',
-    breed: 'Terrier-Mix',
-    description: 'Bella wurde als Welpe ausgesetzt. Sie ist energiegeladen und liebt Menschen.',
-    image: '/images/Rumanien/WhatsApp Image 2025-03-24 at 18.13.23 (5).jpeg',
-    tags: ['Energiegeladen', 'Freundlich', 'Training']
+    name: 'Anton',
+    age: '7 Monate',
+    breed: 'Mischling',
+    description: 'Anton wurde von Mieke im November 2024 während einer Fütterungsrunde mit Rita und Riani entdeckt. Er lebte mit seiner Mutter Ichi und seinen Geschwistern Albert und Ocha bei einer Familie, die sich leider nicht mehr um sie kümmern konnte.',
+    image: '/OneDrive_15_2.4.2025/Anton/IMG_2165.jpeg',
+    tags: ['Freundlich', 'Verspielt', 'Sozial']
   },
   {
     id: 3,
-    name: 'Rocky',
-    age: '3 Jahre',
+    name: 'Boogey',
+    age: '1,5 Jahre',
     breed: 'Mischling',
-    description: 'Rocky wurde auf der Straße gefunden. Er ist verspielt und liebt lange Spaziergänge.',
-    image: '/images/rumaenien/_V9A3209.jpeg',
-    tags: ['Verspielt', 'Aktiv', 'Freundlich']
+    description: 'Boogey lebte in einem Abwasserkanal mit ihren 6 Welpen. Sie wurde so schwer verletzt, dass sie ihre Babys kaum schützen konnte. Nach monatelangem Leben im Kanal ist sie jetzt glücklicherweise gerettet.',
+    image: '/OneDrive_15_2.4.2025/Boogey/IMG_1523.jpeg',
+    tags: ['Energiegeladen', 'Verspielt', 'Neugierig']
+  },
+  {
+    id: 14,
+    name: 'Wednesday',
+    age: '4 Jahre',
+    breed: 'Mischling',
+    description: 'Wednesday ist eine besondere Hündin mit einem einzigartigen Charakter. Sie ist loyal und beschützend.',
+    image: '/OneDrive_15_2.4.2025/Wednesday/IMG_2215.jpeg',
+    tags: ['Loyal', 'Beschützend', 'Einzigartig']
   }
 ];
 
