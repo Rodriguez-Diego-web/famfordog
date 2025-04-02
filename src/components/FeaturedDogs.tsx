@@ -27,7 +27,7 @@ const featuredDogs = [
     name: 'Wednesday',
     age: '4 Jahre',
     breed: 'Mischling',
-    description: 'Wednesday ist eine besondere Hündin mit einem einzigartigen Charakter. Sie ist loyal und beschützend.',
+    description: 'Wednesday ist eine besondere Hündin mit einem einzigartigen Charakter. Sie ist loyal und beschützend.<br /><br /><br />',
     image: '/OneDrive_15_2.4.2025/Wednesday/IMG_2215.jpeg',
     tags: ['Loyal', 'Beschützend', 'Einzigartig']
   }
@@ -93,7 +93,7 @@ const FeaturedDogs = () => {
                 </div>
                 
                 <p className="text-gray-600 text-sm mb-4 font-futura">{dog.breed}</p>
-                <p className="text-gray-700 mb-4 font-futura">{dog.description}</p>
+                <p className="text-gray-700 mb-4 font-futura" dangerouslySetInnerHTML={{ __html: dog.description }}></p>
                 
                 <div className="flex flex-wrap gap-2 mb-6">
                   {dog.tags.map((tag, index) => (
