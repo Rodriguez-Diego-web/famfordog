@@ -19,6 +19,7 @@ const EmergencyReport = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isDragging, setIsDragging] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  const [validationErrors, setValidationErrors] = useState<{[key: string]: string}>({});
   const fileInputRef = useRef<HTMLInputElement>(null);
   const formRef = useRef<HTMLFormElement>(null);
 
@@ -33,6 +34,45 @@ const EmergencyReport = () => {
       ...prev,
       [name]: value
     }));
+    
+    // Clear validation error when user starts typing
+    if (validationErrors[name]) {
+      setValidationErrors(prev => ({
+        ...prev,
+        [name]: ''
+      }));
+    }
+  };
+
+  const validateForm = () => {
+    const errors: {[key: string]: string} = {};
+    
+    if (!formData.name.trim()) {
+      errors.name = 'Name ist erforderlich';
+    }
+    
+    if (!formData.email.trim()) {
+      errors.email = 'E-Mail ist erforderlich';
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+      errors.email = 'Ungültiges E-Mail-Format';
+    }
+    
+    if (formData.phone.trim() && !/^[+]?[(]?[0-9]{3}[)]?[-\s.]?[0-9]{3}[-\s.]?[0-9]{4,6}$/.test(formData.phone)) {
+      errors.phone = 'Ungültiges Telefonnummer-Format';
+    }
+    
+    if (!formData.location.trim()) {
+      errors.location = 'Standort ist erforderlich';
+    }
+    
+    if (!formData.description.trim()) {
+      errors.description = 'Beschreibung ist erforderlich';
+    } else if (formData.description.trim().length < 20) {
+      errors.description = 'Bitte geben Sie eine ausführlichere Beschreibung (mindestens 20 Zeichen)';
+    }
+    
+    setValidationErrors(errors);
+    return Object.keys(errors).length === 0;
   };
 
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -94,6 +134,13 @@ const EmergencyReport = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    // Validate form
+    if (!validateForm()) {
+      setErrorMessage('Bitte füllen Sie alle erforderlichen Felder korrekt aus.');
+      return;
+    }
+    
     setIsSubmitting(true);
     setErrorMessage(null);
     
@@ -153,16 +200,29 @@ const EmergencyReport = () => {
         <div className="container mx-auto px-4 sm:px-6 py-8 sm:py-16">
           {isSubmitted ? (
             <div className="bg-accent-green/10 border border-accent-green rounded-lg p-6 max-w-3xl mx-auto mb-12">
-              <h2 className="text-2xl font-bold text-accent-green mb-4 font-futura">Notfall gemeldet!</h2>
-              <p className="font-futura text-gray-700">
-                Vielen Dank für Ihre Meldung. Unser Team wurde informiert und wird sich schnellstmöglich um den Notfall kümmern.
-              </p>
-              <button 
-                onClick={() => setIsSubmitted(false)} 
-                className="mt-6 px-6 py-2 bg-primary text-white rounded-full hover:bg-primary/90 transition-colors font-futura"
-              >
-                Neuen Notfall melden
-              </button>
+              <div className="flex flex-col items-center">
+                <div className="w-16 h-16 bg-accent-green/20 rounded-full flex items-center justify-center mb-4">
+                  <svg className="w-8 h-8 text-accent-green" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                </div>
+                <h2 className="text-2xl font-bold text-accent-green mb-4 font-futura">Notfall gemeldet!</h2>
+                <p className="font-futura text-gray-700 text-center max-w-md mb-4">
+                  Vielen Dank für Ihre Meldung. Unser Team wurde informiert und wird sich schnellstmöglich um den Notfall kümmern.
+                </p>
+                <p className="font-futura text-gray-600 text-sm text-center mb-6">
+                  Wenn die Situation sich ändert oder Sie weitere Informationen haben, können Sie uns jederzeit über diese Seite erneut kontaktieren.
+                </p>
+                <button 
+                  onClick={() => setIsSubmitted(false)} 
+                  className="mt-2 px-6 py-2 bg-primary text-white rounded-full hover:bg-primary/90 transition-colors font-futura flex items-center"
+                >
+                  <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+                  </svg>
+                  Neuen Notfall melden
+                </button>
+              </div>
             </div>
           ) : (
             <>
@@ -196,13 +256,18 @@ const EmergencyReport = () => {
                       value={formData.name}
                       onChange={handleInputChange}
                       required
-                      className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary focus:border-transparent"
+                      aria-invalid={!!validationErrors.name}
+                      aria-describedby={validationErrors.name ? "name-error" : undefined}
+                      className={`w-full px-4 py-2 border ${validationErrors.name ? 'border-red-500' : 'border-gray-300'} rounded-md focus:ring-2 focus:ring-primary focus:border-transparent`}
                     />
+                    {validationErrors.name && (
+                      <p id="name-error" className="mt-1 text-sm text-red-600">{validationErrors.name}</p>
+                    )}
                   </div>
                   
                   <div className="col-span-1">
                     <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-1 font-futura">
-                      Telefonnummer *
+                      Telefonnummer
                     </label>
                     <input
                       type="tel"
@@ -210,14 +275,19 @@ const EmergencyReport = () => {
                       name="phone"
                       value={formData.phone}
                       onChange={handleInputChange}
-                      required
-                      className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary focus:border-transparent"
+                      aria-invalid={!!validationErrors.phone}
+                      aria-describedby={validationErrors.phone ? "phone-error" : undefined}
+                      placeholder="+49 123 4567890"
+                      className={`w-full px-4 py-2 border ${validationErrors.phone ? 'border-red-500' : 'border-gray-300'} rounded-md focus:ring-2 focus:ring-primary focus:border-transparent`}
                     />
+                    {validationErrors.phone && (
+                      <p id="phone-error" className="mt-1 text-sm text-red-600">{validationErrors.phone}</p>
+                    )}
                   </div>
                   
                   <div className="col-span-1 md:col-span-2">
                     <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1 font-futura">
-                      E-Mail
+                      Ihre E-Mail *
                     </label>
                     <input
                       type="email"
@@ -225,18 +295,21 @@ const EmergencyReport = () => {
                       name="email"
                       value={formData.email}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary focus:border-transparent"
+                      required
+                      aria-invalid={!!validationErrors.email}
+                      aria-describedby={validationErrors.email ? "email-error" : undefined}
+                      className={`w-full px-4 py-2 border ${validationErrors.email ? 'border-red-500' : 'border-gray-300'} rounded-md focus:ring-2 focus:ring-primary focus:border-transparent`}
                     />
+                    {validationErrors.email && (
+                      <p id="email-error" className="mt-1 text-sm text-red-600">{validationErrors.email}</p>
+                    )}
                   </div>
                   
                   <div className="col-span-1 md:col-span-2">
                     <label htmlFor="location" className="block text-sm font-medium text-gray-700 mb-1 font-futura">
-                      Fundort / Standort *
+                      Standort des Notfalls *
                     </label>
                     <div className="relative">
-                      <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                        <MapPin size={18} className="text-gray-400" />
-                      </div>
                       <input
                         type="text"
                         id="location"
@@ -244,15 +317,23 @@ const EmergencyReport = () => {
                         value={formData.location}
                         onChange={handleInputChange}
                         required
-                        placeholder="Straße, Hausnummer, PLZ, Ort oder Beschreibung des Fundortes"
-                        className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary focus:border-transparent"
+                        aria-invalid={!!validationErrors.location}
+                        aria-describedby={validationErrors.location ? "location-error" : undefined}
+                        placeholder="Stadt, Straße, oder Beschreibung der Umgebung"
+                        className={`w-full pl-10 pr-4 py-2 border ${validationErrors.location ? 'border-red-500' : 'border-gray-300'} rounded-md focus:ring-2 focus:ring-primary focus:border-transparent`}
                       />
+                      <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                        <MapPin size={18} className="text-gray-400" />
+                      </div>
                     </div>
+                    {validationErrors.location && (
+                      <p id="location-error" className="mt-1 text-sm text-red-600">{validationErrors.location}</p>
+                    )}
                   </div>
                   
                   <div className="col-span-1 md:col-span-2">
                     <label htmlFor="description" className="block text-sm font-medium text-gray-700 mb-1 font-futura">
-                      Beschreibung der Verletzung / Situation *
+                      Beschreibung des Notfalls *
                     </label>
                     <textarea
                       id="description"
@@ -260,10 +341,15 @@ const EmergencyReport = () => {
                       value={formData.description}
                       onChange={handleInputChange}
                       required
+                      aria-invalid={!!validationErrors.description}
+                      aria-describedby={validationErrors.description ? "description-error" : undefined}
                       rows={5}
-                      className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary focus:border-transparent"
-                      placeholder="Bitte beschreiben Sie den Zustand des Tieres und die Situation so genau wie möglich..."
-                    />
+                      placeholder="Bitte beschreiben Sie die Situation, den Zustand des Tieres und ggf. besondere Umstände"
+                      className={`w-full px-4 py-2 border ${validationErrors.description ? 'border-red-500' : 'border-gray-300'} rounded-md focus:ring-2 focus:ring-primary focus:border-transparent`}
+                    ></textarea>
+                    {validationErrors.description && (
+                      <p id="description-error" className="mt-1 text-sm text-red-600">{validationErrors.description}</p>
+                    )}
                   </div>
                   
                   <div className="col-span-1 md:col-span-2">
@@ -334,16 +420,14 @@ const EmergencyReport = () => {
                 </div>
                 
                 <div className="mt-8 flex justify-center">
-                  <button
+                  <button 
                     type="submit"
                     disabled={isSubmitting}
-                    className={`px-8 py-3 flex items-center gap-2 rounded-full text-white font-medium transition-colors ${
-                      isSubmitting ? 'bg-gray-400' : 'bg-red-600 hover:bg-red-700'
-                    }`}
+                    className="w-full bg-primary hover:bg-primary/90 text-white text-lg py-3 rounded-lg transition-colors disabled:opacity-70 disabled:cursor-not-allowed font-futura flex items-center justify-center"
                   >
                     {isSubmitting ? (
                       <>
-                        <svg className="animate-spin -ml-1 mr-2 h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                           <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                           <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                         </svg>
@@ -351,7 +435,7 @@ const EmergencyReport = () => {
                       </>
                     ) : (
                       <>
-                        <Send size={18} />
+                        <Send size={20} className="mr-2" />
                         Notfall melden
                       </>
                     )}

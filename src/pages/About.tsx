@@ -70,6 +70,16 @@ const About = () => {
   // For video modal
   const [isVideoPlaying, setIsVideoPlaying] = useState(false);
 
+  // State for image loading errors
+  const [imageErrors, setImageErrors] = useState<Record<string, boolean>>({});
+
+  const handleImageError = (key: string) => {
+    setImageErrors(prev => ({
+      ...prev,
+      [key]: true
+    }));
+  };
+
   // Team members data
   const boardMembers = [
     {
@@ -94,7 +104,7 @@ const About = () => {
       name: "Lara",
       role: "Schatzmeisterin",
       bio: "Lara ist Vorstandsmitglied bei FAM for Dogs e.V. und übernimmt als Schatzmeisterin und Head of Finance die finanzielle Verwaltung des Vereins. Mit ihrem organisatorischen Geschick und einem ausgeprägten Sinn für Zahlen sorgt sie dafür, dass alle Projekte solide finanziert und nachhaltig umgesetzt werden können. Durch ihre enge Freundschaft mit Fiona hat sie seit Jahren Berührungspunkte mit dem Tierschutz, auch wenn Hunde selbst bisher nicht ihre größte Leidenschaft waren. Gerade dieser Außenblick macht sie zu einer wertvollen Ergänzung im Team: Sie behält den Überblick über die Finanzen, sorgt für Struktur und stellt sicher, dass die Mittel gezielt dort ankommen, wo sie gebraucht werden – für den Schutz und die Versorgung von Straßentieren in Indonesien und Rumänien.",
-      image: "images/team/WhatsApp Image 2025-03-24 at 18.11.30.jpeg"
+      image: "Lara/Lara.jpeg"
     }
   ];
 
@@ -130,19 +140,19 @@ const About = () => {
       name: "Riani",
       role: "Team Lombok",
       bio: "Riani ist die Frau, die sich mit voller Hingabe und Herzblut für die Straßenhunde auf Lombok engagiert. Jeden Tag sorgt sie für die Fütterungsrunden und fährt mit ihrem Roller zu all den Orten, an denen die Hunde bereits gespannt auf sie warten. Im Laufe der Zeit hat sie jedes Tier gut kennengelernt, doch ständig kommen neue Hunde hinzu. Sie kümmert sich auch um verletzte Tiere, die dringend Hilfe benötigen. Riani versorgt sie mit Medikamenten, oder bringt sie zum Tierarzt. Ihre unermüdliche Fürsorge und ihr Engagement für diese Hunde ist wirklich bewundernswert.",
-      image: "images/team/WhatsApp Image 2025-03-24 at 18.11.30.jpeg"
+      image: "images/team/Riani.jpeg"
     },
     {
       name: "Rita",
       role: "Team Lombok",
       bio: "Rita, unsere Katzenlady, betreut mit viel Liebe ihre 100 Katzen und unterstützt bei unserem Kastrationsprogramm. Zudem versorgt sie die Straßenhunde mit Futter und hilft bei deren medizinischer Erstversorgung. Sie ist fester Bestand der Popi Foundation und hat stets das Wohl der Tiere und der Menschen in ihrem Umfeld im Blick und sorgt dafür, dass es ihnen an nichts fehlt.",
-      image: "images/team/WhatsApp Image 2025-03-24 at 18.11.30.jpeg"
+      image: "images/team/Rita.jpeg"
     },
     {
       name: "Rey",
       role: "Team Lombok",
       bio: "Rey ist das Herzstück des Shelters – eine wahre Hundeflüsterin. Gemeinsam mit Dani lebt sie direkt vor Ort und kümmert sich mit unermüdlichem Einsatz um das Wohl der Tiere. Sie kocht täglich für die Hunde, füttert sie, pflegt sie liebevoll und ist rund um die Uhr an ihrer Seite. Mit feinem Gespür erkennt sie sofort, wenn ein Tier krank oder verstört ist, und begleitet es mit großem Einfühlungsvermögen auf dem Weg der Genesung.\n\nIm Shelter leben die Hunde in kleinen Rudeln – versorgt, geborgen und vor allem geliebt. Rey schenkt ihnen nicht nur körperliche Pflege, sondern auch seelische Heilung. Mit selbst entwickelten Kräutertinkturen und Ölen unterstützt sie die Tiere ganzheitlich und gibt ihnen das, was sie oft lange entbehren mussten: Nähe, Vertrauen und Sicherheit. Für viele traumatisierte Hunde ist sie der erste Mensch, der ihnen zeigt, dass Zuwendung möglich ist – und dass nicht jeder Mensch Schmerz bedeutet.",
-      image: "images/team/WhatsApp Image 2025-03-24 at 18.11.30.jpeg"
+      image: "Rey/rey.jpeg"
     },
     {
       name: "Vito",
@@ -196,48 +206,59 @@ const About = () => {
   const renderTeamMembers = (members) => {
     return (
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-8 mb-16">
-        {members.map((member, index) => (
-          <div key={index} className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
-            <div className="relative image-hover">
-              <img 
-                src={member.image} 
-                alt={member.name} 
-                className="w-full h-48 sm:h-64 object-cover transition-transform duration-500 hover:scale-105"
-                style={
-                  member.name === "Kira" ? { objectPosition: "center 20%" } : 
-                  member.name === "Hanna" ? { objectPosition: "center 20%" } : 
-                  member.name === "Mieke & Fiona" ? { objectPosition: "center 20%" } : 
-                  {}
-                }
-              />
-              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4">
-                <h3 className="text-white text-sm sm:text-xl font-semibold font-futura">{member.name}</h3>
-                <p className="text-white/80 text-xs sm:text-sm font-futura">{member.role}</p>
+        {members.map((member, index) => {
+          const imageKey = `${member.name}-${index}`;
+          return (
+            <div key={index} className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
+              <div className="relative image-hover">
+                {imageErrors[imageKey] ? (
+                  <div className="w-full h-48 sm:h-64 flex items-center justify-center bg-gray-200">
+                    <span className="text-gray-500 font-futura">Bild nicht verfügbar</span>
+                  </div>
+                ) : (
+                  <img 
+                    src={member.image} 
+                    alt={member.name} 
+                    loading="lazy"
+                    className="w-full h-48 sm:h-64 object-cover transition-transform duration-500 hover:scale-105"
+                    style={
+                      member.name === "Kira" ? { objectPosition: "center 20%" } : 
+                      member.name === "Hanna" ? { objectPosition: "center 20%" } : 
+                      member.name === "Mieke & Fiona" ? { objectPosition: "center 20%" } : 
+                      {}
+                    }
+                    onError={() => handleImageError(imageKey)}
+                  />
+                )}
+                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4">
+                  <h3 className="text-white text-sm sm:text-xl font-semibold font-futura">{member.name}</h3>
+                  <p className="text-white/80 text-xs sm:text-sm font-futura">{member.role}</p>
+                </div>
               </div>
-            </div>
-            
-            <div className="p-3 sm:p-6">
-              <p className="text-gray-700 mb-4 font-futura text-xs sm:text-base">{member.bio}</p>
               
-              <div className="flex space-x-3">
-                <a 
-                  href="#" 
-                  className="text-primary hover:text-accent-blue transition-colors"
-                  aria-label={`Email ${member.name}`}
-                >
-                  <Mail size={16} className="sm:w-[18px] sm:h-[18px]" />
-                </a>
-                <a 
-                  href="#" 
-                  className="text-primary hover:text-accent-blue transition-colors"
-                  aria-label={`Instagram-Profil von ${member.name}`}
-                >
-                  <Instagram size={16} className="sm:w-[18px] sm:h-[18px]" />
-                </a>
+              <div className="p-3 sm:p-6">
+                <p className="text-gray-700 mb-4 font-futura text-xs sm:text-base">{member.bio}</p>
+                
+                <div className="flex space-x-3">
+                  <a 
+                    href="#" 
+                    className="text-primary hover:text-accent-blue transition-colors"
+                    aria-label={`Email ${member.name}`}
+                  >
+                    <Mail size={16} className="sm:w-[18px] sm:h-[18px]" />
+                  </a>
+                  <a 
+                    href="#" 
+                    className="text-primary hover:text-accent-blue transition-colors"
+                    aria-label={`Instagram-Profil von ${member.name}`}
+                  >
+                    <Instagram size={16} className="sm:w-[18px] sm:h-[18px]" />
+                  </a>
+                </div>
               </div>
             </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
     );
   };
@@ -359,6 +380,7 @@ const About = () => {
                       <img 
                         src={image} 
                         alt={`Lombok Shelter Bild ${index + 1}`} 
+                        loading="lazy"
                         className="w-full h-full object-cover"
                       />
                     </div>
@@ -388,6 +410,7 @@ const About = () => {
                   <img 
                     src="images/lombook/WhatsApp Image 2025-03-24 at 18.13.22.jpeg" 
                     alt="Video Thumbnail" 
+                    loading="lazy"
                     className="w-full h-full object-cover"
                   />
                 </div>
@@ -399,7 +422,7 @@ const About = () => {
               <div className="flex flex-col md:flex-row items-center gap-8">
                 <div className="md:w-1/3">
                   <img 
-                    src="images/team/WhatsApp Image 2025-03-24 at 18.11.30.jpeg" 
+                    src="Lara/Lara.jpeg" 
                     alt="Lara" 
                     className="rounded-xl shadow-lg w-full aspect-square object-cover"
                   />
@@ -465,6 +488,7 @@ const About = () => {
                       <img 
                         src={image} 
                         alt={`Rumänien Projekt Bild ${index + 1}`} 
+                        loading="lazy"
                         className="w-full h-full object-cover"
                       />
                     </div>
@@ -497,6 +521,7 @@ const About = () => {
                     <img 
                       src="images/rumaenien/_V9A9058.jpeg" 
                       alt="Video Thumbnail" 
+                      loading="lazy"
                       className="w-full h-full object-cover"
                     />
                   </div>
