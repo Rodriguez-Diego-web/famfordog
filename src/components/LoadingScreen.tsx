@@ -9,9 +9,9 @@ interface LoadingScreenProps {
 }
 
 /**
- * Premium Ladeanimation im Stil von EA Sports FC
+ * Cineastische Premium-Ladeanimation
  */
-const LoadingScreen = ({ minDisplayTime = 3000 }: LoadingScreenProps) => {
+const LoadingScreen = ({ minDisplayTime = 3200 }: LoadingScreenProps) => {
   const [isLoading, setIsLoading] = useState(true);
   const location = useLocation();
   
@@ -44,125 +44,223 @@ const LoadingScreen = ({ minDisplayTime = 3000 }: LoadingScreenProps) => {
     <AnimatePresence>
       {isLoading && (
         <motion.div
-          className="fixed inset-0 z-[100] flex items-center justify-center bg-primary"
+          className="fixed inset-0 z-[100] bg-black overflow-hidden"
           initial={{ opacity: 1 }}
           exit={{ 
             opacity: 0,
           }}
           transition={{
-            duration: 0.9,
-            ease: [0.22, 1, 0.36, 1] // Besonders glatte Easingkurve
+            duration: 1.2,
+            ease: [0.22, 1, 0.36, 1]
           }}
         >
-          {/* Hintergrund-Effekte */}
-          <motion.div 
-            className="absolute inset-0 bg-primary overflow-hidden"
-            initial={{ opacity: 1 }}
-            animate={{ opacity: 1 }}
-          >
-            {/* Subtile Lichtstrahlen im Hintergrund */}
-            <motion.div
-              className="absolute top-0 left-0 w-full h-full opacity-20"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: [0, 0.2, 0.1] }}
-              transition={{ 
-                duration: 4,
-                repeat: Infinity,
-                repeatType: "reverse"
-              }}
-            >
-              <div className="absolute top-1/2 left-1/2 w-[120%] h-40 -translate-x-1/2 -translate-y-1/2 bg-gradient-radial from-white/20 to-transparent rotate-45"></div>
-              <div className="absolute top-1/3 left-1/3 w-[80%] h-60 -translate-x-1/2 -translate-y-1/2 bg-gradient-radial from-white/10 to-transparent -rotate-30"></div>
-            </motion.div>
-          </motion.div>
-
-          {/* Hauptcontainer für Logo und Ladebalken */}
-          <div className="flex flex-col items-center justify-center relative z-10">
-            {/* Logo mit Effekten */}
-            <motion.div
-              className="relative mb-16"
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ 
-                opacity: 1, 
-                scale: 1,
-                y: [0, -5, 0]
+          {/* Dramatic Background Animation */}
+          <motion.div
+            className="absolute inset-0 bg-gradient-to-br from-primary via-black to-primary/70"
+            initial={{ opacity: 0, scale: 1.1 }}
+            animate={{ 
+              opacity: 1, 
+              scale: 1,
+              background: [
+                "linear-gradient(to bottom right, rgba(1, 82, 73, 0.8), rgba(0, 0, 0, 1), rgba(1, 82, 73, 0.5))",
+                "linear-gradient(to bottom right, rgba(1, 82, 73, 0.5), rgba(0, 0, 0, 1), rgba(1, 82, 73, 0.8))"
+              ]
+            }}
+            transition={{
+              duration: 6,
+              repeat: Infinity,
+              repeatType: "reverse",
+              ease: "easeInOut"
+            }}
+          />
+          
+          {/* Dramatic Light Beams */}
+          <div className="absolute inset-0 opacity-30 overflow-hidden">
+            <motion.div 
+              className="absolute top-[-150%] left-[10%] w-[50px] h-[200%] bg-white blur-[30px] rotate-[35deg]"
+              animate={{
+                top: ["150%", "-150%"]
               }}
               transition={{
-                opacity: { duration: 0.6 },
-                scale: { duration: 1.2, ease: [0.34, 1.56, 0.64, 1] },
-                y: { 
-                  duration: 3.5, 
-                  repeat: Infinity,
-                  repeatType: "reverse",
-                  ease: "easeInOut"
-                }
+                duration: 2.5,
+                ease: "easeInOut",
+                delay: 1,
+                repeat: Infinity,
+                repeatDelay: 4
               }}
-            >
-              {/* Leuchtaura um das Logo */}
-              <motion.div 
-                className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full rounded-full"
+            />
+            <motion.div 
+              className="absolute top-[-150%] left-[70%] w-[30px] h-[200%] bg-white blur-[20px] rotate-[35deg]"
+              animate={{
+                top: ["150%", "-150%"]
+              }}
+              transition={{
+                duration: 2.2,
+                ease: "easeInOut",
+                delay: 0.5,
+                repeat: Infinity,
+                repeatDelay: 4.5
+              }}
+            />
+          </div>
+          
+          {/* Particles Overlay */}
+          <div className="absolute inset-0">
+            {[...Array(30)].map((_, i) => (
+              <motion.div
+                key={i}
+                className="absolute w-1 h-1 bg-white rounded-full opacity-70"
+                style={{
+                  left: `${Math.random() * 100}%`,
+                  top: `${Math.random() * 100}%`,
+                }}
                 animate={{
-                  boxShadow: [
-                    "0 0 20px 0px rgba(255, 255, 255, 0.05)",
-                    "0 0 40px 10px rgba(255, 255, 255, 0.12)",
-                    "0 0 20px 0px rgba(255, 255, 255, 0.05)"
-                  ]
+                  opacity: [0, 0.7, 0],
+                  scale: [0, 1, 0.5],
                 }}
                 transition={{
-                  duration: 3,
+                  duration: 2 + Math.random() * 3,
                   repeat: Infinity,
-                  repeatType: "reverse",
+                  delay: Math.random() * 5,
                   ease: "easeInOut"
                 }}
               />
+            ))}
+          </div>
 
-              {/* Rotierender Ring */}
-              <motion.div 
-                className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[200px] h-[200px] rounded-full border border-white/[0.07]"
-                animate={{ rotate: 360 }}
-                transition={{
-                  duration: 12,
-                  ease: "linear",
-                  repeat: Infinity
-                }}
-              />
-
-              {/* Zweiter gegenläufiger Ring */}
-              <motion.div 
-                className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[220px] h-[220px] rounded-full border border-white/[0.05]"
-                animate={{ rotate: -360 }}
-                transition={{
-                  duration: 15,
-                  ease: "linear",
-                  repeat: Infinity
-                }}
-              />
-
-              {/* Logo selbst */}
-              <img 
-                src="/images/logo.png" 
-                alt="FAM for Dogs Logo" 
-                className="w-48 h-48 object-contain relative z-10"
-              />
-            </motion.div>
-            
-            {/* Ultra-dezenter Ladebalken */}
-            <motion.div 
-              className="w-60 h-[1px] bg-white/5 rounded-full overflow-hidden"
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.8, duration: 0.6 }}
-            >
+          {/* Content Container */}
+          <div className="absolute inset-0 flex items-center justify-center">
+            <div className="flex flex-col items-center">
+              {/* Logo Container with 3D Animation */}
               <motion.div
-                className="h-full bg-white/20"
-                initial={{ width: "0%" }}
-                animate={{ width: "100%" }}
-                transition={{ 
-                  duration: minDisplayTime / 1000 - 0.5, 
-                  ease: "easeInOut" 
+                initial={{ scale: 0.7, opacity: 0, y: 30 }}
+                animate={{
+                  scale: 1,
+                  opacity: 1,
+                  y: 0,
+                  rotateY: [0, 10, 0, -10, 0],
+                  rotateX: [0, 5, 0, -5, 0]
                 }}
+                transition={{
+                  scale: { duration: 1.2, ease: [0.23, 1.64, 0.44, 0.99] },
+                  opacity: { duration: 1 },
+                  y: { duration: 1.2 },
+                  rotateY: { 
+                    duration: 8, 
+                    repeat: Infinity,
+                    repeatType: "loop",
+                    ease: "easeInOut"
+                  },
+                  rotateX: { 
+                    duration: 12, 
+                    repeat: Infinity,
+                    repeatType: "loop",
+                    ease: "easeInOut"
+                  }
+                }}
+                className="relative"
+                style={{
+                  perspective: "1000px",
+                  transformStyle: "preserve-3d"
+                }}
+              >
+                {/* Logo Glow */}
+                <motion.div
+                  className="absolute inset-0 rounded-full filter blur-lg"
+                  style={{
+                    background: "radial-gradient(circle, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0) 70%)",
+                    transform: "translateZ(-10px)"
+                  }}
+                  animate={{
+                    opacity: [0.5, 0.8, 0.5]
+                  }}
+                  transition={{
+                    duration: 3,
+                    repeat: Infinity,
+                    repeatType: "reverse",
+                    ease: "easeInOut"
+                  }}
+                />
+                
+                {/* Logo Image */}
+                <motion.div
+                  whileHover={{ scale: 1.05 }}
+                  transition={{ type: "spring", stiffness: 300, damping: 10 }}
+                >
+                  <img 
+                    src="/images/logo.png" 
+                    alt="FAM for Dogs Logo" 
+                    className="w-64 h-64 object-contain relative" 
+                    style={{ filter: "drop-shadow(0 0 15px rgba(255,255,255,0.3))" }}
+                  />
+                </motion.div>
+              </motion.div>
+              
+              {/* Slogan */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.8, duration: 1 }}
+                className="mt-8 text-white/90 font-futura font-bold text-2xl text-center"
+              >
+                <span className="tracking-wider">TIERSCHUTZ OHNE GRENZEN</span>
+              </motion.div>
+              
+              {/* Cinematic Line */}
+              <motion.div
+                initial={{ width: 0, opacity: 0 }}
+                animate={{ width: "280px", opacity: 1 }}
+                transition={{ delay: 1.2, duration: 1.5, ease: [0.19, 1, 0.22, 1] }}
+                className="h-[1px] bg-gradient-to-r from-transparent via-white/50 to-transparent mt-5"
               />
-            </motion.div>
+              
+              {/* Loading Indicator */}
+              <motion.div 
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 2, duration: 0.5 }}
+                className="mt-10 flex items-center space-x-2"
+              >
+                <motion.div
+                  animate={{ 
+                    scale: [1, 1.2, 1],
+                    opacity: [0.3, 1, 0.3]
+                  }}
+                  transition={{
+                    duration: 1.5,
+                    repeat: Infinity,
+                    ease: "easeInOut"
+                  }}
+                  className="w-2 h-2 bg-white rounded-full"
+                />
+                <motion.div
+                  animate={{ 
+                    scale: [1, 1.2, 1],
+                    opacity: [0.3, 1, 0.3]
+                  }}
+                  transition={{
+                    duration: 1.5,
+                    delay: 0.2,
+                    repeat: Infinity,
+                    ease: "easeInOut"
+                  }}
+                  className="w-2 h-2 bg-white rounded-full"
+                />
+                <motion.div
+                  animate={{ 
+                    scale: [1, 1.2, 1],
+                    opacity: [0.3, 1, 0.3]
+                  }}
+                  transition={{
+                    duration: 1.5,
+                    delay: 0.4,
+                    repeat: Infinity,
+                    ease: "easeInOut"
+                  }}
+                  className="w-2 h-2 bg-white rounded-full"
+                />
+              </motion.div>
+            </div>
           </div>
         </motion.div>
       )}
