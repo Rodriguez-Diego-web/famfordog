@@ -4,6 +4,7 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import JoinTeamSection from '@/components/JoinTeamSection';
 import { PawPrint, Map, Heart, Scissors, Utensils, Stethoscope, Play, Instagram, Linkedin, Mail, X, ChevronLeft, ChevronRight } from 'lucide-react';
+import SEO from '@/components/SEO';
 
 const About = () => {
   const location = useLocation();
@@ -30,16 +31,12 @@ const About = () => {
       }[hash];
       
       if (targetRef && targetRef.current) {
-        // Warte einen Moment, damit die Seite vollständig geladen ist
         setTimeout(() => {
-          targetRef.current.scrollIntoView({ 
-            behavior: 'smooth',
-            block: 'start'
-          });
+          targetRef.current.scrollIntoView({ behavior: 'smooth' });
         }, 100);
       }
     }
-  }, [location.hash]);
+  }, [location]);
 
   // Romanian dog images
   const romaniaImages = [
@@ -275,6 +272,11 @@ const About = () => {
 
   return (
     <div className="min-h-screen flex flex-col">
+      <SEO 
+        title="Über uns"
+        description="FAM for Dogs e.V. ist ein Tierschutzverein, der sich für Straßenhunde in Rumänien und Lombok einsetzt. Lerne unser Team, unsere Geschichte und unsere Mission kennen."
+        keywords="FAM for Dogs, Tierschutzverein, Tierschutz Team, Tierschutz Rumänien, Tierschutz Lombok, Tierschutz Geschichte, Tierschutz Mission, Tierhilfe Team"
+      />
       <Navbar />
       <main className="flex-grow pt-24">
         <div className="container mx-auto px-4 sm:px-6 py-8 sm:py-16">

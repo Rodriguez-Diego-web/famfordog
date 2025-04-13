@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { Check, Heart, PawPrint, DollarSign, Calendar, CreditCard } from 'lucide-react';
+import SEO from '@/components/SEO';
 
 const Donate = () => {
   useEffect(() => {
@@ -54,6 +55,11 @@ const Donate = () => {
 
   return (
     <div className="min-h-screen flex flex-col">
+      <SEO 
+        title="Spenden & Helfen"
+        description="Deine Spende hilft uns, Straßenhunde zu kastrieren, medizinisch zu versorgen und ihnen ein besseres Leben zu ermöglichen. Jeder Beitrag macht einen Unterschied!"
+        keywords="Tierschutz spenden, Hunde Spende, Tierhilfe unterstützen, Kastrationsprojekte spenden, Tierschutzverein unterstützen, monatlich spenden, Tierschutz Rumänien"
+      />
       <Navbar />
       <main className="flex-grow pt-24 relative overflow-hidden">
         {/* Decorative elements */}

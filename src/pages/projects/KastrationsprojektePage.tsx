@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { ArrowLeft, Heart, PawPrint } from 'lucide-react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import SEO from '@/components/SEO';
 
 const KastrationsprojektePage = () => {
   useEffect(() => {
@@ -12,6 +13,11 @@ const KastrationsprojektePage = () => {
 
   return (
     <div className="min-h-screen flex flex-col">
+      <SEO 
+        title="Kastrationsprojekte"
+        description="Nachhaltiger Tierschutz durch Kastrationsprojekte: Wir haben bereits über 1.500 Straßenhunde auf Lombok kastriert und damit rechnerisch rund 18 Millionen ungewollte Nachkommen verhindert."
+        keywords="Kastrationsprojekte, Straßenhunde kastrieren, Tierschutz Lombok, Tierschutz Rumänien, Straßenhunde, Nachhaltiger Tierschutz, Lombok, Rumänien"
+      />
       <Navbar />
       <main className="flex-grow pt-20">
         {/* Hero Section */}

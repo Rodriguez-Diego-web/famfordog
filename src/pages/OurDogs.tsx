@@ -3,6 +3,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { Heart, PawPrint, Home, ChevronDown, Download, Phone } from 'lucide-react';
+import SEO from '@/components/SEO';
 
 const OurDogs = () => {
   const location = useLocation();
@@ -280,6 +281,11 @@ const OurDogs = () => {
 
   return (
     <div className="min-h-screen flex flex-col">
+      <SEO 
+        title="Unsere Hunde adoptieren & Patenschaften"
+        description="Adoptiere einen geretteten Hund aus Rumänien oder Lombok oder übernimm eine Patenschaft, um einem Straßenhund zu helfen. Hier findest du Hunde, die ein neues Zuhause suchen."
+        keywords="Hund adoptieren, Straßenhund Adoption, Hunde aus Rumänien, Hunde aus Lombok, Hundepatenschaft, Straßenhunde, Hund aus dem Ausland, Auslandshund, Tierschutzhund"
+      />
       <Navbar />
       <main className="flex-grow pt-24">
         <div className="container mx-auto px-4 sm:px-6 py-8 sm:py-16">
