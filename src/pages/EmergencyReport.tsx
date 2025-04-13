@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import { MapPin, AlertTriangle, Upload, Send } from 'lucide-react';
+import { MapPin, AlertTriangle, Upload, Send, Heart, PawPrint } from 'lucide-react';
 import emailjs from '@emailjs/browser';
 
 const EmergencyReport = () => {
@@ -196,17 +196,22 @@ const EmergencyReport = () => {
   return (
     <div className="min-h-screen flex flex-col">
       <Navbar />
-      <main className="flex-grow pt-24">
-        <div className="container mx-auto px-4 sm:px-6 py-8 sm:py-16">
+      <main className="flex-grow pt-24 relative overflow-hidden">
+        {/* Decorative elements */}
+        <div className="absolute top-10 right-20 w-64 h-64 rounded-full bg-accent-blue/10 blur-3xl"></div>
+        <div className="absolute bottom-20 left-10 w-80 h-80 rounded-full bg-accent-pink/10 blur-3xl"></div>
+        <div className="absolute top-1/3 left-1/4 w-40 h-40 rounded-full bg-accent-yellow/10 blur-3xl"></div>
+        
+        <div className="container mx-auto px-4 sm:px-6 py-8 sm:py-16 relative z-10">
           {isSubmitted ? (
-            <div className="bg-accent-green/10 border border-accent-green rounded-lg p-6 max-w-3xl mx-auto mb-12">
+            <div className="bg-gradient-to-br from-accent-green/20 to-accent-blue/10 border border-accent-green rounded-lg p-8 max-w-3xl mx-auto mb-12 shadow-lg">
               <div className="flex flex-col items-center">
-                <div className="w-16 h-16 bg-accent-green/20 rounded-full flex items-center justify-center mb-4">
-                  <svg className="w-8 h-8 text-accent-green" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <div className="w-16 h-16 bg-accent-green rounded-full flex items-center justify-center mb-4 shadow-lg">
+                  <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
                   </svg>
                 </div>
-                <h2 className="text-2xl font-bold text-accent-green mb-4 font-futura">Notfall gemeldet!</h2>
+                <h2 className="text-2xl font-bold text-accent-green mb-4 font-glorious">Notfall gemeldet!</h2>
                 <p className="font-futura text-gray-700 text-center max-w-md mb-4">
                   Vielen Dank für Ihre Meldung. Unser Team wurde informiert und wird sich schnellstmöglich um den Notfall kümmern.
                 </p>
@@ -215,7 +220,7 @@ const EmergencyReport = () => {
                 </p>
                 <button 
                   onClick={() => setIsSubmitted(false)} 
-                  className="mt-2 px-6 py-2 bg-primary text-white rounded-full hover:bg-primary/90 transition-colors font-futura flex items-center"
+                  className="mt-2 px-6 py-3 bg-gradient-to-r from-primary to-accent-green text-white rounded-full hover:shadow-lg transition-all duration-300 font-futura flex items-center"
                 >
                   <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
@@ -226,25 +231,40 @@ const EmergencyReport = () => {
             </div>
           ) : (
             <>
-              <div className="text-center mb-12">
-                <div className="inline-block p-4 bg-red-100 rounded-full mb-4">
-                  <AlertTriangle size={40} className="text-red-600" />
+              <div className="text-center mb-12 relative">
+                <div className="flex justify-center">
+                  <div className="inline-block p-5 bg-gradient-to-br from-red-500 to-red-600 rounded-full mb-6 shadow-lg transform hover:scale-105 transition-transform duration-300">
+                    <AlertTriangle size={42} className="text-white" />
+                  </div>
                 </div>
                 <h1 className="text-4xl sm:text-5xl font-bold text-primary mb-6 sm:mb-8 font-glorious">Tiernotfall melden</h1>
-                <p className="text-base sm:text-lg text-gray-700 mb-6 sm:mb-8 font-futura max-w-3xl mx-auto">
+                <div className="w-24 h-1 bg-gradient-to-r from-accent-pink via-accent-yellow to-accent-blue mx-auto mb-6"></div>
+                <p className="text-base sm:text-lg text-gray-700 mb-8 sm:mb-10 font-futura max-w-3xl mx-auto">
                   Haben Sie ein Tier in Not gefunden? Bitte füllen Sie das Formular aus, um uns schnellstmöglich zu informieren.
                 </p>
+                
+                {/* Decorative paw prints */}
+                <div className="absolute -left-4 top-1/4 transform -rotate-12 opacity-20">
+                  <PawPrint size={32} className="text-accent-pink" />
+                </div>
+                <div className="absolute right-4 bottom-0 transform rotate-12 opacity-20">
+                  <PawPrint size={24} className="text-accent-blue" />
+                </div>
               </div>
               
               {errorMessage && (
-                <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-6 max-w-3xl mx-auto" role="alert">
+                <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded-lg relative mb-8 max-w-3xl mx-auto shadow-md" role="alert">
                   <strong className="font-bold">Fehler: </strong>
                   <span className="block sm:inline">{errorMessage}</span>
                 </div>
               )}
               
-              <form ref={formRef} onSubmit={handleSubmit} className="max-w-3xl mx-auto bg-white rounded-lg shadow-md p-6 sm:p-8">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <form ref={formRef} onSubmit={handleSubmit} className="max-w-3xl mx-auto bg-white rounded-2xl shadow-xl p-8 mb-12 relative border border-gray-100">
+                {/* Decorative corner accents */}
+                <div className="absolute top-0 left-0 w-24 h-24 rounded-tl-2xl bg-gradient-to-br from-accent-blue/20 to-transparent pointer-events-none"></div>
+                <div className="absolute bottom-0 right-0 w-24 h-24 rounded-br-2xl bg-gradient-to-tl from-accent-pink/20 to-transparent pointer-events-none"></div>
+              
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 relative">
                   <div className="col-span-1">
                     <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1 font-futura">
                       Ihr Name *
@@ -258,7 +278,7 @@ const EmergencyReport = () => {
                       required
                       aria-invalid={!!validationErrors.name}
                       aria-describedby={validationErrors.name ? "name-error" : undefined}
-                      className={`w-full px-4 py-2 border ${validationErrors.name ? 'border-red-500' : 'border-gray-300'} rounded-md focus:ring-2 focus:ring-primary focus:border-transparent`}
+                      className={`w-full px-4 py-3 border ${validationErrors.name ? 'border-red-500' : 'border-gray-300'} rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-colors duration-200`}
                     />
                     {validationErrors.name && (
                       <p id="name-error" className="mt-1 text-sm text-red-600">{validationErrors.name}</p>
@@ -278,7 +298,7 @@ const EmergencyReport = () => {
                       aria-invalid={!!validationErrors.phone}
                       aria-describedby={validationErrors.phone ? "phone-error" : undefined}
                       placeholder="+49 123 4567890"
-                      className={`w-full px-4 py-2 border ${validationErrors.phone ? 'border-red-500' : 'border-gray-300'} rounded-md focus:ring-2 focus:ring-primary focus:border-transparent`}
+                      className={`w-full px-4 py-3 border ${validationErrors.phone ? 'border-red-500' : 'border-gray-300'} rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-colors duration-200`}
                     />
                     {validationErrors.phone && (
                       <p id="phone-error" className="mt-1 text-sm text-red-600">{validationErrors.phone}</p>
@@ -298,7 +318,7 @@ const EmergencyReport = () => {
                       required
                       aria-invalid={!!validationErrors.email}
                       aria-describedby={validationErrors.email ? "email-error" : undefined}
-                      className={`w-full px-4 py-2 border ${validationErrors.email ? 'border-red-500' : 'border-gray-300'} rounded-md focus:ring-2 focus:ring-primary focus:border-transparent`}
+                      className={`w-full px-4 py-3 border ${validationErrors.email ? 'border-red-500' : 'border-gray-300'} rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-colors duration-200`}
                     />
                     {validationErrors.email && (
                       <p id="email-error" className="mt-1 text-sm text-red-600">{validationErrors.email}</p>
@@ -320,10 +340,10 @@ const EmergencyReport = () => {
                         aria-invalid={!!validationErrors.location}
                         aria-describedby={validationErrors.location ? "location-error" : undefined}
                         placeholder="Stadt, Straße, oder Beschreibung der Umgebung"
-                        className={`w-full pl-10 pr-4 py-2 border ${validationErrors.location ? 'border-red-500' : 'border-gray-300'} rounded-md focus:ring-2 focus:ring-primary focus:border-transparent`}
+                        className={`w-full pl-11 pr-4 py-3 border ${validationErrors.location ? 'border-red-500' : 'border-gray-300'} rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-colors duration-200`}
                       />
                       <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                        <MapPin size={18} className="text-gray-400" />
+                        <MapPin size={18} className="text-accent-pink" />
                       </div>
                     </div>
                     {validationErrors.location && (
@@ -345,7 +365,7 @@ const EmergencyReport = () => {
                       aria-describedby={validationErrors.description ? "description-error" : undefined}
                       rows={5}
                       placeholder="Bitte beschreiben Sie die Situation, den Zustand des Tieres und ggf. besondere Umstände"
-                      className={`w-full px-4 py-2 border ${validationErrors.description ? 'border-red-500' : 'border-gray-300'} rounded-md focus:ring-2 focus:ring-primary focus:border-transparent`}
+                      className={`w-full px-4 py-3 border ${validationErrors.description ? 'border-red-500' : 'border-gray-300'} rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-colors duration-200`}
                     ></textarea>
                     {validationErrors.description && (
                       <p id="description-error" className="mt-1 text-sm text-red-600">{validationErrors.description}</p>
@@ -353,77 +373,73 @@ const EmergencyReport = () => {
                   </div>
                   
                   <div className="col-span-1 md:col-span-2">
-                    <label className="block text-sm font-medium text-gray-700 mb-1 font-futura">
-                      Foto hochladen
+                    <label className="block text-sm font-medium text-gray-700 mb-2 font-futura">
+                      Foto des Tieres (optional)
                     </label>
                     <div 
-                      className={`mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-dashed rounded-md transition-colors ${
+                      className={`border-2 border-dashed rounded-lg p-6 flex flex-col items-center justify-center cursor-pointer transition-colors relative ${
                         isDragging 
-                          ? 'border-primary bg-primary/10' 
-                          : 'border-gray-300 hover:border-primary/60'
+                          ? 'border-accent-blue bg-accent-blue/10' 
+                          : 'border-gray-300 hover:border-accent-blue hover:bg-accent-blue/5'
                       }`}
                       onDragEnter={handleDragEnter}
-                      onDragOver={handleDragOver}
                       onDragLeave={handleDragLeave}
+                      onDragOver={handleDragOver}
                       onDrop={handleDrop}
                       onClick={() => fileInputRef.current?.click()}
                     >
-                      <div className="space-y-1 text-center">
-                        {previewUrl ? (
-                          <div>
-                            <img 
-                              src={previewUrl} 
-                              alt="Vorschau" 
-                              className="mx-auto h-48 object-contain mb-4" 
-                            />
-                            <button
-                              type="button"
-                              onClick={(e) => {
-                                e.stopPropagation(); // Prevent triggering parent div's onClick
-                                setSelectedImage(null);
-                                setPreviewUrl(null);
-                              }}
-                              className="text-sm text-red-600 hover:text-red-800"
-                            >
-                              Bild entfernen
-                            </button>
+                      <input
+                        type="file"
+                        ref={fileInputRef}
+                        onChange={handleImageChange}
+                        className="hidden"
+                        accept="image/*"
+                      />
+                      
+                      {previewUrl ? (
+                        <div className="relative w-full max-h-[200px] flex justify-center">
+                          <img 
+                            src={previewUrl} 
+                            alt="Preview" 
+                            className="max-h-[200px] max-w-full rounded-lg object-contain shadow-md"
+                          />
+                          <button
+                            type="button"
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              setSelectedImage(null);
+                              setPreviewUrl(null);
+                            }}
+                            className="absolute -top-3 -right-3 bg-red-500 text-white rounded-full p-1 shadow-md hover:bg-red-600 transition-colors"
+                            aria-label="Remove image"
+                          >
+                            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path>
+                            </svg>
+                          </button>
+                        </div>
+                      ) : (
+                        <>
+                          <div className="w-14 h-14 bg-gradient-to-br from-accent-yellow to-accent-pink rounded-full flex items-center justify-center mb-3">
+                            <Upload className="h-6 w-6 text-white" />
                           </div>
-                        ) : (
-                          <>
-                            <Upload className="mx-auto h-12 w-12 text-gray-400" />
-                            <div className="flex text-sm text-gray-600">
-                              <label
-                                htmlFor="file-upload"
-                                className="relative cursor-pointer bg-white rounded-md font-medium text-primary hover:text-primary/80"
-                              >
-                                <span>Datei auswählen</span>
-                                <input
-                                  id="file-upload"
-                                  name="file-upload"
-                                  type="file"
-                                  className="sr-only"
-                                  ref={fileInputRef}
-                                  accept="image/*"
-                                  onChange={handleImageChange}
-                                />
-                              </label>
-                              <p className="pl-1">oder hierher ziehen</p>
-                            </div>
-                            <p className="text-xs text-gray-500">
-                              PNG, JPG, GIF bis zu 10MB
-                            </p>
-                          </>
-                        )}
-                      </div>
+                          <p className="text-gray-600 text-center mb-1 font-futura">
+                            Ziehen Sie ein Bild hierher oder klicken Sie, um ein Bild auszuwählen
+                          </p>
+                          <p className="text-gray-400 text-xs text-center font-futura">
+                            JPG, PNG, GIF bis 10MB
+                          </p>
+                        </>
+                      )}
                     </div>
                   </div>
                 </div>
                 
                 <div className="mt-8 flex justify-center">
-                  <button 
+                  <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full bg-primary hover:bg-primary/90 text-white text-lg py-3 rounded-lg transition-colors disabled:opacity-70 disabled:cursor-not-allowed font-futura flex items-center justify-center"
+                    className="px-8 py-3 bg-gradient-to-r from-primary to-accent-blue text-white font-medium rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none disabled:shadow-none disabled:hover:scale-100"
                   >
                     {isSubmitting ? (
                       <>
@@ -431,17 +447,40 @@ const EmergencyReport = () => {
                           <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                           <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                         </svg>
-                        Wird gesendet...
+                        Bitte warten...
                       </>
                     ) : (
                       <>
-                        <Send size={20} className="mr-2" />
+                        <Send className="mr-2 h-5 w-5" />
                         Notfall melden
                       </>
                     )}
                   </button>
                 </div>
+                
+                <div className="mt-6 text-center">
+                  <div className="flex justify-center items-center space-x-2 text-accent-pink">
+                    <Heart size={16} className="animate-pulse" />
+                    <p className="text-sm text-gray-500 font-futura">
+                      Wir kümmern uns schnellstmöglich um Ihre Meldung
+                    </p>
+                    <Heart size={16} className="animate-pulse" />
+                  </div>
+                </div>
               </form>
+              
+              <div className="max-w-3xl mx-auto bg-gradient-to-r from-accent-blue/10 to-accent-green/10 p-6 rounded-xl shadow-md">
+                <h3 className="font-semibold text-lg mb-3 text-primary font-futura flex items-center">
+                  <AlertTriangle size={18} className="mr-2 text-accent-yellow" /> 
+                  Wichtige Hinweise
+                </h3>
+                <ul className="list-disc pl-6 space-y-2 text-gray-700 font-futura">
+                  <li>Bei lebensgefährlichen Notfällen kontaktieren Sie bitte zusätzlich die örtliche Tierklinik.</li>
+                  <li>Bitte versuchen Sie, das Tier bei Bedarf zu sichern, aber bringen Sie sich niemals selbst in Gefahr.</li>
+                  <li>Falls möglich, bitte ein Foto hinzufügen – das hilft uns bei der schnellen Einschätzung.</li>
+                  <li>Unser Team meldet sich schnellstmöglich zurück und koordiniert die nächsten Schritte.</li>
+                </ul>
+              </div>
             </>
           )}
         </div>

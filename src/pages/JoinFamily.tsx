@@ -229,52 +229,52 @@ const JoinFamily = () => {
           <div className="mb-16">
             <h2 className="text-2xl sm:text-3xl font-bold text-primary mb-8 text-center font-glorious">Weitere Möglichkeiten zu helfen</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-              {/* Card 1 - Accent Green */}
-              <div className="bg-accent-green rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+              {/* Card 1 - Yellow */}
+              <div className="bg-accent-yellow rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
                 <div className="p-6">
                   <div className="h-12 w-12 rounded-full bg-white/20 flex items-center justify-center mb-4">
                     <PawPrint size={24} className="text-white" />
                   </div>
-                  <h3 className="text-lg font-bold text-white mb-2 font-futura">Pflegestelle werden</h3>
+                  <h3 className="text-xl font-bold text-white mb-2 font-futura">Pflegestelle werden</h3>
                   <p className="text-white/90 font-futura text-sm">
                     Biete einem Hund ein vorübergehendes Zuhause, bis er seine Für-immer-Familie findet.
                   </p>
                 </div>
               </div>
               
-              {/* Card 2 - Accent Pink */}
-              <div className="bg-accent-pink rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+              {/* Card 2 - Blue */}
+              <div className="bg-accent-blue rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
                 <div className="p-6">
                   <div className="h-12 w-12 rounded-full bg-white/20 flex items-center justify-center mb-4">
                     <Heart size={24} className="text-white" />
                   </div>
-                  <h3 className="text-lg font-bold text-white mb-2 font-futura">Sachspenden</h3>
+                  <h3 className="text-xl font-bold text-white mb-2 font-futura">Sachspenden</h3>
                   <p className="text-white/90 font-futura text-sm">
                     Spende Futter, Decken, Spielzeug oder Medikamente für unsere Hunde.
                   </p>
                 </div>
               </div>
               
-              {/* Card 3 - Secondary Color */}
-              <div className="bg-secondary rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+              {/* Card 3 - Dark Green (like primary) */}
+              <div className="bg-primary rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
                 <div className="p-6">
                   <div className="h-12 w-12 rounded-full bg-white/20 flex items-center justify-center mb-4">
                     <Calendar size={24} className="text-white" />
                   </div>
-                  <h3 className="text-lg font-bold text-white mb-2 font-futura">Events organisieren</h3>
+                  <h3 className="text-xl font-bold text-white mb-2 font-futura">Events organisieren</h3>
                   <p className="text-white/90 font-futura text-sm">
                     Plane Veranstaltungen oder Spendenaktionen, um Aufmerksamkeit und Mittel zu sammeln.
                   </p>
                 </div>
               </div>
               
-              {/* Card 4 - Custom Yellow */}
-              <div className="bg-[#dce169] rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+              {/* Card 4 - Pink */}
+              <div className="bg-accent-pink rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
                 <div className="p-6">
                   <div className="h-12 w-12 rounded-full bg-white/20 flex items-center justify-center mb-4">
                     <Star size={24} className="text-white" />
                   </div>
-                  <h3 className="text-lg font-bold text-white mb-2 font-futura">Social Media</h3>
+                  <h3 className="text-xl font-bold text-white mb-2 font-futura">Social Media</h3>
                   <p className="text-white/90 font-futura text-sm">
                     Teile unsere Beiträge und hilf uns, mehr Menschen zu erreichen und aufzuklären.
                   </p>

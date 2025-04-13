@@ -108,7 +108,7 @@ const Hero = () => {
   const slide = heroSlides[currentSlide];
 
   return (
-    <div className="min-h-screen flex items-center relative overflow-hidden">
+    <div className="min-h-screen flex items-start sm:items-center relative overflow-hidden">
       {/* Farbenfroher Hintergrund */}
       <div className="absolute inset-0 z-0">
         {/* Hauptfarben-Blöcke mit leichter Transparenz für bessere Lesbarkeit */}
@@ -127,14 +127,14 @@ const Hero = () => {
         <div className="absolute inset-0 bg-black/30 backdrop-blur-sm"></div>
       </div>
       
-      <div className="container mx-auto px-6 pt-20 z-20 relative">
+      <div className="container mx-auto px-6 pt-6 sm:pt-20 z-20 relative mt-32 sm:mt-0">
         <div className="max-w-2xl">
-          <h1 ref={headingRef} className="text-5xl sm:text-6xl md:text-7xl font-bold mb-6">
+          <h1 ref={headingRef} className="text-5xl sm:text-6xl md:text-7xl font-bold mb-4 sm:mb-6">
             <span className="text-white font-glorious">{slide.title}</span><br />
             <span className="text-secondary font-glorious">{slide.subtitle}</span>
           </h1>
           
-          <p ref={subheadingRef} className="text-white text-lg mb-8 max-w-xl font-futura">
+          <p ref={subheadingRef} className="text-white text-lg mb-6 sm:mb-8 max-w-xl font-futura">
             {slide.description}
           </p>
           
@@ -150,16 +150,16 @@ const Hero = () => {
         </div>
       </div>
       
-      {/* Bottom Pagination - now interactive */}
-      <div className="absolute bottom-10 left-6 sm:left-10 md:left-20 flex z-10">
+      {/* Fixed slide indicator - visible in both mobile and desktop */}
+      <div className="absolute bottom-24 sm:bottom-8 left-8 flex z-20">
         {heroSlides.map((slide, index) => (
           <button
             key={slide.id}
             onClick={() => goToSlide(index)}
-            className={`w-16 h-16 flex items-center justify-center text-white font-semibold transition-all duration-300 ${
+            className={`h-16 w-16 flex items-center justify-center font-semibold text-white ${
               index === currentSlide 
                 ? 'bg-secondary text-primary' 
-                : 'bg-black/50 backdrop-blur-sm hover:bg-black/70'
+                : index === 0 ? 'bg-black' : index === 1 ? 'bg-[#333333]' : 'bg-[#1a1a1a]'
             }`}
             aria-label={`Go to slide ${index + 1}`}
           >

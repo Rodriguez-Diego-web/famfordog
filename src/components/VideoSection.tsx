@@ -90,11 +90,11 @@ const VideoSection = () => {
                     muted={isMuted}
                     loop
                     playsInline
-                    poster="/images/lombok/shelter.jpg"
+                    poster="/images/lombook/WhatsApp Image 2025-03-24 at 18.13.23.jpeg"
                     onLoadedData={handleVideoLoaded}
                     onEnded={() => setIsPlaying(false)}
                   >
-                    <source src="/videos/lombok_video.mp4" type="video/mp4" />
+                    <source src="/videos/ImageVideo.mp4" type="video/mp4" />
                     Dein Browser unterstützt das Video-Tag nicht.
                   </video>
                 )}

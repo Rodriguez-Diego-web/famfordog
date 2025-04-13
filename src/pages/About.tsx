@@ -2,6 +2,7 @@ import { useEffect, useState, useRef } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import JoinTeamSection from '@/components/JoinTeamSection';
 import { PawPrint, Map, Heart, Scissors, Utensils, Stethoscope, Play, Instagram, Linkedin, Mail, X, ChevronLeft, ChevronRight } from 'lucide-react';
 
 const About = () => {
@@ -50,7 +51,6 @@ const About = () => {
     "images/rumaenien/_V9A9058.jpeg",
     "images/rumaenien/IMG_0146.jpeg",
     "images/rumaenien/IMG_0653.jpeg",
-    "images/rumaenien/IMG_8208.jpeg",
     "images/rumaenien/IMG_8222.jpeg"
   ];
 
@@ -222,9 +222,19 @@ const About = () => {
                     loading="lazy"
                     className="w-full h-48 sm:h-64 object-cover transition-transform duration-500 hover:scale-105"
                     style={
-                      member.name === "Kira" ? { objectPosition: "center 20%" } : 
+                      member.name === "Mieke & Fiona" ? { objectPosition: "center 25%" } : 
+                      member.name === "Kira" ? { objectPosition: "center 30%" } : 
+                      member.name === "Chrissy" ? { objectPosition: "center 25%" } : 
+                      member.name === "Lara" ? { objectPosition: "center 30%" } : 
+                      member.name === "Daze" ? { objectPosition: "center 35%" } : 
                       member.name === "Hanna" ? { objectPosition: "center 20%" } : 
-                      member.name === "Mieke & Fiona" ? { objectPosition: "center 20%" } : 
+                      member.name === "Diego" ? { objectPosition: "center 15%" } : 
+                      member.name === "Dani" ? { objectPosition: "center 25%" } : 
+                      member.name === "Riani" ? { objectPosition: "center 30%" } : 
+                      member.name === "Rita" ? { objectPosition: "center 20%" } : 
+                      member.name === "Rey" ? { objectPosition: "center 25%" } : 
+                      member.name === "Vito" ? { objectPosition: "center 35%" } : 
+                      member.name === "Aris" ? { objectPosition: "center 30%" } : 
                       {}
                     }
                     onError={() => handleImageError(imageKey)}
@@ -370,7 +380,7 @@ const About = () => {
               {/* Lombok Shelter Bilder */}
               <div className="mt-8 mb-8">
                 <h4 className="text-lg font-semibold text-primary mb-4 font-futura text-center">Eindrücke aus dem Tierheim</h4>
-                <div className="grid grid-cols-2 md:grid-cols-3 gap-3 sm:gap-4">
+                <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4">
                   {lombokImages.map((image, index) => (
                     <div 
                       key={index}
@@ -385,58 +395,6 @@ const About = () => {
                       />
                     </div>
                   ))}
-                </div>
-              </div>
-            </div>
-            
-            {/* Video Section - Unsere Arbeit auf Lombok */}
-            <div className="mb-12 sm:mb-16">
-              <div className="text-center mb-6 sm:mb-10">
-                <h3 className="text-xl sm:text-2xl font-bold text-primary mb-3 sm:mb-4 font-glorious">Unsere Arbeit auf Lombok</h3>
-                <div className="w-16 sm:w-20 h-1 bg-primary mx-auto mb-4 sm:mb-6"></div>
-              </div>
-              
-              <div className="flex justify-center">
-                <div 
-                  className="relative w-full max-w-4xl h-[250px] sm:h-[400px] md:h-[500px] rounded-xl overflow-hidden shadow-xl cursor-pointer"
-                  onClick={() => setIsVideoPlaying(true)}
-                >
-                  <div className="absolute inset-0 bg-black/20 flex items-center justify-center z-10 hover:bg-black/30 transition-colors duration-300">
-                    <div className="bg-white/20 backdrop-blur-sm p-3 sm:p-5 rounded-full">
-                      <Play className="text-white h-8 w-8 sm:h-10 sm:w-10 fill-white" />
-                    </div>
-                  </div>
-                  {/* Video thumbnail */}
-                  <img 
-                    src="images/lombook/WhatsApp Image 2025-03-24 at 18.13.22.jpeg" 
-                    alt="Video Thumbnail" 
-                    loading="lazy"
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-              </div>
-            </div>
-            
-            {/* Lara Quote Section */}
-            <div className="mb-12 sm:mb-16 bg-white p-8 sm:p-12 rounded-2xl shadow-xl">
-              <div className="flex flex-col md:flex-row items-center gap-8">
-                <div className="md:w-1/3">
-                  <img 
-                    src="Lara/Lara.jpeg" 
-                    alt="Lara" 
-                    className="rounded-xl shadow-lg w-full aspect-square object-cover"
-                  />
-                </div>
-                <div className="md:w-2/3">
-                  <blockquote className="text-gray-700 italic mb-4 font-futura text-lg relative">
-                    <span className="text-6xl font-serif text-primary/20 absolute top-0 left-0 -translate-x-6 -translate-y-6">"</span>
-                    Lara ist Vorstandsmitglied bei FAM for Dogs e.V. und übernimmt als Schatzmeisterin und Head of Finance die finanzielle Verwaltung des Vereins. Mit ihrem organisatorischen Geschick und einem ausgeprägten Sinn für Zahlen sorgt sie dafür, dass alle Projekte solide finanziert und nachhaltig umgesetzt werden können.
-                    <br/><br/>
-                    Durch ihre enge Freundschaft mit Fiona hat sie seit Jahren Berührungspunkte mit dem Tierschutz, auch wenn Hunde selbst bisher nicht ihre größte Leidenschaft waren. Gerade dieser Außenblick macht sie zu einer wertvollen Ergänzung im Team: Sie behält den Überblick über die Finanzen, sorgt für Struktur und stellt sicher, dass die Mittel gezielt dort ankommen, wo sie gebraucht werden – für den Schutz und die Versorgung von Straßentieren in Indonesien und Rumänien.
-                    <span className="text-6xl font-serif text-primary/20 absolute bottom-0 right-0 translate-x-6 translate-y-6">"</span>
-                  </blockquote>
-                  <p className="text-primary font-bold font-futura">Lara</p>
-                  <p className="text-gray-600 font-futura">Schatzmeisterin & Head of Finance</p>
                 </div>
               </div>
             </div>
@@ -493,38 +451,6 @@ const About = () => {
                       />
                     </div>
                   ))}
-                </div>
-              </div>
-              
-              {/* Video Section */}
-              <div className="mb-12 sm:mb-16">
-                <div className="text-center mb-6 sm:mb-10">
-                  <h3 className="text-xl sm:text-2xl font-bold text-primary mb-3 sm:mb-4 font-glorious">Unsere Arbeit vor Ort</h3>
-                  <div className="w-16 sm:w-20 h-1 bg-primary mx-auto mb-4 sm:mb-6"></div>
-                  <p className="text-gray-700 max-w-3xl mx-auto font-futura mb-6 sm:mb-8 text-sm sm:text-base">
-                    Erleben Sie einen Einblick in unsere tägliche Arbeit mit den Hunden vor Ort.
-                    Dieses Video zeigt, mit wie viel Liebe und Hingabe sich unser Team um die Tiere kümmert.
-                  </p>
-                </div>
-                
-                <div className="flex justify-center">
-                  <div 
-                    className="relative w-full max-w-4xl h-[250px] sm:h-[400px] md:h-[500px] rounded-xl overflow-hidden shadow-xl cursor-pointer"
-                    onClick={() => setIsVideoPlaying(true)}
-                  >
-                    <div className="absolute inset-0 bg-black/20 flex items-center justify-center z-10 hover:bg-black/30 transition-colors duration-300">
-                      <div className="bg-white/20 backdrop-blur-sm p-3 sm:p-5 rounded-full">
-                        <Play className="text-white h-8 w-8 sm:h-10 sm:w-10 fill-white" />
-                      </div>
-                    </div>
-                    {/* Video thumbnail */}
-                    <img 
-                      src="images/rumaenien/_V9A9058.jpeg" 
-                      alt="Video Thumbnail" 
-                      loading="lazy"
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
                 </div>
               </div>
             </div>
@@ -635,24 +561,7 @@ const About = () => {
               </div>
             </div>
             
-            <div className="bg-white rounded-2xl overflow-hidden shadow-xl mb-16">
-              <div className="grid grid-cols-1 md:grid-cols-2">
-                <div className="p-12 flex flex-col justify-center bg-primary">
-                  <h2 className="text-3xl font-bold text-white mb-6 font-glorious">Werde Teil unseres Teams</h2>
-                  <p className="text-white/80 mb-6 font-futura">
-                    Wir suchen immer nach engagierten Menschen, die unsere Leidenschaft für Tierschutz teilen. 
-                    Ob als Spender, Helfer vor Ort oder Unterstützer von zu Hause aus – jeder kann einen Beitrag leisten.
-                  </p>
-                  <a 
-                    href="/volunteer" 
-                    className="bg-white hover:bg-gray-100 text-primary px-8 py-3 rounded-full font-medium transition-all duration-300 hover:shadow-lg inline-block w-fit font-futura"
-                  >
-                    Mitmachen
-                  </a>
-                </div>
-                <div className="bg-cover bg-center h-full min-h-[300px]" style={{ backgroundImage: 'url("images/HeroImage.png")' }}></div>
-              </div>
-            </div>
+            <JoinTeamSection />
             
             <h3 className="text-xl font-bold text-primary mb-4 font-glorious">Ehrenamtliche Helfer</h3>
             <p className="text-lg text-gray-700 mb-12 max-w-3xl font-futura">

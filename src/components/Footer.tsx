@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Instagram, Facebook, Twitter, Mail, Phone, MapPin } from 'lucide-react';
+import { Instagram, Mail, MapPin } from 'lucide-react';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -38,7 +38,7 @@ const Footer = () => {
             </p>
             <div className="flex space-x-4">
               <a 
-                href="https://instagram.com" 
+                href="https://www.instagram.com/famfordogs/" 
                 target="_blank" 
                 rel="noopener noreferrer" 
                 className="bg-white/10 hover:bg-accent-pink hover:text-primary p-2 rounded-full transition-colors"
@@ -47,22 +47,24 @@ const Footer = () => {
                 <Instagram size={20} className="text-white" />
               </a>
               <a 
-                href="https://facebook.com" 
+                href="https://www.paypal.com/donate/?hosted_button_id=3ELJCXP5LQDTG&fbclid=PAZXh0bgNhZW0CMTEAAacL5dv8tJ8rf1AmdkoJNcBdI2Vg4YsFd43OKwLPAR-2Cc0smBWssBVFISdssw_aem_MHs6qBhUCeSxrCWgEqDGtw" 
                 target="_blank" 
                 rel="noopener noreferrer" 
                 className="bg-white/10 hover:bg-accent-blue hover:text-primary p-2 rounded-full transition-colors"
-                aria-label="Facebook"
+                aria-label="PayPal Donation"
               >
-                <Facebook size={20} className="text-white" />
-              </a>
-              <a 
-                href="https://twitter.com" 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="bg-white/10 hover:bg-accent-yellow hover:text-primary p-2 rounded-full transition-colors"
-                aria-label="Twitter"
-              >
-                <Twitter size={20} className="text-white" />
+                <svg 
+                  width="20" 
+                  height="20" 
+                  viewBox="0 0 24 24" 
+                  fill="currentColor"
+                  className="text-white" 
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M20.067 8.478c.492.732.695 1.682.576 2.77-.527 3.353-3.502 4.543-6.964 4.543H12.26c-.389 0-.708.3-.764.688l-.65 4.148-.184 1.176c-.077.49.275.94.77.94h3.4c.323 0 .6-.23.647-.548l.025-.136.51-3.23.033-.173c.048-.317.323-.548.646-.548h.406c2.642 0 4.715-.998 5.316-3.882.248-1.197.124-2.196-.427-2.893-.175-.222-.39-.408-.633-.566"/>
+                  <path d="M18.865 3.932c-.553-.713-1.665-1.022-3.043-1.022h-4.19c-.419 0-.77.3-.835.718L8.94 15.368l-.048.31c.067-.429.408-.748.835-.748h1.75c3.457 0 6.18-1.402 6.973-5.446.023-.108.042-.215.06-.319.235-1.52-.002-2.552-.645-3.233"/>
+                  <path d="M9.954 8.452l.24-1.73c.026-.184.103-.34.21-.462a.73.73 0 0 1 .5-.206h3.217c.675 0 1.308.04 1.883.127.16.024.31.052.45.083.143.031.274.066.394.104.038.01.074.021.11.033.187.057.361.12.522.194.266-1.703-.006-2.857-.92-3.903C15.526 1.464 13.693 1 11.505 1H6.087c-.46 0-.853.322-.954.788l-2.85 18.07c-.056.355.198.678.543.733.032.006.066.008.1.008h3.696l.353-2.23 1.3-8.302.679-.615z"/>
+                </svg>
               </a>
             </div>
           </div>
@@ -131,12 +133,6 @@ const Footer = () => {
                   Baakenallee 8<br />
                   20457 Hamburg
                 </span>
-              </li>
-              <li className="flex items-center">
-                <Phone size={18} className="text-accent-pink mr-3 flex-shrink-0" />
-                <a href="tel:+4915679624274" className="text-white/80 hover:text-accent-pink transition-colors font-futura">
-                  015679 624 274
-                </a>
               </li>
               <li className="flex items-center">
                 <Mail size={18} className="text-accent-blue mr-3 flex-shrink-0" />
