@@ -29,20 +29,10 @@ const OurDogs = () => {
   
   // Refs für die Scroll-Animation
   const sponsorshipsRef = useRef(null);
-  const adoptionsRef = useRef(null);
 
   useEffect(() => {
     // Scroll to top on component mount
     window.scrollTo(0, 0);
-    
-    // Get hash from URL if present
-    const hash = location.hash.replace('#', '');
-    if (hash === 'adoptions') {
-      setActiveSection('adoptions');
-      setTimeout(() => {
-        adoptionsRef.current?.scrollIntoView({ behavior: 'smooth' });
-      }, 100);
-    }
     
     // Cleanup function to restore scrolling when component unmounts
     return () => {
@@ -54,8 +44,6 @@ const OurDogs = () => {
     setActiveSection(section);
     if (section === 'sponsorships') {
       sponsorshipsRef.current?.scrollIntoView({ behavior: 'smooth' });
-    } else if (section === 'adoptions') {
-      adoptionsRef.current?.scrollIntoView({ behavior: 'smooth' });
     }
   };
 
@@ -298,9 +286,9 @@ const OurDogs = () => {
   return (
     <div className="min-h-screen flex flex-col">
       <SEO 
-        title="Unsere Hunde adoptieren & Patenschaften"
-        description="Adoptiere einen geretteten Hund aus Rumänien oder Lombok oder übernimm eine Patenschaft, um einem Straßenhund zu helfen. Hier findest du Hunde, die ein neues Zuhause suchen."
-        keywords="Hund adoptieren, Straßenhund Adoption, Hunde aus Rumänien, Hunde aus Lombok, Hundepatenschaft, Straßenhunde, Hund aus dem Ausland, Auslandshund, Tierschutzhund"
+        title="Unsere Hunde und Patenschaften"
+        description="Übernimm eine Patenschaft, um einem Straßenhund zu helfen. Hier findest du Hunde, die Unterstützung brauchen."
+        keywords="Hund adoptieren, Straßenhund, Hundepatenschaft, Straßenhunde, Tierschutzhund"
       />
       <Navbar />
       
@@ -338,10 +326,10 @@ const OurDogs = () => {
         <div className="container mx-auto px-4 sm:px-6 py-8 sm:py-16">
           <h1 className="text-4xl sm:text-5xl font-bold text-primary mb-6 sm:mb-8 font-glorious">Unsere Hunde</h1>
           <p className="text-base sm:text-lg text-gray-700 mb-6 sm:mb-8 font-futura">
-            Lernen Sie die Hunde kennen, die wir betreuen und unterstützen. Sie können entweder eine Patenschaft übernehmen oder in Zukunft einen Hund adoptieren.
+            Lernen Sie die Hunde kennen, die wir betreuen und unterstützen. Sie können eine Patenschaft übernehmen und ihnen damit helfen.
           </p>
           
-          {/* Navigation Buttons */}
+          {/* Navigation Buttons - Nur Patenschaften */}
           <div className="flex flex-wrap justify-center mb-8 sm:mb-12 gap-4">
             <button 
               className="px-6 py-3 font-medium text-sm sm:text-base transition-all duration-300 rounded-full bg-secondary text-primary border-2 border-secondary"
@@ -442,45 +430,6 @@ const OurDogs = () => {
                       <Phone size={16} className="mr-2" />
                       015679 624 274
                     </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section>
-          
-          {/* Adoptions Section */}
-          <section ref={adoptionsRef} className="py-8 bg-accent-blue/15 rounded-2xl px-6">
-            <div className="mb-8 sm:mb-12">
-              <h2 className="text-2xl sm:text-3xl font-bold text-primary mb-4 sm:mb-6 font-glorious">Adoptionen</h2>
-              <div className="bg-white p-6 sm:p-8 rounded-2xl mb-8 shadow-md">
-                <div className="flex items-start">
-                  <div className="mr-4 mt-1">
-                    <PawPrint size={24} className="text-accent-blue" />
-                  </div>
-                  <div>
-                    <h3 className="text-lg font-semibold text-primary mb-2 font-futura">Adoptionen bald verfügbar</h3>
-                    <p className="text-gray-700 font-futura text-sm sm:text-base">
-                      Wir arbeiten derzeit daran, einen Adoptionsprozess einzurichten, um zukünftig die bestmögliche Vermittlung für unsere Hunde zu gewährleisten. Bald wird es hier die Möglichkeit zur Adoption geben.Wir arbeiten derzeit daran, einen Adoptionsprozess einzurichten, um zukünftig die bestmögliche Vermittlung für unsere Hunde zu gewährleisten. Bald wird es hier die Möglichkeit zur Adoption geben.
-                    </p>
-                    <p className="text-gray-700 mt-4 font-futura text-sm sm:text-base">
-                      In der Zwischenzeit können Sie gerne eine Patenschaft übernehmen oder uns kontaktieren, wenn Sie Interesse an einer zukünftigen Adoption haben.
-                    </p>
-                    <div className="mt-6 flex flex-wrap gap-4">
-                      <button 
-                        onClick={() => scrollToSection('sponsorships')}
-                        className="bg-secondary hover:bg-secondary/90 text-primary px-6 py-2 rounded-full font-medium transition-all duration-300 text-sm flex items-center"
-                      >
-                        <Heart size={16} className="mr-2" />
-                        Patenschaften ansehen
-                      </button>
-                      <a 
-                        href="tel:015679624274" 
-                        className="bg-accent-blue hover:bg-accent-blue/90 text-white px-6 py-2 rounded-full font-medium transition-all duration-300 text-sm flex items-center"
-                      >
-                        <Phone size={16} className="mr-2" />
-                        015679 624 274
-                      </a>
-                    </div>
                   </div>
                 </div>
               </div>
