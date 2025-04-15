@@ -103,10 +103,10 @@ const JoinFamily = () => {
       timestamp: new Date().toLocaleString('de-DE')
     };
 
-    // EmailJS-Konfiguration mit Umgebungsvariablen
-    const serviceID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
-    const templateID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
-    const userID = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+    // EmailJS-Konfiguration mit direkten Werten
+    const serviceID = 'service_zx16y4n';
+    const templateID = 'template_kw0e688';
+    const userID = '3V-jg3j8Dw-bZgPFG';
 
     emailjs.send(serviceID, templateID, templateParams, userID)
       .then((response) => {
@@ -150,10 +150,10 @@ const JoinFamily = () => {
       timestamp: new Date().toLocaleString('de-DE')
     };
 
-    // EmailJS-Konfiguration mit Umgebungsvariablen
-    const serviceID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
-    const templateID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
-    const userID = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+    // EmailJS-Konfiguration mit direkten Werten
+    const serviceID = 'service_zx16y4n';
+    const templateID = 'template_kw0e688';
+    const userID = '3V-jg3j8Dw-bZgPFG';
 
     emailjs.send(serviceID, templateID, templateParams, userID)
       .then((response) => {
