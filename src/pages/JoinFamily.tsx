@@ -103,10 +103,10 @@ const JoinFamily = () => {
       timestamp: new Date().toLocaleString('de-DE')
     };
 
-    // EmailJS-Konfiguration - Service ID wurde bereits aktualisiert
-    const serviceID = 'service_zx16y4n'; // IONOS Mail Service
-    const templateID = 'template_kw0e688'; // Contact Us Template
-    const userID = '3V-jg3j8Dw-bZgPFG'; // Public Key
+    // EmailJS-Konfiguration mit Umgebungsvariablen
+    const serviceID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+    const templateID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+    const userID = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 
     emailjs.send(serviceID, templateID, templateParams, userID)
       .then((response) => {
@@ -150,10 +150,10 @@ const JoinFamily = () => {
       timestamp: new Date().toLocaleString('de-DE')
     };
 
-    // Ersetzen Sie diese Werte mit Ihren eigenen EmailJS-Anmeldeinformationen
-    const serviceID = 'YOUR_SERVICE_ID'; // Ändern Sie dies nach der Einrichtung
-    const templateID = 'YOUR_TEMPLATE_ID'; // Ändern Sie dies nach der Einrichtung
-    const userID = 'YOUR_USER_ID'; // Ändern Sie dies nach der Einrichtung
+    // EmailJS-Konfiguration mit Umgebungsvariablen
+    const serviceID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+    const templateID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+    const userID = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 
     emailjs.send(serviceID, templateID, templateParams, userID)
       .then((response) => {
