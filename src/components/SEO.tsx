@@ -16,7 +16,7 @@ const SEO = ({
   title,
   description = defaultSEO.defaultDescription,
   keywords,
-  ogImage = "/images/logo.png",
+  ogImage = "/images/FAM_Logo_Fortitude.png",
   canonical,
 }: SEOProps) => {
   const fullTitle = `${title} | ${defaultSEO.siteName}`;
