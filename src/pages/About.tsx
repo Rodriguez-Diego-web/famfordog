@@ -128,10 +128,10 @@ const About = () => {
 
   const lombokTeam = [
     {
-      name: "Dani",
+      name: "Dhany",
       role: "Team Lombok",
-      bio: "Unser Engel von Lombok. Dani lebt für die Tiere und setzt sich mit unermüdlicher Hingabe für deren Wohl ein. Als der alte Shelter auf Lombok aufgrund von Drohungen aus der Nachbarschaft schließen musste, zögerte sie nicht: Kurzerhand wurde ihr eigenes Zuhause zum neuen Shelter. Wohnzimmer, Garten, Küche, Schlafzimmer, Wintergarten, alle Räume werden nun von Hunden und Katzen und auch von Dani bewohnt. 160 Hunde werden von Dani und ihrer Freundin Rey täglich versorgt. Ob Dani jemals schläft, weiß niemand. Denn jeder Notfall, jede Rettung, jeder Tierarztbesuch, jeder Kastrationstag wird von Dani persönlich organisiert. Sie ist nicht nur eine Tierschützerin, sondern ein wahrer Engel auf Erden.",
-      image: "Dani/WhatsApp Image 2025-03-27 at 23.41.16.jpeg"
+      bio: "Unser Engel von Lombok. Dhany lebt für die Tiere und setzt sich mit unermüdlicher Hingabe für deren Wohl ein. Als der alte Shelter auf Lombok aufgrund von Drohungen aus der Nachbarschaft schließen musste, zögerte sie nicht: Kurzerhand wurde ihr eigenes Zuhause zum neuen Shelter. Wohnzimmer, Garten, Küche, Schlafzimmer, Wintergarten, alle Räume werden nun von Hunden und Katzen und auch von Dhany bewohnt. 160 Hunde werden von Dhany und ihrer Freundin Rey täglich versorgt. Ob Dhany jemals schläft, weiß niemand. Denn jeder Notfall, jede Rettung, jeder Tierarztbesuch, jeder Kastrationstag wird von Dhany persönlich organisiert. Sie ist nicht nur eine Tierschützerin, sondern ein wahrer Engel auf Erden.",
+      image: "Dhany/profile.jpg"
     },
     {
       name: "Riani",
@@ -148,13 +148,13 @@ const About = () => {
     {
       name: "Rey",
       role: "Team Lombok",
-      bio: "Rey ist das Herzstück des Shelters – eine wahre Hundeflüsterin. Gemeinsam mit Dani lebt sie direkt vor Ort und kümmert sich mit unermüdlichem Einsatz um das Wohl der Tiere. Sie kocht täglich für die Hunde, füttert sie, pflegt sie liebevoll und ist rund um die Uhr an ihrer Seite. Mit feinem Gespür erkennt sie sofort, wenn ein Tier krank oder verstört ist, und begleitet es mit großem Einfühlungsvermögen auf dem Weg der Genesung.\n\nIm Shelter leben die Hunde in kleinen Rudeln – versorgt, geborgen und vor allem geliebt. Rey schenkt ihnen nicht nur körperliche Pflege, sondern auch seelische Heilung. Mit selbst entwickelten Kräutertinkturen und Ölen unterstützt sie die Tiere ganzheitlich und gibt ihnen das, was sie oft lange entbehren mussten: Nähe, Vertrauen und Sicherheit. Für viele traumatisierte Hunde ist sie der erste Mensch, der ihnen zeigt, dass Zuwendung möglich ist – und dass nicht jeder Mensch Schmerz bedeutet.",
+      bio: "Rey ist das Herzstück des Shelters – eine wahre Hundeflüsterin. Gemeinsam mit Dhany lebt sie direkt vor Ort und kümmert sich mit unermüdlichem Einsatz um das Wohl der Tiere. Sie kocht täglich für die Hunde, füttert sie, pflegt sie liebevoll und ist rund um die Uhr an ihrer Seite. Mit feinem Gespür erkennt sie sofort, wenn ein Tier krank oder verstört ist, und begleitet es mit großem Einfühlungsvermögen auf dem Weg der Genesung.\n\nIm Shelter leben die Hunde in kleinen Rudeln – versorgt, geborgen und vor allem geliebt. Rey schenkt ihnen nicht nur körperliche Pflege, sondern auch seelische Heilung. Mit selbst entwickelten Kräutertinkturen und Ölen unterstützt sie die Tiere ganzheitlich und gibt ihnen das, was sie oft lange entbehren mussten: Nähe, Vertrauen und Sicherheit. Für viele traumatisierte Hunde ist sie der erste Mensch, der ihnen zeigt, dass Zuwendung möglich ist – und dass nicht jeder Mensch Schmerz bedeutet.",
       image: "Rey/rey.jpeg"
     },
     {
       name: "Vito",
       role: "Team Lombok",
-      bio: "Vito ist der Sohn der Hausherrin Dani und wuchs umgeben von Tieren auf. Tief beeinflusst von der selbstlosen Liebe seiner Mutter zu allen Lebewesen, entwickelte er selbst ein großes Herz für Tiere. Im Laufe der Jahre hat er schon mehreren Hunden ein liebevolles Zuhause gegeben und kümmert sich mit großer Hingabe um die Hunde und Katzen in Shelter. Vito ist außerdem unser zuverlässiger Fahrer und derjenige, der unsere komplizierten Hunde-Rettungen durchführt.",
+      bio: "Vito ist der Sohn der Hausherrin Dhany und wuchs umgeben von Tieren auf. Tief beeinflusst von der selbstlosen Liebe seiner Mutter zu allen Lebewesen, entwickelte er selbst ein großes Herz für Tiere. Im Laufe der Jahre hat er schon mehreren Hunden ein liebevolles Zuhause gegeben und kümmert sich mit großer Hingabe um die Hunde und Katzen in Shelter. Vito ist außerdem unser zuverlässiger Fahrer und derjenige, der unsere komplizierten Hunde-Rettungen durchführt.",
       image: "vito/WhatsApp Image 2025-03-27 at 23.43.56.jpeg"
     },
     {
@@ -226,7 +226,7 @@ const About = () => {
                       member.name === "Daze" ? { objectPosition: "center 35%" } : 
                       member.name === "Hanna" ? { objectPosition: "center 20%" } : 
                       member.name === "Diego" ? { objectPosition: "center 15%" } : 
-                      member.name === "Dani" ? { objectPosition: "center 25%" } : 
+                      member.name === "Dhany" ? { objectPosition: "center 25%" } : 
                       member.name === "Riani" ? { objectPosition: "center 30%" } : 
                       member.name === "Rita" ? { objectPosition: "center 20%" } : 
                       member.name === "Rey" ? { objectPosition: "center 25%" } : 
@@ -467,7 +467,7 @@ const About = () => {
               Manchmal bringt das Schicksal genau die richtigen Menschen zusammen. So auch auf der indonesischen Insel Lombok: Mieke reiste für drei Monate beruflich nach Indonesien – und begegnete dort dem Leid unzähliger Straßenhunde. Als sie einem verletzten Hund begegnete, war für sie klar: Sie möchte aktiv helfen.
             </p>
             <p className="text-gray-700 mb-4 font-futura text-sm sm:text-base">
-              Aus dieser Erfahrung entstand der Verein Dogs of Lombok e.V. – mit dem Ziel, nachhaltigen Tierschutz vor Ort zu ermöglichen. Durch eine glückliche Fügung lernte Mieke die indonesische Tierschützerin Dani kennen. Aus dieser Begegnung wurde nicht nur eine Freundschaft, sondern auch eine enge Kooperation mit der Popi Foundation. Gemeinsam wurde ein Fütterungs- und Wundversorgungsprogramm sowie ein Kastrationsprojekt aufgebaut und der bereits bestehende Shelter finanziell unterstützt.
+              Aus dieser Erfahrung entstand der Verein Dogs of Lombok e.V. – mit dem Ziel, nachhaltigen Tierschutz vor Ort zu ermöglichen. Durch eine glückliche Fügung lernte Mieke die indonesische Tierschützerin Dhany kennen. Aus dieser Begegnung wurde nicht nur eine Freundschaft, sondern auch eine enge Kooperation mit der Popi Foundation. Gemeinsam wurde ein Fütterungs- und Wundversorgungsprogramm sowie ein Kastrationsprojekt aufgebaut und der bereits bestehende Shelter finanziell unterstützt.
             </p>
             <p className="text-gray-700 mb-6 font-futura text-sm sm:text-base">
               In Deutschland bekam das Team starke Unterstützung: Chrissy und Daze stiegen tatkräftig ein, übernahmen das Social Media und die Mitorganisation der Projekte vor Ort. Gemeinsam mit Mieke führten sie nun zu dritt den Verein Dogs of Lombok e.V.

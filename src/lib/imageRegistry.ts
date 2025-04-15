@@ -44,7 +44,7 @@ export const teamImages = {
   vito: '/images/vito/profile.jpg',
   lara: '/images/Lara/profile.jpg',
   kira: '/images/kira/profile.jpg',
-  dani: '/images/Dani/profile.jpg',
+  dhany: '/images/Dhany/profile.jpg',
   hanna: '/images/Hanna/profile.jpg',
 };
 
@@ -67,7 +67,7 @@ export const getAboutImages = (): string[] => [
   teamImages.vito,
   teamImages.lara,
   teamImages.kira,
-  teamImages.dani,
+  teamImages.dhany,
   teamImages.hanna,
 ];
 

@@ -89,7 +89,7 @@ const ShelterLombokPage = () => {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16 flex-row-reverse">
               <div>
                 <p className="text-gray-700 mb-4 font-futura">
-                  Im anderen Teil des Hauses leben Dani und ihre Tochter. Auch bei ihnen sind die Tiere allgegenwärtig – es gibt keinen Raum ohne Hunde (und auch ein paar Katzen). Alles ist voller Leben und Gewusel, jeder Winkel wird genutzt. Für die Menschen bleibt kaum Platz, aber das macht den Ort so einzigartig: Hier steht das Wohl der Tiere an erster Stelle.
+                  Im anderen Teil des Hauses leben Dhany und ihre Tochter. Auch bei ihnen sind die Tiere allgegenwärtig – es gibt keinen Raum ohne Hunde (und auch ein paar Katzen). Alles ist voller Leben und Gewusel, jeder Winkel wird genutzt. Für die Menschen bleibt kaum Platz, aber das macht den Ort so einzigartig: Hier steht das Wohl der Tiere an erster Stelle.
                 </p>
                 <p className="text-gray-700 font-futura">
                   Wir als Organisation übernehmen fast alle anfallenden Tierarztkosten, finanzieren Medikamente, Impfungen und leisten monatlich Unterstützung für Futter. Durch die enge Zusammenarbeit mit der POPI Foundation sorgen wir dafür, dass aus Notfällen Schützlinge werden – mit einem Zuhause, Liebe und neuer Hoffnung.
