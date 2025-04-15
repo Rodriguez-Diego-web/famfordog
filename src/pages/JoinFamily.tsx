@@ -1,19 +1,35 @@
 import { useEffect, useState } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import { Download, Mail, Heart, Users, PawPrint, Calendar, Star } from 'lucide-react';
+import { Download, Mail, Heart, Users, PawPrint, Calendar, Star, X } from 'lucide-react';
 import emailjs from 'emailjs-com';
 
 const JoinFamily = () => {
-  // PDF-Download-Funktion
-  const downloadPDF = () => {
-    // Öffne PDF in einem neuen Fenster
-    window.open('/foerderantrag.pdf', '_blank');
+  // State für das Modal
+  const [showMembershipModal, setShowMembershipModal] = useState(false);
+  
+  // Öffne das Modal statt PDF
+  const openMembershipForm = () => {
+    setShowMembershipModal(true);
+    // Verhindere das Scrollen im Hintergrund
+    document.body.style.overflow = 'hidden';
+  };
+  
+  // Schließe das Modal
+  const closeMembershipModal = () => {
+    setShowMembershipModal(false);
+    // Erlaube Scrollen wieder
+    document.body.style.overflow = 'auto';
   };
 
   useEffect(() => {
     // Scroll to top on component mount
     window.scrollTo(0, 0);
+    
+    // Cleanup function to restore scrolling when component unmounts
+    return () => {
+      document.body.style.overflow = 'auto';
+    };
   }, []);
 
   // States für verschiedene Formulare
@@ -125,6 +141,37 @@ const JoinFamily = () => {
   return (
     <div className="min-h-screen flex flex-col">
       <Navbar />
+      
+      {/* Fördermitglied-Modal */}
+      {showMembershipModal && (
+        <div className="fixed inset-0 bg-black bg-opacity-75 z-50 flex items-center justify-center p-4 overflow-y-auto">
+          <div className="bg-white rounded-lg shadow-xl max-w-4xl w-full max-h-[90vh] overflow-hidden">
+            <div className="flex justify-between items-center p-4 border-b">
+              <h2 className="text-2xl font-bold text-primary font-futura">Fördermitglied werden</h2>
+              <button 
+                onClick={closeMembershipModal}
+                className="text-gray-500 hover:text-gray-700 focus:outline-none"
+              >
+                <X size={24} />
+              </button>
+            </div>
+            <div className="p-2 overflow-y-auto" style={{ maxHeight: 'calc(90vh - 70px)' }}>
+              <iframe 
+                src="https://secure.fundraisingbox.com/app/payment?hash=tb50awqf33usb4aw&t=1ee7e361ee24e0d8791a9f6ab8a6bb8a&fb_id=25410"
+                title="Fundraising Box Fördermitgliedsformular"
+                width="100%"
+                height="2100"
+                className="md:h-[1800px]" 
+                frameBorder="0"
+                allowTransparency={true}
+                allow="payment"
+                style={{ display: 'block', margin: '0 auto' }}
+              ></iframe>
+            </div>
+          </div>
+        </div>
+      )}
+      
       <main className="flex-grow pt-24">
         <div className="container mx-auto px-4 sm:px-6 py-8 sm:py-16">
           {/* Hero Section */}
@@ -172,11 +219,11 @@ const JoinFamily = () => {
                 </div>
                 
                 <button 
-                  onClick={downloadPDF}
+                  onClick={openMembershipForm}
                   className="inline-flex items-center bg-white hover:bg-gray-100 text-primary px-6 py-3 rounded-full font-medium transition-all duration-300 hover:shadow-lg"
                 >
-                  <Download size={18} className="mr-2" />
-                  Fördermitgliedsantrag herunterladen
+                  <Heart size={18} className="mr-2" />
+                  Fördermitglied werden
                 </button>
                 
               </div>

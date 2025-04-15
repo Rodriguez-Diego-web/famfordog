@@ -2,18 +2,29 @@ import { useEffect, useState, useRef } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import { Heart, PawPrint, Home, ChevronDown, Download, Phone } from 'lucide-react';
+import { Heart, PawPrint, Home, ChevronDown, Download, Phone, X } from 'lucide-react';
 import SEO from '@/components/SEO';
 
 const OurDogs = () => {
   const location = useLocation();
   const [activeSection, setActiveSection] = useState('sponsorships');
   const navigate = useNavigate();
+  const [showPatronageModal, setShowPatronageModal] = useState(false);
   
-  // PDF-Download-Funktion
+  // Öffne das Modal statt das PDF
   const openPatronageForm = () => {
-    // Öffne PDF in einem neuen Fenster
-    window.open('/patenschaftsantrag.pdf', '_blank');
+    setShowPatronageModal(true);
+    // Scrolle zur Seitenspitze, sobald das Modal geöffnet wird
+    window.scrollTo(0, 0);
+    // Verhindere das Scrollen im Hintergrund
+    document.body.style.overflow = 'hidden';
+  };
+  
+  // Schließe das Modal
+  const closePatronageModal = () => {
+    setShowPatronageModal(false);
+    // Erlaube Scrollen wieder
+    document.body.style.overflow = 'auto';
   };
   
   // Refs für die Scroll-Animation
@@ -32,6 +43,11 @@ const OurDogs = () => {
         adoptionsRef.current?.scrollIntoView({ behavior: 'smooth' });
       }, 100);
     }
+    
+    // Cleanup function to restore scrolling when component unmounts
+    return () => {
+      document.body.style.overflow = 'auto';
+    };
   }, [location]);
 
   const scrollToSection = (section) => {
@@ -287,6 +303,37 @@ const OurDogs = () => {
         keywords="Hund adoptieren, Straßenhund Adoption, Hunde aus Rumänien, Hunde aus Lombok, Hundepatenschaft, Straßenhunde, Hund aus dem Ausland, Auslandshund, Tierschutzhund"
       />
       <Navbar />
+      
+      {/* Patenschafts-Modal */}
+      {showPatronageModal && (
+        <div className="fixed inset-0 bg-black bg-opacity-75 z-50 flex items-center justify-center p-4 overflow-y-auto">
+          <div className="bg-white rounded-lg shadow-xl max-w-4xl w-full max-h-[90vh] overflow-hidden">
+            <div className="flex justify-between items-center p-4 border-b">
+              <h2 className="text-2xl font-bold text-primary font-futura">Patenschaft übernehmen</h2>
+              <button 
+                onClick={closePatronageModal}
+                className="text-gray-500 hover:text-gray-700 focus:outline-none"
+              >
+                <X size={24} />
+              </button>
+            </div>
+            <div className="p-2 overflow-y-auto" style={{ maxHeight: 'calc(90vh - 70px)' }}>
+              <iframe 
+                src="https://secure.fundraisingbox.com/app/payment?hash=rsg5g3e1y9kkxqoc&t=425786862dfc0c7d09f672538bbd229f&fb_id=25409"
+                title="Fundraising Box Patenschaftsformular"
+                width="100%"
+                height="2100"
+                className="md:h-[1800px]" 
+                frameBorder="0"
+                allowTransparency={true}
+                allow="payment"
+                style={{ display: 'block', margin: '0 auto' }}
+              ></iframe>
+            </div>
+          </div>
+        </div>
+      )}
+      
       <main className="flex-grow pt-24">
         <div className="container mx-auto px-4 sm:px-6 py-8 sm:py-16">
           <h1 className="text-4xl sm:text-5xl font-bold text-primary mb-6 sm:mb-8 font-glorious">Unsere Hunde</h1>
@@ -367,36 +414,35 @@ const OurDogs = () => {
             </div>
             
             <div className="bg-white p-6 sm:p-8 rounded-2xl mb-8 shadow-md">
-              <h3 className="text-xl font-bold text-primary mb-4 font-futura">So funktioniert eine Patenschaft</h3>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div className="bg-accent-green/10 p-4 sm:p-6 rounded-xl shadow-sm">
-                  <div className="h-12 w-12 rounded-full bg-accent-green flex items-center justify-center mb-4">
-                    <span className="text-primary font-bold">1</span>
-                  </div>
-                  <h4 className="text-lg font-semibold text-primary mb-2 font-futura">Hund auswählen</h4>
-                  <p className="text-gray-600 font-futura text-sm">
-                    Wählen Sie einen Hund aus, der Ihnen am Herzen liegt und dessen Geschichte Sie berührt.
-                  </p>
+              <div className="flex items-start">
+                <div className="mr-4 mt-1">
+                  <PawPrint size={24} className="text-accent-blue" />
                 </div>
-                
-                <div className="bg-accent-pink/10 p-4 sm:p-6 rounded-xl shadow-sm">
-                  <div className="h-12 w-12 rounded-full bg-accent-pink flex items-center justify-center mb-4">
-                    <span className="text-primary font-bold">2</span>
-                  </div>
-                  <h4 className="text-lg font-semibold text-primary mb-2 font-futura">Patenschaft abschließen</h4>
-                  <p className="text-gray-600 font-futura text-sm">
-                    Füllen Sie das Formular aus und wählen Sie den monatlichen Betrag, den Sie spenden möchten.
+                <div>
+                  <h3 className="text-lg font-semibold text-primary mb-2 font-futura">So funktioniert eine Patenschaft</h3>
+                  <p className="text-gray-700 font-futura text-sm sm:text-base">
+                    Mit einer Patenschaft können Sie einen bestimmten Hund unterstützen, ohne ihn zu adoptieren. 
+                    Ihre regelmäßige Spende hilft uns, die Kosten für Futter, medizinische Versorgung und Unterbringung zu decken.
                   </p>
-                </div>
-                
-                <div className="bg-accent-blue/10 p-4 sm:p-6 rounded-xl shadow-sm">
-                  <div className="h-12 w-12 rounded-full bg-accent-blue flex items-center justify-center mb-4">
-                    <span className="text-primary font-bold">3</span>
-                  </div>
-                  <h4 className="text-lg font-semibold text-primary mb-2 font-futura">Updates erhalten</h4>
-                  <p className="text-gray-600 font-futura text-sm">
-                    Erhalten Sie regelmäßige Updates über Ihren Schützling und sehen Sie, wie Ihre Unterstützung hilft.
+                  <p className="text-gray-700 mt-4 font-futura text-sm sm:text-base">
+                    Als Pate erhalten Sie regelmäßige Updates über Ihren Schützling und können ihn jederzeit besuchen.
                   </p>
+                  <div className="mt-6 flex flex-wrap gap-4">
+                    <button 
+                      onClick={() => scrollToSection('sponsorships')}
+                      className="bg-secondary hover:bg-secondary/90 text-primary px-6 py-2 rounded-full font-medium transition-all duration-300 text-sm flex items-center"
+                    >
+                      <Heart size={16} className="mr-2" />
+                      Patenschaften ansehen
+                    </button>
+                    <a 
+                      href="tel:015679624274" 
+                      className="bg-accent-blue hover:bg-accent-blue/90 text-white px-6 py-2 rounded-full font-medium transition-all duration-300 text-sm flex items-center"
+                    >
+                      <Phone size={16} className="mr-2" />
+                      015679 624 274
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>
