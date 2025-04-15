@@ -188,7 +188,7 @@ const FuetterungstourenPage = () => {
                   Jede Spende trägt dazu bei, das Überleben dieser Tiere zu sichern.
                 </p>
                 <Link 
-                  to="/donate" 
+                  to="/spenden" 
                   className="bg-gradient-to-r from-primary to-accent-pink text-white px-8 py-3 rounded-full font-medium transition-all duration-300 hover:shadow-lg inline-block font-futura hover:scale-105 transform"
                 >
                   Jetzt spenden

@@ -185,7 +185,7 @@ const PublicShelterRumaenienPage = () => {
                   Jede Spende trägt dazu bei, die Lebensbedingungen der Tiere zu verbessern und ihnen eine bessere Zukunft zu ermöglichen.
                 </p>
                 <Link 
-                  to="/donate" 
+                  to="/spenden" 
                   className="bg-gradient-to-r from-primary to-secondary text-white px-8 py-3 rounded-full font-medium transition-all duration-300 hover:shadow-lg inline-block font-futura hover:scale-105 transform"
                 >
                   Jetzt spenden

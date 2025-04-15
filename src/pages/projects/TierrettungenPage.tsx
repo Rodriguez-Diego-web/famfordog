@@ -259,7 +259,7 @@ const TierrettungenPage = () => {
                   Mit deiner Hilfe können wir weiterhin vielen Tieren ein neues Leben ermöglichen. Jeder Beitrag zählt, um diese Tiere zu retten und ihnen die notwendige medizinische Hilfe zukommen zu lassen.
                 </p>
                 <Link 
-                  to="/donate" 
+                  to="/spenden" 
                   className="bg-gradient-to-r from-primary to-red-400 text-white px-8 py-3 rounded-full font-medium transition-all duration-300 hover:shadow-lg inline-block font-futura hover:scale-105 transform"
                 >
                   Jetzt spenden

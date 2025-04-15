@@ -127,7 +127,7 @@ const Projects = () => {
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <Link 
-                to="/donate" 
+                to="/spenden" 
                 className="bg-white text-primary hover:bg-white/90 px-8 py-3 rounded-full font-medium transition-all duration-300 font-futura"
               >
                 Jetzt spenden

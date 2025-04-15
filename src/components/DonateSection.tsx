@@ -26,7 +26,7 @@ const DonateSection = () => {
                 dürfen, kannst du deine Unterstützung steuerlich absetzen.
               </p>
               <Link 
-                to="/donate" 
+                to="/spenden" 
                 className="bg-white hover:bg-gray-100 text-secondary px-8 py-3 rounded-full font-medium transition-all duration-300 hover:shadow-lg inline-block w-fit font-futura"
               >
                 Jetzt spenden

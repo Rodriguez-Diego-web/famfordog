@@ -241,7 +241,7 @@ const WoundedProgramPage = () => {
               </p>
               <div className="flex flex-wrap justify-center gap-4">
                 <Link 
-                  to="/donate" 
+                  to="/spenden" 
                   className="bg-primary hover:bg-primary/90 text-white px-8 py-3 rounded-full font-medium transition-all duration-300 inline-flex items-center font-futura"
                 >
                   <Heart size={16} className="mr-2" />

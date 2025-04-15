@@ -221,7 +221,7 @@ const KastrationsprojektePage = () => {
               </p>
               <div className="flex flex-wrap justify-center gap-4">
                 <Link 
-                  to="/donate" 
+                  to="/spenden" 
                   className="bg-gradient-to-r from-primary to-secondary text-white px-8 py-3 rounded-full font-medium transition-all duration-300 hover:shadow-lg inline-block font-futura hover:scale-105 transform"
                 >
                   <Heart size={16} className="mr-2" />

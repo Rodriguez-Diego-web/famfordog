@@ -224,7 +224,7 @@ const Navbar = () => {
           ))}
           
           <Link
-            to="/donate"
+            to="/spenden"
             className="bg-secondary hover:bg-secondary/90 text-secondary-foreground px-5 py-2 rounded-full text-sm font-medium transition-all duration-200 hover:shadow-lg font-futura"
           >
             Spenden
@@ -377,7 +377,7 @@ const Navbar = () => {
           ))}
           
           <Link
-            to="/donate"
+            to="/spenden"
             className="bg-secondary hover:bg-secondary/90 text-secondary-foreground px-5 py-2 rounded-full text-sm font-medium my-3 inline-block w-fit font-futura"
             onClick={() => setMobileMenuOpen(false)}
           >
