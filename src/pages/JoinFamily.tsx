@@ -62,6 +62,7 @@ const JoinFamily = () => {
 
   const [showMembershipForm, setShowMembershipForm] = useState(false);
   const [membershipSubmitted, setMembershipSubmitted] = useState(false);
+  const [volunteerSubmitted, setVolunteerSubmitted] = useState(false);
 
   const handleVolunteerChange = (e) => {
     const { name, value } = e.target;
@@ -81,18 +82,49 @@ const JoinFamily = () => {
 
   const handleVolunteerSubmit = (e) => {
     e.preventDefault();
-    // In a real application, you would send this data to a server
-    console.log('Volunteer Form submitted:', volunteerFormData);
-    alert('Vielen Dank für dein Interesse! Wir werden uns bald bei dir melden.');
     
-    // Reset form
-    setVolunteerFormData({
-      name: '',
-      email: '',
-      phone: '',
-      message: '',
-      interest: 'general'
-    });
+    // Formatiere die Daten für eine bessere E-Mail-Darstellung
+    const templateParams = {
+      name: volunteerFormData.name,
+      email: volunteerFormData.email,
+      phone: volunteerFormData.phone || 'Nicht angegeben',
+      interest: (() => {
+        switch(volunteerFormData.interest) {
+          case 'general': return 'Allgemeine Unterstützung';
+          case 'fostering': return 'Pflegestelle';
+          case 'events': return 'Events & Fundraising';
+          case 'social': return 'Social Media & PR';
+          case 'other': return 'Anderes';
+          default: return volunteerFormData.interest;
+        }
+      })(),
+      message: volunteerFormData.message,
+      formType: 'Volunteer-Bewerbung',
+      timestamp: new Date().toLocaleString('de-DE')
+    };
+
+    // Ersetzen Sie diese Werte mit Ihren eigenen EmailJS-Anmeldeinformationen
+    const serviceID = 'YOUR_SERVICE_ID'; // Ändern Sie dies nach der Einrichtung
+    const templateID = 'YOUR_TEMPLATE_ID'; // Ändern Sie dies nach der Einrichtung
+    const userID = 'YOUR_USER_ID'; // Ändern Sie dies nach der Einrichtung
+
+    emailjs.send(serviceID, templateID, templateParams, userID)
+      .then((response) => {
+        console.log('Email erfolgreich gesendet!', response.status, response.text);
+        setVolunteerSubmitted(true);
+        
+        // Reset form
+        setVolunteerFormData({
+          name: '',
+          email: '',
+          phone: '',
+          message: '',
+          interest: 'general'
+        });
+      }, (error) => {
+        console.error('Fehler beim Senden der E-Mail:', error);
+        alert('Es gab ein Problem bei der Übermittlung des Formulars. Bitte versuche es später noch einmal.');
+      });
   };
 
   const handleMembershipSubmit = (e) => {
@@ -339,88 +371,107 @@ const JoinFamily = () => {
               </p>
               
               <form onSubmit={handleVolunteerSubmit} className="max-w-2xl mx-auto bg-white/10 backdrop-blur-sm rounded-xl p-6 sm:p-8">
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
-                  <div>
-                    <label htmlFor="name" className="block text-white font-medium mb-2 font-futura">Name</label>
-                    <input 
-                      type="text" 
-                      id="name" 
-                      name="name" 
-                      value={volunteerFormData.name}
-                      onChange={handleVolunteerChange}
-                      required
-                      className="w-full px-4 py-2 rounded-lg bg-white/20 border border-white/30 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white/50"
-                      placeholder="Dein Name"
-                    />
+                {!volunteerSubmitted ? (
+                  <>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
+                      <div>
+                        <label htmlFor="name" className="block text-white font-medium mb-2 font-futura">Name</label>
+                        <input 
+                          type="text" 
+                          id="name" 
+                          name="name" 
+                          value={volunteerFormData.name}
+                          onChange={handleVolunteerChange}
+                          required
+                          className="w-full px-4 py-2 rounded-lg bg-white/20 border border-white/30 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white/50"
+                          placeholder="Dein Name"
+                        />
+                      </div>
+                      <div>
+                        <label htmlFor="email" className="block text-white font-medium mb-2 font-futura">E-Mail</label>
+                        <input 
+                          type="email" 
+                          id="email" 
+                          name="email" 
+                          value={volunteerFormData.email}
+                          onChange={handleVolunteerChange}
+                          required
+                          className="w-full px-4 py-2 rounded-lg bg-white/20 border border-white/30 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white/50"
+                          placeholder="deine@email.de"
+                        />
+                      </div>
+                    </div>
+                    
+                    <div className="mb-6">
+                      <label htmlFor="phone" className="block text-white font-medium mb-2 font-futura">Telefon (optional)</label>
+                      <input 
+                        type="tel" 
+                        id="phone" 
+                        name="phone" 
+                        value={volunteerFormData.phone}
+                        onChange={handleVolunteerChange}
+                        className="w-full px-4 py-2 rounded-lg bg-white/20 border border-white/30 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white/50"
+                        placeholder="Deine Telefonnummer"
+                      />
+                    </div>
+                    
+                    <div className="mb-6">
+                      <label htmlFor="interest" className="block text-white font-medium mb-2 font-futura">Ich interessiere mich für</label>
+                      <select 
+                        id="interest" 
+                        name="interest" 
+                        value={volunteerFormData.interest}
+                        onChange={handleVolunteerChange}
+                        className="w-full px-4 py-2 rounded-lg bg-white/20 border border-white/30 text-white focus:outline-none focus:ring-2 focus:ring-white/50"
+                      >
+                        <option value="general" className="text-gray-800">Allgemeine Unterstützung</option>
+                        <option value="fostering" className="text-gray-800">Pflegestelle</option>
+                        <option value="events" className="text-gray-800">Events & Fundraising</option>
+                        <option value="social" className="text-gray-800">Social Media & PR</option>
+                        <option value="other" className="text-gray-800">Anderes</option>
+                      </select>
+                    </div>
+                    
+                    <div className="mb-6">
+                      <label htmlFor="message" className="block text-white font-medium mb-2 font-futura">Nachricht</label>
+                      <textarea 
+                        id="message" 
+                        name="message" 
+                        value={volunteerFormData.message}
+                        onChange={handleVolunteerChange}
+                        rows={4}
+                        className="w-full px-4 py-2 rounded-lg bg-white/20 border border-white/30 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white/50"
+                        placeholder="Erzähle uns etwas über dich und wie du helfen möchtest..."
+                      ></textarea>
+                    </div>
+                    
+                    <div className="flex justify-center">
+                      <button 
+                        type="submit" 
+                        className="bg-white hover:bg-white/90 text-accent-blue px-8 py-3 rounded-full font-medium transition-all duration-300 hover:shadow-lg flex items-center"
+                      >
+                        <Mail size={18} className="mr-2" />
+                        Absenden
+                      </button>
+                    </div>
+                  </>
+                ) : (
+                  <div className="text-center py-8">
+                    <div className="h-16 w-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-6">
+                      <PawPrint size={32} className="text-white" />
+                    </div>
+                    <h3 className="text-2xl font-bold text-white mb-4 font-futura">Vielen Dank für dein Interesse!</h3>
+                    <p className="text-white/90 mb-6 font-futura">
+                      Wir haben deine Nachricht erhalten und werden uns so schnell wie möglich bei dir melden.
+                    </p>
+                    <button
+                      onClick={() => setVolunteerSubmitted(false)}
+                      className="bg-white hover:bg-white/90 text-accent-blue px-6 py-2 rounded-full font-medium transition-all duration-300 hover:shadow-lg"
+                    >
+                      Neues Formular senden
+                    </button>
                   </div>
-                  <div>
-                    <label htmlFor="email" className="block text-white font-medium mb-2 font-futura">E-Mail</label>
-                    <input 
-                      type="email" 
-                      id="email" 
-                      name="email" 
-                      value={volunteerFormData.email}
-                      onChange={handleVolunteerChange}
-                      required
-                      className="w-full px-4 py-2 rounded-lg bg-white/20 border border-white/30 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white/50"
-                      placeholder="deine@email.de"
-                    />
-                  </div>
-                </div>
-                
-                <div className="mb-6">
-                  <label htmlFor="phone" className="block text-white font-medium mb-2 font-futura">Telefon (optional)</label>
-                  <input 
-                    type="tel" 
-                    id="phone" 
-                    name="phone" 
-                    value={volunteerFormData.phone}
-                    onChange={handleVolunteerChange}
-                    className="w-full px-4 py-2 rounded-lg bg-white/20 border border-white/30 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white/50"
-                    placeholder="Deine Telefonnummer"
-                  />
-                </div>
-                
-                <div className="mb-6">
-                  <label htmlFor="interest" className="block text-white font-medium mb-2 font-futura">Ich interessiere mich für</label>
-                  <select 
-                    id="interest" 
-                    name="interest" 
-                    value={volunteerFormData.interest}
-                    onChange={handleVolunteerChange}
-                    className="w-full px-4 py-2 rounded-lg bg-white/20 border border-white/30 text-white focus:outline-none focus:ring-2 focus:ring-white/50"
-                  >
-                    <option value="general" className="text-gray-800">Allgemeine Unterstützung</option>
-                    <option value="fostering" className="text-gray-800">Pflegestelle</option>
-                    <option value="events" className="text-gray-800">Events & Fundraising</option>
-                    <option value="social" className="text-gray-800">Social Media & PR</option>
-                    <option value="other" className="text-gray-800">Anderes</option>
-                  </select>
-                </div>
-                
-                <div className="mb-6">
-                  <label htmlFor="message" className="block text-white font-medium mb-2 font-futura">Nachricht</label>
-                  <textarea 
-                    id="message" 
-                    name="message" 
-                    value={volunteerFormData.message}
-                    onChange={handleVolunteerChange}
-                    rows={5}
-                    required
-                    className="w-full px-4 py-2 rounded-lg bg-white/20 border border-white/30 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white/50"
-                    placeholder="Erzähle uns, wie du helfen möchtest und welche Erfahrungen du mitbringst..."
-                  ></textarea>
-                </div>
-                
-                <div className="text-center">
-                  <button 
-                    type="submit" 
-                    className="inline-flex items-center bg-white hover:bg-gray-100 text-primary px-8 py-3 rounded-full font-medium transition-all duration-300 hover:shadow-lg"
-                  >
-                    <Mail size={18} className="mr-2" />
-                    Nachricht senden
-                  </button>
-                </div>
+                )}
               </form>
             </div>
           </div>
