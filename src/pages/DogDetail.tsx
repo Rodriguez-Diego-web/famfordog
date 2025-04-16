@@ -312,9 +312,9 @@ const DogDetail: React.FC = () => {
             age: "1 Jahr",
             breed: "Mischling",
             description: "Rijondi ist verspielt und energiegeladen. Er braucht viel Bewegung und Beschäftigung.",
-            image: "/images/placeholder-dog.svg",
+            image: "/Rijondi/IMG_1637.jpeg",
             additionalImages: [
-              "/images/placeholder-dog.svg"
+              "/Rijondi/IMG_1637.jpeg"
             ],
             needs: "Aktive Familie",
             location: "Shelter Lombok",
@@ -324,8 +324,9 @@ const DogDetail: React.FC = () => {
             history: "Rijondi wurde als junger Hund im Shelter aufgenommen und hat seitdem viel Energie und Freude gezeigt.",
             medicalInfo: "Vollständig geimpft, gesund.",
             videoLinks: [
-              "/OneDrive_15_2.4.2025/Rijondi/VIDEO-2025-02-17-12-44-23.mp4",
-              "/OneDrive_15_2.4.2025/Rijondi/VIDEO-2025-02-17-12-44-28.mp4"
+              "/Rijondi/46fa0067-453a-4d2a-b0ca-ea2208b30fc5.mp4",
+              "/Rijondi/VIDEO-2025-02-17-12-44-23.mp4",
+              "/Rijondi/VIDEO-2025-02-17-12-44-28.mp4"
             ]
           },
           {
@@ -488,10 +489,10 @@ const DogDetail: React.FC = () => {
       <Navbar />
       <div className="container mx-auto max-w-6xl px-4 py-8">
         {/* Zurück-Button mit mehr Abstand nach oben, um unter der Navigation zu erscheinen */}
-        <div className="pt-10 md:pt-6">
+        <div className="pt-16 md:pt-12">
           <button 
             onClick={() => navigate('/our-dogs')}
-            className="mb-6 flex items-center text-amber-600 hover:text-amber-800 transition-colors"
+            className="mb-8 flex items-center text-amber-600 hover:text-amber-800 transition-colors"
           >
             <ArrowLeft className="mr-2 h-5 w-5" /> Zurück zur Übersicht
           </button>

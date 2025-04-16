@@ -143,7 +143,7 @@ const About = () => {
       name: "Rita",
       role: "Team Lombok",
       bio: "Rita, unsere Katzenlady, betreut mit viel Liebe ihre 100 Katzen und unterstützt bei unserem Kastrationsprogramm. Zudem versorgt sie die Straßenhunde mit Futter und hilft bei deren medizinischer Erstversorgung. Sie ist fester Bestand der Popi Foundation und hat stets das Wohl der Tiere und der Menschen in ihrem Umfeld im Blick und sorgt dafür, dass es ihnen an nichts fehlt.",
-      image: "images/team/Rita.jpeg"
+      image: "images/team/Riani.jpeg"
     },
     {
       name: "Rey",
@@ -227,8 +227,8 @@ const About = () => {
                       member.name === "Hanna" ? { objectPosition: "center 20%" } : 
                       member.name === "Diego" ? { objectPosition: "center 15%" } : 
                       member.name === "Dhany" ? { objectPosition: "center 25%" } : 
-                      member.name === "Riani" ? { objectPosition: "center 30%" } : 
-                      member.name === "Rita" ? { objectPosition: "center 20%" } : 
+                      member.name === "Riani" ? { objectPosition: "center 1%" } : 
+                      member.name === "Rita" ? { objectPosition: "center 1%" } : 
                       member.name === "Rey" ? { objectPosition: "center 25%" } : 
                       member.name === "Vito" ? { objectPosition: "center 35%" } : 
                       member.name === "Aris" ? { objectPosition: "center 30%" } : 

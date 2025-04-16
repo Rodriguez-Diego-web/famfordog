@@ -139,13 +139,13 @@ const Hero = () => {
           </p>
           
           <div ref={buttonRef} className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
-            <Link to="/mission" className="bg-white hover:bg-opacity-90 text-primary px-8 py-3 rounded-full font-medium transition-all duration-300 text-center hover:shadow-lg hover-arrow font-futura">
+            <Link to="/about" className="bg-white hover:bg-opacity-90 text-primary px-8 py-3 rounded-full font-medium transition-all duration-300 text-center hover:shadow-lg hover-arrow font-futura">
               <span>Unsere Mission</span>
             </Link>
             
-            <a href="/donate" className="bg-secondary border-none text-primary px-8 py-3 rounded-full font-medium hover:bg-secondary/90 transition-all duration-300 text-center font-futura hover:shadow-lg">
+            <Link to="/spenden" className="bg-secondary border-none text-primary px-8 py-3 rounded-full font-medium hover:bg-secondary/90 transition-all duration-300 text-center font-futura hover:shadow-lg">
               Spenden
-            </a>
+            </Link>
           </div>
         </div>
       </div>

@@ -240,7 +240,7 @@ const OurDogs = () => {
       age: '1 Jahr',
       breed: 'Mischling',
       description: 'Rijondi ist verspielt und energiegeladen. Er braucht viel Bewegung und Beschäftigung.',
-      image: '/images/placeholder-dog.svg',
+      image: '/Rijondi/IMG_1637.jpeg',
       needs: 'Aktive Familie'
     },
     {

@@ -14,43 +14,37 @@ const Projects = () => {
     {
       title: 'Kastrationsprojekte',
       description: 'Unsere Kastrationsprojekte helfen, die Population von Straßentieren zu kontrollieren und Tierleid zu verhindern.',
-      image: '/images/projects/kastration.jpg',
-      color: 'bg-primary/10',
+      color: 'bg-primary/30',
       path: '/projects/kastrationsprojekte'
     },
     {
       title: 'Wounded Program',
       description: 'Wir kümmern uns um verletzte und kranke Straßentiere und bieten ihnen medizinische Versorgung.',
-      image: '/images/projects/wounded.jpg',
-      color: 'bg-secondary/10',
+      color: 'bg-secondary/30',
       path: '/projects/wounded-program'
     },
     {
       title: 'Fütterungstouren',
       description: 'Regelmäßige Fütterungstouren versorgen Straßentiere mit Nahrung und Wasser.',
-      image: '/images/projects/feeding.jpg',
-      color: 'bg-accent-pink/10',
+      color: 'bg-accent-pink/30',
       path: '/projects/fuetterungstouren'
     },
     {
       title: 'Shelter Lombok',
       description: 'Unser Shelter auf Lombok bietet Straßentieren ein sicheres Zuhause und die Chance auf Adoption.',
-      image: '/images/projects/lombok.jpg',
-      color: 'bg-accent-blue/10',
+      color: 'bg-accent-blue/30',
       path: '/projects/shelter-lombok'
     },
     {
       title: 'Public Shelter Rumänien',
       description: 'Wir unterstützen öffentliche Tierheime in Rumänien mit Ressourcen und Expertise.',
-      image: '/images/projects/romania.jpg',
-      color: 'bg-accent-green/10',
+      color: 'bg-accent-green/30',
       path: '/projects/public-shelter-rumaenien'
     },
     {
       title: 'Tierrettungen',
       description: 'Notfallrettungen für Tiere in akuter Gefahr oder mit dringendem medizinischen Bedarf.',
-      image: '/images/projects/rescue.jpg',
-      color: 'bg-red-100',
+      color: 'bg-red-200',
       path: '/projects/tierrettungen'
     }
   ];
@@ -93,17 +87,6 @@ const Projects = () => {
                   to={project.path}
                   className={`rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 ${project.color}`}
                 >
-                  <div className="h-48 overflow-hidden">
-                    <img 
-                      src={project.image} 
-                      alt={project.title} 
-                      className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
-                      onError={(e) => {
-                        const target = e.target as HTMLImageElement;
-                        target.src = '/images/placeholder.jpg'; // Fallback image
-                      }}
-                    />
-                  </div>
                   <div className="p-6">
                     <h3 className="text-xl font-bold text-primary mb-3 font-futura">{project.title}</h3>
                     <p className="text-gray-700 mb-4 font-futura">{project.description}</p>

@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowLeft, Heart, PawPrint, Droplets, Utensils, Calendar } from 'lucide-react';
+import { ArrowLeft, Heart, PawPrint, Droplets, Utensils, Calendar, ChevronRight } from 'lucide-react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 
@@ -71,7 +71,7 @@ const FuetterungstourenPage = () => {
               </div>
               <div className="rounded-2xl overflow-hidden shadow-xl transform rotate-1 border-4 border-white">
                 <img 
-                  src="/images/projects/feeding.jpg" 
+                  src="/images/lombook/WhatsApp Image 2025-03-24 at 18.13.23 (6).jpeg" 
                   alt="Fütterungsaktion für Straßenhunde" 
                   className="w-full h-full object-cover"
                   onError={(e) => {
@@ -86,7 +86,7 @@ const FuetterungstourenPage = () => {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16">
               <div className="rounded-2xl overflow-hidden shadow-xl transform -rotate-1 border-4 border-white order-first lg:order-last">
                 <img 
-                  src="/images/projects/feeding2.jpg" 
+                  src="/images/lombook/WhatsApp Image 2025-03-24 at 18.13.23 (2).jpeg" 
                   alt="Straßenhunde werden gefüttert" 
                   className="w-full h-full object-cover"
                   onError={(e) => {
@@ -194,6 +194,62 @@ const FuetterungstourenPage = () => {
                   Jetzt spenden
                 </Link>
               </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Other Projects Section */}
+        <section className="py-16 bg-gray-50">
+          <div className="container mx-auto px-6">
+            <h2 className="text-2xl md:text-3xl font-bold text-primary mb-8 text-center font-futura">Weitere Projekte</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              <Link 
+                to="/projects/kastrationsprojekte"
+                className="bg-primary/30 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2"
+              >
+                <div className="p-6">
+                  <h3 className="text-xl font-bold text-primary mb-3 font-futura">Kastrationsprojekte</h3>
+                  <p className="text-gray-700 mb-4 font-futura">
+                    Unsere Kastrationsprojekte helfen, die Population von Straßentieren zu kontrollieren und Tierleid zu verhindern.
+                  </p>
+                  <div className="flex items-center text-secondary font-medium">
+                    <span>Mehr erfahren</span>
+                    <ChevronRight size={16} className="ml-1" />
+                  </div>
+                </div>
+              </Link>
+              
+              <Link 
+                to="/projects/wounded-program"
+                className="bg-secondary/30 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2"
+              >
+                <div className="p-6">
+                  <h3 className="text-xl font-bold text-primary mb-3 font-futura">Wounded Program</h3>
+                  <p className="text-gray-700 mb-4 font-futura">
+                    Wir kümmern uns um verletzte und kranke Straßentiere und bieten ihnen medizinische Versorgung.
+                  </p>
+                  <div className="flex items-center text-secondary font-medium">
+                    <span>Mehr erfahren</span>
+                    <ChevronRight size={16} className="ml-1" />
+                  </div>
+                </div>
+              </Link>
+              
+              <Link 
+                to="/projects/shelter-lombok"
+                className="bg-accent-blue/30 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2"
+              >
+                <div className="p-6">
+                  <h3 className="text-xl font-bold text-primary mb-3 font-futura">Shelter Lombok</h3>
+                  <p className="text-gray-700 mb-4 font-futura">
+                    Unser Shelter auf Lombok bietet Straßentieren ein sicheres Zuhause und die Chance auf Adoption.
+                  </p>
+                  <div className="flex items-center text-secondary font-medium">
+                    <span>Mehr erfahren</span>
+                    <ChevronRight size={16} className="ml-1" />
+                  </div>
+                </div>
+              </Link>
             </div>
           </div>
         </section>

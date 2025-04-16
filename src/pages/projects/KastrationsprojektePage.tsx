@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowLeft, Heart, PawPrint } from 'lucide-react';
+import { ArrowLeft, Heart, PawPrint, ChevronRight } from 'lucide-react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import SEO from '@/components/SEO';
@@ -245,70 +245,49 @@ const KastrationsprojektePage = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               <Link 
                 to="/projects/wounded-program"
-                className="bg-secondary/10 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2"
+                className="bg-secondary/30 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2"
               >
-                <div className="h-40 overflow-hidden">
-                  <img 
-                    src="/images/projects/wounded.jpg" 
-                    alt="Wounded Program" 
-                    className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
-                    onError={(e) => {
-                      const target = e.target as HTMLImageElement;
-                      target.src = '/images/placeholder.jpg'; // Fallback image
-                    }}
-                  />
-                </div>
-                <div className="p-4">
-                  <h3 className="text-lg font-bold text-primary mb-2 font-futura">Wounded Program</h3>
-                  <p className="text-gray-700 line-clamp-2 font-futura">
+                <div className="p-6">
+                  <h3 className="text-xl font-bold text-primary mb-3 font-futura">Wounded Program</h3>
+                  <p className="text-gray-700 mb-4 font-futura">
                     Wir kümmern uns um verletzte und kranke Straßentiere und bieten ihnen medizinische Versorgung.
                   </p>
+                  <div className="flex items-center text-secondary font-medium">
+                    <span>Mehr erfahren</span>
+                    <ChevronRight size={16} className="ml-1" />
+                  </div>
                 </div>
               </Link>
               
               <Link 
                 to="/projects/fuetterungstouren"
-                className="bg-accent-pink/10 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2"
+                className="bg-accent-pink/30 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2"
               >
-                <div className="h-40 overflow-hidden">
-                  <img 
-                    src="/images/projects/feeding.jpg" 
-                    alt="Fütterungstouren" 
-                    className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
-                    onError={(e) => {
-                      const target = e.target as HTMLImageElement;
-                      target.src = '/images/placeholder.jpg'; // Fallback image
-                    }}
-                  />
-                </div>
-                <div className="p-4">
-                  <h3 className="text-lg font-bold text-primary mb-2 font-futura">Fütterungstouren</h3>
-                  <p className="text-gray-700 line-clamp-2 font-futura">
+                <div className="p-6">
+                  <h3 className="text-xl font-bold text-primary mb-3 font-futura">Fütterungstouren</h3>
+                  <p className="text-gray-700 mb-4 font-futura">
                     Regelmäßige Fütterungstouren versorgen Straßentiere mit Nahrung und Wasser.
                   </p>
+                  <div className="flex items-center text-secondary font-medium">
+                    <span>Mehr erfahren</span>
+                    <ChevronRight size={16} className="ml-1" />
+                  </div>
                 </div>
               </Link>
               
               <Link 
                 to="/projects/shelter-lombok"
-                className="bg-accent-blue/10 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2"
+                className="bg-accent-blue/30 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2"
               >
-                <div className="h-40 overflow-hidden">
-                  <img 
-                    src="/images/projects/lombok.jpg" 
-                    alt="Shelter Lombok" 
-                    className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
-                    onError={(e) => {
-                      const target = e.target as HTMLImageElement;
-                      target.src = '/images/placeholder.jpg'; // Fallback image
-                    }}
-                  />
-                </div>
-                <div className="p-4">
-                  <h3 className="text-lg font-bold text-primary mb-2 font-futura">Shelter Lombok</h3>
-                  <p className="text-gray-700 line-clamp-2 font-futura">
+                <div className="p-6">
+                  <h3 className="text-xl font-bold text-primary mb-3 font-futura">Shelter Lombok</h3>
+                  <p className="text-gray-700 mb-4 font-futura">
                     Unser Shelter auf Lombok bietet Straßentieren ein sicheres Zuhause und die Chance auf Adoption.
                   </p>
+                  <div className="flex items-center text-secondary font-medium">
+                    <span>Mehr erfahren</span>
+                    <ChevronRight size={16} className="ml-1" />
+                  </div>
                 </div>
               </Link>
             </div>

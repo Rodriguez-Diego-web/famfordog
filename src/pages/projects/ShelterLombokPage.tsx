@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowLeft, Heart, PawPrint, Home, Shield, Gift } from 'lucide-react';
+import { ArrowLeft, Heart, PawPrint, Home, Shield, Gift, ChevronRight } from 'lucide-react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 
@@ -256,6 +256,62 @@ const ShelterLombokPage = () => {
                   Jetzt spenden
                 </Link>
               </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Other Projects Section */}
+        <section className="py-16 bg-gray-50">
+          <div className="container mx-auto px-6">
+            <h2 className="text-2xl md:text-3xl font-bold text-primary mb-8 text-center font-futura">Weitere Projekte</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              <Link 
+                to="/projects/kastrationsprojekte"
+                className="bg-primary/30 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2"
+              >
+                <div className="p-6">
+                  <h3 className="text-xl font-bold text-primary mb-3 font-futura">Kastrationsprojekte</h3>
+                  <p className="text-gray-700 mb-4 font-futura">
+                    Unsere Kastrationsprojekte helfen, die Population von Straßentieren zu kontrollieren und Tierleid zu verhindern.
+                  </p>
+                  <div className="flex items-center text-secondary font-medium">
+                    <span>Mehr erfahren</span>
+                    <ChevronRight size={16} className="ml-1" />
+                  </div>
+                </div>
+              </Link>
+              
+              <Link 
+                to="/projects/wounded-program"
+                className="bg-secondary/30 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2"
+              >
+                <div className="p-6">
+                  <h3 className="text-xl font-bold text-primary mb-3 font-futura">Wounded Program</h3>
+                  <p className="text-gray-700 mb-4 font-futura">
+                    Wir kümmern uns um verletzte und kranke Straßentiere und bieten ihnen medizinische Versorgung.
+                  </p>
+                  <div className="flex items-center text-secondary font-medium">
+                    <span>Mehr erfahren</span>
+                    <ChevronRight size={16} className="ml-1" />
+                  </div>
+                </div>
+              </Link>
+              
+              <Link 
+                to="/projects/fuetterungstouren"
+                className="bg-accent-pink/30 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2"
+              >
+                <div className="p-6">
+                  <h3 className="text-xl font-bold text-primary mb-3 font-futura">Fütterungstouren</h3>
+                  <p className="text-gray-700 mb-4 font-futura">
+                    Regelmäßige Fütterungstouren versorgen Straßentiere mit Nahrung und Wasser.
+                  </p>
+                  <div className="flex items-center text-secondary font-medium">
+                    <span>Mehr erfahren</span>
+                    <ChevronRight size={16} className="ml-1" />
+                  </div>
+                </div>
+              </Link>
             </div>
           </div>
         </section>
