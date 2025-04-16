@@ -4,11 +4,13 @@
 
 ## Über das Projekt
 
-FAM for Dogs e.V. (Fight and Movement for Dogs) ist ein soziales Projekt, das im Rahmen des 6. Semesters an der Hochschule Bremerhaven entwickelt wurde. Es handelt sich um eine Webseite für einen Tierschutzverein, der sich für Straßenhunde in Indonesien und Rumänien einsetzt. Die Webseite informiert über die Mission, Projekte und Patenschaften des Vereins.
+FAM for Dogs e.V. (Fight and Movement for Dogs) ist ein Tierschutzverein, der ursprünglich von Mieke und Fiona gegründet wurde und sich für Straßenhunde in Indonesien und Rumänien einsetzt.
 
-Dieses Projekt entstand als Semesterarbeit mit dem Ziel, eine moderne, benutzerfreundliche und ansprechende Webpräsenz für einen gemeinnützigen Zweck zu schaffen. Die Zusammenarbeit zwischen Studierenden der Informatik und dem Tierschutzverein ermöglichte eine effektive Kombination aus technischer Innovation und sozialer Verantwortung.
+Ich habe das Projekt erstmals über Instagram entdeckt. Die Arbeit von Fiona und Mieke hat mich so beeindruckt, dass ich Fiona direkt angeschrieben und angeboten habe, eine professionelle Webpräsenz für den Verein zu gestalten. Aus diesem ersten Kontakt entstand eine enge, kreative Zusammenarbeit, die ich später im Rahmen meines 6. Semesters an der Hochschule Bremerhaven weiter ausgebaut habe.
 
-Die Webseite dient als digitales Schaufenster für die Arbeit des Vereins und soll Besucher informieren, engagieren und zu Spenden oder Patenschaften motivieren. Durch eine emotionale und authentische Darstellung der Arbeit des Vereins wird eine Verbindung zu potenziellen Unterstützern hergestellt.
+Mir war es wichtig, mit modernen Webtechnologien einen echten Mehrwert für den Verein und den Tierschutz zu schaffen. Die Seite soll als digitales Schaufenster für die wichtige Arbeit des Vereins dienen, Menschen informieren, emotional berühren und zu Spenden oder Patenschaften motivieren. Die Zusammenarbeit war für mich nicht nur ein technisches, sondern auch ein soziales Herzensprojekt.
+
+Die Webseite dient als digitales Schaufenster für die wichtige Arbeit des Vereins und soll Besucher informieren, engagieren und zu Spenden oder Patenschaften motivieren. Durch eine emotionale und authentische Darstellung der Tierschutzarbeit wird eine starke Verbindung zu potenziellen Unterstützern hergestellt.
 
 ## Technologie-Stack
 
@@ -101,7 +103,7 @@ Während der Entwicklung mussten verschiedene Herausforderungen gemeistert werde
    - **Lösung**: Implementierung eines progressiven Bild-Ladesystems mit Lazy Loading, Bildkompression, WebP-Format und responsive Image-Sets. Verwendung von Bild-Platzhaltern während des Ladens.
 
 3. **Konsistentes Styling**: Um ein einheitliches Design zu gewährleisten, wurde eine benutzerdefinierte Farbpalette und Typografie implementiert
-   - **Problem**: Verschiedene Entwickler arbeiteten an unterschiedlichen Komponenten, was zu Inkonsistenzen führen konnte.
+   - **Problem**: Bei einem umfangreichen Projekt wie diesem bestand die Herausforderung, ein durchgängig einheitliches Design über alle Komponenten hinweg zu gewährleisten.
    - **Lösung**: Erstellung eines zentralen Tailwind-Themes mit benutzerdefinierten Variablen für Farben, Abstände, Rundungen und Typografie. Entwicklung einer Komponentenbibliothek für wiederkehrende UI-Elemente.
 
 4. **Mehrsprachigkeit**: Die Webseite ist aktuell in Deutsch verfügbar, wurde aber mit einer Struktur entwickelt, die eine einfache Erweiterung um weitere Sprachen ermöglicht
@@ -187,8 +189,8 @@ Die Webseite wurde unter Beachtung aktueller Datenschutzrichtlinien (DSGVO) entw
 ## Kontakt
 
 **Entwickler**: Kadir Diego Padin Rodriguez  
-**E-Mail**: diego@rodriguez-digital.de 
-**Website**: https://rodriguez-digital.de/
+**E-Mail**: [diego@rodriguez-digital.de](mailto:diego@rodriguez-digital.de)  
+**Website**: [https://rodriguez-digital.de/](https://rodriguez-digital.de/)
 
 ---
 
