@@ -71,12 +71,12 @@ const FuetterungstourenPage = () => {
               </div>
               <div className="rounded-2xl overflow-hidden shadow-xl transform rotate-1 border-4 border-white">
                 <img 
-                  src="/images/lombook/WhatsApp Image 2025-03-24 at 18.13.23 (6).jpeg" 
+                  src="/images/touren/1.jpeg" 
                   alt="Fütterungsaktion für Straßenhunde" 
                   className="w-full h-full object-cover"
                   onError={(e) => {
                     const target = e.target as HTMLImageElement;
-                    target.src = '/images/placeholder.jpg'; // Fallback image
+                    target.src = '/images/touren/1.jpeg'; // Fallback image
                   }}
                 />
               </div>
@@ -86,12 +86,12 @@ const FuetterungstourenPage = () => {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16">
               <div className="rounded-2xl overflow-hidden shadow-xl transform -rotate-1 border-4 border-white order-first lg:order-last">
                 <img 
-                  src="/images/lombook/WhatsApp Image 2025-03-24 at 18.13.23 (2).jpeg" 
+                  src="/images/touren/2.jpeg" 
                   alt="Straßenhunde werden gefüttert" 
                   className="w-full h-full object-cover"
                   onError={(e) => {
                     const target = e.target as HTMLImageElement;
-                    target.src = '/images/placeholder.jpg'; // Fallback image
+                    target.src = '/images/touren/2.jpeg'; // Fallback image
                   }}
                 />
               </div>
