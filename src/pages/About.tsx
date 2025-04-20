@@ -186,6 +186,15 @@ const About = () => {
     }
   ];
 
+  const romaniaTeam = [
+    {
+      name: "Monika Bohoni",
+      role: "Das Herz für Hunde in Baia Mare",
+      bio: "Monika Bohoni wurde am 17. August 1974 in Baia Mare, Rumänien, geboren – und genau dort kämpft sie Tag für Tag für jene, die keine Stimme haben: die Hunde. Als Tierschützerin leitet sie das öffentliche Shelter in Baia Mare – eine echte Besonderheit, denn normalerweise sind solche Einrichtungen nicht in der Hand von Tierschützern, und leider ist es dort vielerorts üblich, Hunde zu töten. Doch Monika geht einen anderen Weg. Mit unermüdlichem Einsatz kümmert sie sich um rund 400 Hunde und kämpft dafür, dass jeder einzelne eine Chance bekommt. Sie ist das Herz des Tierheims – Tag und Nacht im Einsatz, mit einer Hingabe, wie man sie nur selten findet. Neben ihrer Arbeit vor Ort hat sie ihre eigene Organisation gegründet: Salvati Animalele – 'Rettet die Tiere'. Ihr größter Traum ist es, eines Tages ein privates Shelter zu eröffnen, in dem die Hunde unter besseren Bedingungen leben können. Doch sie weiß: Würde sie das öffentliche Shelter verlassen, würden sich die Zustände für die Hunde dort schlagartig verschlechtern. Genau das hält sie zurück – aus Verantwortung und Liebe zu den Tieren. Es gibt nur wenige Menschen, die sich so selbstlos für das Leben anderer einsetzen wie Monika. Sie opfert alles für ihre Tiere – und ist für viele von ihnen der einzige Grund, warum sie noch Hoffnung haben.",
+      image: "Monika/monika.jpeg"
+    }
+  ];
+
   // State für Slideshow der Tierärztebilder
   const [currentSlide, setCurrentSlide] = useState(0);
 
@@ -219,7 +228,7 @@ const About = () => {
                     loading="lazy"
                     className="w-full h-48 sm:h-64 object-cover transition-transform duration-500 hover:scale-105"
                     style={
-                      member.name === "Mieke & Fiona" ? { objectPosition: "center 25%" } : 
+                      member.name === "Mieke & Fiona" ? { objectPosition: "center 35%" } : 
                       member.name === "Kira" ? { objectPosition: "center 30%" } : 
                       member.name === "Chrissy" ? { objectPosition: "center 25%" } : 
                       member.name === "Lara" ? { objectPosition: "center 30%" } : 
@@ -232,6 +241,7 @@ const About = () => {
                       member.name === "Rey" ? { objectPosition: "center 25%" } : 
                       member.name === "Vito" ? { objectPosition: "center 35%" } : 
                       member.name === "Aris" ? { objectPosition: "center 30%" } : 
+                      member.name === "Monika Bohoni" ? { objectPosition: "center 15%" } : 
                       {}
                     }
                     onError={() => handleImageError(imageKey)}
@@ -501,6 +511,9 @@ const About = () => {
             <h3 className="text-xl font-bold text-primary mb-4 font-glorious">Aktive Mitglieder</h3>
             {renderTeamMembers(activeMembers)}
             
+            <h3 className="text-xl font-bold text-primary mb-4 font-glorious">Unser Team in Rumänien</h3>
+            {renderTeamMembers(romaniaTeam)}
+            
             <h3 className="text-xl font-bold text-primary mb-4 font-glorious">Unser Team vor Ort auf Lombok</h3>
             {renderTeamMembers(lombokTeam)}
             
@@ -525,14 +538,14 @@ const About = () => {
                     
                     {/* Navigation Controls */}
                     <button 
-                      className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/70 hover:bg-white p-2 rounded-full shadow-md z-10"
+                      className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/70 hover:bg-white p-2 rounded-full text-white hover:bg-white/30 transition-colors"
                       onClick={() => prevSlide(vetTeam[0].images)}
                       aria-label="Vorheriges Bild"
                     >
                       <ChevronLeft className="w-6 h-6 text-primary" />
                     </button>
                     <button 
-                      className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/70 hover:bg-white p-2 rounded-full shadow-md z-10"
+                      className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/70 hover:bg-white p-2 rounded-full text-white hover:bg-white/30 transition-colors"
                       onClick={() => nextSlide(vetTeam[0].images)}
                       aria-label="Nächstes Bild"
                     >

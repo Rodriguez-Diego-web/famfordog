@@ -13,7 +13,7 @@ const JoinTeamSection = () => {
                 Ob als Spender, Helfer vor Ort oder Unterstützer von zu Hause aus – jeder kann einen Beitrag leisten.
               </p>
               <Link 
-                to="/volunteer" 
+                to="/join-family" 
                 className="bg-white hover:bg-gray-100 text-primary px-8 py-3 rounded-full font-medium transition-all duration-300 hover:shadow-lg inline-block w-fit font-futura"
               >
                 Möglichkeiten erkunden

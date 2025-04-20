@@ -146,22 +146,23 @@ const EmergencyReport = () => {
     
     // Prepare form data for email
     const templateParams = {
-      user_name: formData.name,
-      user_email: formData.email,
-      user_phone: formData.phone,
-      location: formData.location,
-      description: formData.description,
-      image_included: selectedImage ? 'Ja' : 'Nein'
+      name: formData.name,
+      email: formData.email,
+      phone: formData.phone,
+      interest: formData.location,
+      message: formData.description,
+      formType: 'Notfallmeldung',
+      timestamp: new Date().toLocaleString(),
+      image_included: selectedImage ? 'Ja' : 'Nein',
+      image_data: previewUrl || ''
     };
 
     try {
-      // Send email using EmailJS
-      // Replace 'YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', and 'YOUR_PUBLIC_KEY' with your EmailJS credentials
       await emailjs.send(
-        'service_famfordogs', // EmailJS service ID
-        'template_emergency', // EmailJS template ID
+        'service_zx16y4n',      // Service-ID wie bei JoinFamily
+        'template_hv56sfn',     // Template-ID wie gewünscht
         templateParams,
-        'jqpuZ0AXPmQVvLGIp' // EmailJS public key
+        '3V-jg3j8Dw-bZgPFG'     // Dein Key
       );
 
       // If the message contains an image, handle it separately
@@ -420,7 +421,7 @@ const EmergencyReport = () => {
                         </div>
                       ) : (
                         <>
-                          <div className="w-14 h-14 bg-gradient-to-br from-accent-yellow to-accent-pink rounded-full flex items-center justify-center mb-3">
+                          <div className="w-14 h-14 bg-gradient-to-br from-accent-yellow to-accent-pink rounded-full mb-3 flex items-center justify-center">
                             <Upload className="h-6 w-6 text-white" />
                           </div>
                           <p className="text-gray-600 text-center mb-1 font-futura">

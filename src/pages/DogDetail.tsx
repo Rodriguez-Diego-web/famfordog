@@ -627,15 +627,9 @@ const DogDetail: React.FC = () => {
 
             <div className="bg-accent-blue p-6 rounded-xl shadow-md">
               <h3 className="text-xl font-semibold mb-4 text-gray-800">Kontakt</h3>
-              <div className="flex items-center mb-3">
-                <Phone className="h-5 w-5 mr-2 text-primary" />
-                <a href="tel:+4915227284994" className="text-primary hover:underline">
-                  +49 152 27284994
-                </a>
-              </div>
               <button
                 onClick={handleMessageClick}
-                className="w-full mt-2 bg-primary/10 hover:bg-primary/20 text-primary font-medium py-2 px-4 rounded-md flex items-center justify-center transition-colors"
+                className="w-full bg-primary/10 hover:bg-primary/20 text-primary font-medium py-2 px-4 rounded-md flex items-center justify-center transition-colors"
               >
                 <MessageCircle className="mr-2 h-5 w-5" /> Nachricht senden
               </button>
