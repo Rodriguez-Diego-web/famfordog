@@ -77,7 +77,7 @@ const PublicShelterRumaenienPage = () => {
               </div>
               <div className="rounded-2xl overflow-hidden shadow-xl transform rotate-1 border-4 border-white">
                 <img 
-                  src="/images/Rumanien/WhatsApp Image 2025-03-24 at 18.13.23 (3).jpeg" 
+                  src="/images/rumaenien/_V9A3209.jpeg" 
                   alt="Hunde im Public Shelter Rumänien" 
                   className="w-full h-full object-cover"
                   onError={(e) => {
@@ -97,7 +97,7 @@ const PublicShelterRumaenienPage = () => {
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                 <div className="rounded-xl overflow-hidden shadow-lg h-64 transform hover:scale-105 transition-transform duration-300 border-4 border-white">
                   <img 
-                    src="/images/Rumanien/WhatsApp Image 2025-03-24 at 18.13.22.jpeg" 
+                    src="/images/rumaenien/_V9A4231.jpeg" 
                     alt="Hunde im Tierheim" 
                     className="w-full h-full object-cover"
                     onError={(e) => {
@@ -108,7 +108,7 @@ const PublicShelterRumaenienPage = () => {
                 </div>
                 <div className="rounded-xl overflow-hidden shadow-lg h-64 transform hover:scale-105 transition-transform duration-300 border-4 border-white">
                   <img 
-                    src="/images/Rumanien/WhatsApp Image 2025-03-24 at 18.13.23 (1).jpeg" 
+                    src="/images/rumaenien/_V9A4779.jpeg" 
                     alt="Hunde im Tierheim" 
                     className="w-full h-full object-cover"
                     onError={(e) => {
@@ -119,7 +119,7 @@ const PublicShelterRumaenienPage = () => {
                 </div>
                 <div className="rounded-xl overflow-hidden shadow-lg h-64 transform hover:scale-105 transition-transform duration-300 border-4 border-white">
                   <img 
-                    src="/images/Rumanien/WhatsApp Image 2025-03-24 at 18.13.23 (5).jpeg" 
+                    src="/images/rumaenien/_V9A4884.jpeg" 
                     alt="Hunde im Tierheim" 
                     className="w-full h-full object-cover"
                     onError={(e) => {
@@ -130,7 +130,7 @@ const PublicShelterRumaenienPage = () => {
                 </div>
                 <div className="rounded-xl overflow-hidden shadow-lg h-64 transform hover:scale-105 transition-transform duration-300 border-4 border-white">
                   <img 
-                    src="/images/Rumanien/WhatsApp Image 2025-03-24 at 18.13.23 (7).jpeg" 
+                    src="/images/rumaenien/_V9A7678.jpeg" 
                     alt="Hunde im Tierheim" 
                     className="w-full h-full object-cover"
                     onError={(e) => {
@@ -141,18 +141,7 @@ const PublicShelterRumaenienPage = () => {
                 </div>
                 <div className="rounded-xl overflow-hidden shadow-lg h-64 transform hover:scale-105 transition-transform duration-300 border-4 border-white">
                   <img 
-                    src="/images/Rumanien/WhatsApp Image 2025-03-24 at 18.13.23 (10).jpeg" 
-                    alt="Hunde im Tierheim" 
-                    className="w-full h-full object-cover"
-                    onError={(e) => {
-                      const target = e.target as HTMLImageElement;
-                      target.src = '/images/placeholder.jpg';
-                    }}
-                  />
-                </div>
-                <div className="rounded-xl overflow-hidden shadow-lg h-64 transform hover:scale-105 transition-transform duration-300 border-4 border-white">
-                  <img 
-                    src="/images/Rumanien/WhatsApp Image 2025-03-24 at 18.13.23 (11).jpeg" 
+                    src="/images/rumaenien/_V9A9058.jpeg" 
                     alt="Hunde im Tierheim" 
                     className="w-full h-full object-cover"
                     onError={(e) => {
