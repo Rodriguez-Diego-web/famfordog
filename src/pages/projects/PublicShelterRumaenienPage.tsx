@@ -150,6 +150,50 @@ const PublicShelterRumaenienPage = () => {
                     }}
                   />
                 </div>
+                <div className="rounded-xl overflow-hidden shadow-lg h-64 transform hover:scale-105 transition-transform duration-300 border-4 border-white">
+                  <img 
+                    src="/images/rumaenien/IMG_0146.jpeg" 
+                    alt="Hunde im Tierheim" 
+                    className="w-full h-full object-cover"
+                    onError={(e) => {
+                      const target = e.target as HTMLImageElement;
+                      target.src = '/images/placeholder.jpg';
+                    }}
+                  />
+                </div>
+                <div className="rounded-xl overflow-hidden shadow-lg h-64 transform hover:scale-105 transition-transform duration-300 border-4 border-white">
+                  <img 
+                    src="/images/rumaenien/IMG_0653.jpeg" 
+                    alt="Hunde im Tierheim" 
+                    className="w-full h-full object-cover"
+                    onError={(e) => {
+                      const target = e.target as HTMLImageElement;
+                      target.src = '/images/placeholder.jpg';
+                    }}
+                  />
+                </div>
+                <div className="rounded-xl overflow-hidden shadow-lg h-64 transform hover:scale-105 transition-transform duration-300 border-4 border-white">
+                  <img 
+                    src="/images/rumaenien/IMG_8208.jpeg" 
+                    alt="Hunde im Tierheim" 
+                    className="w-full h-full object-cover"
+                    onError={(e) => {
+                      const target = e.target as HTMLImageElement;
+                      target.src = '/images/placeholder.jpg';
+                    }}
+                  />
+                </div>
+                <div className="rounded-xl overflow-hidden shadow-lg h-64 transform hover:scale-105 transition-transform duration-300 border-4 border-white">
+                  <img 
+                    src="/images/rumaenien/IMG_8222.jpeg" 
+                    alt="Hunde im Tierheim" 
+                    className="w-full h-full object-cover"
+                    onError={(e) => {
+                      const target = e.target as HTMLImageElement;
+                      target.src = '/images/placeholder.jpg';
+                    }}
+                  />
+                </div>
               </div>
             </div>
 
