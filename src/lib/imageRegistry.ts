@@ -8,6 +8,9 @@
  * - Einfachere Verwaltung von Bildgruppen
  */
 
+// Cache für bereits geladene Bilder
+const loadedImages = new Set<string>();
+
 export const logos = {
   primary: '/images/logo.png',
   paypal: '/images/paypal-logo.png',
@@ -50,20 +53,26 @@ export const teamImages = {
 
 /**
  * Funktionen zum Vorladen von Bildern basierend auf der Seite
+ * Optimiert, um Bilder nur einmal zu laden
  */
 
-// Bilder für die Startseite
-export const getHomepageImages = (): string[] => [
+// Grundlegende Bilder, die für alle Seiten wichtig sind
+const basicImages = [
   logos.primary,
+];
+
+// Bilder für die Startseite (ohne Duplikate)
+export const getHomepageImages = (): string[] => [
+  ...basicImages,
   heroImages.background,
   dogImages.wednesday,
   dogImages.boogey,
   dogImages.anton,
 ];
 
-// Bilder für die Über uns Seite
+// Bilder für die Über uns Seite (ohne Duplikate)
 export const getAboutImages = (): string[] => [
-  logos.primary,
+  ...basicImages,
   teamImages.vito,
   teamImages.lara,
   teamImages.kira,
@@ -71,31 +80,39 @@ export const getAboutImages = (): string[] => [
   teamImages.hanna,
 ];
 
-// Bilder für Projektseiten
+// Bilder für Projektseiten (ohne Duplikate)
 export const getProjectImages = (): string[] => [
-  logos.primary,
+  ...basicImages,
   projectImages.kastration,
   projectImages.wounded,
   locationImages.romania.main,
   locationImages.lombok.main,
 ];
 
-// Fallback: Grundlegende Bilder, die für alle Seiten wichtig sind
-export const getBasicImages = (): string[] => [
-  logos.primary,
-];
-
 /**
  * Hilfsfunktion zum Abrufen von Bildern basierend auf dem aktuellen Pfad
+ * Optimiert, um Bilder nur einmal zu laden
  */
 export const getImagesByPath = (path: string): string[] => {
+  let imagesToLoad: string[] = [];
+  
   if (path === '/' || path.includes('index')) {
-    return getHomepageImages();
+    imagesToLoad = getHomepageImages();
   } else if (path.includes('about') || path.includes('mission')) {
-    return getAboutImages();
+    imagesToLoad = getAboutImages();
   } else if (path.includes('projects')) {
-    return getProjectImages();
+    imagesToLoad = getProjectImages();
+  } else {
+    imagesToLoad = basicImages;
   }
   
-  return getBasicImages();
+  // Filtere bereits geladene Bilder heraus
+  return imagesToLoad.filter(img => !loadedImages.has(img));
+};
+
+/**
+ * Markiere ein Bild als geladen
+ */
+export const markImageAsLoaded = (imagePath: string): void => {
+  loadedImages.add(imagePath);
 };

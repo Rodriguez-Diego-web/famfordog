@@ -2,7 +2,8 @@ import { useEffect, useState } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { Download, Mail, Heart, Users, PawPrint, Calendar, Star, X } from 'lucide-react';
-import emailjs from 'emailjs-com';
+import { sendContactEmail, sendMembershipEmail } from '@/services/emailService';
+import { useScrollToTop } from '@/hooks/useScrollToTop';
 
 const JoinFamily = () => {
   // State für das Modal
@@ -22,11 +23,11 @@ const JoinFamily = () => {
     document.body.style.overflow = 'auto';
   };
 
+  // Verwende den zentralen ScrollToTop-Hook
+  useScrollToTop();
+
+  // Cleanup function für das Scrollen
   useEffect(() => {
-    // Scroll to top on component mount
-    window.scrollTo(0, 0);
-    
-    // Cleanup function to restore scrolling when component unmounts
     return () => {
       document.body.style.overflow = 'auto';
     };
@@ -38,7 +39,7 @@ const JoinFamily = () => {
     email: '',
     phone: '',
     message: '',
-    interest: 'general' // general, fostering, events, fundraising, other
+    interest: 'contact' // contact, volunteer, membership, sponsorship
   });
 
   const [membershipFormData, setMembershipFormData] = useState({
@@ -63,6 +64,8 @@ const JoinFamily = () => {
   const [showMembershipForm, setShowMembershipForm] = useState(false);
   const [membershipSubmitted, setMembershipSubmitted] = useState(false);
   const [volunteerSubmitted, setVolunteerSubmitted] = useState(false);
+  const [volunteerLoading, setVolunteerLoading] = useState(false);
+  const [membershipLoading, setMembershipLoading] = useState(false);
 
   const handleVolunteerChange = (e) => {
     const { name, value } = e.target;
@@ -80,38 +83,28 @@ const JoinFamily = () => {
     }));
   };
 
+  // Handle Volunteer Form Submit
   const handleVolunteerSubmit = (e) => {
     e.preventDefault();
     
-    // Formatiere die Daten für eine bessere E-Mail-Darstellung
-    const templateParams = {
+    if (!volunteerFormData.name || !volunteerFormData.email || !volunteerFormData.message) {
+      alert('Bitte fülle alle Pflichtfelder aus.');
+      return;
+    }
+
+    setVolunteerLoading(true);
+
+    sendContactEmail({
       name: volunteerFormData.name,
       email: volunteerFormData.email,
-      phone: volunteerFormData.phone || 'Nicht angegeben',
-      interest: (() => {
-        switch(volunteerFormData.interest) {
-          case 'general': return 'Allgemeine Unterstützung';
-          case 'fostering': return 'Pflegestelle';
-          case 'events': return 'Events & Fundraising';
-          case 'social': return 'Social Media & PR';
-          case 'other': return 'Anderes';
-          default: return volunteerFormData.interest;
-        }
-      })(),
+      phone: volunteerFormData.phone,
       message: volunteerFormData.message,
-      formType: 'Volunteer-Bewerbung',
-      timestamp: new Date().toLocaleString('de-DE')
-    };
-
-    // EmailJS-Konfiguration mit direkten Werten
-    const serviceID = 'service_zx16y4n';
-    const templateID = 'template_kw0e688';
-    const userID = '3V-jg3j8Dw-bZgPFG';
-
-    emailjs.send(serviceID, templateID, templateParams, userID)
+      interest: volunteerFormData.interest
+    })
       .then((response) => {
         console.log('Email erfolgreich gesendet!', response.status, response.text);
         setVolunteerSubmitted(true);
+        setVolunteerLoading(false);
         
         // Reset form
         setVolunteerFormData({
@@ -119,19 +112,42 @@ const JoinFamily = () => {
           email: '',
           phone: '',
           message: '',
-          interest: 'general'
+          interest: 'contact'
         });
-      }, (error) => {
+      })
+      .catch((error) => {
         console.error('Fehler beim Senden der E-Mail:', error);
         alert('Es gab ein Problem bei der Übermittlung des Formulars. Bitte versuche es später noch einmal.');
+        setVolunteerLoading(false);
       });
   };
 
   const handleMembershipSubmit = (e) => {
     e.preventDefault();
     
-    // Formatiere die Daten für eine bessere E-Mail-Darstellung
-    const templateParams = {
+    // Validierung
+    if (
+      !membershipFormData.firstName || 
+      !membershipFormData.lastName || 
+      !membershipFormData.street || 
+      !membershipFormData.postalCode || 
+      !membershipFormData.city || 
+      !membershipFormData.email
+    ) {
+      alert('Bitte fülle alle Pflichtfelder aus.');
+      return;
+    }
+
+    // IBAN-Validierung für Lastschrift
+    if (membershipFormData.paymentMethod === 'directDebit' && 
+        (!membershipFormData.iban || !membershipFormData.accountOwner)) {
+      alert('Bitte gib deine Bankdaten für die Lastschrift an.');
+      return;
+    }
+
+    setMembershipLoading(true);
+
+    sendMembershipEmail({
       firstName: membershipFormData.firstName,
       lastName: membershipFormData.lastName,
       street: membershipFormData.street,
@@ -143,25 +159,19 @@ const JoinFamily = () => {
       contributionAmount: membershipFormData.contributionAmount,
       paymentInterval: membershipFormData.paymentInterval,
       paymentMethod: membershipFormData.paymentMethod,
-      iban: membershipFormData.paymentMethod === 'sepa' ? membershipFormData.iban : 'Nicht angegeben',
-      bic: membershipFormData.paymentMethod === 'sepa' ? membershipFormData.bic : 'Nicht angegeben',
-      accountOwner: membershipFormData.paymentMethod === 'sepa' ? membershipFormData.accountOwner : 'Nicht angegeben',
-      formType: 'Fördermitgliedschaft',
-      timestamp: new Date().toLocaleString('de-DE')
-    };
-
-    // EmailJS-Konfiguration mit direkten Werten
-    const serviceID = 'service_zx16y4n';
-    const templateID = 'template_kw0e688';
-    const userID = '3V-jg3j8Dw-bZgPFG';
-
-    emailjs.send(serviceID, templateID, templateParams, userID)
+      iban: membershipFormData.iban,
+      bic: membershipFormData.bic,
+      accountOwner: membershipFormData.accountOwner
+    })
       .then((response) => {
         console.log('Email erfolgreich gesendet!', response.status, response.text);
         setMembershipSubmitted(true);
-      }, (error) => {
+        setMembershipLoading(false);
+      })
+      .catch((error) => {
         console.error('Fehler beim Senden der E-Mail:', error);
         alert('Es gab ein Problem bei der Übermittlung des Formulars. Bitte versuche es später noch einmal.');
+        setMembershipLoading(false);
       });
   };
 
@@ -303,71 +313,13 @@ const JoinFamily = () => {
               </div>
             </div>
           </div>
-          
-          {/* Ways to Help - Colorful Cards */}
-          <div className="mb-16">
-            <h2 className="text-2xl sm:text-3xl font-bold text-primary mb-8 text-center font-glorious">Weitere Möglichkeiten zu helfen</h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-              {/* Card 1 - Yellow */}
-              <div className="bg-accent-yellow rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-                <div className="p-6">
-                  <div className="h-12 w-12 rounded-full bg-white/20 flex items-center justify-center mb-4">
-                    <PawPrint size={24} className="text-white" />
-                  </div>
-                  <h3 className="text-xl font-bold text-white mb-2 font-futura">Pflegestelle werden</h3>
-                  <p className="text-white/90 font-futura text-sm">
-                    Biete einem Hund ein vorübergehendes Zuhause, bis er seine Für-immer-Familie findet.
-                  </p>
-                </div>
-              </div>
-              
-              {/* Card 2 - Blue */}
-              <div className="bg-accent-blue rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-                <div className="p-6">
-                  <div className="h-12 w-12 rounded-full bg-white/20 flex items-center justify-center mb-4">
-                    <Heart size={24} className="text-white" />
-                  </div>
-                  <h3 className="text-xl font-bold text-white mb-2 font-futura">Sachspenden</h3>
-                  <p className="text-white/90 font-futura text-sm">
-                    Spende Futter, Decken, Spielzeug oder Medikamente für unsere Hunde.
-                  </p>
-                </div>
-              </div>
-              
-              {/* Card 3 - Dark Green (like primary) */}
-              <div className="bg-primary rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-                <div className="p-6">
-                  <div className="h-12 w-12 rounded-full bg-white/20 flex items-center justify-center mb-4">
-                    <Calendar size={24} className="text-white" />
-                  </div>
-                  <h3 className="text-xl font-bold text-white mb-2 font-futura">Events organisieren</h3>
-                  <p className="text-white/90 font-futura text-sm">
-                    Plane Veranstaltungen oder Spendenaktionen, um Aufmerksamkeit und Mittel zu sammeln.
-                  </p>
-                </div>
-              </div>
-              
-              {/* Card 4 - Pink */}
-              <div className="bg-accent-pink rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-                <div className="p-6">
-                  <div className="h-12 w-12 rounded-full bg-white/20 flex items-center justify-center mb-4">
-                    <Star size={24} className="text-white" />
-                  </div>
-                  <h3 className="text-xl font-bold text-white mb-2 font-futura">Social Media</h3>
-                  <p className="text-white/90 font-futura text-sm">
-                    Teile unsere Beiträge und hilf uns, mehr Menschen zu erreichen und aufzuklären.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-          
+                  
           {/* Contact Form - Gradient Background */}
           <div id="volunteer-form" className="rounded-2xl overflow-hidden shadow-xl mb-16 bg-gradient-to-br from-primary via-accent-blue to-accent-pink">
             <div className="p-8 sm:p-10">
-              <h2 className="text-2xl sm:text-3xl font-bold text-white mb-6 text-center font-glorious">Kontaktformular für Volunteers</h2>
+              <h2 className="text-2xl sm:text-3xl font-bold text-white mb-6 text-center font-glorious">Kontaktformular</h2>
               <p className="text-white/90 mb-8 text-center font-futura max-w-2xl mx-auto">
-                Fülle das Formular aus, um uns mitzuteilen, wie du helfen möchtest. Wir werden uns so schnell wie möglich bei dir melden.
+                Fülle das Formular aus, um uns zu kontaktieren oder mitzuteilen, wie du helfen möchtest. Wir werden uns so schnell wie möglich bei dir melden.
               </p>
               
               <form onSubmit={handleVolunteerSubmit} className="max-w-2xl mx-auto bg-white/10 backdrop-blur-sm rounded-xl p-6 sm:p-8">
@@ -424,11 +376,10 @@ const JoinFamily = () => {
                         onChange={handleVolunteerChange}
                         className="w-full px-4 py-2 rounded-lg bg-white/20 border border-white/30 text-white focus:outline-none focus:ring-2 focus:ring-white/50"
                       >
-                        <option value="general" className="text-gray-800">Allgemeine Unterstützung</option>
-                        <option value="fostering" className="text-gray-800">Pflegestelle</option>
-                        <option value="events" className="text-gray-800">Events & Fundraising</option>
-                        <option value="social" className="text-gray-800">Social Media & PR</option>
-                        <option value="other" className="text-gray-800">Anderes</option>
+                        <option value="contact" className="text-gray-800">Kontakt/Allgemeine Anfrage</option>
+                        <option value="volunteer" className="text-gray-800">Volunteering</option>
+                        <option value="membership" className="text-gray-800">Fördermitglied</option>
+                        <option value="sponsorship" className="text-gray-800">Patenschaft</option>
                       </select>
                     </div>
                     

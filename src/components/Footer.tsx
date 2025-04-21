@@ -89,7 +89,7 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
-                <Link to="/join" className="text-white/80 hover:text-accent-yellow transition-colors font-futura">
+                <Link to="/join-family" className="text-white/80 hover:text-accent-yellow transition-colors font-futura">
                   Werde FAMily
                 </Link>
               </li>
@@ -142,7 +142,7 @@ const Footer = () => {
               </li>
               <li className="mt-4">
                 <Link 
-                  to="/emergency-report" 
+                  to="/join-family#volunteer-form" 
                   className="inline-block bg-accent-yellow text-primary font-medium py-2 px-4 rounded-lg shadow-md hover:bg-accent-yellow/90 transition-colors font-futura"
                 >
                   Zum Kontaktformular

@@ -1,9 +1,11 @@
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState, useRef, useCallback } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { Heart, PawPrint, Home, ChevronDown, Download, Phone, X } from 'lucide-react';
 import SEO from '@/components/SEO';
+import DogCard from '@/components/DogCard';
+import { useScrollToTop } from '@/hooks/useScrollToTop';
 
 const OurDogs = () => {
   const location = useLocation();
@@ -11,41 +13,40 @@ const OurDogs = () => {
   const navigate = useNavigate();
   const [showPatronageModal, setShowPatronageModal] = useState(false);
   
+  // Verwende den zentralen ScrollToTop-Hook
+  useScrollToTop();
+  
   // Öffne das Modal statt das PDF
-  const openPatronageForm = () => {
+  const openPatronageForm = useCallback(() => {
     setShowPatronageModal(true);
-    // Scrolle zur Seitenspitze, sobald das Modal geöffnet wird
-    window.scrollTo(0, 0);
     // Verhindere das Scrollen im Hintergrund
     document.body.style.overflow = 'hidden';
-  };
+  }, []);
   
   // Schließe das Modal
-  const closePatronageModal = () => {
+  const closePatronageModal = useCallback(() => {
     setShowPatronageModal(false);
     // Erlaube Scrollen wieder
     document.body.style.overflow = 'auto';
-  };
+  }, []);
   
   // Refs für die Scroll-Animation
   const sponsorshipsRef = useRef(null);
 
+  // Entferne den redundanten useEffect für window.scrollTo
   useEffect(() => {
-    // Scroll to top on component mount
-    window.scrollTo(0, 0);
-    
     // Cleanup function to restore scrolling when component unmounts
     return () => {
       document.body.style.overflow = 'auto';
     };
   }, [location]);
 
-  const scrollToSection = (section) => {
+  const scrollToSection = useCallback((section) => {
     setActiveSection(section);
     if (section === 'sponsorships') {
       sponsorshipsRef.current?.scrollIntoView({ behavior: 'smooth' });
     }
-  };
+  }, []);
 
   // Placeholder data for sponsorship dogs
   const sponsorshipDogs = [
@@ -324,20 +325,6 @@ const OurDogs = () => {
       
       <main className="flex-grow pt-24">
         <div className="container mx-auto px-4 sm:px-6 py-8 sm:py-16">
-          <h1 className="text-4xl sm:text-5xl font-bold text-primary mb-6 sm:mb-8 font-glorious">Unsere Hunde</h1>
-          <p className="text-base sm:text-lg text-gray-700 mb-6 sm:mb-8 font-futura">
-            Lerne die Hunde kennen, die wir betreuen und unterstützen. Du kannst eine Patenschaft übernehmen und ihnen damit helfen.
-          </p>
-          
-          {/* Navigation Buttons - Nur Patenschaften */}
-          <div className="flex flex-wrap justify-center mb-8 sm:mb-12 gap-4">
-            <button 
-              className="px-6 py-3 font-medium text-sm sm:text-base transition-all duration-300 rounded-full bg-secondary text-primary border-2 border-secondary"
-              onClick={() => scrollToSection('sponsorships')}
-            >
-              Patenschaften
-            </button>
-          </div>
           
           {/* Sponsorships Section */}
           <section ref={sponsorshipsRef} className="mb-20 py-8 bg-primary/10 rounded-2xl px-6">
@@ -351,52 +338,19 @@ const OurDogs = () => {
                 Als Pate bekommst du regelmäßige Updates über deinen Schützling und kannst ihn jederzeit besuchen.
               </p>
               
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {sponsorshipDogs.map((dog) => (
-                  <div key={dog.id} className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300">
-                    <div className="relative h-64 cursor-pointer" onClick={() => navigate(`/dogs/${dog.id}`)}>
-                      <img 
-                        src={dog.image} 
-                        alt={dog.name} 
-                        className="w-full h-full object-cover"
-                      />
-                      <div className="absolute top-4 right-4 bg-primary/80 text-white px-3 py-1 rounded-full text-sm font-medium">
-                        Patenschaft
-                      </div>
-                    </div>
-                    
-                    <div className="p-6">
-                      <h3 className="text-xl font-bold text-primary mb-2 font-futura cursor-pointer hover:text-primary/80 transition-colors" onClick={() => navigate(`/dogs/${dog.id}`)}>{dog.name}</h3>
-                      <div className="flex items-center text-gray-600 mb-2 text-sm">
-                        <span className="mr-4">{dog.age}</span>
-                        <span>{dog.breed}</span>
-                      </div>
-                      <p className="text-gray-700 mb-4 font-futura text-sm">{dog.description}</p>
-                      
-                      <div className="mb-4">
-                        <h4 className="text-sm font-semibold text-gray-700 mb-2">Benötigt:</h4>
-                        <div className="flex items-center text-gray-600 text-sm">
-                          <Heart size={16} className="text-accent-pink mr-2" />
-                          <span>{dog.needs}</span>
-                        </div>
-                      </div>
-                      
-                      <div className="flex space-x-2">
-                        <a 
-                          onClick={openPatronageForm}
-                          className="inline-block bg-secondary hover:bg-secondary/90 text-primary px-4 py-2 rounded-full font-medium transition-all duration-300 text-sm cursor-pointer"
-                        >
-                          Pate werden
-                        </a>
-                        <a 
-                          onClick={() => navigate(`/dogs/${dog.id}`)}
-                          className="inline-block bg-primary/10 hover:bg-primary/20 text-primary px-4 py-2 rounded-full font-medium transition-all duration-300 text-sm cursor-pointer"
-                        >
-                          Mehr erfahren
-                        </a>
-                      </div>
-                    </div>
-                  </div>
+                  <DogCard
+                    key={dog.id}
+                    id={dog.id}
+                    name={dog.name}
+                    age={dog.age}
+                    breed={dog.breed}
+                    description={dog.description}
+                    image={dog.image}
+                    needs={dog.needs}
+                    onPatronageClick={openPatronageForm}
+                  />
                 ))}
               </div>
             </div>

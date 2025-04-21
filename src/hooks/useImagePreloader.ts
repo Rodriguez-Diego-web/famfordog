@@ -1,4 +1,8 @@
 import { useEffect, useState } from 'react';
+import { markImageAsLoaded } from '../lib/imageRegistry';
+
+// Cache für bereits geladene Bilder
+const preloadedImages = new Set<string>();
 
 /**
  * Hook zum Vorladen wichtiger Bilder während der Ladeanimation
@@ -8,10 +12,14 @@ import { useEffect, useState } from 'react';
 const useImagePreloader = (imageUrls: string[]) => {
   const [imagesPreloaded, setImagesPreloaded] = useState(false);
   const [loadedCount, setLoadedCount] = useState(0);
-  const [totalCount] = useState(imageUrls.length);
+  
+  // Filtere bereits geladene Bilder heraus
+  const imagesToLoad = imageUrls.filter(url => !preloadedImages.has(url));
+  const [totalCount] = useState(imagesToLoad.length);
 
   useEffect(() => {
-    if (!imageUrls.length) {
+    // Wenn keine Bilder zu laden sind oder alle bereits im Cache
+    if (!imagesToLoad.length) {
       setImagesPreloaded(true);
       return;
     }
@@ -19,21 +27,31 @@ const useImagePreloader = (imageUrls: string[]) => {
     let loadedImages = 0;
     const images: HTMLImageElement[] = [];
 
-    const handleImageLoad = () => {
+    const handleImageLoad = (src: string) => {
       loadedImages += 1;
       setLoadedCount(loadedImages);
       
-      if (loadedImages === imageUrls.length) {
+      // Zum Cache hinzufügen
+      preloadedImages.add(src);
+      markImageAsLoaded(src);
+      
+      if (loadedImages === imagesToLoad.length) {
         setImagesPreloaded(true);
       }
     };
 
-    imageUrls.forEach(src => {
+    imagesToLoad.forEach(src => {
       const image = new Image();
-      image.onload = handleImageLoad;
-      image.onerror = handleImageLoad; // Auch bei Fehler weitermachen
-      image.src = src;
-      images.push(image);
+      image.onload = () => handleImageLoad(src);
+      image.onerror = () => handleImageLoad(src); // Auch bei Fehler weitermachen
+      
+      // Prüfe, ob das Bild bereits im Browser-Cache ist
+      if (image.complete) {
+        handleImageLoad(src);
+      } else {
+        image.src = src;
+        images.push(image);
+      }
     });
 
     // Cleanup
@@ -43,7 +61,7 @@ const useImagePreloader = (imageUrls: string[]) => {
         image.onerror = null;
       });
     };
-  }, [imageUrls]);
+  }, [imagesToLoad]);
 
   return { imagesPreloaded, loadedCount, totalCount };
 };

@@ -2,7 +2,8 @@ import { useState, useEffect, useRef } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { MapPin, AlertTriangle, Upload, Send, Heart, PawPrint } from 'lucide-react';
-import emailjs from '@emailjs/browser';
+import { sendEmergencyEmail } from '@/services/emailService';
+import { useScrollToTop } from '@/hooks/useScrollToTop';
 
 const EmergencyReport = () => {
   const [formData, setFormData] = useState({
@@ -11,6 +12,8 @@ const EmergencyReport = () => {
     email: '',
     location: '',
     description: '',
+    animalType: 'dog', // Standardwert
+    situation: 'injured' // Standardwert
   });
   
   const [selectedImage, setSelectedImage] = useState<File | null>(null);
@@ -23,9 +26,11 @@ const EmergencyReport = () => {
   const fileInputRef = useRef<HTMLInputElement>(null);
   const formRef = useRef<HTMLFormElement>(null);
 
+  // Verwende den zentralen ScrollToTop-Hook
+  useScrollToTop();
+
   useEffect(() => {
-    // Scroll to top on component mount
-    window.scrollTo(0, 0);
+    // Keine Scroll-Logik mehr benötigt
   }, []);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -137,38 +142,23 @@ const EmergencyReport = () => {
     
     // Validate form
     if (!validateForm()) {
-      setErrorMessage('Bitte füllen Sie alle erforderlichen Felder korrekt aus.');
       return;
     }
     
     setIsSubmitting(true);
     setErrorMessage(null);
     
-    // Prepare form data for email
-    const templateParams = {
-      name: formData.name,
-      email: formData.email,
-      phone: formData.phone,
-      interest: formData.location,
-      message: formData.description,
-      formType: 'Notfallmeldung',
-      timestamp: new Date().toLocaleString(),
-      image_included: selectedImage ? 'Ja' : 'Nein',
-      image_data: previewUrl || ''
-    };
-
     try {
-      await emailjs.send(
-        'service_zx16y4n',      // Service-ID wie bei JoinFamily
-        'template_hv56sfn',     // Template-ID wie gewünscht
-        templateParams,
-        '3V-jg3j8Dw-bZgPFG'     // Dein Key
-      );
-
-      // If the message contains an image, handle it separately
-      // This can be done in various ways - one option is to convert to base64 and attach
-      // Another is to upload to a service like Cloudinary or Firebase Storage
-      // For simplicity, we'll just note that an image was included in the email
+      await sendEmergencyEmail({
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone,
+        location: formData.location,
+        animalType: formData.animalType,
+        situation: formData.situation,
+        message: formData.description,
+        hasPhotos: selectedImage !== null
+      });
       
       // Once email is sent successfully
       setIsSubmitting(false);
@@ -181,16 +171,15 @@ const EmergencyReport = () => {
         email: '',
         location: '',
         description: '',
+        animalType: 'dog',
+        situation: 'injured'
       });
       setSelectedImage(null);
       setPreviewUrl(null);
-      
-      // Scroll to top to show success message
-      window.scrollTo(0, 0);
     } catch (error) {
-      console.error('Failed to send email:', error);
+      console.error('Error sending email:', error);
       setIsSubmitting(false);
-      setErrorMessage('Es gab einen Fehler beim Senden Ihres Berichts. Bitte versuchen Sie es später erneut oder kontaktieren Sie uns direkt.');
+      setErrorMessage('Es gab ein Problem beim Senden deiner Meldung. Bitte versuche es später erneut oder kontaktiere uns direkt.');
     }
   };
 
