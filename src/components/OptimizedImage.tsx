@@ -34,6 +34,10 @@ const OptimizedImage = ({ src, alt, className, width, height, onClick }: Optimiz
     };
   }, [src]);
   
+  // Spezielle Bildposition für Wednesday
+  const isWednesday = alt === "Wednesday";
+  const imageStyle = isWednesday ? { objectPosition: "center 20%" } : {};
+  
   return (
     <div 
       className={`relative ${className || ''}`} 
@@ -47,8 +51,9 @@ const OptimizedImage = ({ src, alt, className, width, height, onClick }: Optimiz
         <img
           src={imageSrc}
           alt={alt}
-          className={`w-full h-full object-cover transition-opacity duration-300 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}
+          className={`w-full h-full object-cover transition-opacity duration-300 ${isLoaded ? 'opacity-100' : 'opacity-0'} ${isWednesday ? "object-top" : ""}`}
           loading="lazy"
+          style={imageStyle}
         />
       )}
     </div>
