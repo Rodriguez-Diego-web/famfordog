@@ -345,7 +345,7 @@ const About = () => {
               </div>
               <div className="pl-4 sm:pl-10">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-8">
-                  <div className="bg-white p-4 sm:p-6 rounded-xl shadow-md">
+                  <div className="bg-white p-4 sm:p-6 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer" onClick={() => navigate('/projects/kastrationsprojekte')}>
                     <div className="h-10 w-10 sm:h-12 sm:w-12 rounded-full bg-[#dce169] flex items-center justify-center mb-3 sm:mb-4">
                       <Scissors size={20} className="text-primary" />
                     </div>
@@ -355,7 +355,7 @@ const About = () => {
                     </p>
                   </div>
                   
-                  <div className="bg-white p-4 sm:p-6 rounded-xl shadow-md">
+                  <div className="bg-white p-4 sm:p-6 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer" onClick={() => navigate('/projects/wounded-program')}>
                     <div className="h-10 w-10 sm:h-12 sm:w-12 rounded-full bg-[#dce169] flex items-center justify-center mb-3 sm:mb-4">
                       <Stethoscope size={20} className="text-primary" />
                     </div>
@@ -367,7 +367,7 @@ const About = () => {
                 </div>
                 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-8 mt-4 sm:mt-8">
-                  <div className="bg-white p-4 sm:p-6 rounded-xl shadow-md">
+                  <div className="bg-white p-4 sm:p-6 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer" onClick={() => navigate('/projects/fuetterungstouren')}>
                     <div className="h-10 w-10 sm:h-12 sm:w-12 rounded-full bg-[#dce169] flex items-center justify-center mb-3 sm:mb-4">
                       <Heart size={20} className="text-primary" />
                     </div>
@@ -377,7 +377,7 @@ const About = () => {
                     </p>
                   </div>
                   
-                  <div className="bg-white p-4 sm:p-6 rounded-xl shadow-md">
+                  <div className="bg-white p-4 sm:p-6 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer" onClick={() => navigate('/projects/shelter-lombok')}>
                     <div className="h-10 w-10 sm:h-12 sm:w-12 rounded-full bg-[#dce169] flex items-center justify-center mb-3 sm:mb-4">
                       <PawPrint size={20} className="text-primary" />
                     </div>
@@ -419,7 +419,7 @@ const About = () => {
               </div>
               <div className="pl-4 sm:pl-10">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-8">
-                  <div className="bg-white p-4 sm:p-6 rounded-xl shadow-md">
+                  <div className="bg-white p-4 sm:p-6 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer" onClick={() => navigate('/projects/public-shelter-rumaenien')}>
                     <div className="h-10 w-10 sm:h-12 sm:w-12 rounded-full bg-[#fabddc] flex items-center justify-center mb-3 sm:mb-4">
                       <Heart size={20} className="text-primary" />
                     </div>
@@ -429,7 +429,7 @@ const About = () => {
                     </p>
                   </div>
                   
-                  <div className="bg-white p-4 sm:p-6 rounded-xl shadow-md">
+                  <div className="bg-white p-4 sm:p-6 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer" onClick={() => navigate('/projects/kastrationsprojekte-rumaenien')}>
                     <div className="h-10 w-10 sm:h-12 sm:w-12 rounded-full bg-[#fabddc] flex items-center justify-center mb-3 sm:mb-4">
                       <Scissors size={20} className="text-primary" />
                     </div>
