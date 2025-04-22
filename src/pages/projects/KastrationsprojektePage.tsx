@@ -128,27 +128,27 @@ const KastrationsprojektePage = () => {
                 Würde man eine gesamte Generation Hunde kastrieren, hätte das sofortige, massive Auswirkungen:
               </p>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
-                <div className="bg-accent-blue/10 p-6 rounded-xl">
+                <div className="bg-primary/30 p-6 rounded-xl">
                   <h3 className="text-lg font-bold text-primary mb-2 font-futura">Weniger Leid</h3>
                   <p className="text-gray-700 font-futura">Weniger Leid durch Hunger und weniger Hundekämpfe um Futter und Reviere</p>
                 </div>
-                <div className="bg-accent-pink/10 p-6 rounded-xl">
+                <div className="bg-secondary/30 p-6 rounded-xl">
                   <h3 className="text-lg font-bold text-primary mb-2 font-futura">Bessere Gesundheit</h3>
                   <p className="text-gray-700 font-futura">Weniger Krankheiten, wie z.B. Tumore, Gebärmutterentzündungen, Tollwut</p>
                 </div>
-                <div className="bg-accent-green/10 p-6 rounded-xl">
+                <div className="bg-accent-pink/30 p-6 rounded-xl">
                   <h3 className="text-lg font-bold text-primary mb-2 font-futura">Längeres Leben</h3>
                   <p className="text-gray-700 font-futura">Längere Lebenserwartung und bessere Lebensqualität für die Tiere</p>
                 </div>
-                <div className="bg-secondary/10 p-6 rounded-xl">
+                <div className="bg-accent-blue/30 p-6 rounded-xl">
                   <h3 className="text-lg font-bold text-primary mb-2 font-futura">Weniger Aggressionen</h3>
                   <p className="text-gray-700 font-futura">Reduziertes aggressives Verhalten durch Hormone</p>
                 </div>
-                <div className="bg-primary/10 p-6 rounded-xl">
+                <div className="bg-accent-green/30 p-6 rounded-xl">
                   <h3 className="text-lg font-bold text-primary mb-2 font-futura">Schutz für Welpen</h3>
                   <p className="text-gray-700 font-futura">Keine mutterlosen Welpen mehr, die ohne Chance auf Überleben geboren werden</p>
                 </div>
-                <div className="bg-red-100 p-6 rounded-xl">
+                <div className="bg-red-200 p-6 rounded-xl">
                   <h3 className="text-lg font-bold text-primary mb-2 font-futura">Weniger Tötungen</h3>
                   <p className="text-gray-700 font-futura">Keine Tötungen durch Menschen, weil Hunde „zu viele" werden</p>
                 </div>
@@ -184,7 +184,7 @@ const KastrationsprojektePage = () => {
               </div>
             </div>
             
-            <div className="bg-accent-blue/10 rounded-xl p-8 mb-16">
+            <div className="bg-accent-blue/30 rounded-xl p-8 mb-16">
               <h2 className="text-2xl md:text-3xl font-bold text-primary mb-4 text-center font-futura">Großes Kastrationsprojekt 2024</h2>
               <p className="text-gray-700 mb-6 font-futura text-center">
                 Im Jahr 2024 haben wir ein umfangreiches Kastrationsprojekt auf Lombok umgesetzt, mit bis zu 200 Kastrationen monatlich. 
