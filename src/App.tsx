@@ -31,6 +31,7 @@ import FuetterungstourenPage from "./pages/projects/FuetterungstourenPage";
 import ShelterLombokPage from "./pages/projects/ShelterLombokPage";
 import PublicShelterRumaenienPage from "./pages/projects/PublicShelterRumaenienPage";
 import TierrettungenPage from "./pages/projects/TierrettungenPage";
+import FoerdermitgliedschaftSuccess from "./pages/FoerdermitgliedschaftSuccess";
 import CookieConsent from "./components/CookieConsent";
 import { initGA } from "./services/analyticsService";
 
@@ -73,6 +74,8 @@ const App = () => (
             <Route path="/imprint" element={<Imprint />} />
             <Route path="/privacy" element={<Privacy />} />
             <Route path="/cookie-policy" element={<CookiePolicy />} />
+            <Route path="/foerdermitgliedschaft" element={<FoerdermitgliedschaftSuccess />} />
+            <Route path="/foerdermitgliedschaft/" element={<FoerdermitgliedschaftSuccess />} />
             
             {/* Project Routes */}
             <Route path="/projects" element={<Projects />} />
