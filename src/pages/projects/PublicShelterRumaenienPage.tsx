@@ -37,7 +37,7 @@ const PublicShelterRumaenienPage = () => {
                 <div className="flex flex-wrap gap-4">
                   <Link 
                     to="/spenden" 
-                    className="inline-flex items-center bg-primary text-white px-6 py-3 rounded-lg font-medium transition-all duration-300 hover:opacity-90"
+                    className="inline-flex items-center bg-accent-green text-white px-6 py-3 rounded-lg font-medium transition-all duration-300 hover:opacity-90 shadow-md hover:shadow-lg"
                   >
                     <Heart size={18} className="mr-2" />
                     Jetzt spenden
@@ -45,7 +45,7 @@ const PublicShelterRumaenienPage = () => {
                   
                   <a 
                     href="#learn-more" 
-                    className="inline-flex items-center bg-white text-accent-green border-2 border-accent-green px-6 py-3 rounded-lg font-medium transition-all duration-300 hover:bg-gray-50"
+                    className="inline-flex items-center bg-white text-primary border-2 border-primary px-6 py-3 rounded-lg font-medium transition-all duration-300 hover:bg-gray-50"
                   >
                     Mehr erfahren
                   </a>
@@ -55,7 +55,7 @@ const PublicShelterRumaenienPage = () => {
               <div className="md:w-1/2">
                 <div className="rounded-xl overflow-hidden shadow-lg">
                   <img 
-                    src="/images/rumaenien/_V9A3209.jpeg" 
+                    src="/images/rumaenien/_V9A7678.jpeg" 
                     alt="Tierheim in Baia Mare" 
                     className="w-full h-auto object-cover rounded-xl"
                   />
@@ -303,14 +303,14 @@ const PublicShelterRumaenienPage = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               <Link 
                 to="/projects/kastrationsprojekte"
-                className="bg-primary/30 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2"
+                className="bg-primary/30 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 flex flex-col h-full"
               >
-                <div className="p-6">
+                <div className="p-6 flex flex-col h-full">
                   <h3 className="text-xl font-bold text-primary mb-3 font-futura">Kastrationsprojekte</h3>
-                  <p className="text-gray-700 mb-4 font-futura">
+                  <p className="text-gray-700 mb-4 font-futura flex-grow">
                     Unsere Kastrationsprojekte helfen, die Population von Straßentieren zu kontrollieren und Tierleid zu verhindern.
                   </p>
-                  <div className="flex items-center text-primary font-medium">
+                  <div className="flex items-center text-primary font-medium mt-auto">
                     <span>Mehr erfahren</span>
                     <ChevronRight size={16} className="ml-1" />
                   </div>
@@ -319,14 +319,14 @@ const PublicShelterRumaenienPage = () => {
               
               <Link 
                 to="/projects/wounded-program"
-                className="bg-secondary/30 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2"
+                className="bg-secondary/30 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 flex flex-col h-full"
               >
-                <div className="p-6">
+                <div className="p-6 flex flex-col h-full">
                   <h3 className="text-xl font-bold text-primary mb-3 font-futura">Wounded Program</h3>
-                  <p className="text-gray-700 mb-4 font-futura">
+                  <p className="text-gray-700 mb-4 font-futura flex-grow">
                     Wir kümmern uns um verletzte und kranke Straßentiere und bieten ihnen medizinische Versorgung.
                   </p>
-                  <div className="flex items-center text-secondary font-medium">
+                  <div className="flex items-center text-secondary font-medium mt-auto">
                     <span>Mehr erfahren</span>
                     <ChevronRight size={16} className="ml-1" />
                   </div>
@@ -335,14 +335,14 @@ const PublicShelterRumaenienPage = () => {
               
               <Link 
                 to="/projects/shelter-lombok"
-                className="bg-accent-blue/30 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2"
+                className="bg-accent-blue/30 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 flex flex-col h-full"
               >
-                <div className="p-6">
+                <div className="p-6 flex flex-col h-full">
                   <h3 className="text-xl font-bold text-primary mb-3 font-futura">Shelter Lombok</h3>
-                  <p className="text-gray-700 mb-4 font-futura">
+                  <p className="text-gray-700 mb-4 font-futura flex-grow">
                     Unser Shelter auf Lombok bietet Straßentieren ein sicheres Zuhause und die Chance auf Adoption.
                   </p>
-                  <div className="flex items-center text-accent-blue font-medium">
+                  <div className="flex items-center text-accent-blue font-medium mt-auto">
                     <span>Mehr erfahren</span>
                     <ChevronRight size={16} className="ml-1" />
                   </div>

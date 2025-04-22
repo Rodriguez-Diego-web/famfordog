@@ -589,14 +589,14 @@ const ShelterLombokPage = () => {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <Link 
                 to="/projects/kastrationsprojekte"
-                className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border-t-4 border-primary"
+                className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border-t-4 border-primary flex flex-col h-full"
               >
-                <div className="p-6">
+                <div className="p-6 flex flex-col h-full">
                   <h3 className="text-xl font-bold text-primary mb-3 font-futura">Kastrationsprojekte</h3>
-                  <p className="text-gray-700 mb-4 font-futura">
+                  <p className="text-gray-700 mb-4 font-futura flex-grow">
                     Unsere Kastrationsprojekte helfen, die Population von Straßentieren zu kontrollieren und Tierleid zu verhindern.
                   </p>
-                  <div className="flex items-center text-primary font-medium">
+                  <div className="flex items-center text-primary font-medium mt-auto">
                     <span>Mehr erfahren</span>
                     <ChevronRight size={16} className="ml-1" />
                   </div>
@@ -605,14 +605,14 @@ const ShelterLombokPage = () => {
               
               <Link 
                 to="/projects/wounded-program"
-                className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border-t-4 border-secondary"
+                className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border-t-4 border-secondary flex flex-col h-full"
               >
-                <div className="p-6">
+                <div className="p-6 flex flex-col h-full">
                   <h3 className="text-xl font-bold text-primary mb-3 font-futura">Wounded Program</h3>
-                  <p className="text-gray-700 mb-4 font-futura">
+                  <p className="text-gray-700 mb-4 font-futura flex-grow">
                     Wir kümmern uns um verletzte und kranke Straßentiere und bieten ihnen medizinische Versorgung.
                   </p>
-                  <div className="flex items-center text-secondary font-medium">
+                  <div className="flex items-center text-secondary font-medium mt-auto">
                     <span>Mehr erfahren</span>
                     <ChevronRight size={16} className="ml-1" />
                   </div>
@@ -621,14 +621,14 @@ const ShelterLombokPage = () => {
               
               <Link 
                 to="/projects/fuetterungstouren"
-                className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border-t-4 border-accent-pink"
+                className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border-t-4 border-accent-pink flex flex-col h-full"
               >
-                <div className="p-6">
+                <div className="p-6 flex flex-col h-full">
                   <h3 className="text-xl font-bold text-primary mb-3 font-futura">Fütterungstouren</h3>
-                  <p className="text-gray-700 mb-4 font-futura">
+                  <p className="text-gray-700 mb-4 font-futura flex-grow">
                     Regelmäßige Fütterungstouren versorgen Straßentiere mit Nahrung und Wasser.
                   </p>
-                  <div className="flex items-center text-accent-pink font-medium">
+                  <div className="flex items-center text-accent-pink font-medium mt-auto">
                     <span>Mehr erfahren</span>
                     <ChevronRight size={16} className="ml-1" />
                   </div>

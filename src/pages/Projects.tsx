@@ -84,12 +84,12 @@ const Projects = () => {
                 <Link 
                   key={index} 
                   to={project.path}
-                  className={`rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 ${project.color}`}
+                  className={`rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 ${project.color} flex flex-col h-full`}
                 >
-                  <div className="p-6">
+                  <div className="p-6 flex flex-col h-full">
                     <h3 className="text-xl font-bold text-primary mb-3 font-futura">{project.title}</h3>
-                    <p className="text-gray-700 mb-4 font-futura">{project.description}</p>
-                    <div className="flex items-center text-secondary font-medium">
+                    <p className="text-gray-700 mb-4 font-futura flex-grow">{project.description}</p>
+                    <div className="flex items-center text-secondary font-medium mt-auto">
                       <span>Mehr erfahren</span>
                       <ChevronRight size={16} className="ml-1" />
                     </div>
