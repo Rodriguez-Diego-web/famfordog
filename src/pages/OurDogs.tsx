@@ -355,32 +355,7 @@ const OurDogs = () => {
               </div>
             </div>
             
-            <div className="bg-white p-6 sm:p-8 rounded-2xl mb-8 shadow-md">
-              <div className="flex items-start">
-                <div className="mr-4 mt-1">
-                  <PawPrint size={24} className="text-accent-blue" />
-                </div>
-                <div>
-                  <h3 className="text-lg font-semibold text-primary mb-2 font-futura">So funktioniert eine Patenschaft</h3>
-                  <p className="text-gray-700 font-futura text-sm sm:text-base">
-                    Mit einer Patenschaft kannst du einen bestimmten Hund unterstützen, ohne ihn zu adoptieren. 
-                    Deine regelmäßige Spende hilft uns, die Kosten für Futter, medizinische Versorgung und Unterbringung zu decken.
-                  </p>
-                  <p className="text-gray-700 mt-4 font-futura text-sm sm:text-base">
-                    Als Pate bekommst du regelmäßige Updates über deinen Schützling und kannst ihn jederzeit besuchen.
-                  </p>
-                  <div className="mt-6 flex flex-wrap gap-4">
-                    <button 
-                      onClick={() => scrollToSection('sponsorships')}
-                      className="bg-secondary hover:bg-secondary/90 text-primary px-6 py-2 rounded-full font-medium transition-all duration-300 text-sm flex items-center"
-                    >
-                      <Heart size={16} className="mr-2" />
-                      Patenschaften ansehen
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
+            {/* Adoptions Section */}
           </section>
         </div>
       </main>
