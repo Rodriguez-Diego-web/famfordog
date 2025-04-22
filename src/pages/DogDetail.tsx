@@ -227,9 +227,6 @@ const DogDetail: React.FC = () => {
             description: "Im November 2023 wurde Lea völlig geschwächt auf einem Balkon gefunden. Die Bewohner verständigten uns, und Dhany und Vito sicherten sie und nahmen sie bei sich auf. Sie war in einem schlechten Zustand und hatte Nierenprobleme, weshalb sie damals nicht kastriert wurde. Vito schloss sie sofort ins Herz und entschied, sie zu behalten. Bevor sie später sterilisiert wurde, bekam sie einmal Welpen – der Vater war ein Nachbarshund. Die Kleinen wurden nach den englischen Wochentagen benannt. Der kleine Tuesday ist leider im Februar 2025 an einer unbekannten Infektion verstorben. Lea lebt mit den Anderen bei Dhany und Vito und wird dort liebevoll versorgt.",
             image: "/OneDrive_15_2.4.2025/Lea/IMG_2387.jpeg",
             additionalImages: [
-              "/OneDrive_15_2.4.2025/Lea/IMG_2397.jpeg",
-              "/OneDrive_15_2.4.2025/Lea/IMG_2398.jpeg",
-              "/OneDrive_15_2.4.2025/Lea/IMG_2399.jpeg",
               "/OneDrive_15_2.4.2025/Lea/IMG_2400.jpeg",
               "/OneDrive_15_2.4.2025/Lea/IMG_2401.jpeg"
             ],
@@ -395,9 +392,9 @@ const DogDetail: React.FC = () => {
             age: "4 Jahre",
             breed: "Mischling",
             description: "Wednesday ist eine besondere Hündin mit einem einzigartigen Charakter. Sie ist loyal und beschützend.",
-            image: "/OneDrive_15_2.4.2025/Wednesday/IMG_2215.jpeg",
+            image: "/OneDrive_15_2.4.2025/Wednesday/IMG_2217.jpeg",
             additionalImages: [
-              "/OneDrive_15_2.4.2025/Wednesday/IMG_2217.jpeg",
+              "/OneDrive_15_2.4.2025/Wednesday/IMG_2215.jpeg",
               "/OneDrive_15_2.4.2025/Wednesday/IMG_2218.jpeg",
               "/OneDrive_15_2.4.2025/Wednesday/IMG_2219.jpeg"
             ],
@@ -548,7 +545,7 @@ const DogDetail: React.FC = () => {
           <img 
             src={allImages[currentImageIndex]} 
             alt={dog.name} 
-            className="w-full h-[350px] md:h-[450px] object-cover"
+            className="w-full h-[350px] md:h-[450px] object-cover object-center"
           />
           <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-6">
             <h1 className="text-4xl font-bold text-white mb-2">{dog.name}</h1>
