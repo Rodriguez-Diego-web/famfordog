@@ -34,9 +34,9 @@ const OptimizedImage = ({ src, alt, className, width, height, onClick }: Optimiz
     };
   }, [src]);
   
-  // Spezielle Bildposition für Wednesday
-  const isWednesday = alt === "Wednesday";
-  const imageStyle = isWednesday ? { objectPosition: "center 20%" } : {};
+  // Spezielle Bildposition für bestimmte Hunde
+  const needsSpecialPosition = alt === "Wednesday" || alt === "Rijonde";
+  const imageStyle = needsSpecialPosition ? { objectPosition: "center 20%" } : {};
   
   return (
     <div 
@@ -51,7 +51,7 @@ const OptimizedImage = ({ src, alt, className, width, height, onClick }: Optimiz
         <img
           src={imageSrc}
           alt={alt}
-          className={`w-full h-full object-cover transition-opacity duration-300 ${isLoaded ? 'opacity-100' : 'opacity-0'} ${isWednesday ? "object-top" : ""}`}
+          className={`w-full h-full object-cover transition-opacity duration-300 ${isLoaded ? 'opacity-100' : 'opacity-0'} ${needsSpecialPosition ? "object-top" : ""}`}
           loading="lazy"
           style={imageStyle}
         />
