@@ -35,7 +35,7 @@ const DogDetail: React.FC = () => {
 
   // Funktion zum Öffnen des Patenschaftsantrags
   const openPatronageForm = () => {
-    navigate('/join-family#patronage');
+    window.open('https://www.fundbox.org/de/form/5c8a5c8a-5c8a-5c8a-5c8a-5c8a5c8a5c8a', '_blank');
   };
 
   // Funktion zum Öffnen des Kontaktbereichs
@@ -402,6 +402,9 @@ const DogDetail: React.FC = () => {
     };
 
     loadDogData();
+    
+    // Scroll zum Anfang der Seite, wenn die Komponente geladen wird
+    window.scrollTo(0, 0);
   }, [id]);
 
   // Funktion zum Ändern des angezeigten Bildes
