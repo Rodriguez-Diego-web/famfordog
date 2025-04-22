@@ -419,6 +419,16 @@ const About = () => {
               </div>
               <div className="pl-4 sm:pl-10">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-8">
+                  <div className="bg-white p-4 sm:p-6 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer" onClick={() => navigate('/projects/kastrationsprojekte')}>
+                    <div className="h-10 w-10 sm:h-12 sm:w-12 rounded-full bg-[#fabddc] flex items-center justify-center mb-3 sm:mb-4">
+                      <Scissors size={20} className="text-primary" />
+                    </div>
+                    <h4 className="text-lg sm:text-xl font-semibold text-primary mb-2 sm:mb-3 font-futura">Kastrationsprojekte</h4>
+                    <p className="text-gray-600 font-futura text-sm sm:text-base">
+                      Geplante Kastrationsprojekte, um die Population der Straßenhunde langfristig zu reduzieren.
+                    </p>
+                  </div>
+                  
                   <div className="bg-white p-4 sm:p-6 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer" onClick={() => navigate('/projects/public-shelter-rumaenien')}>
                     <div className="h-10 w-10 sm:h-12 sm:w-12 rounded-full bg-[#fabddc] flex items-center justify-center mb-3 sm:mb-4">
                       <Heart size={20} className="text-primary" />
@@ -426,16 +436,6 @@ const About = () => {
                     <h4 className="text-lg sm:text-xl font-semibold text-primary mb-2 sm:mb-3 font-futura">Tierheim-Unterstützung</h4>
                     <p className="text-gray-600 font-futura text-sm sm:text-base">
                       Unterstützung eines bestehenden öffentlichen Tierheims mit dem Ziel, die Lebensbedingungen der Hunde zu verbessern.
-                    </p>
-                  </div>
-                  
-                  <div className="bg-white p-4 sm:p-6 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer" onClick={() => navigate('/projects/kastrationsprojekte-rumaenien')}>
-                    <div className="h-10 w-10 sm:h-12 sm:w-12 rounded-full bg-[#fabddc] flex items-center justify-center mb-3 sm:mb-4">
-                      <Scissors size={20} className="text-primary" />
-                    </div>
-                    <h4 className="text-lg sm:text-xl font-semibold text-primary mb-2 sm:mb-3 font-futura">Kastrationsprojekte</h4>
-                    <p className="text-gray-600 font-futura text-sm sm:text-base">
-                      Geplante Kastrationsprojekte, um die Population der Straßenhunde langfristig zu reduzieren.
                     </p>
                   </div>
                 </div>
