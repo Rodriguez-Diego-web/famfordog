@@ -442,7 +442,7 @@ const About = () => {
               </div>
               
               {/* Photo Gallery */}
-              <div className="mb-12 sm:mb-16">
+              <div className="mt-16 sm:mt-24 mb-12 sm:mb-16">
                 <div className="text-center mb-6 sm:mb-10">
                   <h3 className="text-xl sm:text-2xl font-bold text-primary mb-3 sm:mb-4 font-glorious">Unsere Arbeit in Rumänien</h3>
                   <div className="w-16 sm:w-20 h-1 bg-primary mx-auto mb-4 sm:mb-6"></div>
