@@ -238,7 +238,7 @@ const ShelterLombokPage = () => {
               <div className="grid grid-cols-1 lg:grid-cols-2">
                 <div className="lg:h-auto overflow-hidden lg:order-2 relative">
                   <img 
-                    src="/public/Rey/rey.jpeg" 
+                    src="/Rey/rey.jpeg" 
                     alt="Rey mit Hunden im Shelter" 
                     className="w-full h-full object-cover object-center transition-transform duration-700 hover:scale-105"
                     onError={(e) => {
@@ -273,7 +273,7 @@ const ShelterLombokPage = () => {
               <div className="grid grid-cols-1 lg:grid-cols-2">
                 <div className="lg:h-auto overflow-hidden relative">
                   <img 
-                    src="/public/Dhany/profile.jpg" 
+                    src="/Dhany/profile.jpg" 
                     alt="Dhany mit Hunden im Shelter" 
                     className="w-full h-full object-cover object-center transition-transform duration-700 hover:scale-105"
                     onError={(e) => {
