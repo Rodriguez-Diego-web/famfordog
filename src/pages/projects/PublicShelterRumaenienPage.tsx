@@ -55,7 +55,7 @@ const PublicShelterRumaenienPage = () => {
               <div className="md:w-1/2">
                 <div className="rounded-xl overflow-hidden shadow-lg">
                   <img 
-                    src="/images/rumaenien/_V9A7678.jpeg" 
+                    src="/images/rumaenien/IMG_0653.jpeg" 
                     alt="Tierheim in Baia Mare" 
                     className="w-full h-auto object-cover rounded-xl"
                   />
