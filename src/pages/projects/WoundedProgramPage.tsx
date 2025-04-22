@@ -1,27 +1,32 @@
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowLeft, Heart, PawPrint, ChevronRight } from 'lucide-react';
+import { ArrowLeft, Heart, PawPrint, ChevronRight, Bandage, Activity, Home } from 'lucide-react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import SEO from '@/components/SEO';
 
 const WoundedProgramPage = () => {
   useEffect(() => {
-    // Scroll to top on component mount
     window.scrollTo(0, 0);
   }, []);
 
   return (
     <div className="min-h-screen flex flex-col">
+      <SEO 
+        title="Wounded Program | FAM for Dogs"
+        description="Unser Wounded Program kümmert sich um verletzte und kranke Straßentiere. Wir bieten medizinische Versorgung, Rehabilitation und ein sicheres Umfeld für ihre Genesung."
+        keywords="Wounded Program, verletzte Straßenhunde, Tierschutz Lombok, Tierschutz Rumänien, Straßenhunde, Tiermedizin, Tierhilfe"
+      />
       <Navbar />
       <main className="flex-grow pt-20">
         {/* Hero Section */}
-        <section className="bg-secondary/10 py-16 md:py-24 relative overflow-hidden">
+        <section className="bg-gradient-to-r from-secondary/20 to-accent-pink/20 py-16 md:py-24 relative overflow-hidden">
           {/* Decorative elements */}
-          <div className="absolute -top-16 -right-16 opacity-5">
-            <PawPrint size={200} className="text-primary" />
+          <div className="absolute -top-16 -right-16 opacity-10">
+            <PawPrint size={200} className="text-secondary" />
           </div>
-          <div className="absolute -bottom-16 -left-16 opacity-5">
-            <PawPrint size={200} className="text-primary" />
+          <div className="absolute -bottom-16 -left-16 opacity-10">
+            <PawPrint size={200} className="text-secondary" />
           </div>
           
           <div className="container mx-auto px-6 relative z-10">
@@ -31,10 +36,10 @@ const WoundedProgramPage = () => {
             </Link>
             
             <div className="max-w-4xl">
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-primary mb-6 font-glorious">
-                Wounded Program
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 font-glorious">
+                <span className="text-secondary">Wounded</span> <span className="text-primary">Program</span>
               </h1>
-              <div className="w-20 h-1 bg-secondary mb-8"></div>
+              <div className="w-20 h-1 bg-gradient-to-r from-secondary to-accent-pink mb-8"></div>
               <p className="text-gray-700 text-lg md:text-xl mb-8 font-futura">
                 Unser Wounded Program kümmert sich um verletzte und kranke Straßentiere. 
                 Wir bieten medizinische Versorgung, Rehabilitation und ein sicheres Umfeld für ihre Genesung.
@@ -97,6 +102,39 @@ const WoundedProgramPage = () => {
                 Von Unfallverletzungen über Krankheiten bis hin zu Misshandlungen – wir sind für die Tiere da, 
                 wenn sie uns am dringendsten brauchen.
               </p>
+            </div>
+
+            {/* Services Section */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+              <div className="bg-secondary/30 p-6 rounded-xl shadow-md flex flex-col items-center text-center">
+                <div className="bg-white p-3 rounded-full mb-4 shadow-md">
+                  <Bandage size={32} className="text-secondary" />
+                </div>
+                <h3 className="text-xl font-bold text-primary mb-3 font-futura">Notfallversorgung</h3>
+                <p className="text-gray-700 font-futura">
+                  Wir reagieren schnell auf Notfälle und bieten sofortige medizinische Hilfe für verletzte und kranke Straßentiere.
+                </p>
+              </div>
+              
+              <div className="bg-accent-pink/30 p-6 rounded-xl shadow-md flex flex-col items-center text-center">
+                <div className="bg-white p-3 rounded-full mb-4 shadow-md">
+                  <Activity size={32} className="text-accent-pink" />
+                </div>
+                <h3 className="text-xl font-bold text-primary mb-3 font-futura">Langzeitbehandlung</h3>
+                <p className="text-gray-700 font-futura">
+                  Wir behandeln chronische Erkrankungen und begleiten die Tiere durch langwierige Genesungsprozesse.
+                </p>
+              </div>
+              
+              <div className="bg-accent-blue/30 p-6 rounded-xl shadow-md flex flex-col items-center text-center">
+                <div className="bg-white p-3 rounded-full mb-4 shadow-md">
+                  <Home size={32} className="text-accent-blue" />
+                </div>
+                <h3 className="text-xl font-bold text-primary mb-3 font-futura">Rehabilitation</h3>
+                <p className="text-gray-700 font-futura">
+                  Wir helfen den Tieren, wieder auf die Beine zu kommen und bereiten sie auf ein neues Leben vor.
+                </p>
+              </div>
             </div>
 
             {/* Case Studies */}
@@ -184,10 +222,10 @@ const WoundedProgramPage = () => {
             </div>
 
             {/* Video Section */}
-            <div className="bg-accent-pink/10 rounded-xl p-8 mb-16">
+            <div className="bg-gradient-to-r from-accent-pink/20 to-secondary/20 rounded-xl p-8 mb-16 shadow-md">
               <h2 className="text-2xl md:text-3xl font-bold text-primary mb-6 text-center font-futura">Einblicke in unsere Arbeit</h2>
               <p className="text-gray-700 mb-8 text-center font-futura">
-                Sehen Sie selbst, wie wir den Tieren helfen und welche Fortschritte sie machen.
+                Schau dir selbst an, wie wir den Tieren helfen und welche Fortschritte sie machen.
               </p>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="rounded-xl overflow-hidden shadow-lg aspect-video">
@@ -197,7 +235,7 @@ const WoundedProgramPage = () => {
                     poster="/WOUNDED/WhatsApp Image 2025-03-27 at 22.56.24 (4).jpeg"
                   >
                     <source src="/WOUNDED/WhatsApp Video 2025-03-27 at 22.56.24.mp4" type="video/mp4" />
-                    Ihr Browser unterstützt das Video-Tag nicht.
+                    Dein Browser unterstützt das Video-Tag nicht.
                   </video>
                 </div>
                 <div className="rounded-xl overflow-hidden shadow-lg aspect-video">
@@ -207,25 +245,25 @@ const WoundedProgramPage = () => {
                     poster="/WOUNDED/WhatsApp Image 2025-03-27 at 22.56.24 (5).jpeg"
                   >
                     <source src="/WOUNDED/WhatsApp Video 2025-03-27 at 22.56.25 (4).mp4" type="video/mp4" />
-                    Ihr Browser unterstützt das Video-Tag nicht.
+                    Dein Browser unterstützt das Video-Tag nicht.
                   </video>
                 </div>
               </div>
             </div>
 
             {/* Statistics */}
-            <div className="bg-secondary/10 rounded-xl p-8 mb-16">
+            <div className="bg-gradient-to-r from-secondary/20 to-accent-blue/20 rounded-xl p-8 mb-16 shadow-md">
               <h2 className="text-2xl md:text-3xl font-bold text-primary mb-6 text-center font-futura">Unsere Wirkung</h2>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
-                <div className="p-4">
+                <div className="p-4 bg-white/50 rounded-lg">
                   <div className="text-4xl font-bold text-secondary mb-2 font-futura">250+</div>
                   <p className="text-gray-700 font-futura">Behandelte Tiere pro Jahr</p>
                 </div>
-                <div className="p-4">
+                <div className="p-4 bg-white/50 rounded-lg">
                   <div className="text-4xl font-bold text-secondary mb-2 font-futura">85%</div>
                   <p className="text-gray-700 font-futura">Erfolgreiche Genesungen</p>
                 </div>
-                <div className="p-4">
+                <div className="p-4 bg-white/50 rounded-lg">
                   <div className="text-4xl font-bold text-secondary mb-2 font-futura">120+</div>
                   <p className="text-gray-700 font-futura">Vermittelte Tiere</p>
                 </div>
@@ -242,14 +280,14 @@ const WoundedProgramPage = () => {
               <div className="flex flex-wrap justify-center gap-4">
                 <Link 
                   to="/spenden" 
-                  className="bg-primary hover:bg-primary/90 text-white px-8 py-3 rounded-full font-medium transition-all duration-300 inline-flex items-center font-futura"
+                  className="flex items-center bg-gradient-to-r from-primary to-secondary text-white px-8 py-3 rounded-lg font-medium transition-all duration-300 hover:shadow-lg inline-block font-futura hover:scale-105 transform"
                 >
-                  <Heart size={16} className="mr-2" />
+                  <Heart size={16} className="inline-block mr-2" />
                   Jetzt spenden
                 </Link>
                 <Link 
                   to="/join-family" 
-                  className="bg-secondary hover:bg-secondary/90 text-primary px-8 py-3 rounded-full font-medium transition-all duration-300 font-futura"
+                  className="flex items-center bg-white border-2 border-secondary text-primary px-8 py-3 rounded-lg font-medium transition-all duration-300 hover:bg-secondary/10 inline-block font-futura"
                 >
                   Mitglied werden
                 </Link>
