@@ -55,7 +55,7 @@ const TierrettungenPage = () => {
               <div className="md:w-1/2">
                 <div className="rounded-xl overflow-hidden shadow-lg">
                   <img 
-                    src="/public/WOUNDED/WhatsApp Image 2025-03-27 at 22.56.24 (6).jpeg" 
+                    src="/WOUNDED/WhatsApp Image 2025-03-27 at 22.56.24 (6).jpeg" 
                     alt="Tierrettung" 
                     className="w-full h-auto object-cover rounded-xl"
                     onError={(e) => {
