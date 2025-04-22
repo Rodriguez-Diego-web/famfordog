@@ -35,8 +35,19 @@ const OptimizedImage = ({ src, alt, className, width, height, onClick }: Optimiz
   }, [src]);
   
   // Spezielle Bildposition für bestimmte Hunde
-  const needsSpecialPosition = alt === "Wednesday" || alt === "Rijonde";
-  const imageStyle = needsSpecialPosition ? { objectPosition: "center 20%" } : {};
+  let imageStyle = {};
+  let objectPositionClass = "";
+  
+  if (alt === "Wednesday" || alt === "Rijonde") {
+    imageStyle = { objectPosition: "center 20%" };
+    objectPositionClass = "object-top";
+  } else if (alt === "Roket") {
+    imageStyle = { objectPosition: "center 5%" }; // Viel tiefer für Roket
+    objectPositionClass = "object-top";
+  } else if (alt === "Nugget") {
+    imageStyle = { objectPosition: "center 60%" }; // Viel höher für Nugget
+    objectPositionClass = "object-bottom";
+  }
   
   return (
     <div 
@@ -51,7 +62,7 @@ const OptimizedImage = ({ src, alt, className, width, height, onClick }: Optimiz
         <img
           src={imageSrc}
           alt={alt}
-          className={`w-full h-full object-cover transition-opacity duration-300 ${isLoaded ? 'opacity-100' : 'opacity-0'} ${needsSpecialPosition ? "object-top" : ""}`}
+          className={`w-full h-full object-cover transition-opacity duration-300 ${isLoaded ? 'opacity-100' : 'opacity-0'} ${objectPositionClass}`}
           loading="lazy"
           style={imageStyle}
         />
