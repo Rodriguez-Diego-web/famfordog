@@ -243,10 +243,10 @@ const Navbar = () => {
       
       {/* Mobile Menu */}
       {mobileMenuOpen && (
-        <div className="md:hidden bg-accent-blue/95 backdrop-blur-lg absolute top-full left-0 right-0 flex flex-col p-6 animate-fade-in">
+        <div className="md:hidden bg-accent-blue shadow-xl absolute top-full left-0 right-0 max-h-[80vh] flex flex-col p-6 overflow-y-auto z-50">
           <Link
             to="/"
-            className={`text-sm font-medium py-3 font-futura ${
+            className={`text-base font-medium py-3 font-futura ${
               location.pathname === '/'
                 ? 'text-white font-bold'
                 : 'text-white/90 hover:text-white'
@@ -265,7 +265,7 @@ const Navbar = () => {
                     navigate('/about');
                     setMobileMenuOpen(false);
                   }}
-                  className={`flex-1 text-left text-sm font-medium py-2 font-futura ${
+                  className={`flex-1 text-left text-base font-medium py-2 font-futura ${
                     isAboutPage
                       ? 'text-white font-bold'
                       : 'text-white/90 hover:text-white'
@@ -275,7 +275,7 @@ const Navbar = () => {
                 </button>
                 <button 
                   onClick={toggleMobileDropdown}
-                  className="p-3 ml-2" 
+                  className="p-3 ml-2 text-white/90" 
                   aria-label="Toggle about dropdown"
                 >
                   <ChevronDown 
@@ -287,12 +287,12 @@ const Navbar = () => {
             </div>
             
             {mobileDropdownOpen && (
-              <div className="pl-4 mt-2 space-y-1 border-l border-white/20">
+              <div className="pl-4 mt-2 space-y-1 border-l-2 border-white/20">
                 {aboutItems.map((item) => (
                   <Link
                     key={item.name}
                     to={`${item.path}#${item.fragment}`}
-                    className="block py-3 text-sm font-futura text-white/90 hover:text-white"
+                    className="block py-3 text-base font-futura text-white/90 hover:text-white"
                     onClick={() => {
                       setMobileDropdownOpen(false);
                       setMobileMenuOpen(false);
@@ -314,7 +314,7 @@ const Navbar = () => {
                     navigate('/projects');
                     setMobileMenuOpen(false);
                   }}
-                  className={`flex-1 text-left text-sm font-medium py-2 font-futura ${
+                  className={`flex-1 text-left text-base font-medium py-2 font-futura ${
                     location.pathname.startsWith('/projects')
                       ? 'text-white font-bold'
                       : 'text-white/90 hover:text-white'
@@ -324,7 +324,7 @@ const Navbar = () => {
                 </button>
                 <button 
                   onClick={toggleMobileProjectsDropdown}
-                  className="p-3 ml-2" 
+                  className="p-3 ml-2 text-white/90" 
                   aria-label="Toggle projects dropdown"
                 >
                   <ChevronDown 
@@ -336,12 +336,12 @@ const Navbar = () => {
             </div>
             
             {mobileProjectsDropdownOpen && (
-              <div className="pl-4 mt-2 space-y-1 border-l border-white/20">
+              <div className="pl-4 mt-2 space-y-1 border-l-2 border-white/20">
                 {projectItems.map((item) => (
                   <Link
                     key={item.name}
                     to={item.path}
-                    className="block py-3 text-sm font-futura text-white/90 hover:text-white"
+                    className="block py-3 text-base font-futura text-white/90 hover:text-white"
                     onClick={() => {
                       setMobileProjectsDropdownOpen(false);
                       setMobileMenuOpen(false);
@@ -360,7 +360,7 @@ const Navbar = () => {
               <Link
                 key={item.name}
                 to={item.path}
-                className={`text-sm font-medium py-3 font-futura ${
+                className={`text-base font-medium py-3 font-futura ${
                   location.pathname === item.path
                     ? 'text-white font-bold'
                     : 'text-white/90 hover:text-white'
@@ -378,7 +378,7 @@ const Navbar = () => {
           
           <Link
             to="/spenden"
-            className="bg-secondary hover:bg-secondary/90 text-secondary-foreground px-5 py-2 rounded-full text-sm font-medium my-3 inline-block w-fit font-futura"
+            className="bg-secondary hover:bg-secondary/90 text-secondary-foreground px-5 py-2 rounded-full text-base font-medium my-3 inline-block w-fit font-futura"
             onClick={() => setMobileMenuOpen(false)}
           >
             Spenden

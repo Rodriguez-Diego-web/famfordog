@@ -7,7 +7,6 @@ import SEO from '@/components/SEO';
 
 const KastrationsprojektePage = () => {
   useEffect(() => {
-    // Scroll to top on component mount
     window.scrollTo(0, 0);
   }, []);
 
@@ -144,7 +143,7 @@ const KastrationsprojektePage = () => {
                   <h3 className="text-lg font-bold text-primary mb-2 font-futura">Weniger Aggressionen</h3>
                   <p className="text-gray-700 font-futura">Reduziertes aggressives Verhalten durch Hormone</p>
                 </div>
-                <div className="bg-accent-green/30 p-6 rounded-xl">
+                <div className="bg-accent-orange/30 p-6 rounded-xl">
                   <h3 className="text-lg font-bold text-primary mb-2 font-futura">Schutz für Welpen</h3>
                   <p className="text-gray-700 font-futura">Keine mutterlosen Welpen mehr, die ohne Chance auf Überleben geboren werden</p>
                 </div>
@@ -222,14 +221,14 @@ const KastrationsprojektePage = () => {
               <div className="flex flex-wrap justify-center gap-4">
                 <Link 
                   to="/spenden" 
-                  className="bg-gradient-to-r from-primary to-secondary text-white px-8 py-3 rounded-full font-medium transition-all duration-300 hover:shadow-lg inline-block font-futura hover:scale-105 transform"
+                  className="flex items-center bg-gradient-to-r from-primary to-secondary text-white px-8 py-3 rounded-lg font-medium transition-all duration-300 hover:shadow-lg inline-block font-futura hover:scale-105 transform"
                 >
-                  <Heart size={16} className="mr-2" />
+                  <Heart size={16} className="inline-block mr-2" />
                   Jetzt spenden
                 </Link>
                 <Link 
                   to="/join-family" 
-                  className="bg-secondary hover:bg-secondary/90 text-primary px-8 py-3 rounded-full font-medium transition-all duration-300 font-futura"
+                  className="flex items-center bg-white border-2 border-secondary text-primary px-8 py-3 rounded-lg font-medium transition-all duration-300 hover:bg-secondary/10 inline-block font-futura"
                 >
                   Mitglied werden
                 </Link>
