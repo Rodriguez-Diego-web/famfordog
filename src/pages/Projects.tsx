@@ -6,7 +6,6 @@ import Footer from '@/components/Footer';
 
 const Projects = () => {
   useEffect(() => {
-    // Scroll to top on component mount
     window.scrollTo(0, 0);
   }, []);
 
@@ -71,7 +70,7 @@ const Projects = () => {
               <div className="w-20 h-1 bg-secondary mx-auto mb-8"></div>
               <p className="text-gray-700 text-lg md:text-xl mb-8 font-futura">
                 Bei FAM for Dogs e.V. setzen wir uns durch verschiedene Projekte für das Wohl von Straßentieren ein. 
-                Von Kastrationsprogrammen bis hin zu Notfallrettungen - entdecken Sie unsere vielfältigen Initiativen.
+                Von Kastrationsprogrammen bis hin zu Notfallrettungen - entdecke unsere vielfältigen Initiativen.
               </p>
             </div>
           </div>
