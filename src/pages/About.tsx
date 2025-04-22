@@ -294,7 +294,7 @@ const About = () => {
           <div className="flex flex-col md:flex-row items-center gap-8 mb-8">
             <div className="md:w-2/3">
               <p className="text-base sm:text-lg text-gray-700 mb-6 sm:mb-8 font-futura">
-                Wir von FAM for Dogs e.V. (Fight and Movement for Dogs) setzen uns für nachhaltigen Tierschutz ein – mit Fokus auf die Verbesserung der Lebensbedingungen vor Ort für Straßenhunde. Denn für uns kennt Tierschutz keine Grenzen!
+              FAM for Dogs e.V. (Fight and Movement for Dogs) setzt sich für nachhaltigen Tierschutz ein und verbessert langfristig die Lebensbedingungen für Straßenhunde vor Ort. Denn für uns kennt Tierschutz keine Grenzen! Und das sind wir.
               </p>
             </div>
             <div className="md:w-1/3 flex justify-center">
