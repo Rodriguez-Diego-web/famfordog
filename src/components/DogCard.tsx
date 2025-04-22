@@ -61,11 +61,13 @@ const DogCard = memo(({ id, name, age, breed, description, image, needs, onPatro
           </div>
         </div>
         
-        <div className="mb-6 mt-auto">
+        <div className="mt-auto">
           <h4 className="text-sm font-semibold text-gray-700 mb-2">Benötigt:</h4>
-          <div className="flex items-center text-gray-600 text-sm">
-            <Heart size={16} className="text-accent-pink mr-2 flex-shrink-0" />
-            <span>{needs}</span>
+          <div className="h-10 overflow-hidden mb-6">
+            <div className="flex items-start text-gray-600 text-sm">
+              <Heart size={16} className="text-accent-pink mr-2 flex-shrink-0 mt-1" />
+              <span>{needs}</span>
+            </div>
           </div>
         </div>
         
