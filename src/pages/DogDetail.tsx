@@ -88,12 +88,9 @@ const DogDetail: React.FC = () => {
     navigate('/contact');
   };
 
-  // Funktion zum Öffnen des Kontaktabschnitts
+  // Funktion zum Öffnen des Kontaktformulars
   const handleMessageClick = () => {
-    const contactSection = document.getElementById('contact-section');
-    if (contactSection) {
-      contactSection.scrollIntoView({ behavior: 'smooth' });
-    }
+    navigate('/join-family#volunteer-form');
   };
 
   // Hook für das Abrufen der Hundedaten
