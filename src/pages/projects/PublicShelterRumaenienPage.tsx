@@ -37,7 +37,7 @@ const PublicShelterRumaenienPage = () => {
                 <div className="flex flex-wrap gap-4">
                   <Link 
                     to="/spenden" 
-                    className="inline-flex items-center bg-accent-green text-white px-6 py-3 rounded-lg font-medium transition-all duration-300 hover:opacity-90 shadow-md hover:shadow-lg"
+                    className="inline-flex items-center bg-primary text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300 hover:opacity-90 shadow-md hover:shadow-lg border-2 border-accent-green"
                   >
                     <Heart size={18} className="mr-2" />
                     Jetzt spenden
@@ -279,7 +279,7 @@ const PublicShelterRumaenienPage = () => {
                 </p>
                 <Link 
                   to="/spenden" 
-                  className="bg-accent-green text-white px-8 py-3 rounded-lg font-medium transition-all duration-300 hover:shadow-lg inline-flex items-center font-futura hover:opacity-90"
+                  className="bg-primary text-white px-8 py-3 rounded-lg font-semibold transition-all duration-300 hover:shadow-lg inline-flex items-center hover:opacity-90 shadow-md border-2 border-accent-green"
                 >
                   <Heart size={18} className="mr-2" />
                   Jetzt spenden
