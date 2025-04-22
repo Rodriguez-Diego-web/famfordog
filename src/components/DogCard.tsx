@@ -43,7 +43,7 @@ const DogCard = memo(({ id, name, age, breed, description, image, needs, onPatro
       </div>
       
       <div className="p-6 flex flex-col flex-grow">
-        <div className="flex-grow">
+        <div>
           <h3 
             className="text-xl font-bold text-primary mb-2 font-futura cursor-pointer hover:text-primary/80 transition-colors" 
             onClick={handleNavigate}
@@ -56,18 +56,20 @@ const DogCard = memo(({ id, name, age, breed, description, image, needs, onPatro
             <span>{breed}</span>
           </div>
           
-          <p className="text-gray-700 mb-4 font-futura text-sm">{description}</p>
-          
-          <div className="mb-4">
-            <h4 className="text-sm font-semibold text-gray-700 mb-2">Benötigt:</h4>
-            <div className="flex items-center text-gray-600 text-sm">
-              <Heart size={16} className="text-accent-pink mr-2" />
-              <span>{needs}</span>
-            </div>
+          <div className="h-24 overflow-hidden mb-4">
+            <p className="text-gray-700 font-futura text-sm">{description}</p>
           </div>
         </div>
         
-        <div className="flex space-x-2 mt-auto">
+        <div className="mb-6 mt-auto">
+          <h4 className="text-sm font-semibold text-gray-700 mb-2">Benötigt:</h4>
+          <div className="flex items-center text-gray-600 text-sm">
+            <Heart size={16} className="text-accent-pink mr-2 flex-shrink-0" />
+            <span>{needs}</span>
+          </div>
+        </div>
+        
+        <div className="flex space-x-2">
           <button 
             onClick={onPatronageClick}
             className="inline-block bg-secondary hover:bg-secondary/90 text-primary px-4 py-2 rounded-full font-medium transition-all duration-300 text-sm cursor-pointer"
