@@ -26,6 +26,26 @@ const JoinFamily = () => {
   // Verwende den zentralen ScrollToTop-Hook
   useScrollToTop();
 
+  // Hash-basiertes Scrollen mit Verzögerung
+  useEffect(() => {
+    // Zuerst nach oben scrollen
+    window.scrollTo(0, 0);
+    
+    // Dann nach einer Verzögerung zum Hash scrollen, falls vorhanden
+    const hash = window.location.hash;
+    if (hash) {
+      // Verzögerung, damit der Benutzer die Seite von oben sieht
+      const scrollTimer = setTimeout(() => {
+        const element = document.querySelector(hash);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 1000); // 1 Sekunde Verzögerung
+      
+      return () => clearTimeout(scrollTimer);
+    }
+  }, []);
+
   // Cleanup function für das Scrollen
   useEffect(() => {
     return () => {
