@@ -35,7 +35,52 @@ const DogDetail: React.FC = () => {
 
   // Funktion zum Öffnen des Patenschaftsantrags
   const openPatronageForm = () => {
-    window.open('https://www.fundbox.org/de/form/5c8a5c8a-5c8a-5c8a-5c8a-5c8a5c8a5c8a', '_blank');
+    // Öffne das Modal mit dem Fundraising Box-Formular
+    const modal = document.createElement('div');
+    modal.className = 'fixed inset-0 bg-black bg-opacity-75 z-50 flex items-center justify-center p-4 overflow-y-auto';
+    modal.innerHTML = `
+      <div class="bg-white rounded-lg shadow-xl max-w-4xl w-full max-h-[90vh] overflow-hidden">
+        <div class="flex justify-between items-center p-4 border-b">
+          <h2 class="text-2xl font-bold text-primary font-futura">Patenschaft übernehmen</h2>
+          <button id="close-modal" class="text-gray-500 hover:text-gray-700 focus:outline-none">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+          </button>
+        </div>
+        <div class="p-2 overflow-y-auto" style="max-height: calc(90vh - 70px)">
+          <iframe 
+            src="https://secure.fundraisingbox.com/app/payment?hash=rsg5g3e1y9kkxqoc&t=425786862dfc0c7d09f672538bbd229f&fb_id=25409"
+            title="Fundraising Box Patenschaftsformular"
+            width="100%"
+            height="2100"
+            class="md:h-[1800px]" 
+            frameborder="0"
+            allowtransparency="true"
+            allow="payment"
+            style="display: block; margin: 0 auto"
+          ></iframe>
+        </div>
+      </div>
+    `;
+    
+    document.body.appendChild(modal);
+    document.body.style.overflow = 'hidden';
+    
+    // Event-Listener zum Schließen des Modals
+    const closeButton = modal.querySelector('#close-modal');
+    if (closeButton) {
+      closeButton.addEventListener('click', () => {
+        document.body.removeChild(modal);
+        document.body.style.overflow = '';
+      });
+    }
+    
+    // Schließen des Modals durch Klick außerhalb
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        document.body.removeChild(modal);
+        document.body.style.overflow = '';
+      }
+    });
   };
 
   // Funktion zum Öffnen des Kontaktbereichs
