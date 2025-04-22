@@ -30,7 +30,7 @@ const DogCard = memo(({ id, name, age, breed, description, image, needs, onPatro
   }, [id, navigate]);
   
   return (
-    <div className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300">
+    <div className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 flex flex-col h-full">
       <div className="relative h-64 cursor-pointer" onClick={handleNavigate}>
         <OptimizedImage 
           src={image} 
@@ -42,30 +42,32 @@ const DogCard = memo(({ id, name, age, breed, description, image, needs, onPatro
         </div>
       </div>
       
-      <div className="p-6">
-        <h3 
-          className="text-xl font-bold text-primary mb-2 font-futura cursor-pointer hover:text-primary/80 transition-colors" 
-          onClick={handleNavigate}
-        >
-          {name}
-        </h3>
-        
-        <div className="flex items-center text-gray-600 mb-2 text-sm">
-          <span className="mr-4">{age}</span>
-          <span>{breed}</span>
-        </div>
-        
-        <p className="text-gray-700 mb-4 font-futura text-sm">{description}</p>
-        
-        <div className="mb-4">
-          <h4 className="text-sm font-semibold text-gray-700 mb-2">Benötigt:</h4>
-          <div className="flex items-center text-gray-600 text-sm">
-            <Heart size={16} className="text-accent-pink mr-2" />
-            <span>{needs}</span>
+      <div className="p-6 flex flex-col flex-grow">
+        <div className="flex-grow">
+          <h3 
+            className="text-xl font-bold text-primary mb-2 font-futura cursor-pointer hover:text-primary/80 transition-colors" 
+            onClick={handleNavigate}
+          >
+            {name}
+          </h3>
+          
+          <div className="flex items-center text-gray-600 mb-2 text-sm">
+            <span className="mr-4">{age}</span>
+            <span>{breed}</span>
+          </div>
+          
+          <p className="text-gray-700 mb-4 font-futura text-sm">{description}</p>
+          
+          <div className="mb-4">
+            <h4 className="text-sm font-semibold text-gray-700 mb-2">Benötigt:</h4>
+            <div className="flex items-center text-gray-600 text-sm">
+              <Heart size={16} className="text-accent-pink mr-2" />
+              <span>{needs}</span>
+            </div>
           </div>
         </div>
         
-        <div className="flex space-x-2">
+        <div className="flex space-x-2 mt-auto">
           <button 
             onClick={onPatronageClick}
             className="inline-block bg-secondary hover:bg-secondary/90 text-primary px-4 py-2 rounded-full font-medium transition-all duration-300 text-sm cursor-pointer"
