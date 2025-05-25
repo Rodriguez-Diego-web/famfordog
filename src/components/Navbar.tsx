@@ -231,14 +231,25 @@ const Navbar = () => {
           </Link>
         </nav>
         
-        {/* Mobile Menu Button */}
-        <button
-          onClick={toggleMobileMenu}
-          className="md:hidden text-white focus:outline-none"
-          aria-label="Toggle mobile menu"
-        >
-          {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-        </button>
+        {/* Mobile Buttons */}
+        <div className="md:hidden flex items-center space-x-3">
+          {/* Mobile Donate Button */}
+          <Link
+            to="/spenden"
+            className="bg-secondary hover:bg-secondary/90 text-secondary-foreground px-3 py-1.5 rounded-full text-sm font-medium transition-all duration-200 font-futura flex items-center"
+          >
+            Spenden
+          </Link>
+          
+          {/* Mobile Menu Button */}
+          <button
+            onClick={toggleMobileMenu}
+            className="text-white focus:outline-none"
+            aria-label="Toggle mobile menu"
+          >
+            {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
+        </div>
       </div>
       
       {/* Mobile Menu */}
@@ -376,13 +387,6 @@ const Navbar = () => {
             )
           ))}
           
-          <Link
-            to="/spenden"
-            className="bg-secondary hover:bg-secondary/90 text-secondary-foreground px-5 py-2 rounded-full text-base font-medium my-3 inline-block w-fit font-futura"
-            onClick={() => setMobileMenuOpen(false)}
-          >
-            Spenden
-          </Link>
         </div>
       )}
     </header>

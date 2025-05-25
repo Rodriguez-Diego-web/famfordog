@@ -4,36 +4,46 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
-import { useEffect } from "react";
+import { useEffect, lazy, Suspense } from "react";
 import LoadingScreen from "./components/LoadingScreen";
-import Index from "./pages/Index";
-import About from "./pages/About";
-import Mission from "./pages/Mission";
-import Donate from "./pages/Donate";
-import NotFound from "./pages/NotFound";
-import Volunteer from "./pages/Volunteer";
-import AdoptionProcess from "./pages/AdoptionProcess";
-import AdoptionHowTo from "./pages/AdoptionHowTo";
-import AdoptionFAQ from "./pages/AdoptionFAQ";
-import AdoptionFees from "./pages/AdoptionFees";
-import SuccessStories from "./pages/SuccessStories";
-import OurDogs from "./pages/OurDogs";
-import DogDetail from "./pages/DogDetail";
-import JoinFamily from "./pages/JoinFamily";
-import Imprint from "./pages/Imprint";
-import Privacy from "./pages/Privacy";
-import CookiePolicy from "./pages/CookiePolicy";
-import EmergencyReport from "./pages/EmergencyReport";
-import Projects from "./pages/Projects";
-import KastrationsprojektePage from "./pages/projects/KastrationsprojektePage";
-import WoundedProgramPage from "./pages/projects/WoundedProgramPage";
-import FuetterungstourenPage from "./pages/projects/FuetterungstourenPage";
-import ShelterLombokPage from "./pages/projects/ShelterLombokPage";
-import PublicShelterRumaenienPage from "./pages/projects/PublicShelterRumaenienPage";
-import TierrettungenPage from "./pages/projects/TierrettungenPage";
-import FoerdermitgliedschaftSuccess from "./pages/FoerdermitgliedschaftSuccess";
 import CookieConsent from "./components/CookieConsent";
 import { initGA } from "./services/analyticsService";
+
+// Immediately loaded pages (critical for initial experience)
+import Index from "./pages/Index";
+import NotFound from "./pages/NotFound";
+
+// Lazy loaded pages grouped by feature
+// Core pages
+const About = lazy(() => import("./pages/About"));
+const Donate = lazy(() => import("./pages/Donate"));
+const JoinFamily = lazy(() => import("./pages/JoinFamily"));
+const OurDogs = lazy(() => import("./pages/OurDogs"));
+const DogDetail = lazy(() => import("./pages/DogDetail"));
+const EmergencyReport = lazy(() => import("./pages/EmergencyReport"));
+const Volunteer = lazy(() => import("./pages/Volunteer"));
+
+// Legal pages
+const Imprint = lazy(() => import("./pages/Imprint"));
+const Privacy = lazy(() => import("./pages/Privacy"));
+const CookiePolicy = lazy(() => import("./pages/CookiePolicy"));
+const FoerdermitgliedschaftSuccess = lazy(() => import("./pages/FoerdermitgliedschaftSuccess"));
+
+// Project pages
+const Projects = lazy(() => import("./pages/Projects"));
+const KastrationsprojektePage = lazy(() => import("./pages/projects/KastrationsprojektePage"));
+const WoundedProgramPage = lazy(() => import("./pages/projects/WoundedProgramPage"));
+const FuetterungstourenPage = lazy(() => import("./pages/projects/FuetterungstourenPage"));
+const ShelterLombokPage = lazy(() => import("./pages/projects/ShelterLombokPage"));
+const PublicShelterRumaenienPage = lazy(() => import("./pages/projects/PublicShelterRumaenienPage"));
+const TierrettungenPage = lazy(() => import("./pages/projects/TierrettungenPage"));
+
+// Adoption pages
+const AdoptionProcess = lazy(() => import("./pages/AdoptionProcess"));
+const AdoptionHowTo = lazy(() => import("./pages/AdoptionHowTo"));
+const AdoptionFAQ = lazy(() => import("./pages/AdoptionFAQ"));
+const AdoptionFees = lazy(() => import("./pages/AdoptionFees"));
+const SuccessStories = lazy(() => import("./pages/SuccessStories"));
 
 initGA();
 
@@ -52,6 +62,13 @@ const RouteChangeTracker = () => {
 
 const queryClient = new QueryClient();
 
+// Loading component for suspense fallback
+const PageLoading = () => (
+  <div className="w-full h-screen flex items-center justify-center bg-accent-blue/20">
+    <div className="animate-pulse text-primary font-semibold">Laden...</div>
+  </div>
+);
+
 const App = () => (
   <HelmetProvider>
     <QueryClientProvider client={queryClient}>
@@ -60,42 +77,44 @@ const App = () => (
         <Sonner />
         <BrowserRouter>
           <RouteChangeTracker />
-          <LoadingScreen minDisplayTime={1500} />
-          <Routes>
-            <Route path="/" element={<Index />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/mission" element={<About />} />
-            <Route path="/spenden" element={<Donate />} />
-            <Route path="/volunteer" element={<Volunteer />} />
-            <Route path="/our-dogs" element={<OurDogs />} />
-            <Route path="/dogs/:id" element={<DogDetail />} />
-            <Route path="/join-family" element={<JoinFamily />} />
-            <Route path="/emergency-report" element={<EmergencyReport />} />
-            <Route path="/imprint" element={<Imprint />} />
-            <Route path="/privacy" element={<Privacy />} />
-            <Route path="/cookie-policy" element={<CookiePolicy />} />
-            <Route path="/foerdermitgliedschaft" element={<FoerdermitgliedschaftSuccess />} />
-            <Route path="/foerdermitgliedschaft/" element={<FoerdermitgliedschaftSuccess />} />
-            
-            {/* Project Routes */}
-            <Route path="/projects" element={<Projects />} />
-            <Route path="/projects/kastrationsprojekte" element={<KastrationsprojektePage />} />
-            <Route path="/projects/wounded-program" element={<WoundedProgramPage />} />
-            <Route path="/projects/fuetterungstouren" element={<FuetterungstourenPage />} />
-            <Route path="/projects/shelter-lombok" element={<ShelterLombokPage />} />
-            <Route path="/projects/public-shelter-rumaenien" element={<PublicShelterRumaenienPage />} />
-            <Route path="/projects/tierrettungen" element={<TierrettungenPage />} />
-            
-            {/* Adoption Routes */}
-            <Route path="/adoption/process" element={<AdoptionProcess />} />
-            <Route path="/adoption/how-to" element={<AdoptionHowTo />} />
-            <Route path="/adoption/faq" element={<AdoptionFAQ />} />
-            <Route path="/adoption/fees" element={<AdoptionFees />} />
-            <Route path="/adoption/success-stories" element={<SuccessStories />} />
-            
-            {/* Fallback route */}
-            <Route path="*" element={<NotFound />} />
-          </Routes>
+          <LoadingScreen minDisplayTime={1000} />
+          <Suspense fallback={<PageLoading />}>
+            <Routes>
+              <Route path="/" element={<Index />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/mission" element={<About />} />
+              <Route path="/spenden" element={<Donate />} />
+              <Route path="/volunteer" element={<Volunteer />} />
+              <Route path="/our-dogs" element={<OurDogs />} />
+              <Route path="/dogs/:id" element={<DogDetail />} />
+              <Route path="/join-family" element={<JoinFamily />} />
+              <Route path="/emergency-report" element={<EmergencyReport />} />
+              <Route path="/imprint" element={<Imprint />} />
+              <Route path="/privacy" element={<Privacy />} />
+              <Route path="/cookie-policy" element={<CookiePolicy />} />
+              <Route path="/foerdermitgliedschaft" element={<FoerdermitgliedschaftSuccess />} />
+              <Route path="/foerdermitgliedschaft/" element={<FoerdermitgliedschaftSuccess />} />
+              
+              {/* Project Routes */}
+              <Route path="/projects" element={<Projects />} />
+              <Route path="/projects/kastrationsprojekte" element={<KastrationsprojektePage />} />
+              <Route path="/projects/wounded-program" element={<WoundedProgramPage />} />
+              <Route path="/projects/fuetterungstouren" element={<FuetterungstourenPage />} />
+              <Route path="/projects/shelter-lombok" element={<ShelterLombokPage />} />
+              <Route path="/projects/public-shelter-rumaenien" element={<PublicShelterRumaenienPage />} />
+              <Route path="/projects/tierrettungen" element={<TierrettungenPage />} />
+              
+              {/* Adoption Routes */}
+              <Route path="/adoption/process" element={<AdoptionProcess />} />
+              <Route path="/adoption/how-to" element={<AdoptionHowTo />} />
+              <Route path="/adoption/faq" element={<AdoptionFAQ />} />
+              <Route path="/adoption/fees" element={<AdoptionFees />} />
+              <Route path="/adoption/success-stories" element={<SuccessStories />} />
+              
+              {/* Fallback route */}
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </Suspense>
           <CookieConsent />
         </BrowserRouter>
       </TooltipProvider>
