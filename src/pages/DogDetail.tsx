@@ -102,6 +102,26 @@ const DogDetail: React.FC = () => {
       setTimeout(() => {
         const dogsData: Dog[] = [
           {
+            id: 16,
+            name: "Opa Rambo",
+            age: "17 Jahre",
+            breed: "Mischling",
+            description: "Er hatte mal eine Familie. Dann wurde er alt – und inkontinent. Er musste gehen. Seitdem lag er auf dem Steinboden, direkt an der Straße vor dem Tor seines früheren Zuhauses. Kein Blick. Kein Wort. Kein Herz mehr für ihn. Am Anfang gab es noch Futter. Dann… nichts mehr. Nur Regenwasser, das er vom Boden leckte. Wir konnten nicht mehr zusehen und haben ihn kurzerhand dort weggeholt. Wir brachten ihn in die Klinik, er bekam Medikamente und Infusionen. Die Einschätzung der Ärztin: schwer dehydriert und unterernährt. Jetzt ist er im Shelter. Er bekommt Futter. Wasser. Liebe. Er darf in seinem letzten Lebensabschnitt noch einmal erfahren, was es bedeutet, geliebt zu werden.",
+            image: "/OneDrive_15_2.4.2025/rambo/IMG_2213.jpeg",
+            additionalImages: [
+              "/OneDrive_15_2.4.2025/rambo/IMG_2214.jpeg"
+            ],
+            needs: "Liebe, Geduld und spezielle Pflege für einen älteren Hund",
+            location: "Shelter Lombok",
+            sex: "Männlich",
+            size: "Mittelgroß",
+            personality: ["Sanft", "Dankbar", "Weise"],
+            history: "Opa Rambo hatte eine Familie, bis er alt und inkontinent wurde und sie ihn vor die Tür setzten. Er verbrachte lange Zeit auf dem Steinboden vor seinem ehemaligen Zuhause, wo er ignoriert und nicht mehr gefüttert wurde. Er überlebte nur durch Regenwasser, bis er von unserem Team gerettet wurde.",
+            medicalInfo: "War bei Ankunft schwer dehydriert und unterernährt. Erholt sich langsam mit spezieller Pflege und Medikamenten. Hat altersbedingte Inkontinenz, die medizinisch behandelt wird.",
+            suitableFor: ["Menschen mit Erfahrung in der Pflege älterer Hunde", "Ruhige Haushalte mit viel Geduld und Liebe"],
+            notSuitableFor: ["Sehr aktive Haushalte", "Familien mit kleinen Kindern"]
+          },
+          {
             id: 1,
             name: "Anton",
             age: "7 Monate",
