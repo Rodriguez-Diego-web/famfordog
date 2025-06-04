@@ -107,9 +107,9 @@ const DogDetail: React.FC = () => {
             age: "17 Jahre",
             breed: "Mischling",
             description: "Er hatte mal eine Familie. Dann wurde er alt – und inkontinent. Er musste gehen. Seitdem lag er auf dem Steinboden, direkt an der Straße vor dem Tor seines früheren Zuhauses. Kein Blick. Kein Wort. Kein Herz mehr für ihn. Am Anfang gab es noch Futter. Dann… nichts mehr. Nur Regenwasser, das er vom Boden leckte. Wir konnten nicht mehr zusehen und haben ihn kurzerhand dort weggeholt. Wir brachten ihn in die Klinik, er bekam Medikamente und Infusionen. Die Einschätzung der Ärztin: schwer dehydriert und unterernährt. Jetzt ist er im Shelter. Er bekommt Futter. Wasser. Liebe. Er darf in seinem letzten Lebensabschnitt noch einmal erfahren, was es bedeutet, geliebt zu werden.",
-            image: "/OneDrive_15_2.4.2025/rambo/IMG_2213.jpeg",
+            image: "/rambo/rambo.jpeg",
             additionalImages: [
-              "/OneDrive_15_2.4.2025/rambo/IMG_2214.jpeg"
+              "/rambo/rambo.jpeg"
             ],
             needs: "Liebe, Geduld und spezielle Pflege für einen älteren Hund",
             location: "Shelter Lombok",
