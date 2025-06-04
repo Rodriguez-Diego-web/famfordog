@@ -158,7 +158,7 @@ const Footer = () => {
               &copy; {currentYear} FAM for Dogs e.V. Alle Rechte vorbehalten.
             </p>
             <p className="text-white/60 text-sm mt-2 md:mt-0 md:ml-4 font-futura">
-              Handcrafted by rodriguez-digital
+              Handcrafted by <a href="https://rodriguez-web.de" target="_blank" rel="noopener noreferrer" className="text-white/60 hover:text-accent-yellow transition-colors font-futura">rodriguez-web.de</a>
             </p>
           </div>
           
