@@ -51,18 +51,6 @@ const OurDogs = () => {
   // Placeholder data for sponsorship dogs
   const sponsorshipDogs = [
     {
-      id: 16,
-      name: 'Opa Rambo',
-      age: '17 Jahr',
-      breed: 'Mischling',
-      description: 'Er hatte mal eine Familie. Dann wurde er alt – und inkontinent. Er musste gehen. Seitdem lag er auf dem Steinboden, direkt an der Straße vor dem Tor seines früheren Zuhauses. Kein Blick. Kein Wort. Kein Herz mehr für ihn. Am Anfang gab es noch Futter. Dann… nichts mehr. Nur Regenwasser, das er vom Boden leckte. Wir konnten nicht mehr zusehen und haben ihn kurzerhand dort weggeholt. Wir brachten ihn in die Klinik, er bekam Medikamente und Infusionen. Die Einschätzung der Ärztin: schwer dehydriert und unterernährt. Jetzt ist er im Shelter. Er bekommt Futter. Wasser. Liebe. Er darf in seinem letzten Lebensabschnitt noch einmal erfahren, was es bedeutet, geliebt zu werden.',
-      image: '/rambo/rambo.jpeg',
-      additionalImages: [
-        '/rambo/rambo.jpeg'
-      ],
-      needs: 'Zuneigung und Unterstützung in ihrer weiteren Entwicklung'
-    },
-    {
       id: 1,
       name: 'Anton',
       age: '7 Monate',
