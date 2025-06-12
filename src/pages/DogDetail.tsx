@@ -568,6 +568,7 @@ const DogDetail: React.FC = () => {
             className={`w-full h-[350px] md:h-[450px] object-cover ${dog.name === "Wednesday" || dog.name === "Rijonde" ? "object-top" : ""}`}
             style={dog.name === "Wednesday" || dog.name === "Rijonde" ? { objectPosition: "center 20%" } : {}}
           />
+          
           <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-6">
             <h1 className="text-4xl font-bold text-white mb-2">{dog.name}</h1>
             <div className="flex flex-wrap gap-4 text-white">

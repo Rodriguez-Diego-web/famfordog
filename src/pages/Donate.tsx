@@ -38,32 +38,6 @@ const Donate = () => {
                 Deine Spende hilft Straßenhunden zu einem besseren Leben.
               </p>
             </div>
-
-            <div className="flex flex-col md:flex-row gap-4 mb-8">
-              <div className="bg-white p-4 rounded-lg shadow-sm flex-1 flex items-center space-x-3">
-                <PawPrint className="h-8 w-8 text-accent-green flex-shrink-0" />
-                <div>
-                  <p className="text-lg font-bold text-primary font-futura">30 €: Eine Kastration</p>
-                  <p className="text-sm text-gray-600">Verhindert tausende zukünftige Streuner</p>
-                </div>
-              </div>
-              
-              <div className="bg-white p-4 rounded-lg shadow-sm flex-1 flex items-center space-x-3">
-                <PawPrint className="h-8 w-8 text-accent-green flex-shrink-0" />
-                <div>
-                  <p className="text-lg font-bold text-primary font-futura">20 €: 1 Sack Futter (10 kg)</p>
-                  <p className="text-sm text-gray-600">Ernährt 10 Hunde für mehrere Tage</p>
-                </div>
-              </div>
-              
-              <div className="bg-white p-4 rounded-lg shadow-sm flex-1 flex items-center space-x-3">
-                <PawPrint className="h-8 w-8 text-accent-green flex-shrink-0" />
-                <div>
-                  <p className="text-lg font-bold text-primary font-futura">7 €: Parasitenbehandlung</p>
-                  <p className="text-sm text-gray-600">Für 2 Hunde gegen Würmer & Flöhe</p>
-                </div>
-              </div>
-            </div>
             
             {/* Responsive iframe height - größer auf Mobilgeräten */}
             <div className="bg-white rounded-lg shadow-md p-3 mb-4">
