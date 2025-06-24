@@ -71,11 +71,6 @@ const Spendenaktion = () => {
                   <p className="text-gray-700 font-futura mb-6">
                     Hier wird bald das FundraisingBox Formular für unsere Spendenaktion erscheinen.
                   </p>
-                  <div className="bg-accent-yellow/20 border border-accent-yellow rounded-lg p-4 mb-6">
-                    <p className="text-sm text-gray-600 font-futura">
-                      <strong>Für Entwickler:</strong> Der iFrame wird hier eingefügt, sobald die FundraisingBox URL verfügbar ist.
-                    </p>
-                  </div>
                   <Link 
                     to="/spenden" 
                     className="inline-flex items-center bg-accent-pink text-white px-6 py-3 rounded-lg font-medium transition-all duration-300 hover:bg-accent-pink/90 font-futura"
