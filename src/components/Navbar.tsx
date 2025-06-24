@@ -99,7 +99,8 @@ const Navbar = () => {
     { name: 'Home', path: '/' },
     { name: 'Unsere Hunde', path: '/our-dogs' },
     { name: 'Sei Teil der FAMily!', path: '/join-family' },
-    { name: 'TIERNOTFALL MELDEN', path: '/emergency-report', highlight: true },
+    { name: 'Spendenaktion', path: '/spendenaktion' },
+    { name: 'Fördermitglied werden', path: '/foerdermitglied-werden', highlight: true },
   ];
 
   const isAboutPage = location.pathname === '/about';
@@ -113,11 +114,11 @@ const Navbar = () => {
       }`}
     >
       <div className="container mx-auto px-6 flex justify-between items-center">
-        <Link to="/" className="flex items-center -ml-4 md:-ml-4">
+        <Link to="/" className="flex items-center -ml-4 md:-ml-4 transition-transform duration-200 hover:scale-105 group">
           <img 
             src="/images/logo.png" 
-            alt="FAM for Dogs e.V. Logo" 
-            className="h-14 md:h-16"
+            alt="FAM for Dogs e.V. Logo - Zurück zur Startseite" 
+            className="h-14 md:h-16 transition-opacity duration-200 group-hover:opacity-90"
           />
         </Link>
         
@@ -214,7 +215,7 @@ const Navbar = () => {
                     : 'text-white/90 hover:text-white'
                 } ${
                   item.highlight 
-                    ? "bg-red-600 text-white hover:bg-red-700 rounded-full px-4 py-2 font-bold" 
+                    ? "bg-primary text-white hover:bg-primary/90 rounded-full px-4 py-2 font-bold" 
                     : ""
                 }`}
               >
@@ -377,7 +378,7 @@ const Navbar = () => {
                     : 'text-white/90 hover:text-white'
                 } ${
                   item.highlight 
-                    ? "bg-red-600 text-white hover:bg-red-700 rounded-full px-4 py-2 font-bold my-2" 
+                    ? "bg-primary text-white hover:bg-primary/90 rounded-full px-4 py-2 font-bold my-2" 
                     : ""
                 }`}
                 onClick={() => setMobileMenuOpen(false)}

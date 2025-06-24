@@ -73,7 +73,12 @@ const OurDogs = () => {
         '/OneDrive_15_2.4.2025/Anton/c90a5ffc-78f8-40c6-855b-9da557bd3af9.jpeg',
         '/OneDrive_15_2.4.2025/Anton/f41f16f7-0490-4514-8c25-6d3d28af8225.jpeg'
       ],
-      needs: 'Liebe, Sicherheit und ein stabiles Zuhause'
+      needs: 'Liebe, Sicherheit und ein stabiles Zuhause',
+      sponsors: [
+        { id: 1, name: 'Familie Mueller', initials: 'FM', color: '#3498db' },
+        { id: 2, name: 'Anna Schmidt', initials: 'AS', color: '#e74c3c' }
+      ],
+      maxSponsors: 3
     },
     {
       id: 2,
@@ -89,7 +94,7 @@ const OurDogs = () => {
         '/OneDrive_15_2.4.2025/Berta/IMG_2205.jpeg',
         '/OneDrive_15_2.4.2025/Berta/24ec7cf4-b138-43b1-92bd-231716fbbb13.jpeg',
         '/OneDrive_15_2.4.2025/Berta/3b17f302-96e0-40eb-b3a1-fa0c0df9a124.jpeg',
-        '/OneDrive_15_2.4.2025/Berta/442175ea-bcc8-46bf-9c2f-a512d52b10db.jpeg',
+        '/OneDrive_15_2.4.2025/Berta/442175ea-bcc8-46bf-9c2f-a512c5d840f9.jpeg',
         '/OneDrive_15_2.4.2025/Berta/62c8e12e-1991-4e43-84c6-a532c5d840f9.jpeg',
         '/OneDrive_15_2.4.2025/Berta/7ae57c84-a4f4-472e-9ba8-52a1c1e41122.jpeg',
         '/OneDrive_15_2.4.2025/Berta/95028639-e804-422d-84aa-1a9e38373be6.jpeg',
@@ -102,7 +107,11 @@ const OurDogs = () => {
         '/OneDrive_15_2.4.2025/Berta/VIDEO-2024-05-01-10-53-11.mp4',
         '/OneDrive_15_2.4.2025/Berta/a947cee3-5c37-4c22-ae98-eb4fe984e24c.mp4'
       ],
-      needs: 'Medizinische Versorgung und liebevolle Betreuung'
+      needs: 'Medizinische Versorgung und liebevolle Betreuung',
+      sponsors: [
+        { id: 3, name: 'Dr. Weber', initials: 'DW', color: '#2ecc71' }
+      ],
+      maxSponsors: 3
     },
     {
       id: 3,
@@ -118,7 +127,13 @@ const OurDogs = () => {
       videoLinks: [
         '/OneDrive_15_2.4.2025/Boogey/boogey_video.mp4',
         '/OneDrive_15_2.4.2025/Boogey/boogey_video2.mp4'
-      ]
+      ],
+      sponsors: [
+        { id: 4, name: 'Lisa K.', initials: 'LK', color: '#9b59b6' },
+        { id: 5, name: 'Thomas B.', initials: 'TB', color: '#f39c12' },
+        { id: 6, name: 'Sarah M.', initials: 'SM', color: '#1abc9c' }
+      ],
+      maxSponsors: 3
     },
     {
       id: 4,
@@ -130,7 +145,8 @@ const OurDogs = () => {
       additionalImages: [
         '/OneDrive_15_2.4.2025/Fura/1bbc7d68-30fc-4fd7-af8f-804a57d7dc8e.jpeg'
       ],
-      needs: 'Spezielle Pflege für seine Beinverletzung und ein ruhiges Umfeld'
+      needs: 'Spezielle Pflege für seine Beinverletzung und ein ruhiges Umfeld',
+      maxSponsors: 2
     },
     {
       id: 5,
@@ -349,6 +365,8 @@ const OurDogs = () => {
                     description={dog.description}
                     image={dog.image}
                     needs={dog.needs}
+                    sponsors={dog.sponsors}
+                    maxSponsors={dog.maxSponsors}
                     onPatronageClick={openPatronageForm}
                   />
                 ))}

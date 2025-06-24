@@ -148,6 +148,14 @@ const Footer = () => {
                   Zum Kontaktformular
                 </Link>
               </li>
+              <li className="mt-3">
+                <Link 
+                  to="/emergency-report" 
+                  className="inline-block bg-red-600 text-white font-medium py-2 px-4 rounded-lg shadow-md hover:bg-red-700 transition-colors font-futura"
+                >
+                  Tiernotfall melden
+                </Link>
+              </li>
             </ul>
           </div>
         </div>

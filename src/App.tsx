@@ -7,6 +7,7 @@ import { HelmetProvider } from "react-helmet-async";
 import { useEffect, lazy, Suspense } from "react";
 import LoadingScreen from "./components/LoadingScreen";
 import CookieConsent from "./components/CookieConsent";
+import ScrollToTopButton from "./components/ScrollToTopButton";
 import { initGA } from "./services/analyticsService";
 
 // Immediately loaded pages (critical for initial experience)
@@ -28,6 +29,8 @@ const Imprint = lazy(() => import("./pages/Imprint"));
 const Privacy = lazy(() => import("./pages/Privacy"));
 const CookiePolicy = lazy(() => import("./pages/CookiePolicy"));
 const FoerdermitgliedschaftSuccess = lazy(() => import("./pages/FoerdermitgliedschaftSuccess"));
+const FoerdermitgliedWerden = lazy(() => import("./pages/FoerdermitgliedWerden"));
+const Spendenaktion = lazy(() => import("./pages/Spendenaktion"));
 
 // Project pages
 const Projects = lazy(() => import("./pages/Projects"));
@@ -92,8 +95,10 @@ const App = () => (
               <Route path="/imprint" element={<Imprint />} />
               <Route path="/privacy" element={<Privacy />} />
               <Route path="/cookie-policy" element={<CookiePolicy />} />
+              <Route path="/foerdermitglied-werden" element={<FoerdermitgliedWerden />} />
               <Route path="/foerdermitgliedschaft" element={<FoerdermitgliedschaftSuccess />} />
               <Route path="/foerdermitgliedschaft/" element={<FoerdermitgliedschaftSuccess />} />
+              <Route path="/spendenaktion" element={<Spendenaktion />} />
               
               {/* Project Routes */}
               <Route path="/projects" element={<Projects />} />
@@ -116,6 +121,7 @@ const App = () => (
             </Routes>
           </Suspense>
           <CookieConsent />
+          <ScrollToTopButton />
         </BrowserRouter>
       </TooltipProvider>
     </QueryClientProvider>

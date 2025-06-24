@@ -1,6 +1,7 @@
 import { ReactNode } from 'react';
 import Navbar from './Navbar';
 import Footer from './Footer';
+import ScrollToTopButton from './ScrollToTopButton';
 import { useScrollToTop } from '../hooks/useScrollToTop';
 
 interface LayoutProps {
@@ -9,7 +10,7 @@ interface LayoutProps {
 
 /**
  * Layout-Komponente, die auf allen Seiten verwendet wird
- * Enthält Navbar, Footer und automatisches Scrollen zum Seitenanfang
+ * Enthält Navbar, Footer, ScrollToTopButton und automatisches Scrollen zum Seitenanfang
  */
 const Layout = ({ children }: LayoutProps) => {
   // Automatisches Scrollen zum Seitenanfang bei Routenwechsel
@@ -22,6 +23,7 @@ const Layout = ({ children }: LayoutProps) => {
         {children}
       </main>
       <Footer />
+      <ScrollToTopButton />
     </div>
   );
 };
