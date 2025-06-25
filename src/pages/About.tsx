@@ -3,7 +3,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import JoinTeamSection from '@/components/JoinTeamSection';
-import { PawPrint, Map, Heart, Scissors, Utensils, Stethoscope, Play, Instagram, Linkedin, Mail, X, ChevronLeft, ChevronRight } from 'lucide-react';
+import { PawPrint, Map, Heart, Scissors, Utensils, Stethoscope, Play, Instagram, Linkedin, Mail, X, ChevronLeft, ChevronRight, Globe } from 'lucide-react';
 import SEO from '@/components/SEO';
 
 const About = () => {
@@ -257,20 +257,139 @@ const About = () => {
                 <p className="text-gray-700 mb-4 font-futura text-xs sm:text-base">{member.bio}</p>
                 
                 <div className="flex space-x-3">
-                  <a 
-                    href="#" 
-                    className="text-primary hover:text-accent-blue transition-colors"
-                    aria-label={`Email ${member.name}`}
-                  >
-                    <Mail size={16} className="sm:w-[18px] sm:h-[18px]" />
-                  </a>
-                  <a 
-                    href="#" 
-                    className="text-primary hover:text-accent-blue transition-colors"
-                    aria-label={`Instagram-Profil von ${member.name}`}
-                  >
-                    <Instagram size={16} className="sm:w-[18px] sm:h-[18px]" />
-                  </a>
+                  {member.name === "Diego" ? (
+                    <>
+                      <a 
+                        href="https://rodriguez-web.de" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="text-primary hover:text-accent-blue transition-colors"
+                        aria-label="Diego's Website"
+                      >
+                        <Globe size={16} className="sm:w-[18px] sm:h-[18px]" />
+                      </a>
+                      <a 
+                        href="mailto:diego@rodriguez-web.de" 
+                        className="text-primary hover:text-accent-blue transition-colors"
+                        aria-label={`Email ${member.name}`}
+                      >
+                        <Mail size={16} className="sm:w-[18px] sm:h-[18px]" />
+                      </a>
+                      <a 
+                        href="https://www.instagram.com/diego_rodriguez_web/" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="text-primary hover:text-accent-blue transition-colors"
+                        aria-label={`Instagram-Profil von ${member.name}`}
+                      >
+                        <Instagram size={16} className="sm:w-[18px] sm:h-[18px]" />
+                      </a>
+                    </>
+                  ) : member.name === "Mieke & Fiona" ? (
+                    <>
+                      <a 
+                        href="mailto:info@famfordogs.com" 
+                        className="text-primary hover:text-accent-blue transition-colors"
+                        aria-label={`Email ${member.name}`}
+                      >
+                        <Mail size={16} className="sm:w-[18px] sm:h-[18px]" />
+                      </a>
+                      <a 
+                        href="https://www.instagram.com/miekewi/" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="text-primary hover:text-accent-blue transition-colors"
+                        aria-label="Mieke's Instagram"
+                        title="Mieke's Instagram"
+                      >
+                        <Instagram size={16} className="sm:w-[18px] sm:h-[18px]" />
+                      </a>
+                      <a 
+                        href="https://www.instagram.com/fiona_bliedtner/" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="text-primary hover:text-accent-blue transition-colors"
+                        aria-label="Fiona's Instagram"
+                        title="Fiona's Instagram"
+                      >
+                        <Instagram size={16} className="sm:w-[18px] sm:h-[18px]" />
+                      </a>
+                    </>
+                  ) : member.name === "Kira" ? (
+                    <>
+                      <a 
+                        href="mailto:info@famfordogs.com" 
+                        className="text-primary hover:text-accent-blue transition-colors"
+                        aria-label={`Email ${member.name}`}
+                      >
+                        <Mail size={16} className="sm:w-[18px] sm:h-[18px]" />
+                      </a>
+                      <a 
+                        href="https://www.instagram.com/kiramariecremer/" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="text-primary hover:text-accent-blue transition-colors"
+                        aria-label={`Instagram-Profil von ${member.name}`}
+                      >
+                        <Instagram size={16} className="sm:w-[18px] sm:h-[18px]" />
+                      </a>
+                    </>
+                  ) : member.name === "Chrissy" ? (
+                    <>
+                      <a 
+                        href="mailto:info@famfordogs.com" 
+                        className="text-primary hover:text-accent-blue transition-colors"
+                        aria-label={`Email ${member.name}`}
+                      >
+                        <Mail size={16} className="sm:w-[18px] sm:h-[18px]" />
+                      </a>
+                      <a 
+                        href="https://www.instagram.com/_chrissy_242/" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="text-primary hover:text-accent-blue transition-colors"
+                        aria-label={`Instagram-Profil von ${member.name}`}
+                      >
+                        <Instagram size={16} className="sm:w-[18px] sm:h-[18px]" />
+                      </a>
+                    </>
+                  ) : member.name === "Hanna" ? (
+                    <>
+                      <a 
+                        href="mailto:info@famfordogs.com" 
+                        className="text-primary hover:text-accent-blue transition-colors"
+                        aria-label={`Email ${member.name}`}
+                      >
+                        <Mail size={16} className="sm:w-[18px] sm:h-[18px]" />
+                      </a>
+                      <a 
+                        href="https://www.instagram.com/hanna.harper.sharper/" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="text-primary hover:text-accent-blue transition-colors"
+                        aria-label={`Instagram-Profil von ${member.name}`}
+                      >
+                        <Instagram size={16} className="sm:w-[18px] sm:h-[18px]" />
+                      </a>
+                    </>
+                  ) : (
+                    <>
+                      <a 
+                        href="mailto:info@famfordogs.com" 
+                        className="text-primary hover:text-accent-blue transition-colors"
+                        aria-label={`Email ${member.name}`}
+                      >
+                        <Mail size={16} className="sm:w-[18px] sm:h-[18px]" />
+                      </a>
+                      <a 
+                        href="#" 
+                        className="text-primary hover:text-accent-blue transition-colors"
+                        aria-label={`Instagram-Profil von ${member.name}`}
+                      >
+                        <Instagram size={16} className="sm:w-[18px] sm:h-[18px]" />
+                      </a>
+                    </>
+                  )}
                 </div>
               </div>
             </div>
