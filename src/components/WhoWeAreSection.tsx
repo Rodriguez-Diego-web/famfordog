@@ -17,7 +17,7 @@ const WhoWeAreSection = () => {
     },
     {
       name: "Chrissy",
-      role: "Beisitzerin",
+      role: "Vorstandsmitglied",
       bio: "Chrissy ist Vorstandsmitglied und bringt mit ihrem Organisationstalent Struktur in jedes Projekt – ohne sie läuft einfach nichts.",
       image: "/images/team/WhatsApp Image 2025-03-25 at 23.49.01.jpeg"
     },
