@@ -100,6 +100,13 @@ const Navbar = () => {
     { name: 'Unsere Hunde', path: '/our-dogs' },
     { name: 'Sei Teil der FAMily!', path: '/join-family' },
     { name: 'Spendenaktion', path: '/spendenaktion' },
+  ];
+  
+  const desktopNavItems = [
+    { name: 'Home', path: '/' },
+    { name: 'Unsere Hunde', path: '/our-dogs' },
+    { name: 'Sei Teil der FAMily!', path: '/join-family' },
+    { name: 'Spendenaktion', path: '/spendenaktion' },
     { name: 'Fördermitglied werden', path: '/foerdermitglied-werden', highlight: true },
   ];
 
@@ -204,7 +211,7 @@ const Navbar = () => {
           </div>
           
           {/* Other Nav Items */}
-          {navItems.map((item) => (
+          {desktopNavItems.map((item) => (
             item.name !== 'Home' && (
               <Link
                 key={item.name}
@@ -233,11 +240,19 @@ const Navbar = () => {
         </nav>
         
         {/* Mobile Buttons */}
-        <div className="md:hidden flex items-center space-x-3">
+        <div className="md:hidden flex items-center space-x-2">
+          {/* Mobile Fördermitglied werden Button */}
+          <Link
+            to="/foerdermitglied-werden"
+            className="bg-primary hover:bg-primary/90 text-white px-3 py-1.5 rounded-full text-xs font-medium transition-all duration-200 font-futura flex items-center whitespace-nowrap"
+          >
+            Fördermitglied werden
+          </Link>
+          
           {/* Mobile Donate Button */}
           <Link
             to="/spenden"
-            className="bg-secondary hover:bg-secondary/90 text-secondary-foreground px-3 py-1.5 rounded-full text-sm font-medium transition-all duration-200 font-futura flex items-center"
+            className="bg-secondary hover:bg-secondary/90 text-secondary-foreground px-3 py-1.5 rounded-full text-xs font-medium transition-all duration-200 font-futura flex items-center"
           >
             Spenden
           </Link>
@@ -245,7 +260,7 @@ const Navbar = () => {
           {/* Mobile Menu Button */}
           <button
             onClick={toggleMobileMenu}
-            className="text-white focus:outline-none"
+            className="text-white focus:outline-none ml-1"
             aria-label="Toggle mobile menu"
           >
             {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -376,10 +391,6 @@ const Navbar = () => {
                   location.pathname === item.path
                     ? 'text-white font-bold'
                     : 'text-white/90 hover:text-white'
-                } ${
-                  item.highlight 
-                    ? "bg-primary text-white hover:bg-primary/90 rounded-full px-4 py-2 font-bold my-2" 
-                    : ""
                 }`}
                 onClick={() => setMobileMenuOpen(false)}
               >
