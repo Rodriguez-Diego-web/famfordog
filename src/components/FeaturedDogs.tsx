@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Heart, ArrowRight, PawPrint, Image as ImageIcon } from 'lucide-react';
+import { Heart, ArrowRight, PawPrint, Image as ImageIcon, Users } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 // Aktualisierte Daten für die angezeigten Hunde, übernommen aus OurDogs.tsx
@@ -12,7 +12,12 @@ const featuredDogs = [
     description: 'Anton wurde von Mieke im November 2024 während einer Fütterungsrunde mit Rita und Riani entdeckt. Er lebte mit seiner Mutter Ichi und seinen Geschwistern Albert und Ocha bei einer Familie, die sich leider nicht mehr um sie kümmern konnte.',
     image: '/images/dogs/anton.jpeg',
     fallbackImage: '/images/dog-placeholder.jpg',
-    tags: ['Freundlich', 'Verspielt', 'Sozial']
+    tags: ['Freundlich', 'Verspielt', 'Sozial'],
+    sponsors: [
+      { id: 1, name: 'Familie Mueller', initials: 'FM', color: '#3498db' },
+      { id: 2, name: 'Anna Schmidt', initials: 'AS', color: '#e74c3c' }
+    ],
+    maxSponsors: 3
   },
   {
     id: 3,
@@ -22,7 +27,13 @@ const featuredDogs = [
     description: 'Boogey lebte in einem Abwasserkanal mit ihren 6 Welpen. Sie wurde so schwer verletzt, dass sie ihre Babys kaum schützen konnte. Nach monatelangem Leben im Kanal ist sie jetzt glücklicherweise gerettet.',
     image: '/images/dogs/boogey.jpeg',
     fallbackImage: '/images/dog-placeholder.jpg',
-    tags: ['Energiegeladen', 'Verspielt', 'Neugierig']
+    tags: ['Energiegeladen', 'Verspielt', 'Neugierig'],
+    sponsors: [
+      { id: 4, name: 'Lisa K.', initials: 'LK', color: '#9b59b6' },
+      { id: 5, name: 'Thomas B.', initials: 'TB', color: '#f39c12' },
+      { id: 6, name: 'Sarah M.', initials: 'SM', color: '#1abc9c' }
+    ],
+    maxSponsors: 3
   },
   {
     id: 14,
@@ -30,9 +41,11 @@ const featuredDogs = [
     age: '4 Jahre',
     breed: 'Mischling',
     description: 'Wednesday ist eine besondere Hündin mit einem einzigartigen Charakter. Sie ist loyal und beschützend. Sie sucht eine liebevolle Patenschaft.',
-    image: '/images/dogs/wednesday.jpeg',
+    image: '/OneDrive_15_2.4.2025/Wednesday/IMG_2217.jpeg',
     fallbackImage: '/images/dog-placeholder.jpg',
-    tags: ['Loyal', 'Beschützend', 'Einzigartig']
+    tags: ['Loyal', 'Beschützend', 'Einzigartig'],
+    sponsors: [],
+    maxSponsors: 3
   }
 ];
 
@@ -123,6 +136,7 @@ const FeaturedDogs = () => {
                   onLoad={() => handleImageLoad(dog.id)}
                   onError={() => handleImageError(dog.id)}
                   className={`w-full h-full object-cover transition-transform duration-500 hover:scale-105 ${imageLoaded[dog.id] ? '' : 'opacity-0'}`}
+                  style={dog.name === "Wednesday" ? { objectPosition: "center 20%" } : {}}
                 />
                 <button 
                   onClick={() => toggleFavorite(dog.id)}
@@ -139,10 +153,68 @@ const FeaturedDogs = () => {
               <div className="p-6 flex-1 flex flex-col">
                 <div className="flex justify-between items-center mb-3">
                   <h3 className="text-2xl font-bold text-primary font-futura">{dog.name}</h3>
+                  
+                  {/* Paten-Anzeige */}
+                  {(dog.sponsors.length > 0 || (dog.maxSponsors - dog.sponsors.length) > 0) && (
+                    <div className="flex items-center space-x-1">
+                      {/* Vorhandene Paten */}
+                      {dog.sponsors.map((sponsor) => (
+                        <div 
+                          key={sponsor.id}
+                          className="group relative"
+                        >
+                          <div 
+                            className={`w-6 h-6 rounded-full flex items-center justify-center text-white text-xs font-bold shadow-sm`}
+                            style={{ backgroundColor: sponsor.color }}
+                          >
+                            {sponsor.initials}
+                          </div>
+                          {/* Tooltip */}
+                          <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-2 py-1 bg-gray-800 text-white text-xs rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap z-10">
+                            Pate: {sponsor.name}
+                          </div>
+                        </div>
+                      ))}
+                      
+                      {/* Freie Patenplätze */}
+                      {(dog.maxSponsors - dog.sponsors.length) > 0 && (
+                        <div className="group relative">
+                          <div className="w-6 h-6 rounded-full border-2 border-dashed border-gray-300 flex items-center justify-center text-gray-400 hover:border-primary hover:text-primary transition-colors">
+                            <Users size={10} />
+                          </div>
+                          {/* Tooltip */}
+                          <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-2 py-1 bg-gray-800 text-white text-xs rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap z-10">
+                            {dog.maxSponsors - dog.sponsors.length} {(dog.maxSponsors - dog.sponsors.length) === 1 ? 'Patenplatz' : 'Patenplätze'} frei
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  )}
+                </div>
+                
+                <div className="flex justify-between items-center mb-3">
                   <span className="text-sm text-gray-500 font-futura">{dog.age}</span>
                 </div>
                 
                 <p className="text-gray-600 text-sm mb-4 font-futura">{dog.breed}</p>
+                
+                {/* Paten-Status */}
+                {dog.sponsors.length > 0 && (
+                  <div className="mb-3">
+                    <div className="flex items-center text-sm text-green-600 bg-green-50 px-2 py-1 rounded-lg">
+                      <Heart size={14} className="mr-1" />
+                      <span>
+                        {dog.sponsors.length} {dog.sponsors.length === 1 ? 'Pate' : 'Paten'}
+                        {(dog.maxSponsors - dog.sponsors.length) > 0 && (
+                          <span className="text-gray-500 ml-1">
+                            • {dog.maxSponsors - dog.sponsors.length} {(dog.maxSponsors - dog.sponsors.length) === 1 ? 'Platz' : 'Plätze'} frei
+                          </span>
+                        )}
+                      </span>
+                    </div>
+                  </div>
+                )}
+                
                 <p className="text-gray-700 mb-4 font-futura line-clamp-4" dangerouslySetInnerHTML={{ __html: dog.description }}></p>
                 
                 <div className="flex flex-wrap gap-2 mb-6">
