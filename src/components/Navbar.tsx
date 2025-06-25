@@ -100,6 +100,7 @@ const Navbar = () => {
     { name: 'Unsere Hunde', path: '/our-dogs' },
     { name: 'Sei Teil der FAMily!', path: '/join-family' },
     { name: 'Spendenaktion', path: '/spendenaktion' },
+    { name: 'Fördermitglied werden', path: '/foerdermitglied-werden', highlight: true },
   ];
   
   const desktopNavItems = [
@@ -241,20 +242,20 @@ const Navbar = () => {
         
         {/* Mobile Buttons */}
         <div className="md:hidden flex items-center space-x-2">
-          {/* Mobile Fördermitglied werden Button */}
-          <Link
-            to="/foerdermitglied-werden"
-            className="bg-primary hover:bg-primary/90 text-white px-3 py-1.5 rounded-full text-xs font-medium transition-all duration-200 font-futura flex items-center whitespace-nowrap"
-          >
-            Fördermitglied werden
-          </Link>
-          
           {/* Mobile Donate Button */}
           <Link
             to="/spenden"
             className="bg-secondary hover:bg-secondary/90 text-secondary-foreground px-3 py-1.5 rounded-full text-xs font-medium transition-all duration-200 font-futura flex items-center"
           >
             Spenden
+          </Link>
+          
+          {/* Mobile Fördermitglied werden Button */}
+          <Link
+            to="/foerdermitglied-werden"
+            className="bg-primary hover:bg-primary/90 text-white px-3 py-1.5 rounded-full text-xs font-medium transition-all duration-200 font-futura flex items-center whitespace-nowrap"
+          >
+            Fördermitglied werden
           </Link>
           
           {/* Mobile Menu Button */}

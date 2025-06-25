@@ -59,12 +59,12 @@ const DogCard = memo(({ id, name, age, breed, description, image, needs, sponsor
       <div className="p-6 flex flex-col flex-grow">
         <div>
           <div className="flex items-center justify-between mb-2">
-            <h3 
+          <h3 
               className="text-xl font-bold text-primary font-futura cursor-pointer hover:text-primary/80 transition-colors" 
-              onClick={handleNavigate}
-            >
-              {name}
-            </h3>
+            onClick={handleNavigate}
+          >
+            {name}
+          </h3>
             
             {/* Paten-Anzeige */}
             {(sponsors.length > 0 || hasAvailableSpots) && (
