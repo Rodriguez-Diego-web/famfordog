@@ -5,31 +5,31 @@ const WhoWeAreSection = () => {
   const teamMembers = [
     {
       name: "Mieke & Fiona",
-      role: "Doppelspitze des Vereins",
+      role: "Gründerinnen & Vorsitzende",
       bio: "Mieke und Fiona bilden gemeinsam die Doppelspitze des Vereins FAM for Dogs e.V.",
       image: "/images/team/WhatsApp Image 2025-03-24 at 18.11.30.jpeg"
     },
     {
       name: "Kira",
-      role: "Vorstandsmitglied & Orga-Queen",
+      role: "Vorstandsmitglied",
       bio: "Kira ist Vorstandsmitglied und unsere Orga-Queen - sie kümmert sich unter anderem um unsere Mitglieder und Sponsor:innen.",
       image: "/kira/Kira.jpeg"
     },
     {
       name: "Chrissy",
-      role: "Vorstandsmitglied",
+      role: "Beisitzerin",
       bio: "Chrissy ist Vorstandsmitglied und bringt mit ihrem Organisationstalent Struktur in jedes Projekt – ohne sie läuft einfach nichts.",
       image: "/images/team/WhatsApp Image 2025-03-25 at 23.49.01.jpeg"
     },
     {
       name: "Lara",
-      role: "Vorstandsmitglied & Schatzmeisterin",
+      role: "Schatzmeisterin",
       bio: "Lara ist Vorstandsmitglied, unsere Schatzmeisterin und Head of Finance.",
       image: "/Lara/Lara.jpeg"
     },
     {
       name: "Daze",
-      role: "Aktivstes Mitglied",
+      role: "Aktives Mitglied",
       bio: "Unser aktivstes Mitglied Daze sorgt dafür, dass kein Hund übersehen wird - sie merkt sich jeden Namen und behält den Überblick.",
       image: "/Daze/WhatsApp Image 2025-03-26 at 15.08.17.jpeg"
     }
