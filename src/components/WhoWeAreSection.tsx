@@ -1,30 +1,37 @@
 import { UserCircle2 } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { useState } from 'react';
 
 const WhoWeAreSection = () => {
+  const [expandedCard, setExpandedCard] = useState<string | null>(null);
+
+  const toggleCardExpansion = (cardId: string) => {
+    setExpandedCard(prevId => (prevId === cardId ? null : cardId));
+  };
+
   const teamMembers = [
     {
-      name: "Mieke & Fiona",
+      name: "Fiona & Mieke",
       role: "Gründerinnen & Vorsitzende",
-      bio: "Mieke und Fiona bilden gemeinsam die Doppelspitze des Vereins FAM for Dogs e.V.",
+      bio: "Mieke und Fiona bilden gemeinsam die Doppelspitze des Vereins FAM for Dogs e.V. Beide engagieren sich schon seit vielen Jahren im Tierschutz – seit 2019 setzen sie sich als Team aktiv für Hunde in Not ein. Der Auslöser für ihr gemeinsames Engagement war eine Reise nach Rumänien – ein prägendes Erlebnis für die beiden, das den Wunsch noch mehr zu helfen verstärkt hat. Mieke, von Beruf Rechsanwältin, gründete zunächst den Verein Dogs of Lombok e.V. während eines mehrmonatigen beruflichen Aufenthalts in Indonesien im Jahr 2023. Heute wird der Verein unter dem Namen FAM for Dogs e.V. weitergeführt. Fiona ist Hundephysiotherapeutin und bringt ihre fachliche Expertise in die Betreuung geretteter Hunde ein. Auch ihre eigenen Hunde spiegeln ihre Tierschutzmission wider: Miekes Hund Jack lebte früher auf den Straßen Kuwaits, während Fiona drei Hunde aus Rumänien adoptiert hat – darunter einen mit Handicap. Darüber hinaus haben beide über die Jahre hinweg zahlreiche Pflegehunde bei sich aufgenommen, versorgt und auf ein neues Leben vorbereitet.",
       image: "/images/team/fiona.jpeg"
     },
     {
       name: "Kira",
       role: "Vorstandsmitglied",
-      bio: "Kira ist Vorstandsmitglied und unsere Orga-Queen - sie kümmert sich unter anderem um unsere Mitglieder und Sponsor:innen.",
-      image: "/kira/Kira.jpeg"
+      bio: "Kira ist neben ihrer Arbeit als Autorin, Dozentin und Podcast-Host auch leidenschaftliche Hundemama ihres rumänischen Rüden Homie. Als er 2020 Teil ihrer Familie wurde, war das der ausschlaggebende Punkt, sich mehr im Tierschutz zu engagieren. Erst als stille Spenderin und jetzt als Vorstandsmitglied beim FAM for Dogs e.V.. Bestärkt wurde ihre Entscheidung durch die gemeinsame Reise mit Fiona nach Rumänien im Frühjahr 2025. Das Leid der Hunde hautnah mitzuerleben, die Machtlosigkeit zu spüren und die finanziellen Engpässe der helfenden Menschen vor Ort zu sehen, hat Kira dazu bewegt, von der inaktiven in die atkive Rolle zu schlüpfen. Kira ist unsere Orga-Queen und kümmert sich unter anderem um unsere Mitglieder und Sponsor:innen. Ihr wollt Teil unserer FAMily werden? Dann meldet euch bei Kira info@famfordogs.com",
+      image: "/images/team/Kira.jpeg"
     },
     {
       name: "Chrissy",
       role: "Vorstandsmitglied",
-      bio: "Chrissy ist Vorstandsmitglied und bringt mit ihrem Organisationstalent Struktur in jedes Projekt – ohne sie läuft einfach nichts.",
+      bio: "Chrissy bringt mit ihrem Organisationstalent Struktur in jedes Projekt – ohne sie läuft einfach nichts. Sie ist vielseitig einsetzbar und engagiert sich in den Bereichen, in denen Unterstützung gebraucht wird. Dabei bleibt sie stets ruhig und findet immer Lösungen. Gute Planung und Empathie sind für sie selbstverständlich. Schon von klein auf liebt Chrissy Tiere und setzt sich mit großer Leidenschaft für sie ein. Ob es um Fundtiere in Deutschland oder Straßenhunde im Ausland geht, ihr Engagement kennt keine Grenzen. Nach dem plötzlichen Verlust ihres Hundes verließ sie Frankfurt für eine Asienreise. Dort erschütterte sie das Tierleid, besonders auf Lombok, zutiefst. Diese Erfahrungen stärkten ihren unermüdlichen Einsatz für hilfsbedürftige Tiere",
       image: "/images/team/WhatsApp Image 2025-03-25 at 23.49.01.jpeg"
     },
     {
       name: "Lara",
       role: "Schatzmeisterin",
-      bio: "Lara ist Vorstandsmitglied, unsere Schatzmeisterin und Head of Finance.",
+      bio: "Lara ist Vorstandsmitglied bei FAM for Dogs e.V. und übernimmt als Schatzmeisterin und Head of Finance die finanzielle Verwaltung des Vereins. Mit ihrem organisatorischen Geschick und einem ausgeprägten Sinn für Zahlen sorgt sie dafür, dass alle Projekte solide finanziert und nachhaltig umgesetzt werden können. Durch ihre enge Freundschaft mit Fiona hat sie seit Jahren Berührungspunkte mit dem Tierschutz, auch wenn Hunde selbst bisher nicht ihre größte Leidenschaft waren. Gerade dieser Außenblick macht sie zu einer wertvollen Ergänzung im Team: Sie behält den Überblick über die Finanzen, sorgt für Struktur und stellt sicher, dass die Mittel gezielt dort ankommen, wo sie gebraucht werden – für den Schutz und die Versorgung von Straßentieren in Indonesien und Rumänien.",
       image: "/Lara/Lara.jpeg"
     },
   ];
@@ -41,37 +48,60 @@ const WhoWeAreSection = () => {
           </p>
         </div>
         
-        <div className="grid grid-cols-1 xl:grid-cols-4 gap-4 mb-16 justify-items-center">
-          {teamMembers.map((member, index) => (
-            <div 
-              key={index} 
-              className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 flex flex-col sm:flex-row overflow-hidden w-full max-w-lg"
-            >
-              <div className="w-full sm:w-2/5 h-48 sm:h-auto overflow-hidden">
-                {member.image ? (
-                  <img 
-                    src={member.image} 
-                    alt={member.name} 
-                    className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
-                    style={
-                      member.name === "Kira" ? { objectPosition: "center 20%" } : 
-                      member.name === "Mieke & Fiona" ? { objectPosition: "center 20%" } : 
-                      {}
-                    }
-                  />
-                ) : (
-                  <div className="w-full h-full bg-accent-blue flex items-center justify-center">
-                    <UserCircle2 size={80} className="text-primary" />
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+          {teamMembers.map((member, index) => {
+            const cardId = `member-${index}`;
+            const isExpanded = expandedCard === cardId;
+
+            return (
+              <div
+                key={index}
+                className="relative rounded-3xl shadow-xl group h-[480px] overflow-hidden cursor-pointer"
+                onClick={() => toggleCardExpansion(cardId)}
+              >
+                {/* Background Image */}
+                <div className="absolute inset-0 w-full h-full">
+                  {member.image ? (
+                    <img
+                      src={member.image}
+                      alt={member.name}
+                      loading="lazy"
+                      className="w-full h-full object-cover transition-all duration-500 group-hover:scale-105"
+                      style={
+                        member.name === "Kira" ? { objectPosition: "center 20%" } : 
+                        member.name === "Mieke & Fiona" ? { objectPosition: "center 20%" } : 
+                        {}
+                      }
+                    />
+                  ) : (
+                    <div className="w-full h-full bg-accent-blue flex items-center justify-center">
+                      <UserCircle2 size={80} className="text-primary" />
+                    </div>
+                  )}
+                </div>
+
+                {/* Sliding Content Panel */}
+                <div
+                  className={`absolute bottom-0 left-0 w-full bg-white transition-transform duration-500 ease-in-out p-6 text-left transform 
+                    ${isExpanded ? 'translate-y-0' : 'translate-y-[calc(100%-160px)]'}
+                  `}
+                  style={{ height: 'calc(100% - 20px)' }}
+                >
+                  <div className="h-full flex flex-col">
+                    <div className="text-center pb-4 flex-shrink-0">
+                      <h3 className="text-xl font-bold text-primary font-glorious mb-1">{member.name}</h3>
+                      <p className="text-secondary text-sm font-semibold font-futura uppercase tracking-wider mb-3">{member.role}</p>
+                    </div>
+                    <div className="flex-grow overflow-y-auto">
+                      <p className="text-gray-600 font-futura text-sm leading-relaxed">
+                        {member.bio}
+                      </p>
+                    </div>
                   </div>
-                )}
+                </div>
               </div>
-              <div className="w-full sm:w-3/5 p-4 flex flex-col justify-center">
-                <h3 className="text-xl font-bold text-primary font-futura mb-1">{member.name}</h3>
-                <p className="text-secondary text-sm font-medium mb-2 font-futura">{member.role}</p>
-                <p className="text-gray-700 text-sm font-futura leading-relaxed">{member.bio}</p>
-              </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
         
         <div className="flex justify-center">
