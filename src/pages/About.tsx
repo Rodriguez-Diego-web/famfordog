@@ -123,7 +123,19 @@ const About = () => {
       role: "Developer",
       bio: "Als leidenschaftlicher Programmierer und Hundeliebhaber vereint Diego seine technischen Fähigkeiten mit seiner Liebe zu Vierbeinern. Er sorgt dafür, dass unsere digitale Präsenz reibungslos funktioniert und unsere Botschaft effektiv in die Online-Welt getragen wird. In seiner Freizeit verbringt er gerne Zeit mit seinem Hund Lucky und engagiert sich für die Rechte und das Wohlbefinden von Hunden.",
       image: "Diego/Diego:Lucky.jpg"
-    }
+    },
+    {
+      name: "Vanessa",
+      role: "Aktives Mitglied",
+      bio: "Vanessa hat in ihrem Beruf als Personalreferentin viel mit Menschen zu tun. Ihr Herz für Tiere schlug dabei aber schon immer höher. Seit 2019 engagiert sie sich bereits ehrenamtlich in einem Hamburger Tierheim. 2024 kam dann ihre kleine Hündin Louise über den Tierschutz aus Kroatien zu ihr. Seitdem wuchs ihr Bedürfnis, sich auch für den ausländischen Tierschutz zu engagieren.",
+      image: "Vanessa/1.jpg"
+    },
+    {
+      name: "Daniel",
+      role: "Fundraising & Spenderbetreuung",
+      bio: "Daniel ist bei FAM for Dogs e.V. für das Fundraising und die Betreuung unserer Spender:innen verantwortlich. Mit seiner langjährigen Erfahrung aus dem Tierschutzbereich bringt er nicht nur das nötige Know-how, sondern auch viel Herzblut für nachhaltige Unterstützung mit. Bei FAM kümmert er sich darum, dass aus Interesse echte Hilfe wird. Seine Stärke liegt dabei nicht nur in der Konzeption von Kampagnen, sondern auch im persönlichen Kontakt: Daniel versteht es, Menschen für unsere Mission zu begeistern und ihnen zu zeigen, wie wertvoll ihre Hilfe ist.",
+      image: "Daniel/1.JPG"
+    },
   ];
 
   const lombokTeam = [
@@ -233,6 +245,8 @@ const About = () => {
                       member.name === "Chrissy" ? { objectPosition: "center 25%" } : 
                       member.name === "Lara" ? { objectPosition: "center 30%" } : 
                       member.name === "Daze" ? { objectPosition: "center 35%" } : 
+                      member.name === "Daniel" ? { objectPosition: "center 25%" } : 
+                      member.name === "Vanessa" ? { objectPosition: "center 30%" } : 
                       member.name === "Hanna" ? { objectPosition: "center 20%" } : 
                       member.name === "Diego" ? { objectPosition: "center 15%" } : 
                       member.name === "Dhany" ? { objectPosition: "center 25%" } : 
@@ -353,6 +367,26 @@ const About = () => {
                         <Instagram size={16} className="sm:w-[18px] sm:h-[18px]" />
                       </a>
                     </>
+                  ) : member.name === "Daniel" ? (
+                    <>
+                      <a 
+                        href="mailto:info@famfordogs.com" 
+                        className="text-primary hover:text-accent-blue transition-colors"
+                        aria-label={`Email ${member.name}`}
+                      >
+                        <Mail size={16} className="sm:w-[18px] sm:h-[18px]" />
+                      </a>
+                    </>
+                  ) : member.name === "Vanessa" ? (
+                    <>
+                      <a 
+                        href="mailto:info@famfordogs.com" 
+                        className="text-primary hover:text-accent-blue transition-colors"
+                        aria-label={`Email ${member.name}`}
+                      >
+                        <Mail size={16} className="sm:w-[18px] sm:h-[18px]" />
+                      </a>
+                    </>
                   ) : member.name === "Hanna" ? (
                     <>
                       <a 
@@ -364,6 +398,25 @@ const About = () => {
                       </a>
                       <a 
                         href="https://www.instagram.com/hanna.harper.sharper/" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="text-primary hover:text-accent-blue transition-colors"
+                        aria-label={`Instagram-Profil von ${member.name}`}
+                      >
+                        <Instagram size={16} className="sm:w-[18px] sm:h-[18px]" />
+                      </a>
+                    </>
+                  ) : member.name === "Lara" ? (
+                    <>
+                      <a 
+                        href="mailto:info@famfordogs.com" 
+                        className="text-primary hover:text-accent-blue transition-colors"
+                        aria-label={`Email ${member.name}`}
+                      >
+                        <Mail size={16} className="sm:w-[18px] sm:h-[18px]" />
+                      </a>
+                      <a 
+                        href="https://www.instagram.com/larali_b/" 
                         target="_blank" 
                         rel="noopener noreferrer"
                         className="text-primary hover:text-accent-blue transition-colors"
