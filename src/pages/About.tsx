@@ -69,12 +69,14 @@ const About = () => {
 
   // State for image loading errors
   const [imageErrors, setImageErrors] = useState<Record<string, boolean>>({});
+  const [expandedCard, setExpandedCard] = useState<string | null>(null);
 
   const handleImageError = (key: string) => {
-    setImageErrors(prev => ({
-      ...prev,
-      [key]: true
-    }));
+    setImageErrors(prev => ({ ...prev, [key]: true }));
+  };
+
+  const toggleCardExpansion = (cardId: string) => {
+    setExpandedCard(prevId => (prevId === cardId ? null : cardId));
   };
 
   // Team members data
@@ -224,24 +226,32 @@ const About = () => {
   // Function to render team members
   const renderTeamMembers = (members) => {
     return (
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-16">
+      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8 mb-16">
         {members.map((member, index) => {
+          const cardId = `${member.name}-${index}`;
+          const isExpanded = expandedCard === cardId;
           const imageKey = `${member.name}-${index}`;
+
           return (
-            <div key={index} className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 flex">
-              <div className="w-48 flex-shrink-0 overflow-hidden">
+            <div
+              key={index}
+              className="relative rounded-3xl shadow-xl group h-[720px] overflow-hidden cursor-pointer"
+              onClick={() => toggleCardExpansion(cardId)}
+            >
+              {/* Background Image */}
+              <div className="absolute inset-0 w-full h-full">
                 {imageErrors[imageKey] ? (
                   <div className="w-full h-full flex items-center justify-center bg-gray-200">
-                    <span className="text-gray-500 font-futura text-xs">Bild nicht verfügbar</span>
+                    <span className="text-gray-500 font-futura text-sm">Bild nicht verfügbar</span>
                   </div>
                 ) : (
-                  <img 
-                    src={member.image} 
-                    alt={member.name} 
+                  <img
+                    src={member.image}
+                    alt={member.name}
                     loading="lazy"
-                    className="w-full h-auto object-cover transition-transform duration-500 hover:scale-105"
+                    className="w-full h-full object-cover transition-all duration-500 group-hover:scale-105"
                     style={
-                      member.name === "Mieke & Fiona" ? { objectPosition: "center 35%" } : 
+                      member.name === "Fiona & Mieke" ? { objectPosition: "center 35%" } : 
                       member.name === "Kira" ? { objectPosition: "center 30%" } : 
                       member.name === "Chrissy" ? { objectPosition: "center 25%" } : 
                       member.name === "Lara" ? { objectPosition: "center 30%" } : 
@@ -263,185 +273,59 @@ const About = () => {
                   />
                 )}
               </div>
-              
-              <div className="p-4 flex-1 flex flex-col justify-center">
-                <h3 className="text-lg font-bold text-primary font-futura mb-2">{member.name}</h3>
-                <p className="text-secondary text-sm font-medium mb-3 font-futura">{member.role}</p>
-                <p className="text-gray-700 mb-4 font-futura text-sm leading-relaxed">{member.bio.length > 300 ? member.bio.substring(0, 300) + '...' : member.bio}</p>
-                
-                <div className="flex space-x-3">
-                  {member.name === "Diego" ? (
+
+              {/* Sliding Content Panel */}
+              <div
+                className={`absolute bottom-0 left-0 w-full bg-white transition-transform duration-500 ease-in-out p-6 text-left transform 
+                  ${isExpanded ? 'translate-y-0' : 'translate-y-[calc(100%-250px)]'}
+                `}
+                style={{ height: 'calc(100% - 20px)' }}
+              >
+                <div className="h-full flex flex-col">
+                  {/* Header */}
+                  <div className="text-center pb-4 flex-shrink-0">
+                    <h3 className="text-2xl font-bold text-primary font-glorious mb-1">{member.name}</h3>
+                    <p className="text-secondary text-base font-semibold font-futura uppercase tracking-wider mb-4">{member.role}</p>
+                  </div>
+
+                  {/* Bio */}
+                  <div className="flex-grow overflow-y-auto">
+                      <p className="text-gray-700 font-futura text-base leading-relaxed mb-6">
+                        {member.bio}
+                      </p>
+                  </div>
+
+                  {/* Social Links */}
+                  <div className="flex justify-center space-x-4 flex-shrink-0 pt-2" onClick={(e) => e.stopPropagation()}>
+                    {member.name === "Diego" ? (
+                      <>
+                        <a href="https://rodriguez-web.de" target="_blank" rel="noopener noreferrer" className="bg-primary/10 text-primary hover:bg-primary hover:text-white transition-all duration-300 p-3 rounded-full shadow-md hover:shadow-lg" aria-label="Diego's Website"><Globe size={20} /></a>
+                        <a href="mailto:diego@rodriguez-web.de" className="bg-primary/10 text-primary hover:bg-primary hover:text-white transition-all duration-300 p-3 rounded-full shadow-md hover:shadow-lg" aria-label={`Email ${member.name}`}><Mail size={20} /></a>
+                        <a href="https://www.instagram.com/diego_rodriguez_web/" target="_blank" rel="noopener noreferrer" className="bg-primary/10 text-primary hover:bg-primary hover:text-white transition-all duration-300 p-3 rounded-full shadow-md hover:shadow-lg" aria-label={`Instagram-Profil von ${member.name}`}><Instagram size={20} /></a>
+                      </>
+                    ) : member.name === "Fiona & Mieke" ? (
+                      <>
+                        <a href="mailto:info@famfordogs.com" className="bg-primary/10 text-primary hover:bg-primary hover:text-white transition-all duration-300 p-3 rounded-full shadow-md hover:shadow-lg" aria-label={`Email ${member.name}`}><Mail size={20} /></a>
+                        <a href="https://www.instagram.com/miekewi/" target="_blank" rel="noopener noreferrer" className="bg-primary/10 text-primary hover:bg-primary hover:text-white transition-all duration-300 p-3 rounded-full shadow-md hover:shadow-lg" aria-label="Mieke's Instagram" title="Mieke's Instagram"><Instagram size={20} /></a>
+                        <a href="https://www.instagram.com/fiona_bliedtner/" target="_blank" rel="noopener noreferrer" className="bg-primary/10 text-primary hover:bg-primary hover:text-white transition-all duration-300 p-3 rounded-full shadow-md hover:shadow-lg" aria-label="Fiona's Instagram" title="Fiona's Instagram"><Instagram size={20} /></a>
+                      </>
+                    ) : member.name === "Kira" ? (
+                      <>
+                        <a href="mailto:info@famfordogs.com" className="bg-primary/10 text-primary hover:bg-primary hover:text-white transition-all duration-300 p-3 rounded-full shadow-md hover:shadow-lg" aria-label={`Email ${member.name}`}><Mail size={20} /></a>
+                        <a href="https://www.instagram.com/kiramariecremer/" target="_blank" rel="noopener noreferrer" className="bg-primary/10 text-primary hover:bg-primary hover:text-white transition-all duration-300 p-3 rounded-full shadow-md hover:shadow-lg" aria-label={`Instagram-Profil von ${member.name}`}><Instagram size={20} /></a>
+                      </>
+                    ) : member.name === "Chrissy" ? (
                     <>
-                      <a 
-                        href="https://rodriguez-web.de" 
-                        target="_blank" 
-                        rel="noopener noreferrer"
-                        className="text-primary hover:text-accent-blue transition-colors"
-                        aria-label="Diego's Website"
-                      >
-                        <Globe size={16} className="sm:w-[18px] sm:h-[18px]" />
-                      </a>
-                      <a 
-                        href="mailto:diego@rodriguez-web.de" 
-                        className="text-primary hover:text-accent-blue transition-colors"
-                        aria-label={`Email ${member.name}`}
-                      >
-                        <Mail size={16} className="sm:w-[18px] sm:h-[18px]" />
-                      </a>
-                      <a 
-                        href="https://www.instagram.com/diego_rodriguez_web/" 
-                        target="_blank" 
-                        rel="noopener noreferrer"
-                        className="text-primary hover:text-accent-blue transition-colors"
-                        aria-label={`Instagram-Profil von ${member.name}`}
-                      >
-                        <Instagram size={16} className="sm:w-[18px] sm:h-[18px]" />
-                      </a>
+                      <a href="mailto:info@famfordogs.com" className="bg-primary/10 text-primary hover:bg-primary hover:text-white transition-all duration-300 p-3 rounded-full shadow-md hover:shadow-lg" aria-label={`Email ${member.name}`}><Mail size={20} /></a>
+                      <a href="https://www.instagram.com/_chrissy_242/" target="_blank" rel="noopener noreferrer" className="bg-primary/10 text-primary hover:bg-primary hover:text-white transition-all duration-300 p-3 rounded-full shadow-md hover:shadow-lg" aria-label={`Instagram-Profil von ${member.name}`}><Instagram size={20} /></a>
                     </>
-                  ) : member.name === "Mieke & Fiona" ? (
-                    <>
-                      <a 
-                        href="mailto:info@famfordogs.com" 
-                        className="text-primary hover:text-accent-blue transition-colors"
-                        aria-label={`Email ${member.name}`}
-                      >
-                        <Mail size={16} className="sm:w-[18px] sm:h-[18px]" />
-                      </a>
-                      <a 
-                        href="https://www.instagram.com/miekewi/" 
-                        target="_blank" 
-                        rel="noopener noreferrer"
-                        className="text-primary hover:text-accent-blue transition-colors"
-                        aria-label="Mieke's Instagram"
-                        title="Mieke's Instagram"
-                      >
-                        <Instagram size={16} className="sm:w-[18px] sm:h-[18px]" />
-                      </a>
-                      <a 
-                        href="https://www.instagram.com/fiona_bliedtner/" 
-                        target="_blank" 
-                        rel="noopener noreferrer"
-                        className="text-primary hover:text-accent-blue transition-colors"
-                        aria-label="Fiona's Instagram"
-                        title="Fiona's Instagram"
-                      >
-                        <Instagram size={16} className="sm:w-[18px] sm:h-[18px]" />
-                      </a>
-                    </>
-                  ) : member.name === "Kira" ? (
-                    <>
-                      <a 
-                        href="mailto:info@famfordogs.com" 
-                        className="text-primary hover:text-accent-blue transition-colors"
-                        aria-label={`Email ${member.name}`}
-                      >
-                        <Mail size={16} className="sm:w-[18px] sm:h-[18px]" />
-                      </a>
-                      <a 
-                        href="https://www.instagram.com/kiramariecremer/" 
-                        target="_blank" 
-                        rel="noopener noreferrer"
-                        className="text-primary hover:text-accent-blue transition-colors"
-                        aria-label={`Instagram-Profil von ${member.name}`}
-                      >
-                        <Instagram size={16} className="sm:w-[18px] sm:h-[18px]" />
-                      </a>
-                    </>
-                  ) : member.name === "Chrissy" ? (
-                    <>
-                      <a 
-                        href="mailto:info@famfordogs.com" 
-                        className="text-primary hover:text-accent-blue transition-colors"
-                        aria-label={`Email ${member.name}`}
-                      >
-                        <Mail size={16} className="sm:w-[18px] sm:h-[18px]" />
-                      </a>
-                      <a 
-                        href="https://www.instagram.com/_chrissy_242/" 
-                        target="_blank" 
-                        rel="noopener noreferrer"
-                        className="text-primary hover:text-accent-blue transition-colors"
-                        aria-label={`Instagram-Profil von ${member.name}`}
-                      >
-                        <Instagram size={16} className="sm:w-[18px] sm:h-[18px]" />
-                      </a>
-                    </>
-                  ) : member.name === "Daniel" ? (
-                    <>
-                      <a 
-                        href="mailto:info@famfordogs.com" 
-                        className="text-primary hover:text-accent-blue transition-colors"
-                        aria-label={`Email ${member.name}`}
-                      >
-                        <Mail size={16} className="sm:w-[18px] sm:h-[18px]" />
-                      </a>
-                    </>
-                  ) : member.name === "Vanessa" ? (
-                    <>
-                      <a 
-                        href="mailto:info@famfordogs.com" 
-                        className="text-primary hover:text-accent-blue transition-colors"
-                        aria-label={`Email ${member.name}`}
-                      >
-                        <Mail size={16} className="sm:w-[18px] sm:h-[18px]" />
-                      </a>
-                    </>
-                  ) : member.name === "Hanna" ? (
-                    <>
-                      <a 
-                        href="mailto:info@famfordogs.com" 
-                        className="text-primary hover:text-accent-blue transition-colors"
-                        aria-label={`Email ${member.name}`}
-                      >
-                        <Mail size={16} className="sm:w-[18px] sm:h-[18px]" />
-                      </a>
-                      <a 
-                        href="https://www.instagram.com/hanna.harper.sharper/" 
-                        target="_blank" 
-                        rel="noopener noreferrer"
-                        className="text-primary hover:text-accent-blue transition-colors"
-                        aria-label={`Instagram-Profil von ${member.name}`}
-                      >
-                        <Instagram size={16} className="sm:w-[18px] sm:h-[18px]" />
-                      </a>
-                    </>
-                  ) : member.name === "Lara" ? (
-                    <>
-                      <a 
-                        href="mailto:info@famfordogs.com" 
-                        className="text-primary hover:text-accent-blue transition-colors"
-                        aria-label={`Email ${member.name}`}
-                      >
-                        <Mail size={16} className="sm:w-[18px] sm:h-[18px]" />
-                      </a>
-                      <a 
-                        href="https://www.instagram.com/larali_b/" 
-                        target="_blank" 
-                        rel="noopener noreferrer"
-                        className="text-primary hover:text-accent-blue transition-colors"
-                        aria-label={`Instagram-Profil von ${member.name}`}
-                      >
-                        <Instagram size={16} className="sm:w-[18px] sm:h-[18px]" />
-                      </a>
-                    </>
-                  ) : (
-                    <>
-                      <a 
-                        href="mailto:info@famfordogs.com" 
-                        className="text-primary hover:text-accent-blue transition-colors"
-                        aria-label={`Email ${member.name}`}
-                      >
-                        <Mail size={16} className="sm:w-[18px] sm:h-[18px]" />
-                      </a>
-                      <a 
-                        href="#" 
-                        className="text-primary hover:text-accent-blue transition-colors"
-                        aria-label={`Instagram-Profil von ${member.name}`}
-                      >
-                        <Instagram size={16} className="sm:w-[18px] sm:h-[18px]" />
-                      </a>
-                    </>
-                  )}
+                    ) : ( // Default case for other members
+                      <>
+                        <a href="mailto:info@famfordogs.com" className="bg-primary/10 text-primary hover:bg-primary hover:text-white transition-all duration-300 p-3 rounded-full shadow-md hover:shadow-lg" aria-label={`Email ${member.name}`}><Mail size={20} /></a>
+                        {/* Assuming a generic or no instagram link for members like Daniel, Vanessa, Hanna, Lara etc. Add if available */}
+                      </>
+                    )}
+                  </div>
                 </div>
               </div>
             </div>
