@@ -122,7 +122,7 @@ const About = () => {
       name: "Diego",
       role: "Developer",
       bio: "Als leidenschaftlicher Programmierer und Hundeliebhaber vereint Diego seine technischen Fähigkeiten mit seiner Liebe zu Vierbeinern. Er sorgt dafür, dass unsere digitale Präsenz reibungslos funktioniert und unsere Botschaft effektiv in die Online-Welt getragen wird. In seiner Freizeit verbringt er gerne Zeit mit seinem Hund Lucky und engagiert sich für die Rechte und das Wohlbefinden von Hunden.",
-      image: "Diego/Diego:Lucky.jpg"
+      image: "Diego/diego.JPG"
     },
     {
       name: "Daniel",
