@@ -80,10 +80,10 @@ const About = () => {
   // Team members data
   const boardMembers = [
     {
-      name: "Mieke & Fiona",
+      name: "Fiona & Mieke",
       role: "Gründerinnen & Vorsitzende",
       bio: "Mieke und Fiona bilden gemeinsam die Doppelspitze des Vereins FAM for Dogs e.V. Beide engagieren sich schon seit vielen Jahren im Tierschutz – seit 2019 setzen sie sich als Team aktiv für Hunde in Not ein. Der Auslöser für ihr gemeinsames Engagement war eine Reise nach Rumänien – ein prägendes Erlebnis für die beiden, das den Wunsch noch mehr zu helfen verstärkt hat. Mieke, von Beruf Rechsanwältin, gründete zunächst den Verein Dogs of Lombok e.V. während eines mehrmonatigen beruflichen Aufenthalts in Indonesien im Jahr 2023. Heute wird der Verein unter dem Namen FAM for Dogs e.V. weitergeführt. Fiona ist Hundephysiotherapeutin und bringt ihre fachliche Expertise in die Betreuung geretteter Hunde ein. Auch ihre eigenen Hunde spiegeln ihre Tierschutzmission wider: Miekes Hund Jack lebte früher auf den Straßen Kuwaits, während Fiona drei Hunde aus Rumänien adoptiert hat – darunter einen mit Handicap. Darüber hinaus haben beide über die Jahre hinweg zahlreiche Pflegehunde bei sich aufgenommen, versorgt und auf ein neues Leben vorbereitet.",
-      image: "images/team/WhatsApp Image 2025-03-24 at 18.11.30.jpeg"
+      image: "images/team/fiona.jpeg"
     },
     {
       name: "Kira",
@@ -125,17 +125,18 @@ const About = () => {
       image: "Diego/Diego:Lucky.jpg"
     },
     {
-      name: "Vanessa",
-      role: "Aktives Mitglied",
-      bio: "Vanessa hat in ihrem Beruf als Personalreferentin viel mit Menschen zu tun. Ihr Herz für Tiere schlug dabei aber schon immer höher. Seit 2019 engagiert sie sich bereits ehrenamtlich in einem Hamburger Tierheim. 2024 kam dann ihre kleine Hündin Louise über den Tierschutz aus Kroatien zu ihr. Seitdem wuchs ihr Bedürfnis, sich auch für den ausländischen Tierschutz zu engagieren.",
-      image: "Vanessa/1.jpg"
-    },
-    {
       name: "Daniel",
       role: "Fundraising & Spenderbetreuung",
       bio: "Daniel ist bei FAM for Dogs e.V. für das Fundraising und die Betreuung unserer Spender:innen verantwortlich. Mit seiner langjährigen Erfahrung aus dem Tierschutzbereich bringt er nicht nur das nötige Know-how, sondern auch viel Herzblut für nachhaltige Unterstützung mit. Bei FAM kümmert er sich darum, dass aus Interesse echte Hilfe wird. Seine Stärke liegt dabei nicht nur in der Konzeption von Kampagnen, sondern auch im persönlichen Kontakt: Daniel versteht es, Menschen für unsere Mission zu begeistern und ihnen zu zeigen, wie wertvoll ihre Hilfe ist.",
       image: "Daniel/1.JPG"
     },
+    {
+      name: "Vanessa",
+      role: "Aktives Mitglied",
+      bio: "Vanessa hat in ihrem Beruf als Personalreferentin viel mit Menschen zu tun. Ihr Herz für Tiere schlug dabei aber schon immer höher. Seit 2019 engagiert sie sich bereits ehrenamtlich in einem Hamburger Tierheim. 2024 kam dann ihre kleine Hündin Louise über den Tierschutz aus Kroatien zu ihr. Seitdem wuchs ihr Bedürfnis, sich auch für den ausländischen Tierschutz zu engagieren.",
+      image: "Vanessa/1.jpg"
+    },
+    
   ];
 
   const lombokTeam = [
@@ -223,22 +224,22 @@ const About = () => {
   // Function to render team members
   const renderTeamMembers = (members) => {
     return (
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-8 mb-16">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-16">
         {members.map((member, index) => {
           const imageKey = `${member.name}-${index}`;
           return (
-            <div key={index} className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
-              <div className="relative image-hover">
+            <div key={index} className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 flex">
+              <div className="w-48 flex-shrink-0 overflow-hidden">
                 {imageErrors[imageKey] ? (
-                  <div className="w-full h-48 sm:h-64 flex items-center justify-center bg-gray-200">
-                    <span className="text-gray-500 font-futura">Bild nicht verfügbar</span>
+                  <div className="w-full h-full flex items-center justify-center bg-gray-200">
+                    <span className="text-gray-500 font-futura text-xs">Bild nicht verfügbar</span>
                   </div>
                 ) : (
                   <img 
                     src={member.image} 
                     alt={member.name} 
                     loading="lazy"
-                    className="w-full h-48 sm:h-64 object-cover transition-transform duration-500 hover:scale-105"
+                    className="w-full h-auto object-cover transition-transform duration-500 hover:scale-105"
                     style={
                       member.name === "Mieke & Fiona" ? { objectPosition: "center 35%" } : 
                       member.name === "Kira" ? { objectPosition: "center 30%" } : 
@@ -261,14 +262,12 @@ const About = () => {
                     onError={() => handleImageError(imageKey)}
                   />
                 )}
-                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4">
-                  <h3 className="text-white text-sm sm:text-xl font-semibold font-futura">{member.name}</h3>
-                  <p className="text-white/80 text-xs sm:text-sm font-futura">{member.role}</p>
-                </div>
               </div>
               
-              <div className="p-3 sm:p-6">
-                <p className="text-gray-700 mb-4 font-futura text-xs sm:text-base">{member.bio}</p>
+              <div className="p-4 flex-1 flex flex-col justify-center">
+                <h3 className="text-lg font-bold text-primary font-futura mb-2">{member.name}</h3>
+                <p className="text-secondary text-sm font-medium mb-3 font-futura">{member.role}</p>
+                <p className="text-gray-700 mb-4 font-futura text-sm leading-relaxed">{member.bio.length > 300 ? member.bio.substring(0, 300) + '...' : member.bio}</p>
                 
                 <div className="flex space-x-3">
                   {member.name === "Diego" ? (

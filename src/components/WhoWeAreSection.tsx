@@ -7,7 +7,7 @@ const WhoWeAreSection = () => {
       name: "Mieke & Fiona",
       role: "Gründerinnen & Vorsitzende",
       bio: "Mieke und Fiona bilden gemeinsam die Doppelspitze des Vereins FAM for Dogs e.V.",
-      image: "/images/team/WhatsApp Image 2025-03-24 at 18.11.30.jpeg"
+      image: "/images/team/fiona.jpeg"
     },
     {
       name: "Kira",
@@ -27,12 +27,6 @@ const WhoWeAreSection = () => {
       bio: "Lara ist Vorstandsmitglied, unsere Schatzmeisterin und Head of Finance.",
       image: "/Lara/Lara.jpeg"
     },
-    {
-      name: "Daze",
-      role: "Aktives Mitglied",
-      bio: "Unser aktivstes Mitglied Daze sorgt dafür, dass kein Hund übersehen wird - sie merkt sich jeden Namen und behält den Überblick.",
-      image: "/Daze/WhatsApp Image 2025-03-26 at 15.08.17.jpeg"
-    }
   ];
 
   return (
@@ -47,13 +41,13 @@ const WhoWeAreSection = () => {
           </p>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6 mb-16">
+        <div className="grid grid-cols-1 xl:grid-cols-4 gap-4 mb-16 justify-items-center">
           {teamMembers.map((member, index) => (
             <div 
               key={index} 
-              className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2"
+              className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 flex flex-col sm:flex-row overflow-hidden w-full max-w-lg"
             >
-              <div className="h-48 overflow-hidden">
+              <div className="w-full sm:w-2/5 h-48 sm:h-auto overflow-hidden">
                 {member.image ? (
                   <img 
                     src={member.image} 
@@ -71,10 +65,10 @@ const WhoWeAreSection = () => {
                   </div>
                 )}
               </div>
-              <div className="p-4">
-                <h3 className="text-xl font-bold text-primary font-futura">{member.name}</h3>
+              <div className="w-full sm:w-3/5 p-4 flex flex-col justify-center">
+                <h3 className="text-xl font-bold text-primary font-futura mb-1">{member.name}</h3>
                 <p className="text-secondary text-sm font-medium mb-2 font-futura">{member.role}</p>
-                <p className="text-gray-700 text-sm font-futura">{member.bio}</p>
+                <p className="text-gray-700 text-sm font-futura leading-relaxed">{member.bio}</p>
               </div>
             </div>
           ))}
