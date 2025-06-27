@@ -130,7 +130,7 @@ const About = () => {
       name: "Daniel",
       role: "Fundraising & Spenderbetreuung",
       bio: "Daniel ist bei FAM for Dogs e.V. für das Fundraising und die Betreuung unserer Spender:innen verantwortlich. Mit seiner langjährigen Erfahrung aus dem Tierschutzbereich bringt er nicht nur das nötige Know-how, sondern auch viel Herzblut für nachhaltige Unterstützung mit. Bei FAM kümmert er sich darum, dass aus Interesse echte Hilfe wird. Seine Stärke liegt dabei nicht nur in der Konzeption von Kampagnen, sondern auch im persönlichen Kontakt: Daniel versteht es, Menschen für unsere Mission zu begeistern und ihnen zu zeigen, wie wertvoll ihre Hilfe ist.",
-      image: "Daniel/1.JPG"
+      image: "Daniel/Daniel.png"
     },
     {
       name: "Vanessa",
@@ -256,7 +256,7 @@ const About = () => {
                       member.name === "Chrissy" ? { objectPosition: "center 25%" } : 
                       member.name === "Lara" ? { objectPosition: "center 30%" } : 
                       member.name === "Daze" ? { objectPosition: "center 35%" } : 
-                      member.name === "Daniel" ? { objectPosition: "center 25%" } : 
+                      member.name === "Daniel" ? { objectPosition: "center 15%" } : 
                       member.name === "Vanessa" ? { objectPosition: "center 30%" } : 
                       member.name === "Hanna" ? { objectPosition: "center 20%" } : 
                       member.name === "Diego" ? { objectPosition: "center 15%" } : 
