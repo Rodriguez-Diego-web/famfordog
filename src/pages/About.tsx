@@ -109,12 +109,6 @@ const About = () => {
 
   const activeMembers = [
     {
-      name: "Daze",
-      role: "Aktives Mitglied",
-      bio: "Mehr als 40 Rettungsfälle, mehr als 160 Hunde in unserem Shelter, unzählige Hunde in unserer Feeding-Runde und dir fehlt ein Name? Frag Daze! Sie hat sie alle auf dem Schirm. Jeder Hund, der noch kastriert werden muss, der verletzt ist, der plötzlich sein Futter verweigert, der plötzlich nicht auftaucht – sie bemerkt ihn und organisiert die nötige Hilfe. Ohne sie wären wir verloren. Außerdem zaubert sie aus den schlechtesten Videos, die wir aus Indonesien bekommen beeindruckende Instagram-Stories. Sie ist unersetzlich wenn es darum geht, die Hunde sichtbar zu machen.",
-      image: "Daze/WhatsApp Image 2025-03-26 at 15.08.17.jpeg"
-    },
-    {
       name: "Hanna",
       role: "Designerin",
       bio: "Mit langjähriger Erfahrung in der Werbebranche sorgt Hanna für die visuelle Identität von FAM for Dogs. Ihr Auge fürs Detail und Gespür für Gestaltung trägt unsere Botschaft und die wichtige Arbeit für den Tierschutz in die Welt.",
@@ -137,6 +131,12 @@ const About = () => {
       role: "Aktives Mitglied",
       bio: "Vanessa hat in ihrem Beruf als Personalreferentin viel mit Menschen zu tun. Ihr Herz für Tiere schlug dabei aber schon immer höher. Seit 2019 engagiert sie sich bereits ehrenamtlich in einem Hamburger Tierheim. 2024 kam dann ihre kleine Hündin Louise über den Tierschutz aus Kroatien zu ihr. Seitdem wuchs ihr Bedürfnis, sich auch für den ausländischen Tierschutz zu engagieren.",
       image: "Vanessa/1.jpg"
+    },
+    {
+      name: "Daze",
+      role: "Aktives Mitglied",
+      bio: "Mehr als 40 Rettungsfälle, mehr als 160 Hunde in unserem Shelter, unzählige Hunde in unserer Feeding-Runde und dir fehlt ein Name? Frag Daze! Sie hat sie alle auf dem Schirm. Jeder Hund, der noch kastriert werden muss, der verletzt ist, der plötzlich sein Futter verweigert, der plötzlich nicht auftaucht – sie bemerkt ihn und organisiert die nötige Hilfe. Ohne sie wären wir verloren. Außerdem zaubert sie aus den schlechtesten Videos, die wir aus Indonesien bekommen beeindruckende Instagram-Stories. Sie ist unersetzlich wenn es darum geht, die Hunde sichtbar zu machen.",
+      image: "Daze/WhatsApp Image 2025-03-26 at 15.08.17.jpeg"
     },
     
   ];
@@ -289,7 +289,7 @@ const About = () => {
                   </div>
 
                   {/* Bio */}
-                  <div className="flex-grow overflow-y-auto">
+                  <div className="flex-grow overflow-y-auto no-scrollbar">
                       <p className="text-gray-700 font-futura text-base leading-relaxed mb-6">
                         {member.bio}
                       </p>
@@ -557,23 +557,30 @@ const About = () => {
           </div>
           
           {/* Unsere FAMily */}
-          <div ref={familyRef} className="mb-12 sm:mb-16 py-12 bg-accent-pink/15 rounded-3xl px-6 sm:px-10">
-            <h2 className="text-2xl sm:text-3xl font-bold text-primary mb-4 sm:mb-6 font-glorious">Unsere FAMily</h2>
-            
-            <h3 className="text-xl font-bold text-primary mb-4 font-glorious">Vorstand</h3>
+          <div ref={familyRef} className="mb-12 sm:mb-16 py-12 bg-accent-pink/15 rounded-3xl px-0 sm:px-10">
+            <div className="px-6 sm:px-0">
+              <h2 className="text-2xl sm:text-3xl font-bold text-primary mb-4 sm:mb-6 font-glorious">Unsere FAMily</h2>
+              <h3 className="text-xl font-bold text-primary mb-4 font-glorious">Vorstand</h3>
+            </div>
             {renderTeamMembers(boardMembers)}
             
-            <h3 className="text-xl font-bold text-primary mb-4 font-glorious">Aktive Mitglieder</h3>
+            <div className="px-6 sm:px-0">
+              <h3 className="text-xl font-bold text-primary mb-4 font-glorious">Aktive Mitglieder</h3>
+            </div>
             {renderTeamMembers(activeMembers)}
             
-            <h3 className="text-xl font-bold text-primary mb-4 font-glorious">Unser Team in Rumänien</h3>
+            <div className="px-6 sm:px-0">
+              <h3 className="text-xl font-bold text-primary mb-4 font-glorious">Unser Team in Rumänien</h3>
+            </div>
             {renderTeamMembers(romaniaTeam)}
             
-            <h3 className="text-xl font-bold text-primary mb-4 font-glorious">Unser Team vor Ort auf Lombok</h3>
+            <div className="px-6 sm:px-0">
+              <h3 className="text-xl font-bold text-primary mb-4 font-glorious">Unser Team vor Ort auf Lombok</h3>
+            </div>
             {renderTeamMembers(lombokTeam)}
             
             {/* Tierärzte Team auf Lombok */}
-            <div className="mb-8 sm:mb-12">
+            <div className="mb-8 sm:mb-12 px-6 sm:px-0">
               <h3 className="text-lg sm:text-xl font-semibold text-primary mb-4 sm:mb-6 font-glorious">Unser Tierärzte-Team auf Lombok</h3>
               <div className="bg-white rounded-lg shadow-lg overflow-hidden">
                 <div className="relative">
@@ -631,14 +638,16 @@ const About = () => {
               </div>
             </div>
             
-            <JoinTeamSection />
+            <div className="px-6 sm:px-0">
+              <JoinTeamSection />
             
-            <h3 className="text-xl font-bold text-primary mb-4 font-glorious">Ehrenamtliche Helfer</h3>
-            <p className="text-lg text-gray-700 mb-12 max-w-3xl font-futura">
-              Neben unserem Kernteam unterstützen uns viele ehrenamtliche Helfer bei unserer Arbeit. 
-              Ohne ihr Engagement wäre unsere Arbeit nicht möglich. Wir sind dankbar für jeden, der 
-              sich für unsere Mission einsetzt.
-            </p>
+              <h3 className="text-xl font-bold text-primary mb-4 font-glorious mt-12">Ehrenamtliche Helfer</h3>
+              <p className="text-lg text-gray-700 mb-12 max-w-3xl font-futura">
+                Neben unserem Kernteam unterstützen uns viele ehrenamtliche Helfer bei unserer Arbeit. 
+                Ohne ihr Engagement wäre unsere Arbeit nicht möglich. Wir sind dankbar für jeden, der 
+                sich für unsere Mission einsetzt.
+              </p>
+            </div>
           </div>
         </div>
       </main>
