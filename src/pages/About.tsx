@@ -639,7 +639,7 @@ const About = () => {
             </div>
             
             <div className="px-6 sm:px-0">
-              <JoinTeamSection />
+              <JoinTeamSection contained={false} />
             
               <h3 className="text-xl font-bold text-primary mb-4 font-glorious mt-12">Ehrenamtliche Helfer</h3>
               <p className="text-lg text-gray-700 mb-12 max-w-3xl font-futura">

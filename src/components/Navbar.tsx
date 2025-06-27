@@ -131,7 +131,7 @@ const Navbar = () => {
         </Link>
         
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center space-x-8">
+        <nav className="hidden lg:flex items-center space-x-8">
           <Link
             to="/"
             className={`text-sm font-medium tracking-wide transition-colors duration-200 font-futura ${
@@ -241,7 +241,7 @@ const Navbar = () => {
         </nav>
         
         {/* Mobile Buttons */}
-        <div className="md:hidden flex items-center space-x-2">
+        <div className="lg:hidden flex items-center space-x-2">
           {/* Mobile Donate Button */}
           <Link
             to="/spenden"
@@ -271,7 +271,7 @@ const Navbar = () => {
       
       {/* Mobile Menu */}
       {mobileMenuOpen && (
-        <div className="md:hidden bg-accent-blue shadow-xl absolute top-full left-0 right-0 max-h-[80vh] flex flex-col p-6 overflow-y-auto z-50">
+        <div className="lg:hidden bg-accent-blue shadow-xl absolute top-full left-0 right-0 max-h-[80vh] flex flex-col p-6 overflow-y-auto z-50">
           <Link
             to="/"
             className={`text-base font-medium py-3 font-futura ${

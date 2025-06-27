@@ -75,8 +75,7 @@ const OurDogs = () => {
       ],
       needs: 'Liebe, Sicherheit und ein stabiles Zuhause',
       sponsors: [
-        { id: 1, name: 'Familie Mueller', initials: 'FM', color: '#3498db' },
-        { id: 2, name: 'Anna Schmidt', initials: 'AS', color: '#e74c3c' }
+        { id: 1, name: 'Heike', initials: 'H', color: '#3498db' },
       ],
       maxSponsors: 3
     },
