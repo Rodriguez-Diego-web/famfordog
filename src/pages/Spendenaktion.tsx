@@ -8,6 +8,24 @@ const Spendenaktion = () => {
   useEffect(() => {
     // Scroll to top on component mount
     window.scrollTo(0, 0);
+    
+    // Load FundraisingBox script
+    const script = document.createElement('script');
+    script.type = 'text/javascript';
+    script.src = 'https://secure.fundraisingbox.com/app/widgetJS?cfh=83f5p0ef';
+    script.async = true;
+    
+    const widgetContainer = document.getElementById('fundraising-widget');
+    if (widgetContainer) {
+      widgetContainer.appendChild(script);
+    }
+    
+    return () => {
+      // Cleanup script when component unmounts
+      if (widgetContainer && widgetContainer.contains(script)) {
+        widgetContainer.removeChild(script);
+      }
+    };
   }, []);
 
   return (
@@ -61,39 +79,38 @@ const Spendenaktion = () => {
           
           <div className="container mx-auto px-6 lg:px-12 relative z-10">
             <div className="bg-white rounded-lg shadow-lg overflow-hidden">
-              {/* Placeholder für FundraisingBox iFrame */}
-              <div className="min-h-screen flex items-center justify-center bg-gray-100" style={{ minHeight: 'calc(100vh - 200px)' }}>
-                <div className="text-center p-8">
-                  <Heart size={64} className="text-accent-pink mx-auto mb-6" />
-                  <h2 className="text-2xl font-bold text-primary mb-4 font-glorious">
-                    Spendenaktion kommt bald!
+              {/* FundraisingBox Widget */}
+              <div className="p-6">
+                <div className="text-center mb-6">
+                  <h2 className="text-2xl font-bold text-primary mb-2 font-glorious">
+                    Unterstütze unsere Mission
                   </h2>
-                  <p className="text-gray-700 font-futura mb-6">
-                    Hier wird bald das FundraisingBox Formular für unsere Spendenaktion erscheinen.
+                  <p className="text-gray-700 font-futura">
+                    Deine Spende hilft uns dabei, das Leben von Straßenhunden zu verbessern
                   </p>
-                  <Link 
-                    to="/spenden" 
-                    className="inline-flex items-center bg-accent-pink text-white px-6 py-3 rounded-lg font-medium transition-all duration-300 hover:bg-accent-pink/90 font-futura"
-                  >
-                    <Heart size={18} className="mr-2" />
-                    Zur allgemeinen Spendenseite
-                  </Link>
                 </div>
+                
+                {/* Begin FundraisingBox */}
+                <div id="fundraising-widget" className="fundraising-widget min-h-[500px]">
+                  <noscript>
+                    <div className="text-center p-8 bg-gray-100 rounded-lg">
+                      <p className="mb-4">Bitte Javascript aktivieren, um das Spendenformular zu nutzen.</p>
+                      <a 
+                        target='_blank' 
+                        href='https://www.fundraisingbox.com'
+                        className="inline-block"
+                      >
+                        <img 
+                          style={{border: '0'}} 
+                          src='https://secure.fundraisingbox.com/images/FundraisingBox-Logo-Widget.png' 
+                          alt='FundraisingBox Logo' 
+                        />
+                      </a>
+                    </div>
+                  </noscript>
+                </div>
+                {/* End FundraisingBox */}
               </div>
-              
-              {/* Hier wird später der echte iFrame eingefügt:
-              <iframe 
-                src="[FUNDRAISINGBOX_URL]"
-                title="Fundraising Box Spendenaktion"
-                width="100%"
-                height="2400"
-                className="min-h-screen border-0" 
-                frameBorder="0"
-                allowTransparency={true}
-                allow="payment"
-                style={{ display: 'block', minHeight: 'calc(100vh - 200px)' }}
-              />
-              */}
             </div>
           </div>
         </section>
