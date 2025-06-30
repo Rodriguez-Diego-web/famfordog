@@ -1,14 +1,11 @@
-import { useEffect, useRef } from 'react';
+import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowLeft, Heart } from 'lucide-react';
+import { ArrowLeft } from 'lucide-react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 
 const Spendenaktion = () => {
-  const widgetRef = useRef<HTMLDivElement>(null);
-
   useEffect(() => {
-    // Scroll to top on component mount
     window.scrollTo(0, 0);
   }, []);
 
@@ -75,8 +72,12 @@ const Spendenaktion = () => {
                 </div>
                 
                 {/* Begin FundraisingBox */}
-                <div ref={widgetRef} className="fundraising-widget min-h-[600px] w-full">
-                  {/* Script will be injected here if needed, but primary method is via index.html */}
+                <div className="fundraising-widget min-h-[600px] w-full">
+                  <iframe
+                    src="/fundraising-embed.html"
+                    style={{ width: '100%', height: '600px', border: 'none' }}
+                    title="FundraisingBox Spendenformular"
+                  />
                 </div>
                 {/* End FundraisingBox */}
               </div>
