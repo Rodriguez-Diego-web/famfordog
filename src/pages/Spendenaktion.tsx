@@ -3,19 +3,29 @@ import { Link } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import LegacyHTML from '@/components/LegacyHTML';
 
 const Spendenaktion = () => {
-  const fundraisingBoxHtml = `
-    <!-- Begin FundraisingBox -->
-    <script type='text/javascript' src='https://secure.fundraisingbox.com/app/widgetJS?cfh=83f5p0ef'></script>
-    <noscript>Bitte Javascript aktivieren</noscript>
-    <a target='_blank' href='https://www.fundraisingbox.com'><img border='0' style='border:0!important' src='https://secure.fundraisingbox.com/images/FundraisingBox-Logo-Widget.png' alt='FundraisingBox Logo' /></a>
-    <!-- End FundraisingBox -->
-  `;
-
   useEffect(() => {
     window.scrollTo(0, 0);
+    
+    // Load FundraisingBox script
+    const script = document.createElement('script');
+    script.type = 'text/javascript';
+    script.src = 'https://secure.fundraisingbox.com/app/widgetJS?cfh=83f5p0ef';
+    script.async = true;
+    
+    // Add the script to the specific container
+    const container = document.getElementById('fundraisingbox-widget');
+    if (container) {
+      container.appendChild(script);
+    }
+    
+    // Cleanup function
+    return () => {
+      if (container && script.parentNode) {
+        container.removeChild(script);
+      }
+    };
   }, []);
 
   return (
@@ -80,15 +90,21 @@ const Spendenaktion = () => {
                   </p>
                 </div>
                 
-                {/* Begin FundraisingBox */}
-                <div className="fundraising-widget min-h-[600px] w-full">
-                  <iframe
-                    src="/fundraising-embed.html"
-                    style={{ width: '100%', height: '600px', border: 'none' }}
-                    title="FundraisingBox Spendenformular"
-                  />
+                {/* FundraisingBox Widget Container */}
+                <div id="fundraisingbox-widget" className="min-h-[600px] w-full">
+                  <noscript>
+                    <div className="text-center p-8">
+                      <p className="mb-4">Bitte Javascript aktivieren, um das Spendenformular zu nutzen.</p>
+                      <a target='_blank' href='https://www.fundraisingbox.com' rel='noopener noreferrer'>
+                        <img 
+                          style={{border: '0 !important'}} 
+                          src='https://secure.fundraisingbox.com/images/FundraisingBox-Logo-Widget.png' 
+                          alt='FundraisingBox Logo' 
+                        />
+                      </a>
+                    </div>
+                  </noscript>
                 </div>
-                {/* End FundraisingBox */}
               </div>
             </div>
           </div>
