@@ -34,7 +34,7 @@ const Spendenaktion = () => {
                 className="hidden md:inline-flex items-center text-white/90 hover:text-white transition-colors font-futura"
               >
                 <ArrowLeft size={18} className="mr-2" />
-                Zurück zu Spendenaktionen
+                Spendenaktionen
               </Link>
             </div>
           </div>
@@ -142,7 +142,7 @@ const Spendenaktion = () => {
               className="inline-flex items-center text-primary hover:text-primary/80 transition-colors font-futura"
             >
               <ArrowLeft size={18} className="mr-2" />
-              Zurück zu Spendenaktionen
+              Spendenaktionen
             </Link>
           </div>
         </section>
