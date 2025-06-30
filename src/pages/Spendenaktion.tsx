@@ -12,8 +12,8 @@ const Spendenaktion = () => {
 
   const handleBackToSpendenaktionen = (e: React.MouseEvent) => {
     e.preventDefault();
-    // Navigate to clean URL without parameters
-    navigate('/spendenaktion');
+    // Force a page reload by using window.location instead of navigate
+    window.location.href = '/spendenaktion';
   };
 
   useEffect(() => {
