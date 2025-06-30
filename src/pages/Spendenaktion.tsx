@@ -10,69 +10,6 @@ const Spendenaktion = () => {
   useEffect(() => {
     // Scroll to top on component mount
     window.scrollTo(0, 0);
-    
-    // Load FundraisingBox script using iframe approach
-    const loadFundraisingBox = () => {
-      if (!widgetRef.current) {
-        setTimeout(loadFundraisingBox, 100);
-        return;
-      }
-
-      // Create iframe for the widget
-      const iframe = document.createElement('iframe');
-      iframe.style.width = '100%';
-      iframe.style.height = '600px';
-      iframe.style.border = 'none';
-      iframe.style.overflow = 'hidden';
-      
-      // Clear any existing content
-      widgetRef.current.innerHTML = '';
-      widgetRef.current.appendChild(iframe);
-      
-      // Write the FundraisingBox code directly into the iframe
-      const iframeDoc = iframe.contentDocument || iframe.contentWindow?.document;
-      if (iframeDoc) {
-        iframeDoc.open();
-        iframeDoc.write(`
-          <!DOCTYPE html>
-          <html>
-          <head>
-            <meta charset="utf-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <style>
-              body { 
-                margin: 0; 
-                padding: 20px; 
-                font-family: Arial, sans-serif;
-                background: white;
-              }
-            </style>
-          </head>
-          <body>
-            <!-- Begin FundraisingBox -->
-            <script type='text/javascript' src='https://secure.fundraisingbox.com/app/widgetJS?cfh=83f5p0ef'></script>
-            <noscript>
-              <div style="text-align: center; padding: 20px;">
-                <p>Bitte Javascript aktivieren, um das Spendenformular zu nutzen.</p>
-                <a target='_blank' href='https://www.fundraisingbox.com'>
-                  <img border='0' style='border:0!important' src='https://secure.fundraisingbox.com/images/FundraisingBox-Logo-Widget.png' alt='FundraisingBox Logo' />
-                </a>
-              </div>
-            </noscript>
-            <!-- End FundraisingBox -->
-          </body>
-          </html>
-        `);
-        iframeDoc.close();
-      }
-    };
-    
-    // Delay the script loading to ensure React has fully rendered
-    const timer = setTimeout(loadFundraisingBox, 500);
-    
-    return () => {
-      clearTimeout(timer);
-    };
   }, []);
 
   return (
@@ -139,12 +76,7 @@ const Spendenaktion = () => {
                 
                 {/* Begin FundraisingBox */}
                 <div ref={widgetRef} className="fundraising-widget min-h-[600px] w-full">
-                  <div className="text-center py-8">
-                    <div className="animate-pulse">
-                      <Heart size={48} className="text-accent-pink mx-auto mb-4" />
-                      <p className="text-gray-600 font-futura">Spendenformular wird geladen...</p>
-                    </div>
-                  </div>
+                  {/* Script will be injected here if needed, but primary method is via index.html */}
                 </div>
                 {/* End FundraisingBox */}
               </div>

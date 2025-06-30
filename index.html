@@ -2,6 +2,10 @@
 <html lang="de">
   <head>
     <meta charset="UTF-8" />
+    <meta 
+      http-equiv="Content-Security-Policy"
+      content="script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://secure.fundraisingbox.com; object-src 'none';"
+    />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>FAM for Dogs e.V. - Tierschutz ohne Grenzen</title>
     <meta name="description" content="FAM for Dogs e.V. - Fight and Movement for Dogs. Wir setzen uns für nachhaltigen Tierschutz in Rumänien und Lombok ein." />
@@ -28,5 +32,16 @@
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
+
+    <!-- FundraisingBox Script - loaded synchronously -->
+    <script type='text/javascript' src='https://secure.fundraisingbox.com/app/widgetJS?cfh=83f5p0ef'></script>
+    <noscript>
+      <div style="text-align: center; padding: 20px;">
+        <p>Bitte Javascript aktivieren, um das Spendenformular zu nutzen.</p>
+        <a target='_blank' href='https://www.fundraisingbox.com'>
+          <img style='border:0' src='https://secure.fundraisingbox.com/images/FundraisingBox-Logo-Widget.png' alt='FundraisingBox Logo' />
+        </a>
+      </div>
+    </noscript>
   </body>
 </html>
