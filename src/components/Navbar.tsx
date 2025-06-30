@@ -99,7 +99,7 @@ const Navbar = () => {
     { name: 'Home', path: '/' },
     { name: 'Unsere Hunde', path: '/our-dogs' },
     { name: 'Sei Teil der FAMily!', path: '/join-family' },
-    { name: 'Spendenaktion', path: '/spendenaktion' },
+    { name: 'Spendenaktionen', path: '/spendenaktion' },
     { name: 'Fördermitglied werden', path: '/foerdermitglied-werden', highlight: true },
   ];
   
@@ -107,7 +107,7 @@ const Navbar = () => {
     { name: 'Home', path: '/' },
     { name: 'Unsere Hunde', path: '/our-dogs' },
     { name: 'Sei Teil der FAMily!', path: '/join-family' },
-    { name: 'Spendenaktion', path: '/spendenaktion' },
+    { name: 'Spendenaktionen', path: '/spendenaktion' },
     { name: 'Fördermitglied werden', path: '/foerdermitglied-werden', highlight: true },
   ];
 
