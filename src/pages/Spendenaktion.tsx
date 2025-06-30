@@ -7,25 +7,6 @@ import Footer from '@/components/Footer';
 const Spendenaktion = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
-    
-    // Load FundraisingBox script
-    const script = document.createElement('script');
-    script.type = 'text/javascript';
-    script.src = 'https://secure.fundraisingbox.com/app/widgetJS?cfh=83f5p0ef';
-    script.async = true;
-    
-    // Add the script to the specific container
-    const container = document.getElementById('fundraisingbox-widget');
-    if (container) {
-      container.appendChild(script);
-    }
-    
-    // Cleanup function
-    return () => {
-      if (container && script.parentNode) {
-        container.removeChild(script);
-      }
-    };
   }, []);
 
   return (
@@ -90,21 +71,14 @@ const Spendenaktion = () => {
                   </p>
                 </div>
                 
-                {/* FundraisingBox Widget Container */}
-                <div id="fundraisingbox-widget" className="min-h-[600px] w-full">
-                  <noscript>
-                    <div className="text-center p-8">
-                      <p className="mb-4">Bitte Javascript aktivieren, um das Spendenformular zu nutzen.</p>
-                      <a target='_blank' href='https://www.fundraisingbox.com' rel='noopener noreferrer'>
-                        <img 
-                          style={{border: '0 !important'}} 
-                          src='https://secure.fundraisingbox.com/images/FundraisingBox-Logo-Widget.png' 
-                          alt='FundraisingBox Logo' 
-                        />
-                      </a>
-                    </div>
-                  </noscript>
-                </div>
+                {/* FundraisingBox Widget */}
+                <iframe
+                  src="/fundraising-embed.html"
+                  width="100%"
+                  height="700"
+                  style={{ border: 'none', minHeight: '700px' }}
+                  title="FundraisingBox Spendenformular"
+                />
               </div>
             </div>
           </div>
