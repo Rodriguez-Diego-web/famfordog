@@ -1,13 +1,20 @@
 import { useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 
 const Spendenaktion = () => {
   const location = useLocation();
+  const navigate = useNavigate();
   // Check if we have URL parameters (means we're on a specific campaign)
   const hasUrlParams = location.search || location.hash;
+
+  const handleBackToSpendenaktionen = (e: React.MouseEvent) => {
+    e.preventDefault();
+    // Navigate to clean URL without parameters
+    navigate('/spendenaktion');
+  };
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -32,6 +39,7 @@ const Spendenaktion = () => {
               <Link 
                 to="/spendenaktion" 
                 className="hidden md:inline-flex items-center text-white/90 hover:text-white transition-colors font-futura"
+                onClick={hasUrlParams ? handleBackToSpendenaktionen : undefined}
               >
                 <ArrowLeft size={18} className="mr-2" />
                 Spendenaktionen
@@ -140,6 +148,7 @@ const Spendenaktion = () => {
             <Link 
               to="/spendenaktion" 
               className="inline-flex items-center text-primary hover:text-primary/80 transition-colors font-futura"
+              onClick={hasUrlParams ? handleBackToSpendenaktionen : undefined}
             >
               <ArrowLeft size={18} className="mr-2" />
               Spendenaktionen
