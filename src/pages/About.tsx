@@ -559,23 +559,23 @@ const About = () => {
           {/* Unsere FAMily */}
           <div ref={familyRef} className="mb-12 sm:mb-16 py-12 bg-accent-pink/15 rounded-3xl px-0 sm:px-10">
             <div className="px-6 sm:px-0">
-              <h2 className="text-2xl sm:text-3xl font-bold text-primary mb-4 sm:mb-6 font-glorious">Unsere FAMily</h2>
-              <h3 className="text-xl font-bold text-primary mb-4 font-glorious">Vorstand</h3>
+            <h2 className="text-2xl sm:text-3xl font-bold text-primary mb-4 sm:mb-6 font-glorious">Unsere FAMily</h2>
+            <h3 className="text-xl font-bold text-primary mb-4 font-glorious">Vorstand</h3>
             </div>
             {renderTeamMembers(boardMembers)}
             
             <div className="px-6 sm:px-0">
-              <h3 className="text-xl font-bold text-primary mb-4 font-glorious">Aktive Mitglieder</h3>
+            <h3 className="text-xl font-bold text-primary mb-4 font-glorious">Aktive Mitglieder</h3>
             </div>
             {renderTeamMembers(activeMembers)}
             
             <div className="px-6 sm:px-0">
-              <h3 className="text-xl font-bold text-primary mb-4 font-glorious">Unser Team in Rumänien</h3>
+            <h3 className="text-xl font-bold text-primary mb-4 font-glorious">Unser Team in Rumänien</h3>
             </div>
             {renderTeamMembers(romaniaTeam)}
             
             <div className="px-6 sm:px-0">
-              <h3 className="text-xl font-bold text-primary mb-4 font-glorious">Unser Team vor Ort auf Lombok</h3>
+            <h3 className="text-xl font-bold text-primary mb-4 font-glorious">Unser Team vor Ort auf Lombok</h3>
             </div>
             {renderTeamMembers(lombokTeam)}
             
@@ -642,11 +642,11 @@ const About = () => {
               <JoinTeamSection contained={false} />
             
               <h3 className="text-xl font-bold text-primary mb-4 font-glorious mt-12">Ehrenamtliche Helfer</h3>
-              <p className="text-lg text-gray-700 mb-12 max-w-3xl font-futura">
-                Neben unserem Kernteam unterstützen uns viele ehrenamtliche Helfer bei unserer Arbeit. 
-                Ohne ihr Engagement wäre unsere Arbeit nicht möglich. Wir sind dankbar für jeden, der 
-                sich für unsere Mission einsetzt.
-              </p>
+            <p className="text-lg text-gray-700 mb-12 max-w-3xl font-futura">
+              Neben unserem Kernteam unterstützen uns viele ehrenamtliche Helfer bei unserer Arbeit. 
+              Ohne ihr Engagement wäre unsere Arbeit nicht möglich. Wir sind dankbar für jeden, der 
+              sich für unsere Mission einsetzt.
+            </p>
             </div>
           </div>
         </div>

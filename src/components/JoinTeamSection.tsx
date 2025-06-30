@@ -30,10 +30,10 @@ const JoinTeamSection = ({ contained = true }: JoinTeamSectionProps) => {
         <div className="bg-accent-green/10 backdrop-blur-sm rounded-xl p-6 text-center border border-accent-green/20">
           <div className="inline-flex items-center justify-center w-12 h-12 bg-accent-green/20 rounded-full mb-3">
             <Heart className="w-6 h-6 text-accent-green" />
-          </div>
+            </div>
           <h3 className="text-white font-semibold mb-2 font-futura">Spenden</h3>
           <p className="text-white/80 text-sm font-futura">Finanziere Kastrationen und Rettungen</p>
-        </div>
+            </div>
         
         <div className="bg-accent-pink/10 backdrop-blur-sm rounded-xl p-6 text-center border border-accent-pink/20">
           <div className="inline-flex items-center justify-center w-12 h-12 bg-accent-pink/20 rounded-full mb-3">
@@ -61,9 +61,9 @@ const JoinTeamSection = ({ contained = true }: JoinTeamSectionProps) => {
       <section className="py-16 bg-secondary/10">
         <div className="container mx-auto px-6">
           {content}
-        </div>
-      </section>
-    );
+      </div>
+    </section>
+  );
   }
 
   return content;
