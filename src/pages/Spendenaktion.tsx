@@ -1,10 +1,14 @@
 import { useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 
 const Spendenaktion = () => {
+  const location = useLocation();
+  // Check if we have URL parameters (means we're on a specific campaign)
+  const hasUrlParams = location.search || location.hash;
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -71,49 +75,51 @@ const Spendenaktion = () => {
                   </p>
                 </div>
                 
-                {/* New Section */}
-                <div className="bg-gradient-to-r from-accent-pink/10 to-accent-blue/10 rounded-lg p-8 mb-8">
-                  <h3 className="text-2xl font-bold text-primary mb-4 font-glorious">
-                    Dein Anlass – Deine Spendenaktion
-                  </h3>
-                  
-                  <div className="space-y-4 text-gray-700 font-futura">
-                    <p className="font-semibold text-lg">
-                      Gemeinsam Gutes tun für Hunde in Lombok (Indonesien) und Baia Mare (Rumänien)
-                    </p>
+                {/* New Section - Only show when not on a specific campaign */}
+                {!hasUrlParams && (
+                  <div className="bg-gradient-to-r from-accent-pink/10 to-accent-blue/10 rounded-lg p-8 mb-8">
+                    <h3 className="text-2xl font-bold text-primary mb-4 font-glorious">
+                      Dein Anlass – Deine Spendenaktion
+                    </h3>
                     
-                    <p>
-                      Ob Geburtstag, Hochzeit, Jubiläum oder Weihnachtszeit – nutze deinen persönlichen Anlass, um etwas zu bewirken.
-                      Wünsche dir Spenden statt Geschenke und sammle gemeinsam mit Familie, Freund:innen oder Kolleg:innen für unsere Hunde.
-                    </p>
-                    
-                    <div className="bg-white rounded-lg p-6 my-6">
-                      <p className="text-lg mb-4">💚 <span className="font-bold">So einfach geht's:</span></p>
-                      <ol className="list-none space-y-3">
-                        <li className="flex items-center">
-                          <span className="bg-primary text-white rounded-full w-8 h-8 flex items-center justify-center mr-3 flex-shrink-0">1</span>
-                          <span>Spendenaktion starten</span>
-                        </li>
-                        <li className="flex items-center">
-                          <span className="bg-primary text-white rounded-full w-8 h-8 flex items-center justify-center mr-3 flex-shrink-0">2</span>
-                          <span>Link zur Spendenaktion teilen</span>
-                        </li>
-                        <li className="flex items-center">
-                          <span className="bg-primary text-white rounded-full w-8 h-8 flex items-center justify-center mr-3 flex-shrink-0">3</span>
-                          <span>Spenden sammeln für den guten Zweck</span>
-                        </li>
-                      </ol>
+                    <div className="space-y-4 text-gray-700 font-futura">
+                      <p className="font-semibold text-lg">
+                        Gemeinsam Gutes tun für Hunde in Lombok (Indonesien) und Baia Mare (Rumänien)
+                      </p>
+                      
+                      <p>
+                        Ob Geburtstag, Hochzeit, Jubiläum oder Weihnachtszeit – nutze deinen persönlichen Anlass, um etwas zu bewirken.
+                        Wünsche dir Spenden statt Geschenke und sammle gemeinsam mit Familie, Freund:innen oder Kolleg:innen für unsere Hunde.
+                      </p>
+                      
+                      <div className="bg-white rounded-lg p-6 my-6">
+                        <p className="text-lg mb-4">💚 <span className="font-bold">So einfach geht's:</span></p>
+                        <ol className="list-none space-y-3">
+                          <li className="flex items-center">
+                            <span className="bg-primary text-white rounded-full w-8 h-8 flex items-center justify-center mr-3 flex-shrink-0">1</span>
+                            <span>Spendenaktion starten</span>
+                          </li>
+                          <li className="flex items-center">
+                            <span className="bg-primary text-white rounded-full w-8 h-8 flex items-center justify-center mr-3 flex-shrink-0">2</span>
+                            <span>Link zur Spendenaktion teilen</span>
+                          </li>
+                          <li className="flex items-center">
+                            <span className="bg-primary text-white rounded-full w-8 h-8 flex items-center justify-center mr-3 flex-shrink-0">3</span>
+                            <span>Spenden sammeln für den guten Zweck</span>
+                          </li>
+                        </ol>
+                      </div>
+                      
+                      <p>
+                        Mit deiner Unterstützung ermöglichen wir lebenswichtige Kastrationen, medizinische Versorgung, Futter und Schutz für Straßenhunde in Not.
+                      </p>
+                      
+                      <p className="text-xl font-bold text-primary text-center pt-4">
+                        Mach deinen Anlass zu einem Moment der Hoffnung!
+                      </p>
                     </div>
-                    
-                    <p>
-                      Mit deiner Unterstützung ermöglichen wir lebenswichtige Kastrationen, medizinische Versorgung, Futter und Schutz für Straßenhunde in Not.
-                    </p>
-                    
-                    <p className="text-xl font-bold text-primary text-center pt-4">
-                      Mach deinen Anlass zu einem Moment der Hoffnung!
-                    </p>
                   </div>
-                </div>
+                )}
                 
                 {/* FundraisingBox Widget */}
                 <iframe
