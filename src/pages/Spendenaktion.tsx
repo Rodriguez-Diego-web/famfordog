@@ -3,8 +3,17 @@ import { Link } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import LegacyHTML from '@/components/LegacyHTML';
 
 const Spendenaktion = () => {
+  const fundraisingBoxHtml = `
+    <!-- Begin FundraisingBox -->
+    <script type='text/javascript' src='https://secure.fundraisingbox.com/app/widgetJS?cfh=83f5p0ef'></script>
+    <noscript>Bitte Javascript aktivieren</noscript>
+    <a target='_blank' href='https://www.fundraisingbox.com'><img border='0' style='border:0!important' src='https://secure.fundraisingbox.com/images/FundraisingBox-Logo-Widget.png' alt='FundraisingBox Logo' /></a>
+    <!-- End FundraisingBox -->
+  `;
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
