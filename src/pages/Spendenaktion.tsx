@@ -23,7 +23,7 @@ const Spendenaktion = () => {
             <div className="flex items-center justify-between">
               <div>
                 <h1 className="text-3xl md:text-4xl font-bold text-white mb-2 font-glorious">
-                  Spendenaktion
+                  Spendenaktionen
                 </h1>
                 <p className="text-white/90 font-futura">
                   Hilf uns dabei, das Leben der Straßentiere zu verbessern
