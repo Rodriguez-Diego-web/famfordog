@@ -26,11 +26,11 @@ const Spendenaktion = () => {
                 </p>
               </div>
               <Link 
-                to="/" 
+                to="/spendenaktion" 
                 className="hidden md:inline-flex items-center text-white/90 hover:text-white transition-colors font-futura"
               >
                 <ArrowLeft size={18} className="mr-2" />
-                Zurück zur Startseite
+                Zurück zu Spendenaktionen
               </Link>
             </div>
           </div>
@@ -132,11 +132,11 @@ const Spendenaktion = () => {
         <section className="md:hidden bg-white py-4 border-t">
           <div className="container mx-auto px-6">
             <Link 
-              to="/" 
+              to="/spendenaktion" 
               className="inline-flex items-center text-primary hover:text-primary/80 transition-colors font-futura"
             >
               <ArrowLeft size={18} className="mr-2" />
-              Zurück zur Startseite
+              Zurück zu Spendenaktionen
             </Link>
           </div>
         </section>
