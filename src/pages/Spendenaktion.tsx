@@ -130,7 +130,7 @@ const Spendenaktion = () => {
                 )}
                 
                 {/* FundraisingBox Widgets */}
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <div className="space-y-6">
                   {/* Durch Privat Widget */}
                   <div className="bg-gray-50 rounded-lg p-4">
                     <iframe
