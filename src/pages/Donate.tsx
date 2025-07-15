@@ -30,7 +30,7 @@ const Donate = () => {
       
       {/* Erhöhter Abstand zum oberen Rand - pt-32 statt pt-16 */}
       <main className="flex-grow pt-32 bg-gray-50">
-        <div className="container mx-auto px-4 pb-6">
+        <div className="container mx-auto px-4 pb-2">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-10">
               <h1 className="text-3xl font-bold text-primary mb-4 font-glorious">Unterstütze unsere Mission</h1>
@@ -106,7 +106,7 @@ const Donate = () => {
                     Spende schnell und sicher über PayPal
                   </p>
                   <a 
-                    href="https://www.paypal.com/donate/?hosted_button_id=YOUR_PAYPAL_BUTTON_ID"
+                    href="https://www.paypal.com/donate/?hosted_button_id=3ELJCXP5LQDTG&fbclid=PAZXh0bgNhZW0CMTEAAacL5dv8tJ8rf1AmdkoJNcBdI2Vg4YsFd43OKwLPAR-2Cc0smBWssBVFISdssw_aem_MHs6qBhUCeSxrCWgEqDGtw"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="w-full bg-[#0070ba] hover:bg-[#005ba3] text-white font-medium py-3 px-6 rounded-lg transition-colors duration-200 flex items-center justify-center font-futura"
@@ -126,7 +126,7 @@ const Donate = () => {
               </div>
             </div>
             
-            <div className="flex flex-col md:flex-row justify-center text-xs md:text-sm text-gray-600 font-futura md:space-x-4 space-y-2 md:space-y-0 mt-8">
+            <div className="flex flex-col md:flex-row justify-center text-xs md:text-sm text-gray-600 font-futura md:space-x-4 space-y-2 md:space-y-0 mt-4">
               <div className="flex items-center justify-center">
                 <span className="font-medium">Bei Fragen:</span> 
                 <a href="mailto:info@famfordogs.com" className="text-primary underline hover:text-accent-blue ml-1">info@famfordogs.com</a>
