@@ -12,12 +12,21 @@
       .header-title {
         font-family: 'Inter', sans-serif;
         font-weight: 700;
-        font-size: 2rem;
+        font-size: 1.5rem;
         color: #004b4b;
         text-align: center;
-        margin: 20px 0;
-        padding: 15px 20px;
+        margin: 15px 0;
+        padding: 10px 15px;
         position: relative;
+        line-height: 1.2;
+      }
+      
+      @media (min-width: 768px) {
+        .header-title {
+          font-size: 2rem;
+          margin: 20px 0;
+          padding: 15px 20px;
+        }
       }
       
       .header-title::before {
@@ -35,11 +44,19 @@
       .header-subtitle {
         font-family: 'Inter', sans-serif;
         font-weight: 500;
-        font-size: 0.875rem;
+        font-size: 0.75rem;
         color: #6b7280;
         text-align: center;
-        margin: -10px 0 25px 0;
+        margin: -5px 0 15px 0;
         letter-spacing: 0.5px;
+        line-height: 1.3;
+      }
+      
+      @media (min-width: 768px) {
+        .header-subtitle {
+          font-size: 0.875rem;
+          margin: -10px 0 25px 0;
+        }
       }
       
       .fundraising-logo {
