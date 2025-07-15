@@ -1,5 +1,3 @@
-import matter from 'gray-matter';
-
 // Typen für CMS-Inhalte
 export interface Dog {
   id: string;
@@ -18,15 +16,12 @@ export interface Dog {
   history: string;
   medicalInfo: string;
   suitableFor: string[];
-  notSuitableFor?: string[];
-  sponsors: Array<{
-    name: string;
-    initials: string;
-    color: string;
-  }>;
-  maxSponsors: number;
+  sponsors: string[];
+  adoptionStatus: string;
+  featured: boolean;
+  category: string;
+  order: number;
   published: boolean;
-  content: string;
 }
 
 export interface TeamMember {
@@ -36,11 +31,7 @@ export interface TeamMember {
   bio: string;
   image: string;
   category: string;
-  socialMedia?: {
-    website?: string;
-    instagram?: string;
-    email?: string;
-  };
+  socialMedia: Record<string, string>;
   order: number;
   published: boolean;
 }
@@ -50,11 +41,10 @@ export interface Project {
   title: string;
   description: string;
   image: string;
-  color: string;
-  path: string;
+  status: string;
+  category: string;
   order: number;
   published: boolean;
-  content: string;
 }
 
 export interface FAQ {
@@ -66,9 +56,96 @@ export interface FAQ {
   published: boolean;
 }
 
+// Einfacher Front Matter Parser für Browser
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+function parseFrontMatter(content: string): { data: Record<string, any>; content: string } {
+  const lines = content.split('\n');
+  
+  // Prüfe ob es Front Matter gibt
+  if (lines[0].trim() !== '---') {
+    return { data: {}, content };
+  }
+  
+  // Finde das Ende des Front Matter
+  const frontMatterEnd = lines.findIndex((line, index) => 
+    index > 0 && line.trim() === '---'
+  );
+  
+  if (frontMatterEnd === -1) {
+    return { data: {}, content };
+  }
+  
+  // Parse Front Matter
+  const frontMatterLines = lines.slice(1, frontMatterEnd);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const data: Record<string, any> = {};
+  
+  let currentKey = '';
+  let inArray = false;
+  let inMultilineString = false;
+  
+  for (const line of frontMatterLines) {
+    const trimmedLine = line.trim();
+    
+    if (trimmedLine === '') continue;
+    
+    // Handle arrays
+    if (trimmedLine.startsWith('- ')) {
+      if (inArray) {
+        if (Array.isArray(data[currentKey])) {
+          data[currentKey].push(trimmedLine.substring(2).trim().replace(/"/g, ''));
+        }
+      }
+      continue;
+    }
+    
+    // Handle key-value pairs
+    if (trimmedLine.includes(':')) {
+      const colonIndex = trimmedLine.indexOf(':');
+      const key = trimmedLine.substring(0, colonIndex).trim();
+      const value = trimmedLine.substring(colonIndex + 1).trim();
+      
+      if (key && value !== '') {
+        currentKey = key;
+        inArray = false;
+        inMultilineString = false;
+        
+        // Handle different value types
+        if (value === 'true') {
+          data[key] = true;
+        } else if (value === 'false') {
+          data[key] = false;
+        } else if (!isNaN(Number(value)) && value !== '') {
+          data[key] = Number(value);
+        } else if (value.startsWith('[') && value.endsWith(']')) {
+          // Handle arrays in one line
+          const arrayContent = value.slice(1, -1);
+          data[key] = arrayContent.split(',').map(item => item.trim().replace(/"/g, ''));
+        } else if (value.startsWith('"') && value.endsWith('"')) {
+          data[key] = value.slice(1, -1);
+        } else if (value === '' || value === '[]') {
+          data[key] = [];
+          inArray = true;
+        } else {
+          data[key] = value.replace(/"/g, '');
+        }
+      } else if (key && value === '') {
+        currentKey = key;
+        inArray = true;
+        data[key] = [];
+      }
+    }
+  }
+  
+  // Extrahiere den Inhalt nach dem Front Matter
+  const remainingContent = lines.slice(frontMatterEnd + 1).join('\n').trim();
+  
+  return { data, content: remainingContent };
+}
+
 // Funktion zum Parsen von Markdown-Dateien
 function parseMarkdownFile(content: string, id: string): { id: string; content: string; [key: string]: unknown } {
-  const { data, content: markdownContent } = matter(content);
+  const { data, content: markdownContent } = parseFrontMatter(content);
   return {
     id,
     ...data,
@@ -146,7 +223,7 @@ export async function loadTeamMembers(): Promise<TeamMember[]> {
 // Hilfsfunktion zum Parsen der Team-Mitglieder Markdown-Dateien
 function parseTeamMemberMarkdown(content: string, filename: string): TeamMember | null {
   try {
-    const { data, content: markdownContent } = matter(content);
+    const { data, content: markdownContent } = parseFrontMatter(content);
     
     // ID aus Dateiname generieren
     const id = filename.replace('.md', '');
