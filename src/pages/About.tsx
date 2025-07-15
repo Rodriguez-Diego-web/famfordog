@@ -5,6 +5,7 @@ import Footer from '@/components/Footer';
 import JoinTeamSection from '@/components/JoinTeamSection';
 import { PawPrint, Map, Heart, Scissors, Utensils, Stethoscope, Play, Instagram, Linkedin, Mail, X, ChevronLeft, ChevronRight, Globe } from 'lucide-react';
 import SEO from '@/components/SEO';
+import { loadTeamMembersByCategory, type TeamMember } from '@/lib/cms';
 
 const About = () => {
   const location = useLocation();
@@ -15,6 +16,43 @@ const About = () => {
   const locationsRef = useRef(null);
   const historyRef = useRef(null);
   const familyRef = useRef(null);
+  
+  // State für Team-Daten
+  const [boardMembers, setBoardMembers] = useState<TeamMember[]>([]);
+  const [activeMembers, setActiveMembers] = useState<TeamMember[]>([]);
+  const [lombokTeam, setLombokTeam] = useState<TeamMember[]>([]);
+  const [romaniaTeam, setRomaniaTeam] = useState<TeamMember[]>([]);
+  const [vetTeam, setVetTeam] = useState<TeamMember[]>([]);
+  const [teamLoading, setTeamLoading] = useState(true);
+  const [imageErrors, setImageErrors] = useState<Record<string, boolean>>({});
+  const [expandedCard, setExpandedCard] = useState<string | null>(null);
+  
+  // Lade Team-Daten
+  useEffect(() => {
+    const loadTeamData = async () => {
+      try {
+        const [board, active, lombok, romania, vets] = await Promise.all([
+          loadTeamMembersByCategory('Vorstand'),
+          loadTeamMembersByCategory('Aktive Mitglieder'),
+          loadTeamMembersByCategory('Lombok Team'),
+          loadTeamMembersByCategory('Rumänien Team'),
+          loadTeamMembersByCategory('Tierärzte')
+        ]);
+
+        setBoardMembers(board);
+        setActiveMembers(active);
+        setLombokTeam(lombok);
+        setRomaniaTeam(romania);
+        setVetTeam(vets);
+      } catch (error) {
+        console.error('Fehler beim Laden der Team-Daten:', error);
+      } finally {
+        setTeamLoading(false);
+      }
+    };
+
+    loadTeamData();
+  }, []);
   
   useEffect(() => {
     // Scroll to top on component mount
@@ -67,10 +105,7 @@ const About = () => {
   // For video modal
   const [isVideoPlaying, setIsVideoPlaying] = useState(false);
 
-  // State for image loading errors
-  const [imageErrors, setImageErrors] = useState<Record<string, boolean>>({});
-  const [expandedCard, setExpandedCard] = useState<string | null>(null);
-
+  // Bereits deklarierte State-Variablen werden über useEffect geladen
   const handleImageError = (key: string) => {
     setImageErrors(prev => ({ ...prev, [key]: true }));
   };
@@ -78,137 +113,6 @@ const About = () => {
   const toggleCardExpansion = (cardId: string) => {
     setExpandedCard(prevId => (prevId === cardId ? null : cardId));
   };
-
-  // Team members data
-  const boardMembers = [
-    {
-      name: "Fiona & Mieke",
-      role: "Gründerinnen & Vorsitzende",
-      bio: "Mieke und Fiona bilden gemeinsam die Doppelspitze des Vereins FAM for Dogs e.V. Beide engagieren sich schon seit vielen Jahren im Tierschutz – seit 2019 setzen sie sich als Team aktiv für Hunde in Not ein. Der Auslöser für ihr gemeinsames Engagement war eine Reise nach Rumänien – ein prägendes Erlebnis für die beiden, das den Wunsch noch mehr zu helfen verstärkt hat. Mieke, von Beruf Rechsanwältin, gründete zunächst den Verein Dogs of Lombok e.V. während eines mehrmonatigen beruflichen Aufenthalts in Indonesien im Jahr 2023. Heute wird der Verein unter dem Namen FAM for Dogs e.V. weitergeführt. Fiona ist Hundephysiotherapeutin und bringt ihre fachliche Expertise in die Betreuung geretteter Hunde ein. Auch ihre eigenen Hunde spiegeln ihre Tierschutzmission wider: Miekes Hund Jack lebte früher auf den Straßen Kuwaits, während Fiona drei Hunde aus Rumänien adoptiert hat – darunter einen mit Handicap. Darüber hinaus haben beide über die Jahre hinweg zahlreiche Pflegehunde bei sich aufgenommen, versorgt und auf ein neues Leben vorbereitet.",
-      image: "images/team/fiona.jpeg"
-    },
-    {
-      name: "Kira",
-      role: "Vorstandsmitglied",
-      bio: "Kira ist neben ihrer Arbeit als Autorin, Dozentin und Podcast-Host auch leidenschaftliche Hundemama ihres rumänischen Rüden Homie. Als er 2020 Teil ihrer Familie wurde, war das der ausschlaggebende Punkt, sich mehr im Tierschutz zu engagieren. Erst als stille Spenderin und jetzt als Vorstandsmitglied beim FAM for Dogs e.V.. Bestärkt wurde ihre Entscheidung durch die gemeinsame Reise mit Fiona nach Rumänien im Frühjahr 2025. Das Leid der Hunde hautnah mitzuerleben, die Machtlosigkeit zu spüren und die finanziellen Engpässe der helfenden Menschen vor Ort zu sehen, hat Kira dazu bewegt, von der inaktiven in die atkive Rolle zu schlüpfen. Kira ist unsere Orga-Queen und kümmert sich unter anderem um unsere Mitglieder und Sponsor:innen. Ihr wollt Teil unserer FAMily werden? Dann meldet euch bei Kira info@famfordogs.com",
-      image: "images/team/Kira.jpeg"
-    },
-    {
-      name: "Chrissy",
-      role: "Vorstandsmitglied",
-      bio: "Chrissy bringt mit ihrem Organisationstalent Struktur in jedes Projekt – ohne sie läuft einfach nichts. Sie ist vielseitig einsetzbar und engagiert sich in den Bereichen, in denen Unterstützung gebraucht wird. Dabei bleibt sie stets ruhig und findet immer Lösungen. Gute Planung und Empathie sind für sie selbstverständlich. Schon von klein auf liebt Chrissy Tiere und setzt sich mit großer Leidenschaft für sie ein. Ob es um Fundtiere in Deutschland oder Straßenhunde im Ausland geht, ihr Engagement kennt keine Grenzen. Nach dem plötzlichen Verlust ihres Hundes verließ sie Frankfurt für eine Asienreise. Dort erschütterte sie das Tierleid, besonders auf Lombok, zutiefst. Diese Erfahrungen stärkten ihren unermüdlichen Einsatz für hilfsbedürftige Tiere",
-      image: "images/team/chrissy.jpeg"
-    },
-    {
-      name: "Lara",
-      role: "Schatzmeisterin",
-      bio: "Lara ist Vorstandsmitglied bei FAM for Dogs e.V. und übernimmt als Schatzmeisterin und Head of Finance die finanzielle Verwaltung des Vereins. Mit ihrem organisatorischen Geschick und einem ausgeprägten Sinn für Zahlen sorgt sie dafür, dass alle Projekte solide finanziert und nachhaltig umgesetzt werden können. Durch ihre enge Freundschaft mit Fiona hat sie seit Jahren Berührungspunkte mit dem Tierschutz, auch wenn Hunde selbst bisher nicht ihre größte Leidenschaft waren. Gerade dieser Außenblick macht sie zu einer wertvollen Ergänzung im Team: Sie behält den Überblick über die Finanzen, sorgt für Struktur und stellt sicher, dass die Mittel gezielt dort ankommen, wo sie gebraucht werden – für den Schutz und die Versorgung von Straßentieren in Indonesien und Rumänien.",
-      image: "Lara/Lara.jpeg"
-    }
-  ];
-
-  const activeMembers = [
-    {
-      name: "Hanna",
-      role: "Designerin",
-      bio: "Mit langjähriger Erfahrung in der Werbebranche sorgt Hanna für die visuelle Identität von FAM for Dogs. Ihr Auge fürs Detail und Gespür für Gestaltung trägt unsere Botschaft und die wichtige Arbeit für den Tierschutz in die Welt.",
-      image: "images/team/Hanna.jpeg"
-    },
-    {
-      name: "Diego",
-      role: "Developer & Designer",
-      bio: "Als leidenschaftlicher Programmierer und Hundeliebhaber vereint Diego seine technischen Fähigkeiten mit seiner Liebe zu Vierbeinern. Er ist verantwortlich für das komplette Design und den gesamten Aufbau dieser Website – von der visuellen Gestaltung bis zur technischen Umsetzung. Mit seinem Auge für Details und modernem Webdesign sorgt er dafür, dass unsere digitale Präsenz nicht nur reibungslos funktioniert, sondern auch ansprechend und benutzerfreundlich ist. In seiner Freizeit verbringt er gerne Zeit mit seinem Hund Lucky und engagiert sich für die Rechte und das Wohlbefinden von Hunden.",
-      image: "Diego/diego.JPG"
-    },
-    {
-      name: "Daniel",
-      role: "Fundraising & Spenderbetreuung",
-      bio: "Daniel ist bei FAM for Dogs e.V. für das Fundraising und die Betreuung unserer Spender:innen verantwortlich. Mit seiner langjährigen Erfahrung aus dem Tierschutzbereich bringt er nicht nur das nötige Know-how, sondern auch viel Herzblut für nachhaltige Unterstützung mit. Bei FAM kümmert er sich darum, dass aus Interesse echte Hilfe wird. Seine Stärke liegt dabei nicht nur in der Konzeption von Kampagnen, sondern auch im persönlichen Kontakt: Daniel versteht es, Menschen für unsere Mission zu begeistern und ihnen zu zeigen, wie wertvoll ihre Hilfe ist.",
-      image: "Daniel/Daniel.png"
-    },
-    {
-      name: "Vanessa",
-      role: "Aktives Mitglied",
-      bio: "Vanessa hat in ihrem Beruf als Personalreferentin viel mit Menschen zu tun. Ihr Herz für Tiere schlug dabei aber schon immer höher. Seit 2019 engagiert sie sich bereits ehrenamtlich in einem Hamburger Tierheim. 2024 kam dann ihre kleine Hündin Louise über den Tierschutz aus Kroatien zu ihr. Seitdem wuchs ihr Bedürfnis, sich auch für den ausländischen Tierschutz zu engagieren.",
-      image: "Vanessa/1.jpg"
-    },
-    {
-      name: "Daze",
-      role: "Aktives Mitglied",
-      bio: "Mehr als 40 Rettungsfälle, mehr als 160 Hunde in unserem Shelter, unzählige Hunde in unserer Feeding-Runde und dir fehlt ein Name? Frag Daze! Sie hat sie alle auf dem Schirm. Jeder Hund, der noch kastriert werden muss, der verletzt ist, der plötzlich sein Futter verweigert, der plötzlich nicht auftaucht – sie bemerkt ihn und organisiert die nötige Hilfe. Ohne sie wären wir verloren. Außerdem zaubert sie aus den schlechtesten Videos, die wir aus Indonesien bekommen beeindruckende Instagram-Stories. Sie ist unersetzlich wenn es darum geht, die Hunde sichtbar zu machen.",
-      image: "Daze/WhatsApp Image 2025-03-26 at 15.08.17.jpeg"
-    },
-    
-  ];
-
-  const lombokTeam = [
-    {
-      name: "Dhany",
-      role: "Team Lombok",
-      bio: "Unser Engel von Lombok. Dhany lebt für die Tiere und setzt sich mit unermüdlicher Hingabe für deren Wohl ein. Als der alte Shelter auf Lombok aufgrund von Drohungen aus der Nachbarschaft schließen musste, zögerte sie nicht: Kurzerhand wurde ihr eigenes Zuhause zum neuen Shelter. Wohnzimmer, Garten, Küche, Schlafzimmer, Wintergarten, alle Räume werden nun von Hunden und Katzen und auch von Dhany bewohnt. 160 Hunde werden von Dhany und ihrer Freundin Rey täglich versorgt. Ob Dhany jemals schläft, weiß niemand. Denn jeder Notfall, jede Rettung, jeder Tierarztbesuch, jeder Kastrationstag wird von Dhany persönlich organisiert. Sie ist nicht nur eine Tierschützerin, sondern ein wahrer Engel auf Erden.",
-      image: "Dhany/profile.jpg"
-    },
-    {
-      name: "Riani",
-      role: "Team Lombok",
-      bio: "Riani ist die Frau, die sich mit voller Hingabe und Herzblut für die Straßenhunde auf Lombok engagiert. Jeden Tag sorgt sie für die Fütterungsrunden und fährt mit ihrem Roller zu all den Orten, an denen die Hunde bereits gespannt auf sie warten. Im Laufe der Zeit hat sie jedes Tier gut kennengelernt, doch ständig kommen neue Hunde hinzu. Sie kümmert sich auch um verletzte Tiere, die dringend Hilfe benötigen. Riani versorgt sie mit Medikamenten, oder bringt sie zum Tierarzt. Ihre unermüdliche Fürsorge und ihr Engagement für diese Hunde ist wirklich bewundernswert.",
-      image: "images/team/Riani.jpeg"
-    },
-    {
-      name: "Rita",
-      role: "Team Lombok",
-      bio: "Rita, unsere Katzenlady, betreut mit viel Liebe ihre 100 Katzen und unterstützt bei unserem Kastrationsprogramm. Zudem versorgt sie die Straßenhunde mit Futter und hilft bei deren medizinischer Erstversorgung. Sie ist fester Bestand der Popi Foundation und hat stets das Wohl der Tiere und der Menschen in ihrem Umfeld im Blick und sorgt dafür, dass es ihnen an nichts fehlt.",
-      image: "images/team/Riani.jpeg"
-    },
-    {
-      name: "Rey",
-      role: "Team Lombok",
-      bio: "Rey ist das Herzstück des Shelters – eine wahre Hundeflüsterin. Gemeinsam mit Dhany lebt sie direkt vor Ort und kümmert sich mit unermüdlichem Einsatz um das Wohl der Tiere. Sie kocht täglich für die Hunde, füttert sie, pflegt sie liebevoll und ist rund um die Uhr an ihrer Seite. Mit feinem Gespür erkennt sie sofort, wenn ein Tier krank oder verstört ist, und begleitet es mit großem Einfühlungsvermögen auf dem Weg der Genesung.\n\nIm Shelter leben die Hunde in kleinen Rudeln – versorgt, geborgen und vor allem geliebt. Rey schenkt ihnen nicht nur körperliche Pflege, sondern auch seelische Heilung. Mit selbst entwickelten Kräutertinkturen und Ölen unterstützt sie die Tiere ganzheitlich und gibt ihnen das, was sie oft lange entbehren mussten: Nähe, Vertrauen und Sicherheit. Für viele traumatisierte Hunde ist sie der erste Mensch, der ihnen zeigt, dass Zuwendung möglich ist – und dass nicht jeder Mensch Schmerz bedeutet.",
-      image: "Rey/rey.jpeg"
-    },
-    {
-      name: "Vito",
-      role: "Team Lombok",
-      bio: "Vito ist der Sohn der Hausherrin Dhany und wuchs umgeben von Tieren auf. Tief beeinflusst von der selbstlosen Liebe seiner Mutter zu allen Lebewesen, entwickelte er selbst ein großes Herz für Tiere. Im Laufe der Jahre hat er schon mehreren Hunden ein liebevolles Zuhause gegeben und kümmert sich mit großer Hingabe um die Hunde und Katzen in Shelter. Vito ist außerdem unser zuverlässiger Fahrer und derjenige, der unsere komplizierten Hunde-Rettungen durchführt.",
-      image: "vito/WhatsApp Image 2025-03-27 at 23.43.56.jpeg"
-    },
-    {
-      name: "Aris",
-      role: "Indonesiens Allround-Talent",
-      bio: "Aris ist ein Mann mit vielen Talenten. Hunde sind für ihn nicht nur Haustiere, sondern treue Begleiter, die seine Kindheit bereicherten und auch heute noch eine wichtige Rolle in seinem Leben spielen. Sie waren immer Teil seiner Familie und standen als Beschützer an seiner Seite, vor allem für seine Tochter. Aris lebt mit seiner Familie auf Lombok, stammt aber ursprünglich aus Flores.",
-      image: "Aris/WhatsApp Image 2025-03-27 at 23.54.21.jpeg"
-    }
-  ];
-
-  const vetTeam = [
-    {
-      name: "Tierärzte-Team auf Lombok",
-      role: "Veterinärmedizinisches Team",
-      bio: "Unser engagiertes Tierärzteteam auf Lombok besteht aus Vet Diah, Vet Made, Vet Ori und Vet Fitrah. Mit viel Herzblut und Fachwissen führen sie regelmäßig Kastrationen für uns durch und kümmern sich um unsere Rescue-Cases – verletzte, kranke oder vernachlässigte Tiere, die dringend Hilfe brauchen. Sie betreuen außerdem die Hunde im Shelter der POPI Foundation, versorgen sie medizinisch, begleiten ihre Genesung und sorgen dafür, dass es unseren Schützlingen Tag für Tag besser geht. Dank ihres Einsatzes können wir nachhaltige Tierschutzarbeit direkt vor Ort leisten.",
-      images: [
-        "images/aerzte/WhatsApp Image 2025-03-27 at 23.56.08 (1).jpeg",
-        "images/aerzte/WhatsApp Image 2025-03-27 at 23.56.08.jpeg",
-        "images/aerzte/WhatsApp Image 2025-03-27 at 23.56.09 (1).jpeg",
-        "images/aerzte/WhatsApp Image 2025-03-27 at 23.56.09 (2).jpeg",
-        "images/aerzte/WhatsApp Image 2025-03-27 at 23.56.09.jpeg",
-        "images/aerzte/WhatsApp Image 2025-03-27 at 23.56.10 (1).jpeg",
-        "images/aerzte/WhatsApp Image 2025-03-27 at 23.56.10 (2).jpeg",
-        "images/aerzte/WhatsApp Image 2025-03-27 at 23.56.10 (4).jpeg",
-        "images/aerzte/WhatsApp Image 2025-03-27 at 23.56.10 (5).jpeg",
-        "images/aerzte/WhatsApp Image 2025-03-27 at 23.56.11 (2).jpeg",
-        "images/aerzte/WhatsApp Image 2025-03-27 at 23.56.11 (3).jpeg"
-      ]
-    }
-  ];
-
-  const romaniaTeam = [
-    {
-      name: "Monika Bohoni",
-      role: "Das Herz für Hunde in Baia Mare",
-      bio: "Monika Bohoni wurde am 17. August 1974 in Baia Mare, Rumänien, geboren – und genau dort kämpft sie Tag für Tag für jene, die keine Stimme haben: die Hunde. Als Tierschützerin leitet sie das öffentliche Shelter in Baia Mare – eine echte Besonderheit, denn normalerweise sind solche Einrichtungen nicht in der Hand von Tierschützern, und leider ist es dort vielerorts üblich, Hunde zu töten. Doch Monika geht einen anderen Weg. Mit unermüdlichem Einsatz kümmert sie sich um rund 400 Hunde und kämpft dafür, dass jeder einzelne eine Chance bekommt. Sie ist das Herz des Tierheims – Tag und Nacht im Einsatz, mit einer Hingabe, wie man sie nur selten findet. Neben ihrer Arbeit vor Ort hat sie ihre eigene Organisation gegründet: Salvati Animalele – 'Rettet die Tiere'. Ihr größter Traum ist es, eines Tages ein privates Shelter zu eröffnen, in dem die Hunde unter besseren Bedingungen leben können. Doch sie weiß: Würde sie das öffentliche Shelter verlassen, würden sich die Zustände für die Hunde dort schlagartig verschlechtern. Genau das hält sie zurück – aus Verantwortung und Liebe zu den Tieren. Es gibt nur wenige Menschen, die sich so selbstlos für das Leben anderer einsetzen wie Monika. Sie opfert alles für ihre Tiere – und ist für viele von ihnen der einzige Grund, warum sie noch Hoffnung haben.",
-      image: "Monika/monika.jpeg"
-    }
-  ];
 
   // State für Slideshow der Tierärztebilder
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -246,7 +150,7 @@ const About = () => {
                   </div>
                 ) : (
                   <img
-                    src={member.image}
+                    src={member.image.startsWith('/') ? member.image : `/${member.image}`}
                     alt={member.name}
                     loading="lazy"
                     className="w-full h-full object-cover transition-all duration-500 group-hover:scale-105"
@@ -562,81 +466,53 @@ const About = () => {
             <h2 className="text-2xl sm:text-3xl font-bold text-primary mb-4 sm:mb-6 font-glorious">Unsere FAMily</h2>
             <h3 className="text-xl font-bold text-primary mb-4 font-glorious">Vorstand</h3>
             </div>
-            {renderTeamMembers(boardMembers)}
+            {teamLoading ? (
+              <div className="text-center py-8">
+                <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto"></div>
+                <p className="mt-4 text-gray-600">Lade Team-Daten...</p>
+              </div>
+            ) : renderTeamMembers(boardMembers)}
             
             <div className="px-6 sm:px-0">
             <h3 className="text-xl font-bold text-primary mb-4 font-glorious">Aktive Mitglieder</h3>
             </div>
-            {renderTeamMembers(activeMembers)}
+            {teamLoading ? (
+              <div className="text-center py-8">
+                <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto"></div>
+                <p className="mt-4 text-gray-600">Lade Team-Daten...</p>
+              </div>
+            ) : renderTeamMembers(activeMembers)}
             
             <div className="px-6 sm:px-0">
             <h3 className="text-xl font-bold text-primary mb-4 font-glorious">Unser Team in Rumänien</h3>
             </div>
-            {renderTeamMembers(romaniaTeam)}
+            {teamLoading ? (
+              <div className="text-center py-8">
+                <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto"></div>
+                <p className="mt-4 text-gray-600">Lade Team-Daten...</p>
+              </div>
+            ) : renderTeamMembers(romaniaTeam)}
             
             <div className="px-6 sm:px-0">
             <h3 className="text-xl font-bold text-primary mb-4 font-glorious">Unser Team vor Ort auf Lombok</h3>
             </div>
-            {renderTeamMembers(lombokTeam)}
+            {teamLoading ? (
+              <div className="text-center py-8">
+                <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto"></div>
+                <p className="mt-4 text-gray-600">Lade Team-Daten...</p>
+              </div>
+            ) : renderTeamMembers(lombokTeam)}
             
             {/* Tierärzte Team auf Lombok */}
-            <div className="mb-8 sm:mb-12 px-6 sm:px-0">
-              <h3 className="text-lg sm:text-xl font-semibold text-primary mb-4 sm:mb-6 font-glorious">Unser Tierärzte-Team auf Lombok</h3>
-              <div className="bg-white rounded-lg shadow-lg overflow-hidden">
-                <div className="relative">
-                  <div className="aspect-video overflow-hidden">
-                    {/* Header mit Overlay für den Text */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent z-10 flex flex-col justify-end p-6">
-                      <h4 className="text-xl font-bold text-white mb-2 font-futura">Tierärzte-Team auf Lombok</h4>
-                      <p className="text-white/80 text-sm">Vet Diah, Vet Made, Vet Ori und Vet Fitrah</p>
-                    </div>
-                    
-                    {/* Slideshow der Bilder */}
-                    <img 
-                      src={vetTeam[0].images[currentSlide]} 
-                      alt={`Tierarzt ${currentSlide + 1}`} 
-                      className="w-full h-full object-cover"
-                    />
-                    
-                    {/* Navigation Controls */}
-                    <button 
-                      className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/70 hover:bg-white p-2 rounded-full text-white hover:bg-white/30 transition-colors"
-                      onClick={() => prevSlide(vetTeam[0].images)}
-                      aria-label="Vorheriges Bild"
-                    >
-                      <ChevronLeft className="w-6 h-6 text-primary" />
-                    </button>
-                    <button 
-                      className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/70 hover:bg-white p-2 rounded-full text-white hover:bg-white/30 transition-colors"
-                      onClick={() => nextSlide(vetTeam[0].images)}
-                      aria-label="Nächstes Bild"
-                    >
-                      <ChevronRight className="w-6 h-6 text-primary" />
-                    </button>
-                    
-                    {/* Indicator Dots */}
-                    <div className="absolute bottom-4 left-0 right-0 flex justify-center space-x-2 z-20">
-                      {vetTeam[0].images.map((_, dotIndex) => (
-                        <button
-                          key={dotIndex}
-                          className={`w-3 h-3 rounded-full ${
-                            dotIndex === currentSlide ? 'bg-white' : 'bg-white/50'
-                          }`}
-                          onClick={() => setCurrentSlide(dotIndex)}
-                          aria-label={`Zu Bild ${dotIndex + 1} wechseln`}
-                        />
-                      ))}
-                    </div>
-                  </div>
-                </div>
-                
-                <div className="p-6">
-                  <p className="text-gray-700 font-futura text-sm sm:text-base">
-                    Unser engagiertes Tierärzteteam auf Lombok besteht aus Vet Diah, Vet Made, Vet Ori und Vet Fitrah. Mit viel Herzblut und Fachwissen führen sie regelmäßig Kastrationen für uns durch und kümmern sich um unsere Rescue-Cases – verletzte, kranke oder vernachlässigte Tiere, die dringend Hilfe brauchen. Sie betreuen außerdem die Hunde im Shelter der POPI Foundation, versorgen sie medizinisch, begleiten ihre Genesung und sorgen dafür, dass es unseren Schützlingen Tag für Tag besser geht. Dank ihres Einsatzes können wir nachhaltige Tierschutzarbeit direkt vor Ort leisten.
-                  </p>
-                </div>
-              </div>
+            <div className="px-6 sm:px-0">
+              <h3 className="text-xl font-bold text-primary mb-4 font-glorious">Tierärzte Team auf Lombok</h3>
             </div>
+            {teamLoading ? (
+              <div className="text-center py-8">
+                <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto"></div>
+                <p className="mt-4 text-gray-600">Lade Team-Daten...</p>
+              </div>
+            ) : renderTeamMembers(vetTeam)}
             
             <div className="px-6 sm:px-0">
               <JoinTeamSection contained={false} />

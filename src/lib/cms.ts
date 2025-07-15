@@ -97,7 +97,42 @@ export async function loadTeamMembers(): Promise<TeamMember[]> {
   try {
     const teamMembers: TeamMember[] = [];
     
-    // Hier würde man normalerweise alle Markdown-Dateien aus content/team laden
+    // Liste der Team-Mitglieder Dateien
+    const teamFiles = [
+      'fiona-mieke.md',
+      'kira.md',
+      'chrissy.md',
+      'lara.md',
+      'diego.md',
+      'hanna.md',
+      'daniel.md',
+      'vanessa.md',
+      'daze.md',
+      'dhany.md',
+      'riani.md',
+      'rita.md',
+      'rey.md',
+      'vito.md',
+      'aris.md',
+      'monika.md',
+      'tieraerzte.md'
+    ];
+    
+    // Lade alle Team-Mitglieder
+    for (const file of teamFiles) {
+      try {
+        const response = await fetch(`/content/team/${file}`);
+        if (response.ok) {
+          const content = await response.text();
+          const teamMember = parseTeamMemberMarkdown(content, file);
+          if (teamMember) {
+            teamMembers.push(teamMember);
+          }
+        }
+      } catch (error) {
+        console.error(`Fehler beim Laden von ${file}:`, error);
+      }
+    }
     
     return teamMembers
       .filter(member => member.published)
@@ -105,6 +140,91 @@ export async function loadTeamMembers(): Promise<TeamMember[]> {
   } catch (error) {
     console.error('Fehler beim Laden der Team-Daten:', error);
     return [];
+  }
+}
+
+// Hilfsfunktion zum Parsen der Team-Mitglieder Markdown-Dateien
+function parseTeamMemberMarkdown(content: string, filename: string): TeamMember | null {
+  try {
+    const lines = content.split('\n');
+    
+    // Finde Front Matter
+    const frontMatterStart = lines.findIndex(line => line.trim() === '---');
+    const frontMatterEnd = lines.findIndex((line, index) => 
+      index > frontMatterStart && line.trim() === '---'
+    );
+    
+    if (frontMatterStart === -1 || frontMatterEnd === -1) {
+      console.error(`Kein Front Matter gefunden in ${filename}`);
+      return null;
+    }
+    
+    const frontMatter = lines.slice(frontMatterStart + 1, frontMatterEnd);
+    
+    // Parse Front Matter
+    const metadata: Partial<TeamMember> = {};
+    const socialMedia: Record<string, string> = {};
+    let inSocialMedia = false;
+    
+    for (const line of frontMatter) {
+      if (line.trim().startsWith('socialMedia:')) {
+        inSocialMedia = true;
+        continue;
+      }
+      
+      if (inSocialMedia) {
+        if (line.startsWith('  ') && line.includes(':')) {
+          const [key, value] = line.trim().split(':').map(s => s.trim());
+          if (value && value !== '""' && value !== "''") {
+            socialMedia[key] = value.replace(/"/g, '');
+          }
+        } else if (!line.startsWith('  ')) {
+          inSocialMedia = false;
+        }
+      }
+      
+      if (!inSocialMedia && line.includes(':')) {
+        const colonIndex = line.indexOf(':');
+        const key = line.substring(0, colonIndex).trim();
+        const value = line.substring(colonIndex + 1).trim();
+        
+        if (key && value) {
+          if (key === 'published') {
+            metadata[key] = value === 'true';
+          } else if (key === 'order') {
+            metadata[key] = parseInt(value) || 0;
+          } else if (key === 'name') {
+            metadata[key] = value.replace(/"/g, '');
+          } else if (key === 'role') {
+            metadata[key] = value.replace(/"/g, '');
+          } else if (key === 'bio') {
+            metadata[key] = value.replace(/"/g, '');
+          } else if (key === 'image') {
+            metadata[key] = value.replace(/"/g, '');
+          } else if (key === 'category') {
+            metadata[key] = value.replace(/"/g, '');
+          }
+        }
+      }
+    }
+    
+    // ID aus Dateiname generieren
+    const id = filename.replace('.md', '');
+    
+    return {
+      id,
+      name: metadata.name || '',
+      role: metadata.role || '',
+      bio: metadata.bio || '',
+      image: metadata.image || '',
+      category: metadata.category || '',
+      socialMedia,
+      order: metadata.order || 0,
+      published: metadata.published !== false
+    };
+  } catch (error) {
+    console.error(`Fehler beim Parsen von ${filename}:`, error);
+    return null;
   }
 }
 

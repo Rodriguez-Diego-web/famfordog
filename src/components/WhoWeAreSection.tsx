@@ -1,40 +1,44 @@
 import { UserCircle2 } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { loadTeamMembersByCategory, type TeamMember } from '../lib/cms';
 
 const WhoWeAreSection = () => {
   const [expandedCard, setExpandedCard] = useState<string | null>(null);
+  const [teamMembers, setTeamMembers] = useState<TeamMember[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const loadData = async () => {
+      try {
+        const vorstandMembers = await loadTeamMembersByCategory('Vorstand');
+        setTeamMembers(vorstandMembers);
+      } catch (error) {
+        console.error('Fehler beim Laden der Team-Daten:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    loadData();
+  }, []);
 
   const toggleCardExpansion = (cardId: string) => {
     setExpandedCard(prevId => (prevId === cardId ? null : cardId));
   };
 
-  const teamMembers = [
-    {
-      name: "Fiona & Mieke",
-      role: "Gründerinnen & Vorsitzende",
-      bio: "Mieke und Fiona bilden gemeinsam die Doppelspitze des Vereins FAM for Dogs e.V. Beide engagieren sich schon seit vielen Jahren im Tierschutz – seit 2019 setzen sie sich als Team aktiv für Hunde in Not ein. Der Auslöser für ihr gemeinsames Engagement war eine Reise nach Rumänien – ein prägendes Erlebnis für die beiden, das den Wunsch noch mehr zu helfen verstärkt hat. Mieke, von Beruf Rechsanwältin, gründete zunächst den Verein Dogs of Lombok e.V. während eines mehrmonatigen beruflichen Aufenthalts in Indonesien im Jahr 2023. Heute wird der Verein unter dem Namen FAM for Dogs e.V. weitergeführt. Fiona ist Hundephysiotherapeutin und bringt ihre fachliche Expertise in die Betreuung geretteter Hunde ein. Auch ihre eigenen Hunde spiegeln ihre Tierschutzmission wider: Miekes Hund Jack lebte früher auf den Straßen Kuwaits, während Fiona drei Hunde aus Rumänien adoptiert hat – darunter einen mit Handicap. Darüber hinaus haben beide über die Jahre hinweg zahlreiche Pflegehunde bei sich aufgenommen, versorgt und auf ein neues Leben vorbereitet.",
-      image: "/images/team/fiona.jpeg"
-    },
-    {
-      name: "Kira",
-      role: "Vorstandsmitglied",
-      bio: "Kira ist neben ihrer Arbeit als Autorin, Dozentin und Podcast-Host auch leidenschaftliche Hundemama ihres rumänischen Rüden Homie. Als er 2020 Teil ihrer Familie wurde, war das der ausschlaggebende Punkt, sich mehr im Tierschutz zu engagieren. Erst als stille Spenderin und jetzt als Vorstandsmitglied beim FAM for Dogs e.V.. Bestärkt wurde ihre Entscheidung durch die gemeinsame Reise mit Fiona nach Rumänien im Frühjahr 2025. Das Leid der Hunde hautnah mitzuerleben, die Machtlosigkeit zu spüren und die finanziellen Engpässe der helfenden Menschen vor Ort zu sehen, hat Kira dazu bewegt, von der inaktiven in die atkive Rolle zu schlüpfen. Kira ist unsere Orga-Queen und kümmert sich unter anderem um unsere Mitglieder und Sponsor:innen. Ihr wollt Teil unserer FAMily werden? Dann meldet euch bei Kira info@famfordogs.com",
-      image: "/images/team/Kira.jpeg"
-    },
-    {
-      name: "Chrissy",
-      role: "Vorstandsmitglied",
-      bio: "Chrissy bringt mit ihrem Organisationstalent Struktur in jedes Projekt – ohne sie läuft einfach nichts. Sie ist vielseitig einsetzbar und engagiert sich in den Bereichen, in denen Unterstützung gebraucht wird. Dabei bleibt sie stets ruhig und findet immer Lösungen. Gute Planung und Empathie sind für sie selbstverständlich. Schon von klein auf liebt Chrissy Tiere und setzt sich mit großer Leidenschaft für sie ein. Ob es um Fundtiere in Deutschland oder Straßenhunde im Ausland geht, ihr Engagement kennt keine Grenzen. Nach dem plötzlichen Verlust ihres Hundes verließ sie Frankfurt für eine Asienreise. Dort erschütterte sie das Tierleid, besonders auf Lombok, zutiefst. Diese Erfahrungen stärkten ihren unermüdlichen Einsatz für hilfsbedürftige Tiere",
-      image: "/images/team/chrissy.jpeg"
-    },
-    {
-      name: "Lara",
-      role: "Schatzmeisterin",
-      bio: "Lara ist Vorstandsmitglied bei FAM for Dogs e.V. und übernimmt als Schatzmeisterin und Head of Finance die finanzielle Verwaltung des Vereins. Mit ihrem organisatorischen Geschick und einem ausgeprägten Sinn für Zahlen sorgt sie dafür, dass alle Projekte solide finanziert und nachhaltig umgesetzt werden können. Durch ihre enge Freundschaft mit Fiona hat sie seit Jahren Berührungspunkte mit dem Tierschutz, auch wenn Hunde selbst bisher nicht ihre größte Leidenschaft waren. Gerade dieser Außenblick macht sie zu einer wertvollen Ergänzung im Team: Sie behält den Überblick über die Finanzen, sorgt für Struktur und stellt sicher, dass die Mittel gezielt dort ankommen, wo sie gebraucht werden – für den Schutz und die Versorgung von Straßentieren in Indonesien und Rumänien.",
-      image: "/Lara/Lara.jpeg"
-    }
-  ];
+  if (loading) {
+    return (
+      <section className="py-16 bg-accent-pink/15">
+        <div className="container mx-auto px-6">
+          <div className="text-center">
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto"></div>
+            <p className="mt-4 text-gray-600">Lade Team-Daten...</p>
+          </div>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section className="py-16 bg-accent-pink/15">
@@ -63,13 +67,13 @@ const WhoWeAreSection = () => {
                 <div className="absolute inset-0 w-full h-full">
                   {member.image ? (
                     <img
-                      src={member.image}
+                      src={member.image.startsWith('/') ? member.image : `/${member.image}`}
                       alt={member.name}
                       loading="lazy"
                       className="w-full h-full object-cover transition-all duration-500 group-hover:scale-105"
                       style={
                         member.name === "Kira" ? { objectPosition: "center 20%" } : 
-                        member.name === "Mieke & Fiona" ? { objectPosition: "center 20%" } : 
+                        member.name === "Fiona & Mieke" ? { objectPosition: "center 20%" } : 
                         {}
                       }
                     />
