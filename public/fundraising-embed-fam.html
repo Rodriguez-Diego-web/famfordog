@@ -7,10 +7,48 @@
     <style>
       body { margin: 0; padding: 0; overflow: hidden; }
       html { overflow: hidden; }
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+      
+      .header-title {
+        font-family: 'Inter', sans-serif;
+        font-weight: 700;
+        font-size: 2rem;
+        background: linear-gradient(135deg, #ec4899, #3b82f6, #059669);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        text-align: center;
+        margin: 20px 0;
+        padding: 15px 20px;
+        position: relative;
+      }
+      
+      .header-title::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 60px;
+        height: 4px;
+        background: linear-gradient(135deg, #ec4899, #3b82f6, #059669);
+        border-radius: 2px;
+      }
+      
+      .header-subtitle {
+        font-family: 'Inter', sans-serif;
+        font-weight: 500;
+        font-size: 0.875rem;
+        color: #6b7280;
+        text-align: center;
+        margin: -10px 0 25px 0;
+        letter-spacing: 0.5px;
+      }
     </style>
   </head>
   <body style="margin: 0; padding: 0;">
-    <h2 style="text-align: center; margin: 20px 0; color: #333;">Privat</h2>
+    <div class="header-title">Spendenaktionen</div>
+    <div class="header-subtitle">Direkte Unterstützung für unsere Mission</div>
     <!-- Begin FundraisingBox -->
     <script type='text/javascript' src='https://secure.fundraisingbox.com/app/widgetJS?cfh=xsto0dst'></script>
     <noscript>Bitte Javascript aktivieren</noscript>
