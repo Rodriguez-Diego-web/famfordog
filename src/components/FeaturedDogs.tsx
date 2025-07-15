@@ -2,57 +2,25 @@ import { useState, useEffect } from 'react';
 import { Heart, ArrowRight, PawPrint, Image as ImageIcon, Users } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
-// Aktualisierte Daten für die angezeigten Hunde, übernommen aus OurDogs.tsx
-const featuredDogs = [
-  {
-    id: 1,
-    name: 'Anton',
-    age: '7 Monate',
-    breed: 'Mischling',
-    description: 'Anton wurde von Mieke im November 2024 während einer Fütterungsrunde mit Rita und Riani entdeckt. Er lebte mit seiner Mutter Ichi und seinen Geschwistern Albert und Ocha bei einer Familie, die sich leider nicht mehr um sie kümmern konnte.',
-    image: '/images/dogs/anton.jpeg',
+// Import dogs data from CMS
+import dogsData from '@/data/dogs.json';
+
+// Get featured dogs from CMS data (first 3 dogs)
+const getFeaturedDogs = () => {
+  return dogsData.slice(0, 3).map(dog => ({
+    ...dog,
     fallbackImage: '/images/dog-placeholder.jpg',
-    tags: ['Freundlich', 'Verspielt', 'Sozial'],
-    sponsors: [
-      { id: 1, name: 'Heike', initials: 'H', color: '#3498db' },
-      
-    ],
-    maxSponsors: 3
-  },
-  {
-    id: 3,
-    name: 'Boogey',
-    age: '1,5 Jahre',
-    breed: 'Mischling',
-    description: 'Boogey lebte in einem Abwasserkanal mit ihren 6 Welpen. Sie wurde so schwer verletzt, dass sie ihre Babys kaum schützen konnte. Nach monatelangem Leben im Kanal ist sie jetzt glücklicherweise gerettet.',
-    image: '/images/dogs/boogey.jpeg',
-    fallbackImage: '/images/dog-placeholder.jpg',
-    tags: ['Energiegeladen', 'Verspielt', 'Neugierig'],
-    sponsors: [
-      { id: 4, name: 'Lisa K.', initials: 'LK', color: '#9b59b6' },
-      { id: 5, name: 'Thomas B.', initials: 'TB', color: '#f39c12' },
-      { id: 6, name: 'Sarah M.', initials: 'SM', color: '#1abc9c' }
-    ],
-    maxSponsors: 3
-  },
-  {
-    id: 14,
-    name: 'Wednesday',
-    age: '4 Jahre',
-    breed: 'Mischling',
-    description: 'Wednesday ist eine besondere Hündin mit einem einzigartigen Charakter. Sie ist loyal und beschützend. Sie sucht eine liebevolle Patenschaft.',
-    image: '/OneDrive_15_2.4.2025/Wednesday/IMG_2217.jpeg',
-    fallbackImage: '/images/dog-placeholder.jpg',
-    tags: ['Loyal', 'Beschützend', 'Einzigartig'],
-    sponsors: [],
-    maxSponsors: 3
-  }
-];
+    tags: dog.personality || ['Freundlich', 'Liebevoll'] // Use personality from CMS or fallback
+  }));
+};
 
 const FeaturedDogs = () => {
   const [favorites, setFavorites] = useState<number[]>([]);
   const [imageLoaded, setImageLoaded] = useState<{[key: number]: boolean}>({});
   const [isVisible, setIsVisible] = useState(false);
+  
+  // Get featured dogs from CMS
+  const featuredDogs = getFeaturedDogs();
 
   useEffect(() => {
     const observer = new IntersectionObserver(
