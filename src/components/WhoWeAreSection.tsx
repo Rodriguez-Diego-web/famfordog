@@ -26,14 +26,14 @@ const WhoWeAreSection = () => {
       name: "Chrissy",
       role: "Vorstandsmitglied",
       bio: "Chrissy bringt mit ihrem Organisationstalent Struktur in jedes Projekt – ohne sie läuft einfach nichts. Sie ist vielseitig einsetzbar und engagiert sich in den Bereichen, in denen Unterstützung gebraucht wird. Dabei bleibt sie stets ruhig und findet immer Lösungen. Gute Planung und Empathie sind für sie selbstverständlich. Schon von klein auf liebt Chrissy Tiere und setzt sich mit großer Leidenschaft für sie ein. Ob es um Fundtiere in Deutschland oder Straßenhunde im Ausland geht, ihr Engagement kennt keine Grenzen. Nach dem plötzlichen Verlust ihres Hundes verließ sie Frankfurt für eine Asienreise. Dort erschütterte sie das Tierleid, besonders auf Lombok, zutiefst. Diese Erfahrungen stärkten ihren unermüdlichen Einsatz für hilfsbedürftige Tiere",
-      image: "/images/team/WhatsApp Image 2025-03-25 at 23.49.01.jpeg"
+      image: "/images/team/chrissy.jpeg"
     },
     {
       name: "Lara",
       role: "Schatzmeisterin",
       bio: "Lara ist Vorstandsmitglied bei FAM for Dogs e.V. und übernimmt als Schatzmeisterin und Head of Finance die finanzielle Verwaltung des Vereins. Mit ihrem organisatorischen Geschick und einem ausgeprägten Sinn für Zahlen sorgt sie dafür, dass alle Projekte solide finanziert und nachhaltig umgesetzt werden können. Durch ihre enge Freundschaft mit Fiona hat sie seit Jahren Berührungspunkte mit dem Tierschutz, auch wenn Hunde selbst bisher nicht ihre größte Leidenschaft waren. Gerade dieser Außenblick macht sie zu einer wertvollen Ergänzung im Team: Sie behält den Überblick über die Finanzen, sorgt für Struktur und stellt sicher, dass die Mittel gezielt dort ankommen, wo sie gebraucht werden – für den Schutz und die Versorgung von Straßentieren in Indonesien und Rumänien.",
       image: "/Lara/Lara.jpeg"
-    },
+    }
   ];
 
   return (

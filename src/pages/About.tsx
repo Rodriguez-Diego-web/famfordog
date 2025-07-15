@@ -97,7 +97,7 @@ const About = () => {
       name: "Chrissy",
       role: "Vorstandsmitglied",
       bio: "Chrissy bringt mit ihrem Organisationstalent Struktur in jedes Projekt – ohne sie läuft einfach nichts. Sie ist vielseitig einsetzbar und engagiert sich in den Bereichen, in denen Unterstützung gebraucht wird. Dabei bleibt sie stets ruhig und findet immer Lösungen. Gute Planung und Empathie sind für sie selbstverständlich. Schon von klein auf liebt Chrissy Tiere und setzt sich mit großer Leidenschaft für sie ein. Ob es um Fundtiere in Deutschland oder Straßenhunde im Ausland geht, ihr Engagement kennt keine Grenzen. Nach dem plötzlichen Verlust ihres Hundes verließ sie Frankfurt für eine Asienreise. Dort erschütterte sie das Tierleid, besonders auf Lombok, zutiefst. Diese Erfahrungen stärkten ihren unermüdlichen Einsatz für hilfsbedürftige Tiere",
-      image: "images/team/WhatsApp Image 2025-03-25 at 23.49.01.jpeg"
+      image: "images/team/chrissy.jpeg"
     },
     {
       name: "Lara",
@@ -116,8 +116,8 @@ const About = () => {
     },
     {
       name: "Diego",
-      role: "Developer",
-      bio: "Als leidenschaftlicher Programmierer und Hundeliebhaber vereint Diego seine technischen Fähigkeiten mit seiner Liebe zu Vierbeinern. Er sorgt dafür, dass unsere digitale Präsenz reibungslos funktioniert und unsere Botschaft effektiv in die Online-Welt getragen wird. In seiner Freizeit verbringt er gerne Zeit mit seinem Hund Lucky und engagiert sich für die Rechte und das Wohlbefinden von Hunden.",
+      role: "Developer & Designer",
+      bio: "Als leidenschaftlicher Programmierer und Hundeliebhaber vereint Diego seine technischen Fähigkeiten mit seiner Liebe zu Vierbeinern. Er ist verantwortlich für das komplette Design und den gesamten Aufbau dieser Website – von der visuellen Gestaltung bis zur technischen Umsetzung. Mit seinem Auge für Details und modernem Webdesign sorgt er dafür, dass unsere digitale Präsenz nicht nur reibungslos funktioniert, sondern auch ansprechend und benutzerfreundlich ist. In seiner Freizeit verbringt er gerne Zeit mit seinem Hund Lucky und engagiert sich für die Rechte und das Wohlbefinden von Hunden.",
       image: "Diego/diego.JPG"
     },
     {

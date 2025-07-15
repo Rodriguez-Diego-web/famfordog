@@ -8,12 +8,8 @@ interface LayoutProps {
   children: ReactNode;
 }
 
-/**
- * Layout-Komponente, die auf allen Seiten verwendet wird
- * Enthält Navbar, Footer, ScrollToTopButton und automatisches Scrollen zum Seitenanfang
- */
+
 const Layout = ({ children }: LayoutProps) => {
-  // Automatisches Scrollen zum Seitenanfang bei Routenwechsel
   useScrollToTop();
   
   return (
