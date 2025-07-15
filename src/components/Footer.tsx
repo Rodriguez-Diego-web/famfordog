@@ -5,7 +5,7 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
   
   return (
-    <footer className="bg-gradient-to-br from-primary via-primary to-[#003a3a] py-8 relative overflow-hidden">
+    <footer className="bg-gradient-to-br from-primary via-primary to-[#003a3a] py-16 relative overflow-hidden">
       {/* Decorative elements */}
       <div className="absolute top-10 right-10 opacity-30">
         <img src="/images/Lifeline/LifeLine_Limitless.png" alt="Lifeline Limitless" className="w-40" />
