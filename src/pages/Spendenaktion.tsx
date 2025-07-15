@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
 import Navbar from '@/components/Navbar';
@@ -7,6 +7,9 @@ import Footer from '@/components/Footer';
 const Spendenaktion = () => {
   const location = useLocation();
   const navigate = useNavigate();
+  const iframe1Ref = useRef<HTMLIFrameElement>(null);
+  const iframe2Ref = useRef<HTMLIFrameElement>(null);
+  
   // Check if we have URL parameters (means we're on a specific campaign)
   const hasUrlParams = location.search || location.hash;
 
@@ -15,6 +18,48 @@ const Spendenaktion = () => {
     // Force a page reload by using window.location instead of navigate
     window.location.href = '/spendenaktion';
   };
+
+  // Function to resize iframe based on content
+  const resizeIframe = (iframe: HTMLIFrameElement) => {
+    try {
+      if (iframe.contentWindow) {
+        const body = iframe.contentWindow.document.body;
+        const height = Math.max(body.scrollHeight, body.offsetHeight, 600); // Minimum 600px
+        iframe.style.height = height + 'px';
+      }
+    } catch (error) {
+      // Fallback if cross-origin restrictions apply
+      console.log('Could not resize iframe due to cross-origin restrictions');
+    }
+  };
+
+  // Set up iframe resize listeners
+  useEffect(() => {
+    const iframe1 = iframe1Ref.current;
+    const iframe2 = iframe2Ref.current;
+
+    const handleLoad1 = () => iframe1 && resizeIframe(iframe1);
+    const handleLoad2 = () => iframe2 && resizeIframe(iframe2);
+
+    if (iframe1) {
+      iframe1.addEventListener('load', handleLoad1);
+    }
+    if (iframe2) {
+      iframe2.addEventListener('load', handleLoad2);
+    }
+
+    // Also check periodically for dynamic content changes
+    const interval = setInterval(() => {
+      if (iframe1) resizeIframe(iframe1);
+      if (iframe2) resizeIframe(iframe2);
+    }, 2000);
+
+    return () => {
+      if (iframe1) iframe1.removeEventListener('load', handleLoad1);
+      if (iframe2) iframe2.removeEventListener('load', handleLoad2);
+      clearInterval(interval);
+    };
+  }, []);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -134,10 +179,11 @@ const Spendenaktion = () => {
                   {/* Durch Privat Widget */}
                   <div className="bg-gray-50 rounded-lg p-4 overflow-hidden">
                     <iframe
+                      ref={iframe1Ref}
                       src="/fundraising-embed.html"
                       width="100%"
-                      height="800"
-                      style={{ border: 'none', minHeight: '800px', overflow: 'hidden' }}
+                      height="600"
+                      style={{ border: 'none', minHeight: '600px', overflow: 'hidden', transition: 'height 0.3s ease' }}
                       title="Durch Privat Spendenformular"
                       scrolling="no"
                     />
@@ -146,10 +192,11 @@ const Spendenaktion = () => {
                   {/* FAM for Dogs Widget */}
                   <div className="bg-gray-50 rounded-lg p-4 overflow-hidden">
                     <iframe
+                      ref={iframe2Ref}
                       src="/fundraising-embed-fam.html"
                       width="100%"
-                      height="800"
-                      style={{ border: 'none', minHeight: '800px', overflow: 'hidden' }}
+                      height="600"
+                      style={{ border: 'none', minHeight: '600px', overflow: 'hidden', transition: 'height 0.3s ease' }}
                       title="FAM for Dogs Spendenformular"
                       scrolling="no"
                     />
