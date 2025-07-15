@@ -129,14 +129,30 @@ const Spendenaktion = () => {
                   </div>
                 )}
                 
-                {/* FundraisingBox Widget */}
-                <iframe
-                  src="/fundraising-embed.html"
-                  width="100%"
-                  height="700"
-                  style={{ border: 'none', minHeight: '700px' }}
-                  title="FundraisingBox Spendenformular"
-                />
+                {/* FundraisingBox Widgets */}
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                  {/* Durch Privat Widget */}
+                  <div className="bg-gray-50 rounded-lg p-4">
+                    <iframe
+                      src="/fundraising-embed.html"
+                      width="100%"
+                      height="600"
+                      style={{ border: 'none', minHeight: '600px' }}
+                      title="Durch Privat Spendenformular"
+                    />
+                  </div>
+                  
+                  {/* FAM for Dogs Widget */}
+                  <div className="bg-gray-50 rounded-lg p-4">
+                    <iframe
+                      src="/fundraising-embed-fam.html"
+                      width="100%"
+                      height="600"
+                      style={{ border: 'none', minHeight: '600px' }}
+                      title="FAM for Dogs Spendenformular"
+                    />
+                  </div>
+                </div>
               </div>
             </div>
           </div>
