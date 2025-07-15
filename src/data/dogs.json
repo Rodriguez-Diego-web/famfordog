@@ -1,0 +1,555 @@
+[
+  {
+    "id": 1,
+    "name": "Anton",
+    "age": "7 Monate",
+    "breed": "Mischling",
+    "description": "Anton wurde von Mieke im November 2024 während einer Fütterungsrunde mit Rita und Riani entdeckt. Er lebte mit seiner Mutter Ichi und seinen Geschwistern Albert und Ocha bei einer Familie, die sich leider nicht mehr um sie kümmern konnte. Nachdem Anton kurzzeitig von einer Familie adoptiert wurde, kam er schließlich in Omasukulo an. Sein Bruder Albert ist leider im Januar 2025 verstorben. Anton lebt nun mit vielen anderen Hunden bei Dhany.",
+    "image": "/OneDrive_15_2.4.2025/Anton/IMG_2165.jpeg",
+    "additionalImages": [
+      "/OneDrive_15_2.4.2025/Anton/IMG_2160.jpeg",
+      "/OneDrive_15_2.4.2025/Anton/IMG_2163.jpeg",
+      "/OneDrive_15_2.4.2025/Anton/IMG_2164.jpeg"
+    ],
+    "videoLinks": [],
+    "needs": "Liebe, Sicherheit und ein stabiles Zuhause",
+    "location": "Shelter Lombok",
+    "sex": "Männlich",
+    "size": "Mittelgroß",
+    "personality": [
+      "Freundlich",
+      "Verspielt",
+      "Sozial"
+    ],
+    "history": "Anton wurde von Mieke im November 2024 während einer Fütterungsrunde mit Rita und Riani entdeckt. Er lebte mit seiner Mutter Ichi und seinen Geschwistern Albert und Ocha bei einer Familie. Die Familie willigte letztendlich ein, dass Dhany sich um sie kümmert.",
+    "medicalInfo": "Vollständig geimpft, gesund.",
+    "suitableFor": [
+      "Familien mit anderen Hunden",
+      "Menschen mit Geduld und Liebe"
+    ],
+    "notSuitableFor": [],
+    "sponsors": [
+      {
+        "id": 1,
+        "name": "Heike",
+        "initials": "H",
+        "color": "#3498db"
+      }
+    ],
+    "maxSponsors": 3,
+    "published": true
+  },
+  {
+    "id": 2,
+    "name": "Berta",
+    "age": "~10 Jahre",
+    "breed": "Mischling",
+    "description": "Berta wurde mit zusammengebundenen Beinen ausgesetzt. Der Mann, der sie im März 2024 fand und meldete, befreite sie – doch aus Angst rannte sie davon. Erst mit viel Geduld konnten Dhany und Vito ihr Vertrauen gewinnen und sie sichern. Sie leidet bis heute an Hautproblemen, deren Zustand schwankt. Vito hat sich schnell in sie verliebt und seitdem lebt sie im großen Rudel bei Dhany und Vito.",
+    "image": "/OneDrive_15_2.4.2025/Berta/IMG_2393.jpeg",
+    "additionalImages": [
+      "/OneDrive_15_2.4.2025/Berta/IMG_2390.jpeg",
+      "/OneDrive_15_2.4.2025/Berta/IMG_2391.jpeg",
+      "/OneDrive_15_2.4.2025/Berta/IMG_2392.jpeg",
+      "/OneDrive_15_2.4.2025/Berta/IMG_2205.jpeg",
+      "/OneDrive_15_2.4.2025/Berta/24ec7cf4-b138-43b1-92bd-231716fbbb13.jpeg",
+      "/OneDrive_15_2.4.2025/Berta/3b17f302-96e0-40eb-b3a1-fa0c0df9a124.jpeg",
+      "/OneDrive_15_2.4.2025/Berta/442175ea-bcc8-46bf-9c2f-a512c5d840f9.jpeg",
+      "/OneDrive_15_2.4.2025/Berta/62c8e12e-1991-4e43-84c6-a532c5d840f9.jpeg",
+      "/OneDrive_15_2.4.2025/Berta/7ae57c84-a4f4-472e-9ba8-52a1c1e41122.jpeg",
+      "/OneDrive_15_2.4.2025/Berta/95028639-e804-422d-84aa-1a9e38373be6.jpeg",
+      "/OneDrive_15_2.4.2025/Berta/d72dcfcc-b638-43ed-9ae3-d34988649fe2.jpeg",
+      "/OneDrive_15_2.4.2025/Berta/e7a9b2c5-b555-43f0-b9e6-43bba81ef806.jpeg",
+      "/OneDrive_15_2.4.2025/Berta/f8c6781b-a3e5-455c-84ff-290dfff72d60.jpeg"
+    ],
+    "videoLinks": [
+      "/OneDrive_15_2.4.2025/Berta/~tmp75_VIDEO-2024-05-01-10-52-59.mp4",
+      "/OneDrive_15_2.4.2025/Berta/VIDEO-2024-05-01-10-53-11.mp4",
+      "/OneDrive_15_2.4.2025/Berta/a947cee3-5c37-4c22-ae98-eb4fe984e24c.mp4"
+    ],
+    "needs": "Medizinische Versorgung und liebevolle Betreuung",
+    "location": "Shelter Lombok",
+    "sex": "Weiblich",
+    "size": "Mittelgroß",
+    "personality": [
+      "Vorsichtig",
+      "Anhänglich",
+      "Ruhig"
+    ],
+    "history": "Berta wurde mit zusammengebundenen Beinen ausgesetzt und im März 2024 gefunden. Aus Angst rannte sie zunächst davon, konnte aber schließlich mit viel Geduld gesichert werden.",
+    "medicalInfo": "Leidet an chronischen Hautproblemen, die regelmäßige Behandlung erfordern.",
+    "suitableFor": [
+      "Ruhige Haushalte",
+      "Geduldige Menschen"
+    ],
+    "sponsors": [
+      {
+        "id": 1,
+        "name": "Dr. Weber",
+        "initials": "DW",
+        "color": "#2ecc71"
+      }
+    ],
+    "maxSponsors": 3
+  },
+  {
+    "id": 3,
+    "name": "Boogey",
+    "age": "~5 Jahre",
+    "breed": "Mischling",
+    "description": "Boogey lebte früher an einem Fluss mit ihren 4 Wochen alten Welpen. Sie wurde so schwer verletzt, dass sie ihre Hinterbeine nicht mehr nutzen kann und panische Angst vor Menschen hat. Nach 4 Monaten im Abwasserkanal wurde sie gerettet und in die Klinik gebracht. Die Tierärzte empfahlen eine Operation, zu der es jedoch nicht kam. Nach monatelangem Leben im Käfig ist sie jetzt glücklicherweise draußen und Rey arbeitet daran, ihr Vertrauen zu Menschen zurückzugewinnen.",
+    "image": "/OneDrive_15_2.4.2025/Boogey/IMG_1523.jpeg",
+    "additionalImages": [
+      "/OneDrive_15_2.4.2025/Boogey/f63880f0-357f-487b-9042-1ab7504a4ad1.jpeg"
+    ],
+    "videoLinks": [
+      "/OneDrive_15_2.4.2025/Boogey/215b5f2a-19ad-4398-9d9e-5eee39982359.mp4",
+      "/OneDrive_15_2.4.2025/Boogey/4e0504d0-3bfe-4280-8d94-eea4c3afbf28.mp4",
+      "/OneDrive_15_2.4.2025/Boogey/591efb40-3833-4cef-aa6c-dc32a055b2c5.mp4"
+    ],
+    "needs": "Spezielle Pflege für ihre Behinderung und behutsamer Umgang",
+    "location": "Shelter Lombok",
+    "sex": "Weiblich",
+    "size": "Mittelgroß",
+    "personality": [
+      "Ängstlich",
+      "Traumatisiert",
+      "Braucht Zeit"
+    ],
+    "history": "Boogey lebte mit ihren Welpen an einem Fluss. Sie wurde schwer verletzt und kann ihre Hinterbeine nicht mehr nutzen. Nach 4 Monaten im Abwasserkanal wurde sie gerettet.",
+    "medicalInfo": "Kann ihre Hinterbeine nicht nutzen aufgrund schwerer Verletzungen. Braucht spezielle Betreuung.",
+    "suitableFor": [
+      "Erfahrene Hundehalter",
+      "Geduldige Menschen",
+      "Ruhige Umgebung"
+    ],
+    "sponsors": [
+      {
+        "id": 1,
+        "name": "Lisa K.",
+        "initials": "LK",
+        "color": "#9b59b6"
+      },
+      {
+        "id": 2,
+        "name": "Thomas B.",
+        "initials": "TB",
+        "color": "#f39c12"
+      },
+      {
+        "id": 3,
+        "name": "Sarah M.",
+        "initials": "SM",
+        "color": "#1abc9c"
+      }
+    ],
+    "maxSponsors": 3
+  },
+  {
+    "id": 4,
+    "name": "Fura",
+    "age": "~3 Jahre",
+    "breed": "Mischling",
+    "description": "Fura wurde im April 2024 humpelnd am Strand gefunden. Sein rechtes Vorderbein war schwer verletzt. Es wurde mit einer Machete oder einer ähnlichen Waffe aufgeschlitzt. Er konnte gesichert und in die Klinik gebracht werden, wo sein Bein behandelt wurde. Doch die Verletzung hinterließ bleibende Schäden, die das Leben im großen Rudel schwer möglich machen. Seitdem lebt Fura in einem Zwinger im Omasukulo Shelter – allein. Um das zu ändern, haben wir einen kleinen eingezäunten Garten gebaut, in den er in kurzer Zeit gemeinsam mit Mr. Monkey umziehen wird.",
+    "image": "/OneDrive_15_2.4.2025/Fura/ad394bb2-1125-41b7-b9fc-da237be59c8a.jpeg",
+    "additionalImages": [
+      "/OneDrive_15_2.4.2025/Fura/1bbc7d68-30fc-4fd7-af8f-804a57d7dc8e.jpeg"
+    ],
+    "needs": "Spezielle Pflege für seine Beinverletzung und ein ruhiges Umfeld",
+    "location": "Shelter Lombok",
+    "sex": "Männlich",
+    "size": "Mittelgroß",
+    "personality": [
+      "Vorsichtig",
+      "Sanft",
+      "Anpassungsfähig"
+    ],
+    "history": "Fura wurde im April 2024 mit einer schweren Verletzung am rechten Vorderbein gefunden, vermutlich durch eine Machete verursacht.",
+    "medicalInfo": "Bleibende Schäden am rechten Vorderbein, die spezielle Betreuung erfordern.",
+    "suitableFor": [
+      "Ruhige Umgebungen",
+      "Geduldige Menschen"
+    ],
+    "notSuitableFor": [
+      "Sehr aktive Haushalte",
+      "Haushalte mit vielen anderen Tieren"
+    ],
+    "maxSponsors": 2
+  },
+  {
+    "id": 5,
+    "name": "Juki",
+    "age": "5 Jahre",
+    "breed": "Mischling",
+    "description": "Juki, der Sohn von Michiko. Michiko lebt auf der Straße und leidet schon lange an Husten. Eines Tages, während Rianis Fütterungsrunde, war Michiko nicht mehr alleine. Sie hatte einen Welpen bekommen: Juki. Juki hatte eine entzündete Rute, die zum Glück nicht amputiert werden musste, da der entzündete Teil absorbiert wurde und von alleine abfiel. Zunächst wollten wir Juki bei Michiko lassen, aber sein Gesundheitszustand war nicht stabil genug, und die Wetterbedingungen vor Ort waren so schlecht, dass Riani ihn schließlich ins Shelter zu Rey und Dhany bringen musste. Juki ist ein besonders humorvoller und außergewöhnlicher Hund, der von Rey geliebt und umsorgt wird. Leider hat er akute Probleme mit seinen Augen, die derzeit mit Medikamenten behandelt werden. Seine Schleistung ist leicht eingeschränkt, er kommt allerdings wunderbar klar.",
+    "image": "/OneDrive_15_2.4.2025/Juki/WhatsApp Image 2025-03-30 at 07.36.12.jpeg",
+    "additionalImages": [
+      "/OneDrive_15_2.4.2025/Juki/WhatsApp Image 2025-03-30 at 07.36.07 (1).jpeg",
+      "/OneDrive_15_2.4.2025/Juki/WhatsApp Image 2025-03-30 at 07.36.08.jpeg",
+      "/OneDrive_15_2.4.2025/Juki/WhatsApp Image 2025-03-30 at 07.36.09.jpeg",
+      "/OneDrive_15_2.4.2025/Juki/WhatsApp Image 2025-03-30 at 07.36.10.jpeg",
+      "/OneDrive_15_2.4.2025/Juki/WhatsApp Image 2025-03-30 at 07.36.11.jpeg",
+      "/OneDrive_15_2.4.2025/Juki/WhatsApp Image 2025-03-30 at 07.36.13.jpeg",
+      "/OneDrive_15_2.4.2025/Juki/WhatsApp Image 2025-03-30 at 07.36.14.jpeg"
+    ],
+    "videoLinks": [
+      "/OneDrive_15_2.4.2025/Juki/juki_video.mp4"
+    ],
+    "needs": "Medizinische Versorgung für seine Augen und liebevolle Betreuung",
+    "location": "Shelter Lombok",
+    "sex": "Männlich",
+    "size": "Mittelgroß",
+    "personality": [
+      "Humorvoll",
+      "Außergewöhnlich",
+      "Liebevoll"
+    ],
+    "history": "Juki ist der Sohn von Michiko, einer Straßenhündin. Wurde ins Shelter gebracht, da die Bedingungen auf der Straße zu schlecht waren.",
+    "medicalInfo": "Hat akute Augenprobleme, die mit Medikamenten behandelt werden. Sehkraft ist leicht eingeschränkt.",
+    "suitableFor": [
+      "Verständnisvolle Menschen",
+      "Ruhige Umgebungen",
+      "Menschen mit Erfahrung mit besonderen Bedürfnissen"
+    ],
+    "maxSponsors": 3
+  },
+  {
+    "id": 6,
+    "name": "Lea",
+    "age": "~4 Jahre",
+    "breed": "Corgi Mix",
+    "description": "Im November 2023 wurde Lea völlig geschwächt auf einem Balkon gefunden. Die Bewohner verständigten uns, und Dhany und Vito sicherten sie und nahmen sie bei sich auf. Sie war in einem schlechten Zustand und hatte Nierenprobleme, weshalb sie damals nicht kastriert wurde. Vito schloss sie sofort ins Herz und entschied, sie zu behalten. Bevor sie später sterilisiert wurde, bekam sie einmal Welpen – der Vater war ein Nachbarshund. Die Kleinen wurden nach den englischen Wochentagen benannt. Der kleine Tuesday ist leider im Februar 2025 an einer unbekannten Infektion verstorben. Lea lebt mit den Anderen bei Dhany und Vito und wird dort liebevoll versorgt.",
+    "image": "/OneDrive_15_2.4.2025/Lea/IMG_2387.jpeg",
+    "additionalImages": [
+      "/OneDrive_15_2.4.2025/Lea/IMG_2397.jpeg",
+      "/OneDrive_15_2.4.2025/Lea/IMG_2398.jpeg",
+      "/OneDrive_15_2.4.2025/Lea/IMG_2399.jpeg",
+      "/OneDrive_15_2.4.2025/Lea/IMG_2400.jpeg",
+      "/OneDrive_15_2.4.2025/Lea/IMG_2401.jpeg",
+      "/OneDrive_15_2.4.2025/Lea/329efd96-77d8-469b-a4a8-63b5dd865209.jpeg",
+      "/OneDrive_15_2.4.2025/Lea/4cac85c6-4f75-48f5-9540-bcace5be912a.jpeg"
+    ],
+    "videoLinks": [
+      "/OneDrive_15_2.4.2025/Lea/6ac7ad0b-0e5d-4a61-8953-49769d00fc6c.mp4",
+      "/OneDrive_15_2.4.2025/Lea/VIDEO-2024-05-01-10-53-11.mp4"
+    ],
+    "needs": "Liebevolle Pflege und medizinische Versorgung für ihre Nierenprobleme",
+    "location": "Shelter Lombok",
+    "sex": "Weiblich",
+    "size": "Klein",
+    "personality": [
+      "Sanft",
+      "Liebevoll",
+      "Anhänglich"
+    ],
+    "history": "Im November 2023 wurde Lea völlig geschwächt auf einem Balkon gefunden. Sie hatte Welpen, die nach englischen Wochentagen benannt wurden.",
+    "medicalInfo": "Hat Nierenprobleme, die regelmäßige Kontrolle erfordern.",
+    "suitableFor": [
+      "Ruhige Haushalte",
+      "Menschen mit Erfahrung mit Nierenerkrankungen bei Hunden",
+      "Liebevolle Familien"
+    ],
+    "maxSponsors": 3
+  },
+  {
+    "id": 7,
+    "name": "Malcolm",
+    "age": "6 Jahre",
+    "breed": "Mischling",
+    "description": "Malcolm ist ein treuer Begleiter mit einem sanften Wesen. Er ist geduldig und ruhig, ideal für eine ruhige Familie.",
+    "image": "/OneDrive_15_2.4.2025/Malcolm/759b2310-e6a4-4e0a-a905-d36fc3a5c61b.jpeg",
+    "additionalImages": [
+      "/OneDrive_15_2.4.2025/Malcolm/14a3ecb9-a1a5-4e41-804c-5af9f7c5c205.jpeg",
+      "/OneDrive_15_2.4.2025/Malcolm/552e4d8e-e907-4485-9e41-421178770c9b.jpeg",
+      "/OneDrive_15_2.4.2025/Malcolm/b3bfa397-d514-40e3-bfb8-84bf795e7fa4.jpeg",
+      "/OneDrive_15_2.4.2025/Malcolm/c57323c8-ec87-47f4-a633-0e32e2c5115f.jpeg",
+      "/OneDrive_15_2.4.2025/Malcolm/6daafb5e-1fd1-4190-be22-430cffc260dd.mp4"
+    ],
+    "needs": "Regelmäßige Spaziergänge und Ruhe",
+    "location": "Shelter Lombok",
+    "sex": "Männlich",
+    "size": "Mittelgroß",
+    "personality": [
+      "Sanft",
+      "Geduldig",
+      "Ruhig",
+      "Treu"
+    ],
+    "history": "Malcolm ist ein ruhiger, sanfter Hund, der ein liebevolles Zuhause sucht.",
+    "medicalInfo": "Vollständig geimpft, gesund.",
+    "suitableFor": [
+      "Ruhige Familien",
+      "Ältere Menschen",
+      "Ruhige Umgebungen"
+    ],
+    "maxSponsors": 3
+  },
+  {
+    "id": 8,
+    "name": "Mr. Monkey",
+    "age": "5 Jahre",
+    "breed": "Mischling",
+    "description": "Mr. Monkey ist ein verspielter und energiegeladener Hund. Er liebt es, zu spielen und zu toben.",
+    "image": "/OneDrive_15_2.4.2025/Mr. Monkey/c78e20ba-3ea2-4526-bace-9924026553f2.jpeg",
+    "additionalImages": [
+      "/OneDrive_15_2.4.2025/Mr. Monkey/6d5fec90-dd27-4e67-a153-a12ef96552bc.jpeg",
+      "/OneDrive_15_2.4.2025/Mr. Monkey/fa6c797a-28aa-4926-81d4-2def24896541.jpeg"
+    ],
+    "needs": "Viel Bewegung und Spielzeit",
+    "location": "Shelter Lombok",
+    "sex": "Männlich",
+    "size": "Mittelgroß",
+    "personality": [
+      "Verspielt",
+      "Energiegeladen",
+      "Sozial",
+      "Klettert gerne"
+    ],
+    "history": "Mr. Monkey erhielt seinen Namen aufgrund seiner verspielten Art und seiner Vorliebe, auf Dinge zu klettern.",
+    "medicalInfo": "Vollständig geimpft, gesund.",
+    "suitableFor": [
+      "Aktive Familien",
+      "Menschen mit Zeit für Spiel und Beschäftigung",
+      "Haushalte mit Garten"
+    ],
+    "maxSponsors": 3
+  },
+  {
+    "id": 9,
+    "name": "Nugget",
+    "age": "~1 Jahr",
+    "breed": "Mischling",
+    "description": "Nugget wurde einsam und verlassen von Touristen am Strand gefunden. Es gab keine Mutter, keine Geschwister und leider auch keine Locals, die für ihn sorgen konnten. Der kleine Welpe war schätzungsweise nur vier Wochen alt, zu schwach und zu klein, um sich selbst zu versorgen. Die ausgewachsenen Straßenhunde griffen ihn an, was seine Überlebenschancen stark gefährdete. Eine hilfsbereite Touristin nahm Nugget mit zu sich in die WG, wandte sich dann aber an uns. Nugget wurde von Mieke abgeholt und zu Dhany ins Shelter gebracht, wo er liebevoll versorgt wurde. Er hat sich prächtig entwickelt und ist mittlerweile ein wunderschöner Junghund mit einem äußerst freundlichen Wesen. Leider leidet er an neurologischen Ausfällen, Calcium-Mangel und Blutarmut und befindet sich in ärztlicher Behandlung.",
+    "image": "/OneDrive_15_2.4.2025/Nugget/WhatsApp Image 2025-03-30 at 07.36.02.jpeg",
+    "additionalImages": [
+      "/OneDrive_15_2.4.2025/Nugget/WhatsApp Image 2025-03-30 at 07.36.03.jpeg",
+      "/OneDrive_15_2.4.2025/Nugget/WhatsApp Image 2025-03-30 at 07.36.04.jpeg",
+      "/OneDrive_15_2.4.2025/Nugget/WhatsApp Image 2025-03-30 at 07.36.05.jpeg",
+      "/OneDrive_15_2.4.2025/Nugget/WhatsApp Image 2025-03-30 at 07.36.06.jpeg",
+      "/OneDrive_15_2.4.2025/Nugget/WhatsApp Image 2025-03-30 at 07.36.07.jpeg",
+      "/OneDrive_15_2.4.2025/Nugget/WhatsApp Image 2025-03-30 at 07.36.08.jpeg",
+      "/OneDrive_15_2.4.2025/Nugget/WhatsApp Image 2025-03-30 at 07.36.09.jpeg",
+      "/OneDrive_15_2.4.2025/Nugget/WhatsApp Image 2025-03-30 at 07.36.10.jpeg"
+    ],
+    "videoLinks": [
+      "/OneDrive_15_2.4.2025/Nugget/VIDEO-2024-05-01-10-53-11.mp4",
+      "/OneDrive_15_2.4.2025/Nugget/VIDEO-2024-05-01-10-53-12.mp4"
+    ],
+    "needs": "Medizinische Versorgung für neurologische Probleme und liebevolle Betreuung",
+    "location": "Shelter Lombok",
+    "sex": "Männlich",
+    "size": "Mittelgroß",
+    "personality": [
+      "Freundlich",
+      "Liebevoll",
+      "Aufgeweckt"
+    ],
+    "history": "Nugget wurde als 4 Wochen alter Welpe am Strand gefunden, völlig allein und hilflos. Von Touristen gerettet und ins Shelter gebracht.",
+    "medicalInfo": "Leidet an neurologischen Ausfällen, Calcium-Mangel und Blutarmut. Steht unter ärztlicher Behandlung.",
+    "suitableFor": [
+      "Erfahrene Hundehalter",
+      "Menschen mit Verständnis für medizinische Bedürfnisse",
+      "Geduldige Familien"
+    ],
+    "maxSponsors": 3
+  },
+  {
+    "id": 10,
+    "name": "Ocha",
+    "age": "7 Monate",
+    "breed": "Mischling",
+    "description": "Ocha ist die Schwester von Anton. Sie wurde zusammen mit ihrer Mutter Ichi und ihren Brüdern Anton und Albert im November 2024 von Mieke gefunden. Leider hat ihre Mutter es nicht geschafft und ihr Bruder Albert ist im Januar 2025 verstorben. Ocha ist ein liebevoller, verspielter Welpe, der ein sicheres Zuhause sucht.",
+    "image": "/OneDrive_15_2.4.2025/Ocha/IMG_2177.jpeg",
+    "additionalImages": [
+      "/OneDrive_15_2.4.2025/Ocha/IMG_2178.jpeg",
+      "/OneDrive_15_2.4.2025/Ocha/IMG_2179.jpeg",
+      "/OneDrive_15_2.4.2025/Ocha/IMG_2180.jpeg",
+      "/OneDrive_15_2.4.2025/Ocha/IMG_2181.jpeg",
+      "/OneDrive_15_2.4.2025/Ocha/IMG_2182.jpeg",
+      "/OneDrive_15_2.4.2025/Ocha/IMG_2183.jpeg",
+      "/OneDrive_15_2.4.2025/Ocha/IMG_2184.jpeg",
+      "/OneDrive_15_2.4.2025/Ocha/IMG_2185.jpeg"
+    ],
+    "videoLinks": [
+      "/OneDrive_15_2.4.2025/Ocha/VIDEO-2024-05-01-10-53-11.mp4",
+      "/OneDrive_15_2.4.2025/Ocha/VIDEO-2024-05-01-10-53-12.mp4",
+      "/OneDrive_15_2.4.2025/Ocha/VIDEO-2024-05-01-10-53-13.mp4",
+      "/OneDrive_15_2.4.2025/Ocha/VIDEO-2024-05-01-10-53-14.mp4",
+      "/OneDrive_15_2.4.2025/Ocha/VIDEO-2024-05-01-10-53-15.mp4"
+    ],
+    "needs": "Liebevolle Familie und Erziehung",
+    "location": "Shelter Lombok",
+    "sex": "Weiblich",
+    "size": "Mittelgroß (wachsend)",
+    "personality": [
+      "Verspielt",
+      "Liebevoll",
+      "Neugierig",
+      "Aufgeweckt"
+    ],
+    "history": "Ocha wurde im November 2024 mit ihrer Mutter Ichi und ihren Brüdern Anton und Albert gefunden. Leider hat ihre Mutter es nicht geschafft und ihr Bruder Albert ist im Januar 2025 verstorben.",
+    "medicalInfo": "Vollständig geimpft, gesund.",
+    "suitableFor": [
+      "Familien mit Kindern",
+      "Menschen mit Erfahrung mit Welpen",
+      "Aktive Haushalte"
+    ],
+    "maxSponsors": 3
+  },
+  {
+    "id": 11,
+    "name": "Rijonde",
+    "age": "1 Jahr",
+    "breed": "Mischling",
+    "description": "Rijonde ist ein junger, neugieriger Hund, der noch viel lernen möchte. Er ist intelligent und aufmerksam.",
+    "image": "/OneDrive_15_2.4.2025/Rijonde/fc5a9725-f455-4ffa-8861-7ea24a596d6e.jpeg",
+    "needs": "Mentale Stimulation und Training",
+    "location": "Shelter Lombok",
+    "sex": "Männlich",
+    "size": "Mittelgroß",
+    "personality": [
+      "Neugierig",
+      "Intelligent",
+      "Aufmerksam",
+      "Lernfreudig"
+    ],
+    "history": "Rijonde wurde als junger Hund im Shelter aufgenommen und hat seitdem viel gelernt.",
+    "medicalInfo": "Vollständig geimpft, gesund.",
+    "suitableFor": [
+      "Aktive Menschen",
+      "Familien mit Zeit für Training",
+      "Menschen mit Hundeerfahrung"
+    ],
+    "maxSponsors": 3
+  },
+  {
+    "id": 12,
+    "name": "Rijondi",
+    "age": "1 Jahr",
+    "breed": "Mischling",
+    "description": "Rijondi ist verspielt und energiegeladen. Er braucht viel Bewegung und Beschäftigung.",
+    "image": "/Rijondi/IMG_1637.jpeg",
+    "videoLinks": [
+      "/Rijondi/46fa0067-453a-4d2a-b0ca-ea2208b30fc5.mp4",
+      "/Rijondi/VIDEO-2025-02-17-12-44-23.mp4",
+      "/Rijondi/VIDEO-2025-02-17-12-44-28.mp4"
+    ],
+    "needs": "Aktive Familie",
+    "location": "Shelter Lombok",
+    "sex": "Männlich",
+    "size": "Mittelgroß",
+    "personality": [
+      "Verspielt",
+      "Energiegeladen",
+      "Lebhaft",
+      "Sportlich"
+    ],
+    "history": "Rijondi wurde als junger Hund im Shelter aufgenommen und hat seitdem viel Energie und Freude gezeigt.",
+    "medicalInfo": "Vollständig geimpft, gesund.",
+    "suitableFor": [
+      "Aktive Familien",
+      "Menschen mit Zeit für Sport und Spiel",
+      "Haushalte mit Garten"
+    ],
+    "maxSponsors": 3
+  },
+  {
+    "id": 13,
+    "name": "Roket",
+    "age": "2 Jahre",
+    "breed": "Mischling",
+    "description": "Roket ist ein schneller und aktiver Hund, der gerne rennt und spielt. Er hat viel Energie und Ausdauer.",
+    "image": "/OneDrive_15_2.4.2025/Roket/09492c29-d35f-4885-861a-f1eeb4b16e49.jpeg",
+    "additionalImages": [
+      "/OneDrive_15_2.4.2025/Roket/6a21b09e-a296-48e9-b1ab-e36b0f20d5cf.jpeg"
+    ],
+    "videoLinks": [
+      "/OneDrive_15_2.4.2025/Roket/bc442c48-77af-49b6-bc90-ea546395af3c.mp4"
+    ],
+    "needs": "Viel Bewegung und Auslauf",
+    "location": "Shelter Lombok",
+    "sex": "Männlich",
+    "size": "Mittelgroß",
+    "personality": [
+      "Schnell",
+      "Aktiv",
+      "Energiegeladen",
+      "Ausdauernd"
+    ],
+    "history": "Roket erhielt seinen Namen aufgrund seiner Geschwindigkeit und Energie.",
+    "medicalInfo": "Vollständig geimpft, gesund.",
+    "suitableFor": [
+      "Sehr aktive Menschen",
+      "Läufer und Sportler",
+      "Familien mit viel Zeit für Aktivitäten"
+    ],
+    "maxSponsors": 3
+  },
+  {
+    "id": 14,
+    "name": "Wednesday",
+    "age": "4 Jahre",
+    "breed": "Mischling",
+    "description": "Wednesday ist eine besondere Hündin mit einem einzigartigen Charakter. Sie ist loyal und beschützend.",
+    "image": "/OneDrive_15_2.4.2025/Wednesday/IMG_2215.jpeg",
+    "additionalImages": [
+      "/OneDrive_15_2.4.2025/Wednesday/IMG_2217.jpeg",
+      "/OneDrive_15_2.4.2025/Wednesday/IMG_2218.jpeg",
+      "/OneDrive_15_2.4.2025/Wednesday/IMG_2219.jpeg"
+    ],
+    "videoLinks": [
+      "/OneDrive_15_2.4.2025/Wednesday/VIDEO-2024-05-01-10-53-11.mp4",
+      "/OneDrive_15_2.4.2025/Wednesday/VIDEO-2024-05-01-10-53-12.mp4"
+    ],
+    "needs": "Verständnis und Geduld",
+    "location": "Shelter Lombok",
+    "sex": "Weiblich",
+    "size": "Mittelgroß",
+    "personality": [
+      "Loyal",
+      "Beschützend",
+      "Charakterstark"
+    ],
+    "history": "Wednesday ist eine einzigartige Hündin mit einem starken Charakter. Sie braucht Menschen, die sie verstehen und schätzen.",
+    "medicalInfo": "Vollständig geimpft, gesund.",
+    "suitableFor": [
+      "Erfahrene Hundehalter",
+      "Menschen mit Verständnis für starke Persönlichkeiten",
+      "Einzelhaltung oder ruhige Umgebung"
+    ],
+    "maxSponsors": 3
+  },
+  {
+    "id": 15,
+    "name": "Zeta",
+    "age": "~1 Jahr",
+    "breed": "Mischling",
+    "description": "Zeta wurde vor Neujahr 25 während Rianis Fütterungsrunde am Straßenrand gefunden – ausgesetzt mit vielen anderen Welpen, ohne ihre Mutter. Sie war noch sehr jung und hätte alleine keine Überlebenschance gehabt. Seitdem lebt sie bei Dhany, wie auch die anderen 10 Welpen im gleichen Alter, die alle Namen aus dem griechischen Alphabet haben. (Die anderen, restlichen 3 der Rettung leben bei Rey.)",
+    "image": "/OneDrive_15_2.4.2025/Zeta/IMG_2213.jpeg",
+    "additionalImages": [
+      "/OneDrive_15_2.4.2025/Zeta/IMG_2214.jpeg"
+    ],
+    "videoLinks": [
+      "/OneDrive_15_2.4.2025/Zeta/d5e5e280-dd0a-45fe-a44d-0b2531a1aa50.mp4",
+      "/OneDrive_15_2.4.2025/Zeta/VIDEO-2024-05-01-10-53-11.mp4",
+      "/OneDrive_15_2.4.2025/Zeta/VIDEO-2024-05-01-10-53-12.mp4"
+    ],
+    "needs": "Zuneigung und Unterstützung in ihrer weiteren Entwicklung",
+    "location": "Shelter Lombok",
+    "sex": "Weiblich",
+    "size": "Mittelgroß",
+    "personality": [
+      "Neugierig",
+      "Verspielt",
+      "Energiegeladen",
+      "Sozial"
+    ],
+    "history": "Zeta wurde vor Neujahr 2025 am Straßenrand gefunden, ausgesetzt mit vielen anderen Welpen ohne Mutter.",
+    "medicalInfo": "Vollständig geimpft, gesund.",
+    "suitableFor": [
+      "Aktive Menschen",
+      "Familien mit Erfahrung mit Hunden",
+      "Menschen mit Zeit für Erziehung"
+    ],
+    "maxSponsors": 3
+  }
+]

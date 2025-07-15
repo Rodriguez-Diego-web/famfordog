@@ -36,7 +36,8 @@ suitableFor:
   - "Ruhige Haushalte"
   - "Geduldige Menschen"
 sponsors:
-  - name: "Dr. Weber"
+  - id: 1
+    name: "Dr. Weber"
     initials: "DW"
     color: "#2ecc71"
 maxSponsors: 3

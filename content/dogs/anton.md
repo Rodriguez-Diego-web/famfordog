@@ -24,7 +24,8 @@ suitableFor:
   - "Menschen mit Geduld und Liebe"
 notSuitableFor: []
 sponsors:
-  - name: "Heike"
+  - id: 1
+    name: "Heike"
     initials: "H"
     color: "#3498db"
 maxSponsors: 3

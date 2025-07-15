@@ -25,13 +25,16 @@ suitableFor:
   - "Geduldige Menschen"
   - "Ruhige Umgebung"
 sponsors:
-  - name: "Lisa K."
+  - id: 1
+    name: "Lisa K."
     initials: "LK"
     color: "#9b59b6"
-  - name: "Thomas B."
+  - id: 2
+    name: "Thomas B."
     initials: "TB"
     color: "#f39c12"
-  - name: "Sarah M."
+  - id: 3
+    name: "Sarah M."
     initials: "SM"
     color: "#1abc9c"
 maxSponsors: 3
