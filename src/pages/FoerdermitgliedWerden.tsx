@@ -42,48 +42,52 @@ const FoerdermitgliedWerden = () => {
           <div className="container mx-auto px-6">
             <div className="bg-primary rounded-xl shadow-lg">
               <div className="p-6">
-                <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
-                  
-                  {/* Links - Titel mit Icon */}
-                  <div className="flex items-center">
-                    <div className="h-10 w-10 rounded-full bg-white/20 flex items-center justify-center mr-4">
-                      <Heart size={20} className="text-white" />
+                
+                {/* Titel mit Icon - zentriert */}
+                <div className="text-center mb-6">
+                  <div className="inline-flex items-center justify-center mb-3">
+                    <div className="h-12 w-12 rounded-full bg-white/20 flex items-center justify-center mr-3">
+                      <Heart size={24} className="text-white" />
                     </div>
-                    <div>
-                      <h3 className="text-xl font-bold text-white font-glorious">Deine Vorteile als Fördermitglied</h3>
-                      <p className="text-white/80 font-futura text-sm">Unterstütze uns langfristig und erhalte exklusive Einblicke</p>
-                    </div>
+                    <h3 className="text-2xl font-bold text-white font-glorious">Deine Vorteile als Fördermitglied</h3>
                   </div>
-
-                  {/* Mitte - Vorteile horizontal */}
-                  <div className="flex flex-wrap lg:flex-nowrap gap-6 lg:gap-8">
-                    <div className="flex items-center text-white/90 font-futura text-sm">
-                      <span className="w-2 h-2 bg-secondary rounded-full mr-2"></span>
-                      regelmäßige Updates
-                    </div>
-                    <div className="flex items-center text-white/90 font-futura text-sm">
-                      <span className="w-2 h-2 bg-secondary rounded-full mr-2"></span>
-                      exklusive Events
-                    </div>
-                    <div className="flex items-center text-white/90 font-futura text-sm">
-                      <span className="w-2 h-2 bg-secondary rounded-full mr-2"></span>
-                      Jahresversammlung
-                    </div>
-                    <div className="flex items-center text-white/90 font-futura text-sm">
-                      <span className="w-2 h-2 bg-secondary rounded-full mr-2"></span>
-                      Spendenbescheinigung
-                    </div>
-                  </div>
-
-                  {/* Rechts - Call to Action */}
-                  <div className="flex items-center justify-center lg:justify-end">
-                    <div className="bg-white/10 rounded-lg px-4 py-2 text-center">
-                      <div className="text-white font-futura text-sm font-medium">Formular ausfüllen</div>
-                      <div className="text-secondary text-xs font-futura">↓ Direkt hier</div>
-                    </div>
-                  </div>
-
+                  <p className="text-white/80 font-futura text-base max-w-2xl mx-auto">
+                    Unterstütze uns langfristig und erhalte exklusive Einblicke in unsere Arbeit
+                  </p>
                 </div>
+
+                {/* Vorteile Grid - responsive */}
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+                  <div className="bg-white/10 rounded-lg p-4 text-center">
+                    <div className="w-3 h-3 bg-secondary rounded-full mx-auto mb-2"></div>
+                    <div className="text-white font-futura text-sm font-medium">Regelmäßige</div>
+                    <div className="text-white font-futura text-sm">Updates</div>
+                  </div>
+                  <div className="bg-white/10 rounded-lg p-4 text-center">
+                    <div className="w-3 h-3 bg-secondary rounded-full mx-auto mb-2"></div>
+                    <div className="text-white font-futura text-sm font-medium">Exklusive</div>
+                    <div className="text-white font-futura text-sm">Events</div>
+                  </div>
+                  <div className="bg-white/10 rounded-lg p-4 text-center">
+                    <div className="w-3 h-3 bg-secondary rounded-full mx-auto mb-2"></div>
+                    <div className="text-white font-futura text-sm font-medium">Jahreshaupt-</div>
+                    <div className="text-white font-futura text-sm">versammlung</div>
+                  </div>
+                  <div className="bg-white/10 rounded-lg p-4 text-center">
+                    <div className="w-3 h-3 bg-secondary rounded-full mx-auto mb-2"></div>
+                    <div className="text-white font-futura text-sm font-medium">Spenden-</div>
+                    <div className="text-white font-futura text-sm">bescheinigung</div>
+                  </div>
+                </div>
+
+                {/* Call to Action - zentriert */}
+                <div className="text-center">
+                  <div className="inline-block bg-white/15 rounded-lg px-6 py-3 border border-white/20">
+                    <div className="text-white font-futura text-base font-medium">Formular ausfüllen</div>
+                    <div className="text-secondary text-sm font-futura">↓ Direkt hier</div>
+                  </div>
+                </div>
+
               </div>
             </div>
           </div>
