@@ -175,8 +175,8 @@ const Spendenaktion = () => {
                 )}
                 
                 {/* FundraisingBox Widgets */}
-                <div className="space-y-6">
-                  {/* Durch Privat Widget */}
+                {hasUrlParams ? (
+                  // Single widget when accessed via URL parameters
                   <div className="bg-gray-50 rounded-lg p-4 overflow-hidden">
                     <iframe
                       ref={iframe1Ref}
@@ -184,24 +184,40 @@ const Spendenaktion = () => {
                       width="100%"
                       height="600"
                       style={{ border: 'none', minHeight: '600px', overflow: 'hidden', transition: 'height 0.3s ease' }}
-                      title="Durch Privat Spendenformular"
+                      title="Spendenaktion"
                       scrolling="no"
                     />
                   </div>
-                  
-                  {/* FAM for Dogs Widget */}
-                  <div className="bg-gray-50 rounded-lg p-4 overflow-hidden">
-                    <iframe
-                      ref={iframe2Ref}
-                      src="/fundraising-embed-fam.html"
-                      width="100%"
-                      height="600"
-                      style={{ border: 'none', minHeight: '600px', overflow: 'hidden', transition: 'height 0.3s ease' }}
-                      title="FAM for Dogs Spendenformular"
-                      scrolling="no"
-                    />
+                ) : (
+                  // Both widgets when accessed normally
+                  <div className="space-y-6">
+                    {/* Durch Privat Widget */}
+                    <div className="bg-gray-50 rounded-lg p-4 overflow-hidden">
+                      <iframe
+                        ref={iframe1Ref}
+                        src="/fundraising-embed.html"
+                        width="100%"
+                        height="600"
+                        style={{ border: 'none', minHeight: '600px', overflow: 'hidden', transition: 'height 0.3s ease' }}
+                        title="Durch Privat Spendenformular"
+                        scrolling="no"
+                      />
+                    </div>
+                    
+                    {/* FAM for Dogs Widget */}
+                    <div className="bg-gray-50 rounded-lg p-4 overflow-hidden">
+                      <iframe
+                        ref={iframe2Ref}
+                        src="/fundraising-embed-fam.html"
+                        width="100%"
+                        height="600"
+                        style={{ border: 'none', minHeight: '600px', overflow: 'hidden', transition: 'height 0.3s ease' }}
+                        title="FAM for Dogs Spendenformular"
+                        scrolling="no"
+                      />
+                    </div>
                   </div>
-                </div>
+                )}
               </div>
             </div>
           </div>
