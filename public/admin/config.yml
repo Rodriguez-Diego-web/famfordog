@@ -1,0 +1,122 @@
+backend:
+  name: git-gateway
+  branch: main # Branch to update (optional; defaults to master)
+
+# Uncomment below to enable drafts
+# publish_mode: editorial_workflow
+
+media_folder: "public/images/cms" # Media files will be stored in the repo under public/images/cms
+public_folder: "/images/cms" # The src attribute for uploaded media will begin with /images/cms
+
+collections:
+  # Hunde-Sammlung
+  - name: "dogs" # Used in routes, e.g., /admin/collections/dogs
+    label: "Hunde" # Used in the UI
+    folder: "content/dogs" # The path to the folder where the documents are stored
+    create: true # Allow users to create new documents in this collection
+    slug: "{{slug}}" # Filename template, e.g., YYYY-MM-DD-title.md
+    fields: # The fields for each document, usually in front matter
+      - {label: "Name", name: "name", widget: "string"}
+      - {label: "Alter", name: "age", widget: "string"}
+      - {label: "Rasse", name: "breed", widget: "string"}
+      - {label: "Beschreibung", name: "description", widget: "text"}
+      - {label: "Hauptbild", name: "image", widget: "image"}
+      - label: "Zusätzliche Bilder"
+        name: "additionalImages"
+        widget: "list"
+        field: {label: "Bild", name: "image", widget: "image"}
+      - label: "Video Links"
+        name: "videoLinks"
+        widget: "list"
+        field: {label: "Video", name: "video", widget: "file"}
+      - {label: "Bedürfnisse", name: "needs", widget: "string"}
+      - {label: "Standort", name: "location", widget: "string", default: "Shelter Lombok"}
+      - {label: "Geschlecht", name: "sex", widget: "select", options: ["Männlich", "Weiblich"]}
+      - {label: "Größe", name: "size", widget: "select", options: ["Klein", "Mittelgroß", "Groß"]}
+      - label: "Persönlichkeit"
+        name: "personality"
+        widget: "list"
+        field: {label: "Eigenschaft", name: "trait", widget: "string"}
+      - {label: "Geschichte", name: "history", widget: "text"}
+      - {label: "Medizinische Infos", name: "medicalInfo", widget: "text"}
+      - label: "Geeignet für"
+        name: "suitableFor"
+        widget: "list"
+        field: {label: "Typ", name: "type", widget: "string"}
+      - label: "Nicht geeignet für"
+        name: "notSuitableFor"
+        widget: "list"
+        field: {label: "Typ", name: "type", widget: "string"}
+      - label: "Sponsoren"
+        name: "sponsors"
+        widget: "list"
+        fields:
+          - {label: "Name", name: "name", widget: "string"}
+          - {label: "Initialen", name: "initials", widget: "string"}
+          - {label: "Farbe", name: "color", widget: "string"}
+      - {label: "Max Sponsoren", name: "maxSponsors", widget: "number", default: 3}
+      - {label: "Veröffentlicht", name: "published", widget: "boolean", default: true}
+
+  # Team-Sammlung
+  - name: "team"
+    label: "Team"
+    folder: "content/team"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Name", name: "name", widget: "string"}
+      - {label: "Rolle", name: "role", widget: "string"}
+      - {label: "Biografie", name: "bio", widget: "text"}
+      - {label: "Bild", name: "image", widget: "image"}
+      - {label: "Kategorie", name: "category", widget: "select", options: ["Vorstand", "Aktive Mitglieder", "Lombok Team", "Rumänien Team", "Tierärzte"]}
+      - {label: "Social Media", name: "socialMedia", widget: "object", fields: [
+          {label: "Website", name: "website", widget: "string", required: false},
+          {label: "Instagram", name: "instagram", widget: "string", required: false},
+          {label: "Email", name: "email", widget: "string", required: false}
+        ]}
+      - {label: "Sortierung", name: "order", widget: "number", default: 0}
+      - {label: "Veröffentlicht", name: "published", widget: "boolean", default: true}
+
+  # Projekte-Sammlung
+  - name: "projects"
+    label: "Projekte"
+    folder: "content/projects"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Titel", name: "title", widget: "string"}
+      - {label: "Beschreibung", name: "description", widget: "text"}
+      - {label: "Inhalt", name: "body", widget: "markdown"}
+      - {label: "Bild", name: "image", widget: "image"}
+      - {label: "Farbe", name: "color", widget: "string"}
+      - {label: "Pfad", name: "path", widget: "string"}
+      - {label: "Sortierung", name: "order", widget: "number", default: 0}
+      - {label: "Veröffentlicht", name: "published", widget: "boolean", default: true}
+
+  # FAQ-Sammlung
+  - name: "faq"
+    label: "FAQ"
+    folder: "content/faq"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Frage", name: "question", widget: "string"}
+      - {label: "Antwort", name: "answer", widget: "text"}
+      - {label: "Kategorie", name: "category", widget: "select", options: ["adoption", "gesundheit", "prozess", "nach-adoption", "allgemein"]}
+      - {label: "Sortierung", name: "order", widget: "number", default: 0}
+      - {label: "Veröffentlicht", name: "published", widget: "boolean", default: true}
+
+  # Allgemeine Inhalte
+  - name: "pages"
+    label: "Seiten"
+    folder: "content/pages"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Titel", name: "title", widget: "string"}
+      - {label: "Beschreibung", name: "description", widget: "text"}
+      - {label: "Inhalt", name: "body", widget: "markdown"}
+      - {label: "SEO Titel", name: "seoTitle", widget: "string"}
+      - {label: "SEO Beschreibung", name: "seoDescription", widget: "text"}
+      - {label: "Keywords", name: "keywords", widget: "string"}
+      - {label: "Veröffentlicht", name: "published", widget: "boolean", default: true} 

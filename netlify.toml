@@ -8,6 +8,22 @@
   to = "/index.html"
   status = 200
 
+# Decap CMS Configuration
+[build.environment]
+  NODE_VERSION = "18"
+
+# Git Gateway für Decap CMS
+[context.production.environment]
+  NETLIFY_SITE_ID = ""
+  
+# Identity Service für Benutzer-Authentifizierung
+[identity]
+  url = "/.netlify/identity"
+
+# Git Gateway aktivieren
+[services.git-gateway]
+  enabled = true
+
 # Enable HTTP/2 Server Push
 [[headers]]
   for = "/*"
