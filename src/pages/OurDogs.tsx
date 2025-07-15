@@ -65,37 +65,29 @@ const OurDogs = () => {
       
       {/* Patenschafts-Modal */}
       {showPatronageModal && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-          <div className="bg-white rounded-lg p-6 max-w-md w-full max-h-[90vh] overflow-y-auto">
-            <div className="flex justify-between items-center mb-4">
-              <h3 className="text-xl font-bold text-primary">Patenschaft übernehmen</h3>
-              <button
+        <div className="fixed inset-0 bg-black bg-opacity-75 z-50 flex items-center justify-center p-4 overflow-y-auto">
+          <div className="bg-white rounded-lg shadow-xl max-w-4xl w-full max-h-[90vh] overflow-hidden">
+            <div className="flex justify-between items-center p-4 border-b">
+              <h2 className="text-2xl font-bold text-primary font-futura">Patenschaft übernehmen</h2>
+              <button 
                 onClick={closePatronageModal}
-                className="text-gray-500 hover:text-gray-700 text-2xl"
+                className="text-gray-500 hover:text-gray-700 focus:outline-none"
               >
                 <X size={24} />
               </button>
             </div>
-            
-            <div className="space-y-4">
-              <p className="text-gray-700">
-                Vielen Dank für dein Interesse an einer Patenschaft! Du kannst uns gerne direkt kontaktieren:
-              </p>
-              
-              <div className="space-y-2">
-                <div className="flex items-center space-x-2">
-                  <Phone size={16} className="text-primary" />
-                  <span className="text-sm">+49 (0) 123 456 7890</span>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <span className="text-primary">✉️</span>
-                  <span className="text-sm">patenschaft@famfordogs.com</span>
-                </div>
-              </div>
-              
-              <p className="text-sm text-gray-600">
-                Wir melden uns schnellstmöglich bei dir und besprechen alles Weitere!
-              </p>
+            <div className="p-2 overflow-y-auto" style={{ maxHeight: 'calc(90vh - 70px)' }}>
+              <iframe 
+                src="https://secure.fundraisingbox.com/app/payment?hash=rsg5g3e1y9kkxqoc&t=425786862dfc0c7d09f672538bbd229f&fb_id=25409"
+                title="Fundraising Box Patenschaftsformular"
+                width="100%"
+                height="2100"
+                className="md:h-[1800px]" 
+                frameBorder="0"
+                allowTransparency={true}
+                allow="payment"
+                style={{ display: 'block', margin: '0 auto' }}
+              ></iframe>
             </div>
           </div>
         </div>
