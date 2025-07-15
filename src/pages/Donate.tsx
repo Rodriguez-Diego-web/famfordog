@@ -30,7 +30,7 @@ const Donate = () => {
       
       {/* Erhöhter Abstand zum oberen Rand - pt-32 statt pt-16 */}
       <main className="flex-grow pt-32 bg-gray-50">
-        <div className="container mx-auto px-4 pb-2">
+        <div className="container mx-auto px-4 pb-0">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-10">
               <h1 className="text-3xl font-bold text-primary mb-4 font-glorious">Unterstütze unsere Mission</h1>
@@ -40,7 +40,7 @@ const Donate = () => {
             </div>
             
             {/* Responsive iframe height - größer auf Mobilgeräten */}
-            <div className="bg-white rounded-lg shadow-md p-3 mb-4">
+            <div className="bg-white rounded-lg shadow-md p-3 mb-0">
               <iframe 
                 src="https://secure.fundraisingbox.com/app/payment?hash=9kl46fm02g6o9ev6&t=18642046f767d060416617baf23108df&fb_id=25408"
                 title="Fundraising Box Spendenformular"
@@ -56,8 +56,8 @@ const Donate = () => {
             </div>
             
             {/* Alternative Spendenmöglichkeiten */}
-            <div className="mt-8 bg-gradient-to-r from-primary/10 to-accent-blue/10 rounded-lg p-6">
-              <h3 className="text-2xl font-bold text-primary mb-6 font-glorious text-center">
+            <div className="mt-2 bg-gradient-to-r from-primary/10 to-accent-blue/10 rounded-lg p-4">
+              <h3 className="text-2xl font-bold text-primary mb-4 font-glorious text-center">
                 Alternative Spendenmöglichkeiten
               </h3>
               
@@ -119,14 +119,14 @@ const Donate = () => {
                 </div>
               </div>
               
-              <div className="mt-6 text-center">
+              <div className="mt-2 text-center">
                 <p className="text-sm text-gray-600 font-futura">
                   ✨ Jede Spende hilft uns dabei, das Leben der Straßenhunde zu verbessern ✨
                 </p>
               </div>
             </div>
             
-            <div className="flex flex-col md:flex-row justify-center text-xs md:text-sm text-gray-600 font-futura md:space-x-4 space-y-2 md:space-y-0 mt-4">
+            <div className="flex flex-col md:flex-row justify-center text-xs md:text-sm text-gray-600 font-futura md:space-x-4 space-y-2 md:space-y-0 mt-2">
               <div className="flex items-center justify-center">
                 <span className="font-medium">Bei Fragen:</span> 
                 <a href="mailto:info@famfordogs.com" className="text-primary underline hover:text-accent-blue ml-1">info@famfordogs.com</a>
