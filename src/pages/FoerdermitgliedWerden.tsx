@@ -39,7 +39,7 @@ const FoerdermitgliedWerden = () => {
 
         {/* Fördermitgliedschaft Info Section */}
         <section className="py-6">
-          <div className="container mx-auto px-6">
+          <div className="container mx-auto px-6 lg:px-12">
             <div className="bg-primary rounded-xl shadow-lg">
               <div className="p-6">
                 <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
