@@ -45,8 +45,8 @@ const Donate = () => {
                 src="https://secure.fundraisingbox.com/app/payment?hash=9kl46fm02g6o9ev6&t=18642046f767d060416617baf23108df&fb_id=25408"
                 title="Fundraising Box Spendenformular"
                 width="100%"
-                height="4500"
-                className="h-[4500px] md:h-[2800px]" 
+                height="3200"
+                className="h-[3200px] md:h-[2800px]" 
                 frameBorder="0"
                 allowTransparency={true}
                 allow="payment"
