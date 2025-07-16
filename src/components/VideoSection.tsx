@@ -1,13 +1,46 @@
 import { useRef, useState, useEffect } from 'react';
 import { Play, Pause, Volume2, VolumeX, Info } from 'lucide-react';
+import { loadVideoSection, type VideoSection as VideoSectionData } from '@/lib/cms';
 
 const VideoSection = () => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [isMuted, setIsMuted] = useState(true);
   const [isLoaded, setIsLoaded] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
+  const [videoData, setVideoData] = useState<VideoSectionData | null>(null);
+  const [loading, setLoading] = useState(true);
   const videoRef = useRef<HTMLVideoElement>(null);
   const sectionRef = useRef<HTMLElement>(null);
+
+  // Load CMS data
+  useEffect(() => {
+    const loadData = async () => {
+      try {
+        const data = await loadVideoSection();
+        setVideoData(data);
+      } catch (error) {
+        console.error('Fehler beim Laden der Video Section:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    loadData();
+  }, []);
+
+  // Fallback-Daten falls CMS nicht lädt
+  const fallbackData: VideoSectionData = {
+    id: 'video',
+    badge: 'Unsere Arbeit',
+    title: 'Hilfe vor Ort',
+    description: 'Unser Fokus liegt auf nachhaltigen Lösungen vor Ort statt kurzfristiger Maßnahmen. Wir glauben, dass nur durch eine dauerhafte Präsenz und lokale Zusammenarbeit echte Veränderungen möglich sind.\n\nIn Lombok und Rumänien arbeiten wir eng mit lokalen Helfern zusammen, um die Lebensbedingungen der Straßenhunde langfristig zu verbessern. Unsere Programme sind darauf ausgerichtet, nicht nur akute Probleme zu lösen, sondern nachhaltige Strukturen zu schaffen.\n\nDas Video gibt einen Einblick in unsere tägliche Arbeit vor Ort und zeigt, mit wie viel Engagement unser Team die verschiedenen Projekte betreut.',
+    videoUrl: '/videos/ImageVideo.mp4',
+    posterImage: '/images/lombook/WhatsApp Image 2025-03-24 at 18.13.23.jpeg',
+    videoInfo: 'FAM for Dogs in Aktion',
+    published: true
+  };
+
+  const data = videoData || fallbackData;
 
   // Intersection Observer to load video only when in viewport
   useEffect(() => {
@@ -53,6 +86,23 @@ const VideoSection = () => {
     setIsLoaded(true);
   };
 
+  // Loading state
+  if (loading) {
+    return (
+      <section className="py-24 bg-gradient-to-br from-accent-green/5 to-accent-blue/10">
+        <div className="container mx-auto px-6">
+          <div className="text-center">
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto"></div>
+            <p className="mt-4 text-gray-600">Lade Video Section...</p>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
+  // Split description into paragraphs
+  const descriptionParagraphs = data.description.split('\n\n').filter(p => p.trim() !== '');
+
   return (
     <section 
       id="video" 
@@ -90,11 +140,11 @@ const VideoSection = () => {
                     muted={isMuted}
                     loop
                     playsInline
-                    poster="/images/lombook/WhatsApp Image 2025-03-24 at 18.13.23.jpeg"
+                    poster={data.posterImage}
                     onLoadedData={handleVideoLoaded}
                     onEnded={() => setIsPlaying(false)}
                   >
-                    <source src="/videos/ImageVideo.mp4" type="video/mp4" />
+                    <source src={data.videoUrl} type="video/mp4" />
                     Dein Browser unterstützt das Video-Tag nicht.
                   </video>
                 )}
@@ -105,7 +155,7 @@ const VideoSection = () => {
                 {/* Video info badge */}
                 <div className="absolute top-4 left-4 flex items-center gap-2 bg-black/40 text-white px-3 py-1.5 rounded-full backdrop-blur-sm text-sm">
                   <Info size={16} />
-                  <span>FAM for Dogs in Aktion</span>
+                  <span>{data.videoInfo}</span>
                 </div>
                 
                 {/* Play/Pause Button */}
@@ -148,19 +198,15 @@ const VideoSection = () => {
                }}>
             <div className="mb-8">
               <div className="inline-block rounded-lg bg-accent-blue/20 px-3 py-1 mb-3">
-                <span className="text-accent-blue font-medium font-futura">Unsere Arbeit</span>
+                <span className="text-accent-blue font-medium font-futura">{data.badge}</span>
               </div>
-              <h2 className="text-4xl md:text-5xl font-bold text-primary mb-6 font-glorious">Hilfe vor Ort</h2>
+              <h2 className="text-4xl md:text-5xl font-bold text-primary mb-6 font-glorious">{data.title}</h2>
               <div className="w-16 h-1 bg-accent-blue mb-6"></div>
-              <p className="text-gray-700 text-lg leading-relaxed font-futura mb-8">
-                Unser Fokus liegt auf nachhaltigen Lösungen vor Ort statt kurzfristiger Maßnahmen. Wir glauben, dass nur durch eine dauerhafte Präsenz und lokale Zusammenarbeit echte Veränderungen möglich sind.
-              </p>
-              <p className="text-gray-700 text-lg leading-relaxed font-futura mb-8">
-                In Lombok und Rumänien arbeiten wir eng mit lokalen Helfern zusammen, um die Lebensbedingungen der Straßenhunde langfristig zu verbessern. Unsere Programme sind darauf ausgerichtet, nicht nur akute Probleme zu lösen, sondern nachhaltige Strukturen zu schaffen.
-              </p>
-              <p className="text-gray-700 text-lg leading-relaxed font-futura">
-                Das Video gibt einen Einblick in unsere tägliche Arbeit vor Ort und zeigt, mit wie viel Engagement unser Team die verschiedenen Projekte betreut.
-              </p>
+              {descriptionParagraphs.map((paragraph, index) => (
+                <p key={index} className="text-gray-700 text-lg leading-relaxed font-futura mb-8">
+                  {paragraph}
+                </p>
+              ))}
             </div>
           </div>
         </div>

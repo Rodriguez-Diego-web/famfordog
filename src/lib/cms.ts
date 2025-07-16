@@ -66,6 +66,17 @@ export interface MissionSection {
   published: boolean;
 }
 
+export interface VideoSection {
+  id: string;
+  badge: string;
+  title: string;
+  description: string;
+  videoUrl: string;
+  posterImage: string;
+  videoInfo: string;
+  published: boolean;
+}
+
 export interface Project {
   id: string;
   title: string;
@@ -480,6 +491,33 @@ export async function loadMissionSection(): Promise<MissionSection | null> {
     };
   } catch (error) {
     console.error('Fehler beim Laden der Mission Section:', error);
+    return null;
+  }
+}
+
+// Video Section laden
+export async function loadVideoSection(): Promise<VideoSection | null> {
+  try {
+    const response = await fetch('/content/video/video.md');
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const content = await response.text();
+    
+    const parsed = parseFrontMatter(content);
+    
+    return {
+      id: 'video',
+      badge: parsed.data.badge || 'Unsere Arbeit',
+      title: parsed.data.title || 'Hilfe vor Ort',
+      description: parsed.data.description || '',
+      videoUrl: parsed.data.videoUrl || '/videos/ImageVideo.mp4',
+      posterImage: parsed.data.posterImage || '/images/lombook/WhatsApp Image 2025-03-24 at 18.13.23.jpeg',
+      videoInfo: parsed.data.videoInfo || 'FAM for Dogs in Aktion',
+      published: parsed.data.published !== false
+    };
+  } catch (error) {
+    console.error('Fehler beim Laden der Video Section:', error);
     return null;
   }
 } 

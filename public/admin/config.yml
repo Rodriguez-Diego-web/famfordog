@@ -158,3 +158,19 @@ collections:
           - {label: "Zahl", name: "number", widget: "string"}
           - {label: "Beschreibung", name: "label", widget: "string"}
       - {label: "Veröffentlicht", name: "published", widget: "boolean", default: true}
+
+  # Video Section
+  - name: "video"
+    label: "Video Section"
+    folder: "public/content/video"
+    create: false
+    delete: false
+    slug: "{{slug}}"
+    fields:
+      - {label: "Badge Text", name: "badge", widget: "string"}
+      - {label: "Titel", name: "title", widget: "string"}
+      - {label: "Beschreibung", name: "description", widget: "text"}
+      - {label: "Video URL", name: "videoUrl", widget: "string"}
+      - {label: "Poster Bild", name: "posterImage", widget: "image"}
+      - {label: "Video Info", name: "videoInfo", widget: "string"}
+      - {label: "Veröffentlicht", name: "published", widget: "boolean", default: true}
