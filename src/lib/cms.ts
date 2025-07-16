@@ -112,19 +112,45 @@ function parseFrontMatter(content: string): { data: Record<string, any>; content
   
   let currentKey = '';
   let inArray = false;
-  let inMultilineString = false;
+  let currentArrayItem: string | Record<string, string> | null = null;
   
   for (const line of frontMatterLines) {
     const trimmedLine = line.trim();
     
     if (trimmedLine === '') continue;
     
-    // Handle arrays
+    // Handle array items
     if (trimmedLine.startsWith('- ')) {
       if (inArray) {
-        if (Array.isArray(data[currentKey])) {
-          data[currentKey].push(trimmedLine.substring(2).trim().replace(/"/g, ''));
+        // Finish previous array item if exists
+        if (currentArrayItem !== null) {
+          data[currentKey].push(currentArrayItem);
         }
+        
+        // Start new array item
+        const itemContent = trimmedLine.substring(2).trim();
+        if (itemContent.includes(':')) {
+          // Complex object in array
+          const colonIndex = itemContent.indexOf(':');
+          const key = itemContent.substring(0, colonIndex).trim();
+          const value = itemContent.substring(colonIndex + 1).trim().replace(/"/g, '');
+          currentArrayItem = { [key]: value };
+        } else {
+          // Simple value in array
+          currentArrayItem = itemContent.replace(/"/g, '');
+        }
+      }
+      continue;
+    }
+    
+    // Handle nested properties in array items
+    if (inArray && currentArrayItem !== null && trimmedLine.includes(':')) {
+      const colonIndex = trimmedLine.indexOf(':');
+      const key = trimmedLine.substring(0, colonIndex).trim();
+      const value = trimmedLine.substring(colonIndex + 1).trim().replace(/"/g, '');
+      
+      if (typeof currentArrayItem === 'object') {
+        currentArrayItem[key] = value;
       }
       continue;
     }
@@ -136,9 +162,14 @@ function parseFrontMatter(content: string): { data: Record<string, any>; content
       const value = trimmedLine.substring(colonIndex + 1).trim();
       
       if (key && value !== '') {
+        // Finish previous array if exists
+        if (inArray && currentArrayItem !== null) {
+          data[currentKey].push(currentArrayItem);
+          currentArrayItem = null;
+        }
+        
         currentKey = key;
         inArray = false;
-        inMultilineString = false;
         
         // Handle different value types
         if (value === 'true') {
@@ -160,11 +191,22 @@ function parseFrontMatter(content: string): { data: Record<string, any>; content
           data[key] = value.replace(/"/g, '');
         }
       } else if (key && value === '') {
+        // Finish previous array if exists
+        if (inArray && currentArrayItem !== null) {
+          data[currentKey].push(currentArrayItem);
+          currentArrayItem = null;
+        }
+        
         currentKey = key;
         inArray = true;
         data[key] = [];
       }
     }
+  }
+  
+  // Finish last array item if exists
+  if (inArray && currentArrayItem !== null) {
+    data[currentKey].push(currentArrayItem);
   }
   
   // Extrahiere den Inhalt nach dem Front Matter
