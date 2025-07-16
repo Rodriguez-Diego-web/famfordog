@@ -41,10 +41,7 @@ const ShelterLombokPage = lazy(() => import("./pages/projects/ShelterLombokPage"
 const PublicShelterRumaenienPage = lazy(() => import("./pages/projects/PublicShelterRumaenienPage"));
 const TierrettungenPage = lazy(() => import("./pages/projects/TierrettungenPage"));
 
-// Adoption pages
-const AdoptionProcess = lazy(() => import("./pages/AdoptionProcess"));
-const AdoptionHowTo = lazy(() => import("./pages/AdoptionHowTo"));
-const AdoptionFAQ = lazy(() => import("./pages/AdoptionFAQ"));
+
 
 initGA();
 
@@ -107,10 +104,7 @@ const App = () => (
               <Route path="/projects/public-shelter-rumaenien" element={<PublicShelterRumaenienPage />} />
               <Route path="/projects/tierrettungen" element={<TierrettungenPage />} />
               
-              {/* Adoption Routes */}
-              <Route path="/adoption/process" element={<AdoptionProcess />} />
-              <Route path="/adoption/how-to" element={<AdoptionHowTo />} />
-              <Route path="/adoption/faq" element={<AdoptionFAQ />} />
+
               
               {/* Fallback route */}
               <Route path="*" element={<NotFound />} />
