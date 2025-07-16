@@ -6,29 +6,7 @@ const VideoSection = () => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [isMuted, setIsMuted] = useState(true);
   const [isLoaded, setIsLoaded] = useState(false);
-  const [isVisible, setIsVisible] = useState(false);
-  const [videoData, setVideoData] = useState<VideoSectionData | null>(null);
-  const [loading, setLoading] = useState(true);
-  const videoRef = useRef<HTMLVideoElement>(null);
-  const sectionRef = useRef<HTMLElement>(null);
-
-  // Load CMS data
-  useEffect(() => {
-    const loadData = async () => {
-      try {
-        const data = await loadVideoSection();
-        setVideoData(data);
-      } catch (error) {
-        console.error('Fehler beim Laden der Video Section:', error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    loadData();
-  }, []);
-
-  // Fallback-Daten falls CMS nicht lädt
+  // Fallback-Daten sofort verfügbar
   const fallbackData: VideoSectionData = {
     id: 'video',
     badge: 'Unsere Arbeit',
@@ -40,28 +18,29 @@ const VideoSection = () => {
     published: true
   };
 
-  const data = videoData || fallbackData;
+  const [videoData, setVideoData] = useState<VideoSectionData>(fallbackData);
+  const videoRef = useRef<HTMLVideoElement>(null);
 
-  // Intersection Observer to load video only when in viewport
+  // Load CMS data im Hintergrund
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-          observer.disconnect();
+    const loadData = async () => {
+      try {
+        const data = await loadVideoSection();
+        if (data) {
+          setVideoData(data);
         }
-      },
-      { threshold: 0.1 }
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => {
-      observer.disconnect();
+      } catch (error) {
+        console.error('Fehler beim Laden der Video Section:', error);
+        // Fallback-Daten bleiben aktiv
+      }
     };
+
+    loadData();
   }, []);
+
+  const data = videoData;
+
+
 
   const togglePlay = () => {
     if (videoRef.current) {
@@ -86,27 +65,12 @@ const VideoSection = () => {
     setIsLoaded(true);
   };
 
-  // Loading state
-  if (loading) {
-    return (
-      <section className="py-24 bg-gradient-to-br from-accent-green/5 to-accent-blue/10">
-        <div className="container mx-auto px-6">
-          <div className="text-center">
-            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto"></div>
-            <p className="mt-4 text-gray-600">Lade Video Section...</p>
-          </div>
-        </div>
-      </section>
-    );
-  }
-
   // Split description into paragraphs
   const descriptionParagraphs = data.description.split('\n\n').filter(p => p.trim() !== '');
 
   return (
     <section 
       id="video" 
-      ref={sectionRef}
       className="py-24 bg-gradient-to-br from-accent-green/5 to-accent-blue/10 relative overflow-hidden"
     >
       {/* Decorative elements with animation */}
@@ -119,12 +83,12 @@ const VideoSection = () => {
           {/* Video Column */}
           <div className="w-full md:w-3/5 order-2 md:order-1 transform transition-all duration-700 ease-out"
                style={{ 
-                 opacity: isVisible ? 1 : 0,
-                 transform: isVisible ? 'translateY(0)' : 'translateY(20px)'
+                 opacity: 1,
+                 transform: 'translateY(0)'
                }}>
             <div className="relative overflow-hidden rounded-2xl shadow-2xl group">
               {/* Video loading placeholder */}
-              {!isLoaded && isVisible && (
+              {!isLoaded && (
                 <div className="absolute inset-0 bg-gray-800 flex items-center justify-center z-10">
                   <div className="w-16 h-16 border-4 border-primary border-t-transparent rounded-full animate-spin"></div>
                 </div>
@@ -132,22 +96,20 @@ const VideoSection = () => {
               
               {/* Video container with gradient overlay */}
               <div className="aspect-w-16 aspect-h-9 bg-primary group-hover:scale-105 transition-transform duration-700">
-                {isVisible && (
-                  <video
-                    ref={videoRef}
-                    className={`w-full h-full object-cover transition-opacity duration-500 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}
-                    autoPlay
-                    muted={isMuted}
-                    loop
-                    playsInline
-                    poster={data.posterImage}
-                    onLoadedData={handleVideoLoaded}
-                    onEnded={() => setIsPlaying(false)}
-                  >
-                    <source src={data.videoUrl} type="video/mp4" />
-                    Dein Browser unterstützt das Video-Tag nicht.
-                  </video>
-                )}
+                <video
+                  ref={videoRef}
+                  className="w-full h-full object-cover transition-opacity duration-500 opacity-100"
+                  autoPlay
+                  muted={isMuted}
+                  loop
+                  playsInline
+                  poster={data.posterImage}
+                  onLoadedData={handleVideoLoaded}
+                  onEnded={() => setIsPlaying(false)}
+                >
+                  <source src={data.videoUrl} type="video/mp4" />
+                  Dein Browser unterstützt das Video-Tag nicht.
+                </video>
                 
                 {/* Gradient overlay */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-70"></div>
@@ -192,8 +154,8 @@ const VideoSection = () => {
           {/* Text Column */}
           <div className="w-full md:w-2/5 order-1 md:order-2 text-left transform transition-all duration-700 ease-out"
                style={{ 
-                 opacity: isVisible ? 1 : 0,
-                 transform: isVisible ? 'translateY(0)' : 'translateY(20px)',
+                 opacity: 1,
+                 transform: 'translateY(0)',
                  transitionDelay: '0.2s'
                }}>
             <div className="mb-8">
