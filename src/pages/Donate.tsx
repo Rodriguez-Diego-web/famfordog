@@ -56,8 +56,8 @@ const Donate = () => {
             </div>
             
             {/* Alternative Spendenmöglichkeiten */}
-            <div className="mt-2 bg-gradient-to-r from-primary/10 to-accent-blue/10 rounded-lg p-4">
-              <h3 className="text-2xl font-bold text-primary mb-4 font-glorious text-center">
+            <div className="mt-6 mb-12 bg-gradient-to-r from-primary/10 to-accent-blue/10 rounded-lg p-6">
+              <h3 className="text-2xl font-bold text-primary mb-6 font-glorious text-center">
                 Alternative Spendenmöglichkeiten
               </h3>
               
@@ -119,7 +119,7 @@ const Donate = () => {
                 </div>
               </div>
               
-              <div className="mt-2 text-center">
+              <div className="mt-6 text-center">
                 <p className="text-sm text-gray-600 font-futura">
                   ✨ Jede Spende hilft uns dabei, das Leben der Straßenhunde zu verbessern ✨
                 </p>
