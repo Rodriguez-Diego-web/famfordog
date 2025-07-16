@@ -55,8 +55,8 @@ const FoerdermitgliedWerden = () => {
                     </div>
                   </div>
 
-                  {/* Mitte - Vorteile horizontal */}
-                  <div className="flex flex-wrap lg:flex-nowrap gap-6 lg:gap-8">
+                  {/* Mitte - Vorteile - mobile: vertikal, desktop: horizontal */}
+                  <div className="flex flex-col lg:flex-row gap-3 lg:gap-8">
                     <div className="flex items-center text-white/90 font-futura text-sm">
                       <span className="w-1 h-1 bg-secondary rounded-full mr-2"></span>
                       regelmäßige Updates
