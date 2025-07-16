@@ -1,22 +1,64 @@
 import { ArrowRight, Heart, Map, Stethoscope, Scissors, PawPrint, Utensils, Home, Ambulance } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { loadMissionSection, type MissionSection } from '@/lib/cms';
 
-const MissionSection = () => {
-  const stats = [
-    { number: "160+", label: "Hunde im Shelter" },
-    { number: "1500+", label: "Kastrationen durchgeführt" },
-    { number: "2", label: "Standorte (Lombok & Rumänien)" },
-    { number: "5+", label: "Jahre Erfahrung" }
-  ];
+const MissionSectionComponent = () => {
+  const [missionData, setMissionData] = useState<MissionSection | null>(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const loadData = async () => {
+      try {
+        const data = await loadMissionSection();
+        setMissionData(data);
+      } catch (error) {
+        console.error('Fehler beim Laden der Mission Section:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    loadData();
+  }, []);
+
+  // Fallback-Daten falls CMS nicht lädt
+  const fallbackData: MissionSection = {
+    id: 'mission',
+    title: 'Unsere Mission',
+    description: 'Wir von FAM for Dogs e.V. (Fight and Movement for Dogs) setzen uns für nachhaltigen Tierschutz ein – mit Fokus auf die Verbesserung der Lebensbedingungen vor Ort für Straßenhunde. Denn für uns kennt Tierschutz keine Grenzen!',
+    stats: [
+      { number: "160+", label: "Hunde im Shelter" },
+      { number: "1500+", label: "Kastrationen durchgeführt" },
+      { number: "2", label: "Standorte (Lombok & Rumänien)" },
+      { number: "5+", label: "Jahre Erfahrung" }
+    ],
+    published: true
+  };
+
+  const data = missionData || fallbackData;
+
+  if (loading) {
+    return (
+      <section className="py-20 bg-primary/10">
+        <div className="container mx-auto px-6">
+          <div className="text-center">
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto"></div>
+            <p className="mt-4 text-gray-600">Lade Mission Section...</p>
+          </div>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section className="py-20 bg-primary/10">
       <div className="container mx-auto px-6">
         <div className="text-center mb-12">
-          <h2 className="text-4xl md:text-5xl font-bold text-primary mb-4 font-glorious">Unsere Mission</h2>
+          <h2 className="text-4xl md:text-5xl font-bold text-primary mb-4 font-glorious">{data.title}</h2>
           <div className="w-20 h-1 bg-secondary mx-auto mb-6"></div>
           <p className="text-gray-700 max-w-3xl mx-auto font-futura mb-4">
-            Wir von FAM for Dogs e.V. (Fight and Movement for Dogs) setzen uns für nachhaltigen Tierschutz ein – mit Fokus auf die Verbesserung der Lebensbedingungen vor Ort für Straßenhunde. Denn für uns kennt Tierschutz keine Grenzen!
+            {data.description}
           </p>
         </div>
         
@@ -125,7 +167,7 @@ const MissionSection = () => {
         </div>
         
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-          {stats.map((stat, index) => (
+          {data.stats.map((stat, index) => (
             <div 
               key={index} 
               className="bg-white p-6 rounded-2xl shadow-lg flex flex-col items-center justify-center text-center hover:shadow-xl transition-shadow transform hover:-translate-y-1 duration-300"
@@ -140,4 +182,4 @@ const MissionSection = () => {
   );
 };
 
-export default MissionSection;
+export default MissionSectionComponent;

@@ -55,6 +55,17 @@ export interface HeroSlide {
   published: boolean;
 }
 
+export interface MissionSection {
+  id: string;
+  title: string;
+  description: string;
+  stats: {
+    number: string;
+    label: string;
+  }[];
+  published: boolean;
+}
+
 export interface Project {
   id: string;
   title: string;
@@ -403,6 +414,30 @@ function parseHeroSlideMarkdown(content: string, filename: string): HeroSlide | 
     };
   } catch (error) {
     console.error(`Fehler beim Parsen von ${filename}:`, error);
+    return null;
+  }
+}
+
+// Mission Section laden
+export async function loadMissionSection(): Promise<MissionSection | null> {
+  try {
+    const response = await fetch('/content/mission/mission.md');
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const content = await response.text();
+    
+    const parsed = parseFrontMatter(content);
+    
+    return {
+      id: 'mission',
+      title: parsed.data.title || 'Unsere Mission',
+      description: parsed.data.description || '',
+      stats: parsed.data.stats || [],
+      published: parsed.data.published !== false
+    };
+  } catch (error) {
+    console.error('Fehler beim Laden der Mission Section:', error);
     return null;
   }
 } 

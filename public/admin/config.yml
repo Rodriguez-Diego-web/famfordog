@@ -140,3 +140,21 @@ collections:
       - {label: "Sortierung", name: "order", widget: "number", default: 0}
       - {label: "Veröffentlicht", name: "published", widget: "boolean", default: true}
       - {label: "Inhalt", name: "body", widget: "markdown", required: false}
+
+  # Mission Section
+  - name: "mission"
+    label: "Mission Section"
+    folder: "public/content/mission"
+    create: false
+    delete: false
+    slug: "{{slug}}"
+    fields:
+      - {label: "Titel", name: "title", widget: "string"}
+      - {label: "Beschreibung", name: "description", widget: "text"}
+      - label: "Statistiken"
+        name: "stats"
+        widget: "list"
+        fields:
+          - {label: "Zahl", name: "number", widget: "string"}
+          - {label: "Beschreibung", name: "label", widget: "string"}
+      - {label: "Veröffentlicht", name: "published", widget: "boolean", default: true}
