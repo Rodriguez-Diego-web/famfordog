@@ -5,7 +5,7 @@ bio: "Aris ist ein Mann mit vielen Talenten. Hunde sind für ihn nicht nur Haust
 image: "Aris/WhatsApp Image 2025-03-27 at 23.54.21.jpeg"
 category: "Lombok Team"
 socialMedia:
-order: 6
+order: 7
 published: true
 ---
 
