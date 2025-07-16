@@ -79,15 +79,15 @@ const Donate = () => {
                     </div>
                     <div className="flex justify-between">
                       <span className="font-medium">IBAN:</span>
-                      <span className="font-mono">DE89 4306 0967 1013 2314 00</span>
+                      <span className="font-mono">DE91 8306 5408 0005 3189 55</span>
                     </div>
                     <div className="flex justify-between">
                       <span className="font-medium">BIC:</span>
-                      <span className="font-mono">GENODEM1GLS</span>
+                      <span className="font-mono">GENODEF1SLR</span>
                     </div>
                     <div className="flex justify-between">
                       <span className="font-medium">Bank:</span>
-                      <span>GLS Bank</span>
+                      <span>Deutsche Skatbank</span>
                     </div>
                   </div>
                 </div>

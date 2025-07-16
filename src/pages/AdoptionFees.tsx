@@ -242,9 +242,9 @@ const AdoptionFees = () => {
                 <h3 className="text-lg font-semibold text-primary mb-4 font-futura">Bankverbindung</h3>
                 <ul className="space-y-2 text-gray-600 font-futura">
                   <li><span className="font-medium">Kontoinhaber:</span> FAM for Dogs e.V.</li>
-                  <li><span className="font-medium">IBAN:</span> DE12 3456 7890 1234 5678 90</li>
-                  <li><span className="font-medium">BIC:</span> ABCDEFGHIJK</li>
-                  <li><span className="font-medium">Bank:</span> Musterbank</li>
+                  <li><span className="font-medium">IBAN:</span> DE91 8306 5408 0005 3189 55</li>
+                  <li><span className="font-medium">BIC:</span> GENODEF1SLR</li>
+                  <li><span className="font-medium">Bank:</span> Deutsche Skatbank</li>
                   <li><span className="font-medium">Verwendungszweck:</span> Adoption [Name des Hundes] + [Dein Name]</li>
                 </ul>
               </div>
