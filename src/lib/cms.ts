@@ -36,6 +36,25 @@ export interface TeamMember {
   published: boolean;
 }
 
+export interface HeroSlide {
+  id: string;
+  title: string;
+  subtitle: string;
+  description: string;
+  image?: string;
+  backgroundImage?: string;
+  primaryButton?: {
+    text: string;
+    link: string;
+  };
+  secondaryButton?: {
+    text: string;
+    link: string;
+  };
+  order: number;
+  published: boolean;
+}
+
 export interface Project {
   id: string;
   title: string;
@@ -306,5 +325,84 @@ export async function loadFAQsByCategory(category: string): Promise<FAQ[]> {
   } catch (error) {
     console.error('Fehler beim Laden der FAQs:', error);
     return [];
+  }
+}
+
+// Hero Slides laden
+export async function loadHeroSlides(): Promise<HeroSlide[]> {
+  try {
+    const heroSlides: HeroSlide[] = [];
+    
+    // Liste der Hero Slide Dateien
+    const slideFiles = [
+      'fam-for-dogs.md',
+      'hilfe-vor-ort.md', 
+      'kastrationsprojekte.md'
+    ];
+    
+    for (const filename of slideFiles) {
+      try {
+        const response = await fetch(`/content/hero-slides/${filename}`);
+        if (!response.ok) continue;
+        
+        const content = await response.text();
+        const slide = parseHeroSlideMarkdown(content, filename);
+        
+        if (slide) {
+          heroSlides.push(slide);
+        }
+      } catch (error) {
+        console.error(`Fehler beim Laden von ${filename}:`, error);
+      }
+    }
+    
+    return heroSlides
+      .filter(slide => slide.published)
+      .sort((a, b) => a.order - b.order);
+  } catch (error) {
+    console.error('Fehler beim Laden der Hero-Slides:', error);
+    return [];
+  }
+}
+
+// Hero Slide Markdown Parser
+function parseHeroSlideMarkdown(content: string, filename: string): HeroSlide | null {
+  try {
+    const parsed = parseFrontMatter(content);
+    
+    if (!parsed.data.title || !parsed.data.subtitle) {
+      console.warn(`Hero Slide ${filename} fehlt required fields`);
+      return null;
+    }
+    
+    const primaryButton = parsed.data.primaryButtonText && parsed.data.primaryButtonLink 
+      ? {
+          text: parsed.data.primaryButtonText,
+          link: parsed.data.primaryButtonLink
+        }
+      : undefined;
+    
+    const secondaryButton = parsed.data.secondaryButtonText && parsed.data.secondaryButtonLink 
+      ? {
+          text: parsed.data.secondaryButtonText,
+          link: parsed.data.secondaryButtonLink
+        }
+      : undefined;
+    
+    return {
+      id: filename.replace('.md', ''),
+      title: parsed.data.title,
+      subtitle: parsed.data.subtitle,
+      description: parsed.data.description || '',
+      image: parsed.data.image || undefined,
+      backgroundImage: parsed.data.backgroundImage || undefined,
+      primaryButton,
+      secondaryButton,
+      order: parsed.data.order || 0,
+      published: parsed.data.published !== false
+    };
+  } catch (error) {
+    console.error(`Fehler beim Parsen von ${filename}:`, error);
+    return null;
   }
 } 

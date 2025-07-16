@@ -1,41 +1,38 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
 import { Link } from 'react-router-dom';
-
-// Define hero slide data
-const heroSlides = [
-  {
-    id: 1,
-    title: 'FAM',
-    subtitle: 'for Dogs e.V.',
-    description: 'Fight and Movement for Dogs. Wir setzen uns für nachhaltigen Tierschutz vor Ort ein.'
-  },
-  {
-    id: 2,
-    title: 'Hilfe',
-    subtitle: 'vor Ort',
-    description: 'Direkt vor Ort helfen wir Hunden in Not – durch Kastrationen, medizinische Versorgung und langfristige Unterstützung.'
-  },
-  {
-    id: 3,
-    title: 'Kastrations',
-    subtitle: 'projekte',
-    description: 'Präventive Kastrationen sind ein zentraler Bestandteil unserer Arbeit, um das Wohl der Tiere zu sichern und das Wachstum der Straßenpopulation zu verhindern.'
-  }
-];
+import { loadHeroSlides, type HeroSlide } from '@/lib/cms';
 
 const Hero = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isAutoplay, setIsAutoplay] = useState(true);
+  const [heroSlides, setHeroSlides] = useState<HeroSlide[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
   const autoplayTimerRef = useRef<NodeJS.Timeout | null>(null);
   
   const headingRef = useRef<HTMLHeadingElement>(null);
   const subheadingRef = useRef<HTMLParagraphElement>(null);
   const buttonRef = useRef<HTMLDivElement>(null);
 
+  // Load hero slides from CMS
+  useEffect(() => {
+    const loadSlides = async () => {
+      try {
+        const slides = await loadHeroSlides();
+        setHeroSlides(slides);
+      } catch (error) {
+        console.error('Error loading hero slides:', error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+    
+    loadSlides();
+  }, []);
+
   // Handle automatic slide transitions
   const nextSlide = useCallback(() => {
     setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
-  }, []);
+  }, [heroSlides.length]);
 
   const goToSlide = (index: number) => {
     setCurrentSlide(index);
@@ -105,6 +102,18 @@ const Hero = () => {
     }
   }, [currentSlide]); // Re-run animation when slide changes
 
+  // Show loading state
+  if (isLoading || heroSlides.length === 0) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-primary">
+        <div className="text-white text-center">
+          <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-white mx-auto mb-4"></div>
+          <p className="text-lg font-futura">Laden...</p>
+        </div>
+      </div>
+    );
+  }
+
   const slide = heroSlides[currentSlide];
 
   return (
@@ -139,13 +148,17 @@ const Hero = () => {
           </p>
           
           <div ref={buttonRef} className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
-            <Link to="/about" className="bg-white hover:bg-opacity-90 text-primary px-8 py-3 rounded-full font-medium transition-all duration-300 text-center hover:shadow-lg hover-arrow font-futura">
-              <span>Unsere Mission</span>
-            </Link>
+            {slide.primaryButton && (
+              <Link to={slide.primaryButton.link} className="bg-white hover:bg-opacity-90 text-primary px-8 py-3 rounded-full font-medium transition-all duration-300 text-center hover:shadow-lg hover-arrow font-futura">
+                <span>{slide.primaryButton.text}</span>
+              </Link>
+            )}
             
-            <Link to="/spenden" className="bg-secondary border-none text-primary px-8 py-3 rounded-full font-medium hover:bg-secondary/90 transition-all duration-300 text-center font-futura hover:shadow-lg">
-              Spenden
-            </Link>
+            {slide.secondaryButton && (
+              <Link to={slide.secondaryButton.link} className="bg-secondary border-none text-primary px-8 py-3 rounded-full font-medium hover:bg-secondary/90 transition-all duration-300 text-center font-futura hover:shadow-lg">
+                {slide.secondaryButton.text}
+              </Link>
+            )}
           </div>
         </div>
       </div>
