@@ -103,12 +103,7 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
-  <url>
-    <loc>https://famfordogs.com/adoption/fees</loc>
-    <lastmod>2025-04-13</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
+
   <url>
     <loc>https://famfordogs.com/adoption/success-stories</loc>
     <lastmod>2025-04-13</lastmod>

@@ -222,7 +222,7 @@ const AdoptionFAQ = () => {
           {/* Related Links */}
           <div className="mt-16">
             <h2 className="text-2xl font-bold text-primary mb-8 text-center font-glorious">Weitere Informationen zur Adoption</h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <Link 
                 to="/adoption-process" 
                 className="bg-white p-8 rounded-xl border border-gray-200 hover:shadow-md transition-shadow text-center group"
@@ -235,17 +235,7 @@ const AdoptionFAQ = () => {
                 </span>
               </Link>
               
-              <Link 
-                to="/adoption-fees" 
-                className="bg-white p-8 rounded-xl border border-gray-200 hover:shadow-md transition-shadow text-center group"
-              >
-                <h3 className="text-xl font-semibold text-primary mb-3 font-futura">Adoptionsgebühren</h3>
-                <p className="text-gray-600 mb-4 font-futura">Detaillierte Informationen zu unseren Adoptionsgebühren und was darin enthalten ist.</p>
-                <span className="text-primary font-medium inline-flex items-center group-hover:text-secondary transition-colors font-futura">
-                  Mehr erfahren
-                  <ArrowRight size={16} className="ml-2 transform group-hover:translate-x-1 transition-transform" />
-                </span>
-              </Link>
+
               
 
             </div>

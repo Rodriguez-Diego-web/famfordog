@@ -45,7 +45,6 @@ const TierrettungenPage = lazy(() => import("./pages/projects/TierrettungenPage"
 const AdoptionProcess = lazy(() => import("./pages/AdoptionProcess"));
 const AdoptionHowTo = lazy(() => import("./pages/AdoptionHowTo"));
 const AdoptionFAQ = lazy(() => import("./pages/AdoptionFAQ"));
-const AdoptionFees = lazy(() => import("./pages/AdoptionFees"));
 
 initGA();
 
@@ -112,7 +111,6 @@ const App = () => (
               <Route path="/adoption/process" element={<AdoptionProcess />} />
               <Route path="/adoption/how-to" element={<AdoptionHowTo />} />
               <Route path="/adoption/faq" element={<AdoptionFAQ />} />
-              <Route path="/adoption/fees" element={<AdoptionFees />} />
               
               {/* Fallback route */}
               <Route path="*" element={<NotFound />} />

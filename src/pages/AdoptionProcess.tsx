@@ -107,10 +107,9 @@ const AdoptionProcess = () => {
                   <p className="text-gray-600 mb-4 font-futura">
                     Ein Mitglied unseres Teams wird einen Hausbesuch durchführen, um sicherzustellen, dass dein Zuhause sicher und geeignet für den Hund ist. Nach erfolgreichem Hausbesuch und finaler Genehmigung durch unser Adoptionsteam kannst du den Adoptionsvertrag unterzeichnen und die Adoptionsgebühr bezahlen.
                   </p>
-                  <Link to="/adoption-fees" className="text-primary font-medium inline-flex items-center hover:text-accent-blue transition-colors font-futura">
-                    Informationen zu Gebühren
-                    <ArrowRight size={16} className="ml-2" />
-                  </Link>
+                  <span className="text-gray-600 font-futura">
+                    Informationen zu den Adoptionsgebühren erhältst du direkt von unserem Team.
+                  </span>
                 </div>
               </div>
               
