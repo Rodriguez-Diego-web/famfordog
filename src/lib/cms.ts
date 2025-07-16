@@ -123,10 +123,29 @@ function parseFrontMatter(content: string): { data: Record<string, any>; content
   
   let currentKey = '';
   let inArray = false;
+  let inMultilineString = false;
+  let multilineString = '';
   let currentArrayItem: string | Record<string, string> | null = null;
   
-  for (const line of frontMatterLines) {
+  for (let i = 0; i < frontMatterLines.length; i++) {
+    const line = frontMatterLines[i];
     const trimmedLine = line.trim();
+    
+    // Handle multiline strings
+    if (inMultilineString) {
+      if (trimmedLine.includes(':') && !line.startsWith('  ')) {
+        // End of multiline string, new key found
+        data[currentKey] = multilineString.trim();
+        inMultilineString = false;
+        multilineString = '';
+        // Continue processing this line as a normal key-value pair
+        // Don't continue here, fall through to normal processing
+      } else {
+        // Continue collecting multiline string content
+        multilineString += (multilineString ? '\n\n' : '') + trimmedLine;
+        continue;
+      }
+    }
     
     if (trimmedLine === '') continue;
     
@@ -195,6 +214,11 @@ function parseFrontMatter(content: string): { data: Record<string, any>; content
           data[key] = arrayContent.split(',').map(item => item.trim().replace(/"/g, ''));
         } else if (value.startsWith('"') && value.endsWith('"')) {
           data[key] = value.slice(1, -1);
+        } else if (value === '|') {
+          // Start of multiline string
+          inMultilineString = true;
+          multilineString = '';
+          currentKey = key;
         } else if (value === '' || value === '[]') {
           data[key] = [];
           inArray = true;
@@ -218,6 +242,11 @@ function parseFrontMatter(content: string): { data: Record<string, any>; content
   // Finish last array item if exists
   if (inArray && currentArrayItem !== null) {
     data[currentKey].push(currentArrayItem);
+  }
+  
+  // Finish last multiline string if exists
+  if (inMultilineString && multilineString) {
+    data[currentKey] = multilineString.trim();
   }
   
   // Extrahiere den Inhalt nach dem Front Matter
