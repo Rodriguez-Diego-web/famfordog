@@ -127,10 +127,6 @@ const AdoptionProcess = () => {
                   <p className="text-gray-600 mb-4 font-futura">
                     Jetzt ist es endlich soweit! Der Hund zieht bei dir ein. Bei Hunden aus dem Ausland organisieren wir den Transport nach Deutschland. Unser Team bleibt auch nach der Adoption für dich ansprechbar und unterstützt dich in der Eingewöhnungsphase mit Rat und Tat.
                   </p>
-                  <Link to="/success-stories" className="text-primary font-medium inline-flex items-center hover:text-accent-blue transition-colors font-futura">
-                    Erfolgsgeschichten lesen
-                    <ArrowRight size={16} className="ml-2" />
-                  </Link>
                 </div>
               </div>
             </div>

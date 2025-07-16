@@ -247,17 +247,7 @@ const AdoptionFAQ = () => {
                 </span>
               </Link>
               
-              <Link 
-                to="/success-stories" 
-                className="bg-white p-8 rounded-xl border border-gray-200 hover:shadow-md transition-shadow text-center group"
-              >
-                <h3 className="text-xl font-semibold text-primary mb-3 font-futura">Erfolgsgeschichten</h3>
-                <p className="text-gray-600 mb-4 font-futura">Lese die herzerwärmenden Geschichten von Hunden, die durch unsere Vermittlung ihr Für-Immer-Zuhause gefunden haben.</p>
-                <span className="text-primary font-medium inline-flex items-center group-hover:text-secondary transition-colors font-futura">
-                  Mehr erfahren
-                  <ArrowRight size={16} className="ml-2 transform group-hover:translate-x-1 transition-transform" />
-                </span>
-              </Link>
+
             </div>
           </div>
         </div>

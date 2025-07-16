@@ -46,7 +46,6 @@ const AdoptionProcess = lazy(() => import("./pages/AdoptionProcess"));
 const AdoptionHowTo = lazy(() => import("./pages/AdoptionHowTo"));
 const AdoptionFAQ = lazy(() => import("./pages/AdoptionFAQ"));
 const AdoptionFees = lazy(() => import("./pages/AdoptionFees"));
-const SuccessStories = lazy(() => import("./pages/SuccessStories"));
 
 initGA();
 
@@ -114,7 +113,6 @@ const App = () => (
               <Route path="/adoption/how-to" element={<AdoptionHowTo />} />
               <Route path="/adoption/faq" element={<AdoptionFAQ />} />
               <Route path="/adoption/fees" element={<AdoptionFees />} />
-              <Route path="/adoption/success-stories" element={<SuccessStories />} />
               
               {/* Fallback route */}
               <Route path="*" element={<NotFound />} />

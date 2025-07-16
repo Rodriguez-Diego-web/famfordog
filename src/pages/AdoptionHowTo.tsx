@@ -326,20 +326,7 @@ const AdoptionHowTo = () => {
               </span>
             </Link>
             
-            <Link 
-              to="/success-stories" 
-              className="bg-gray-50 p-8 rounded-xl hover:shadow-md transition-shadow text-center group"
-            >
-              <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-primary/20 transition-colors">
-                <PawPrint className="text-primary" size={28} />
-              </div>
-              <h3 className="text-xl font-semibold text-primary mb-2 font-futura">Erfolgsgeschichten</h3>
-              <p className="text-gray-600 mb-4 font-futura">Inspirierenden Geschichten von erfolgreich vermittelten Hunden in ihren neuen Familien.</p>
-              <span className="text-primary font-medium inline-flex items-center group-hover:text-secondary transition-colors font-futura">
-                Mehr erfahren
-                <ArrowRight size={16} className="ml-2 transform group-hover:translate-x-1 transition-transform" />
-              </span>
-            </Link>
+
           </div>
         </div>
       </main>
