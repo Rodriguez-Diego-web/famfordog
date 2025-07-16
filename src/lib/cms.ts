@@ -192,7 +192,8 @@ export async function loadTeamMembers(): Promise<TeamMember[]> {
       'vito.md',
       'aris.md',
       'monika.md',
-      'tieraerzte.md'
+      'tieraerzte.md',
+      'victoria.md'
     ];
     
     // Lade alle Team-Mitglieder
