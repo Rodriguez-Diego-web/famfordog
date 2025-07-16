@@ -119,4 +119,24 @@ collections:
       - {label: "SEO Titel", name: "seoTitle", widget: "string"}
       - {label: "SEO Beschreibung", name: "seoDescription", widget: "text"}
       - {label: "Keywords", name: "keywords", widget: "string"}
-      - {label: "Veröffentlicht", name: "published", widget: "boolean", default: true} 
+      - {label: "Veröffentlicht", name: "published", widget: "boolean", default: true}
+
+  # Hero Slides Collection
+  - name: "hero-slides"
+    label: "Hero Slides"
+    folder: "public/content/hero-slides"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Titel", name: "title", widget: "string"}
+      - {label: "Untertitel", name: "subtitle", widget: "string"}
+      - {label: "Beschreibung", name: "description", widget: "text"}
+      - {label: "Hauptbild", name: "image", widget: "image", required: false}
+      - {label: "Hintergrundbild", name: "backgroundImage", widget: "image", required: false}
+      - {label: "Hauptbutton Text", name: "primaryButtonText", widget: "string", required: false}
+      - {label: "Hauptbutton Link", name: "primaryButtonLink", widget: "string", required: false}
+      - {label: "Nebenbutton Text", name: "secondaryButtonText", widget: "string", required: false}
+      - {label: "Nebenbutton Link", name: "secondaryButtonLink", widget: "string", required: false}
+      - {label: "Sortierung", name: "order", widget: "number", default: 0}
+      - {label: "Veröffentlicht", name: "published", widget: "boolean", default: true}
+      - {label: "Inhalt", name: "body", widget: "markdown", required: false}
